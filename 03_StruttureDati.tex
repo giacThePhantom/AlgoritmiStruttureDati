@@ -1,0 +1,433 @@
+\chapter{Strutture dati}
+Si intende per dato in un linguaggio di programmazione un valore che una variabile pu\`o assumere. Un tipo di dato astratto \`e una collezione di valori e un
+insieme di operazioni ammesse su quei valori. Si dicono primitivi i tipi di dati forniti direttamente dal linguaggio di programmazione. La definizione di un
+tipo di dato astratto si divide nella specifica, una descrizione di alto livello di come pu\`o essere utilizzata e nell'implementazione, la realizzazione 
+vera e propria di basso livello. Le strutture dati sono collezioni di dati, caratterizzate dall'organizzazione della collezione stessa pi\`u che dal tipo di
+dati contenuti. Le strutture dati sono caratterizzate da un insieme di operatori che permettono di manipolarne la struttura e un modo sistematico per 
+organizzare l'insieme di dati. Le strutture dati si dividono in:
+\begin{itemize}
+\item Lineari o non lineari rispetto alla presenza o meno di una sequenza.
+\item Statiche o dinamiche se la dimensione della struttura pu\`o variare o meno.
+\item Omogenee o disomogenee se possono contenere uno o diversi tipi di dati.
+\end{itemize}
+\section{Sequenza}
+Una sequenza \`e una struttura dati dinamica, lineare che rappresenta una sequenza ordinata di valori, dove un valore pu\`o comparire pi\`u di una volta. \`E
+importante l'ordine all'interno della sequenza. 
+\subsubsection{Operazioni ammesse}
+\begin{itemize}
+\item Data una posizione \`e possibile aggiungere o eliminare un elemento in quella posizione. Si considerano anche per comodit\`a le posizioni $pos_0$ e 
+$pos_{n+1}$.
+\item \`E possibile accedere direttamente alla testa e alla coda della sequenza.
+\item \`E possibile accedere sequenzialmente a tutti gli altri elementi.
+\end{itemize}
+\subsubsection{Specifica}
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwData{Item}{Item}
+\SetKwData{Pos}{Pos}
+\SetKwComment{comment}{$\%$}{}
+\SetKwFunction{Isempty}{isEmpty}
+\SetKwFunction{Finished}{finished}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Tail}{tail}
+\SetKwFunction{Next}{next}
+\SetKwFunction{Prev}{prev}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Remove}{remove}
+\SetKwFunction{Read}{read}
+\SetKwFunction{Write}{write}
+\SetKwData{Sequence}{Sequence}
+
+\caption{\protect\Sequence}
+
+\comment{Restituisce True se la sequenza \`e vuota}
+\textbf{boolean} \Isempty{}\;
+\BlankLine
+\comment{Restituisce True se $p$ \`e uguale a $pos_0$ o a $pos_{n+1}$}
+\BlankLine
+\textbf{boolean} \Finished{\Pos $p$}\;
+\BlankLine
+\comment{Restituisce la posizione del primo elemento}
+\BlankLine
+\Pos \Head{}\;
+\BlankLine
+\comment{Restituisce la posizione dell'ultimo elemento}
+\BlankLine
+\Pos \Tail{}\;
+\BlankLine
+\comment{Restituisce la posizione dell'elemento che segue $p$}
+\BlankLine
+\Pos \Next{\Pos $p$}\;
+\BlankLine
+\comment{Restituisce la posizione dell'elemento che precede$p$}
+\BlankLine
+\Pos \Prev{\Pos $p$}\;
+\BlankLine
+\comment{Inserisce l'elemento $v$ di tipo \Item nella posizione $p$}
+\comment{Restituisce la posizione del nuovo elemento che diventa predecessore di $p$}
+\BlankLine
+\Pos \Insert{\Pos $p$, \Item $v$}\;
+\BlankLine
+\comment{Rimuove l'elemento alla posizione $p$}
+\comment{Restituisce la posizione del successore di $p$}
+\comment{Che diventa il successore del predecessore di $p$}
+\BlankLine
+\Pos \Remove{Pos $p$}\;
+\BlankLine
+\comment{Legge l'elemento di tipo \Item contenuto nella posizione $p$}
+\BlankLine
+\Item \Read{\Pos $p$}\;
+\BlankLine
+\comment{Scrive l'elemento $v$ di tipo \Item nella posizione $p$}
+\BlankLine
+\Write{\Pos $p$, \Item $v$}\;
+\end{algorithm}
+\section{Insiemi}
+Per insieme si intende una struttura dati dinamica, non lineare che memorizza una collezione non ordinata di elementi senza valori ripetuti. L'ordinamento
+tra i valori sar\`a dato dall'eventuale relazione d'ordine definita sul tipo di elementi stessi. 
+\subsubsection{Operazioni ammesse}
+\begin{itemize}
+\item Operazioni base:
+\begin{itemize}
+\item Inserimento.
+\item Cancellazione.
+\item Verifica contenimento.
+\end{itemize}
+\item Operazioni di ordinamento:
+\begin{itemize}
+\item Massimo.
+\item Minimo.
+\end{itemize}
+\item Operazioni insiemistiche:
+\begin{itemize}
+\item Unione.
+\item Intersezione.
+\item Differenza.
+\end{itemize}
+\item Iteratori.
+\begin{itemize}
+\item \textbf{foreach} $x\in S$ \textbf{do}.
+\end{itemize}
+\end{itemize}
+\subsubsection{Specifica}
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwData{Item}{Item}
+\SetKwData{Set}{Set}
+\SetKwData{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKwComment{comment}{$\%$}{}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Contains}{contains}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Remove}{remove}
+\SetKwFunction{Union}{union}
+\SetKwFunction{Intersection}{intersection}
+\SetKwFunction{Difference}{Difference}
+
+\caption{\protect\Set}
+
+\comment{Restituisce la cardinalit\`a dell'insieme}
+\Int \Size{}\;
+\comment{Restituisce True se $x$ \`e contenuto nell'insieme}
+\Boolean \Contains{\Item $x$}\;
+\comment{Inserisce $x$ nell'insieme se non \`e gi\`a presente}
+\Insert{\Item $x$}\;
+\comment{Rimuove $x$ dall'insieme se \`e presente}
+\Remove{\Item $x$}\;
+\comment{Restituisce un nuovo insieme che \`e l'unione di $A$ e $B$}
+\Set \Union{\Set $A$, \Set $B$}\;
+\comment{Restituisce un nuovo insieme che \`e l'intersezione di $A$ e $B$}
+\Set \Intersection{\Set $A$, \Set $B$}\;
+\comment{Restituisce un nuovo insieme che \`e la differenza tra $A$ e $B$}
+\Set \Difference{\Set $A$, \Set $B$}\;
+\end{algorithm}
+\section{Dizionari}
+Un dizionario \`e una struttura dati che rappresenta il concetto matematico di relazione univoca $R:D\rightarrow C$ o associazione chiave-valore. L'insieme
+$D$ \`e il dominio ed \`e costituito dalle chiavi, l'insieme $D$ \`e il codominio ed \`e costituito dai valori.
+\subsubsection{Operazioni ammesse}
+\begin{itemize}
+\item Ottenere il valore associato ad una particolare chiave se presente altrimenti \textbf{nil}.
+\item Inserire una nuova associazione chiave-valore cancellando eventualmente associazioni precedenti per la stessa chiave.
+\item Rimuovere un'associazione chiave-valore esistente.
+\end{itemize}
+\subsubsection{Specifica}
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwData{Item}{Item}
+\SetKwData{Dictionary}{Dictionary}
+\SetKwComment{comment}{$\%$}{}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Remove}{remove}
+\SetKwFunction{Lookup}{lookup}
+
+\caption{\protect\Dictionary}
+
+\comment{Restituisce il valore associato alla chiave $k$ se presente, \textbf{nil} altrimenti}
+\Item \Lookup{\Item $k$}\;
+\comment{Associa il valore $v$ alla chiave $k$}
+\Insert{\Item $k$, \Item $v$}\;
+\comment{Rimuove l'associazione della chiave $k$}
+\Remove{\Item $k$}\;
+\end{algorithm}
+\section{Alberi e grafi}
+\subsection{Alberi ordinati}
+Un albero ordinato \`e dato da un insieme finito di elementi detti nodi, uno dei quali \`e designato come radice e i rimanenti, se esistono sono 
+partizionati in insiemi ordinati e disgiunti, anch'essi alberi ordinati.
+\subsection{Grafi}
+La struttura di un grafo \`e composta da un insieme di elementi detti nodi o vertici e un insieme di coppie (ordinate o no) di nodi detti archi.
+\subsection{Operazioni}
+Tutte le operazioni su grafi e alberi ruotano intorno alla possibilit\`a di effettuare visite su di essi.
+\section{Lista}
+Una lista o linked list \`e una struttura dati contenente una sequenza di nodi contenente dati arbitrari, $1-2$ puntatori all'elemento successivo e/o a 
+quello precedente. La contiguit\`a nella lista \`e diversa dalla contiguit\`a in memoria e tutte le operazioni su una lista hanno costo $O(1)$.
+\subsubsection{Possibili implementazioni}
+Bidirezionale o monodirezionale: in base al numero di puntatori e se puntano a quello successivo e/o a quello precedente.
+Con sentinella o senza sentinella: in base alla presenza di una sentinella, una struttura che punta sempre al primo elemento della lista.
+Circolare o non circolare: si dice circolare se il puntatore dell'ultimo elemento punta al primo invece di essere \textbf{nil}.
+\subsubsection{Lista bidirezionale con sentinella}
+\begin{algorithm}
+
+\DontPrintSemicolon
+\SetKwData{List}{List}
+\SetKwData{Item}{Item}
+\SetKwData{Pos}{Pos}
+\SetKw{Boolean}{boolean}
+\SetKwComment{comment}{$\%$}{}
+\SetKwFunction{ListConst}{List}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Tail}{tail}
+\SetKwFunction{Next}{next}
+\SetKwFunction{Prev}{prev}
+\SetKwFunction{Finished}{finished}
+\SetKwFunction{Read}{read}
+\SetKwFunction{Write}{write}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Remove}{remove}
+
+\SetKwProg{Fn}{}{}{}
+
+\SetKw{Delete}{delete}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{This}{this}
+\SetKw{Space}{ }
+
+\caption{\protect\List}
+
+\begin{multicols}{2}
+\List pred  \comment{Predecessore} 
+\List succ  \comment{Successore} 
+\Item value \comment{Valore}
+\List\Space \Fn{\ListConst{}}{
+	\List t=\New \List\;
+	t.pred = t\;
+	t.succ = t\;
+	\Return t\;
+}
+\Boolean\Space\Fn{\IsEmpty{}}{
+	\Return pred = succ = \This\;
+}
+\Pos\Space\Fn{\Head{}}{
+	\Return succ\;
+}
+\Pos\Space\Fn{\Tail{}}{
+	\Return pred\;
+}
+\Pos\Space\Fn{\Next{\Pos p}}{
+	\Return p.succ\;
+}
+\Pos\Space\Fn{\Prev{\Pos p}}{
+	\Return p.pred\;
+}
+\Boolean\Space\Fn{\Finished{\Pos p}}{
+	\Return (p = \This)\;
+}
+\Item\Space\Fn{\Read{\Pos p}}{
+	\Return p.value\;
+}
+\Item\Space\Fn{\Write{\Pos p, \Item v}}{
+	p.value = v\;
+}
+\Pos\Space\Fn{\Insert{\Pos p, \Item v}}{
+	\List t = \ListConst{}\;
+	t.value = v\;
+	t.pred = p.pred\;
+	p.pred.succ = t\;
+	t.succ = p\;
+	p.pred = t\;
+	\Return t\;
+}
+\Pos\Space\Fn{\Remove{\Pos p}}{
+	p.pred.succ = p.succ\;
+	p.succ.pred = p.pred\;
+	\List t = p.succ\;
+	\Delete p\;
+	\Return t\; 
+}
+\end{multicols}
+\end{algorithm}
+\section{Pila}
+Una pila o stack \`e una struttura dati lineare e dinamica in cui l'elemento rimosso dall'operazione di cancellazione \`e determinato, ovvero quello che 
+per meno tempo \`e rimasto nell'insieme (LIFO: last-in, first-out). Possibili implementazioni sono una lista bidirezionale con un puntatore all'elemento 
+top o tramite vettore, con dimensione limitata ma overhead pi\`u basso. 
+\subsubsection{Specifica}
+\begin{algorithm}\caption{Stack}
+\DontPrintSemicolon
+\SetKw{Boolean}{boolean}
+\SetKw{True}{True}
+\SetKwData{Item}{Item}
+\SetKwComment{comment}{$\%$}{}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Push}{push}
+\SetKwFunction{Pop}{pop}
+\SetKwFunction{Top}{top}
+
+\comment{Restituisce \True se la pila \`e vuota}
+\Boolean \IsEmpty{}\;
+\comment{Inserisce $v$ in cima alla pila}
+\Push{\Item $v$}\;
+\comment{Estrae l'elemento in cima alla pila e lo restituisce}
+\Item \Pop{}\;
+\comment{Legge l'elemento in cima alla pila}
+\Item \Top{}\;
+\end{algorithm}
+\subsubsection{Lista basata su vettore}
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKwData{Item}{Item}
+\SetKwData{Stack}{Stack}
+\SetKw{Boolean}{boolean}
+\SetKw{Int}{int}
+\SetKw{Return}{return}
+\SetKw{Prec}{precondition}
+\SetKw{New}{new}
+\SetKw{Space}{ }
+\SetKwProg{Fn}{}{}{}
+\SetKwFunction{StackCos}{Stack}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Push}{push}
+\SetKwFunction{Pop}{pop}
+\SetKwFunction{Top}{top}
+
+\caption{\protect\Stack}
+
+\begin{multicols}{2}
+\Item[] A   \comment{Elementi}
+\Int n		\comment{Cursore}
+\Int m		\comment{Dimensione massima}
+
+\Stack\Space\Fn{\StackCos{\Int dim}}{
+	\Stack t = \New \Stack\;
+	t.A = \New \Int[$1\dots$dim]\;
+	t.m = dim\;
+	t.n = 0\;
+	\Return t\;
+}
+\Item\Space\Fn{\Top{}}{
+	\Prec : $n>0$\;
+	\Return A[n]\;
+}
+\Boolean \Space\Fn{\IsEmpty{}}{
+	\Return n=0\;
+}
+\Item\Space\Fn{\Pop{}}{
+	\Prec : $n>0$\;
+	\Item t = A[n]\;
+	n = n - 1\;
+	\Return t\;
+}
+\Fn{\Push{\Item v}}{
+	\Prec : $n<m$\;
+	n = n + 1\;
+	A[n] = v\;
+}
+\end{multicols}
+\end{algorithm}
+\section{Coda}
+Una coda \`e una struttura dati lineare e dinamica in cui l'elemento rimosso dall'operazione di cancellazione \`e determinato, ovvero quello che per pi\`u 
+tempo \`e rimasto nell'insieme (FIFO: first-in, first-out, questo tipo di politica si dice fair). Si pu\`o implementare attraverso liste monodirezionali 
+con il puntatore head per l'estrazione e il puntatore tail per l'inserimento o tramite array circolari, con dimensione limitata ma overhead pi\`u basso.
+Per i secondi la circolarit\`a \`e ottenuta attraverso l'operazione modulo e si deve prestare attenzione ai problemi di overflow.
+\subsubsection{Specifica}
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKw{Boolean}{boolean}
+\SetKw{True}{True}
+\SetKwData{Item}{Item}
+\SetKwData{Queue}{Queue}
+\SetKwComment{comment}{$\%$}{}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Enqueue}{enqueue}
+\SetKwFunction{Dequeue}{dequeue}
+\SetKwFunction{Top}{top}
+
+\caption{\protect\Queue}
+
+\comment{Restituisce \True se la coda \`e vuota}
+\Boolean \IsEmpty{}\;
+\comment{Inserisce $v$ in fondo alla coda}
+\Enqueue{\Item $v$}\;
+\comment{Estrae l'elemento in testa alla coda e lo restituisce}
+\Item \Dequeue{}\;
+\comment{Legge l'elemento in testa alla coda}
+\Item \Top{}\;
+\end{algorithm}
+\subsubsection{Coda basata su vettore circolare}
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKwData{Item}{Item}
+\SetKwData{Queue}{Queue}
+\SetKw{Boolean}{boolean}
+\SetKw{Int}{int}
+\SetKw{Return}{return}
+\SetKw{Prec}{precondition}
+\SetKw{New}{new}
+\SetKw{Space}{ }
+\SetKwProg{Fn}{}{}{}
+\SetKwFunction{QueueCos}{Queue}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Dequeue}{dequeue}
+\SetKwFunction{Enqueue}{enqueue}
+\SetKwFunction{Top}{top}
+
+\caption{\protect\Queue}
+
+\begin{multicols}{2}
+\Item[] A   \comment{Elementi}
+\Int n		\comment{Dimensione attuale}
+\Int testa	\comment{Testa}
+\Int m		\comment{Dimensione massima}
+\Queue\Space\Fn{\QueueCos{\Int dim}}{
+	\Queue t = \New \Queue\;
+	t.A = \New \Int[$1\dots$dim - 1]\;
+	t.m = dim\;	
+	t.testa = 0\;
+	t.n = 0\;
+	\Return t\;
+}
+\Item\Space\Fn{\Top{}}{
+	\Prec : $n>0$\;
+	\Return A[testa]\;
+}
+\Boolean \Space\Fn{\IsEmpty{}}{
+	\Return n=0\;
+}
+\Item\Space\Fn{\Dequeue{}}{
+	\Prec : $n>0$\;
+	\Item t = A[testa]\;
+	testa = (testa + 1) $\mod$ m\;
+	n = n - 1\;
+	\Return t\;
+}
+\Fn{\Enqueue{\Item v}}{
+	\Prec : $n<m$\;
+	A[(testa + n) $\mod$ m] = v\;	
+	n = n + 1\;
+	
+}
+\end{multicols}
+\end{algorithm}

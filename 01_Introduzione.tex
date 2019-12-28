@@ -1,0 +1,49 @@
+\chapter{Introduzione}
+\subsubsection{Problema computazionale}
+Dati un dominio di input e uno di output, un problema computazionale \`e rappresentato dalla funzione matematica che associa un elemento del dominio di
+output ad ogni elemento del dominio di input.
+\subsubsection{Algoritmo}
+Dato un problema computazionale, un algoritmo \`e un procedimento effettivo espresso tramite una funzione di passi elementari ben specificati in un sistema
+formale di calcolo che risolve il problema in tempo finito.
+\section{Descrizione di un algoritmo}
+Per descrivere un algoritmo si rende necessario utilizzare un linguaggio formale ben definito detto pseudo-codice, indipendente dall'implementazione 
+effettiva ma con dettaglio sufficiente a descrivere i passaggi necessari alla descrizione dell'algoritmo.
+\subsection{Pseudo-codice}
+\begin{itemize}
+\item $a=b$.
+\item $a\leftrightarrow b\equiv tmp=a; a=b; b=tmp$.
+\item $T[] A=\mathbf{new}\ T[1\dots n]$.
+\item $T[][] A=\mathbf{new}\ T[1\dots n][1\dots m]$.
+\item Tipi in grassetto.
+\item $\mathbf{and, or, not}$.
+\item $==, \neq, \ge, \le$.
+\item $+,-,\cdot, /, \lfloor x\rfloor, \lceil x\rceil, \log, x^2,\cdots$.
+\item $iif(condizione, v_1,v_2)$.
+\item $\mathbf{if}\ condizione\ \mathbf{then}\ istruzione$.
+\item $\mathbf{if}\ condizione\ \mathbf{then}\ istruzione_1\ \mathbf{else}\ \mathbf{then}\ istruzione_2$.
+\item $\mathbf{while}\ condizione\ \mathbf{do}\ istruzione$.
+\item $\mathbf{foreach}\ elemento\in insieme\ \mathbf{do}\ istruzione$.
+\item $\mathbf{return}$
+\item $\%$ commento.
+\end{itemize}
+\section{Valutazione degli algoritmi}
+\subsection{Efficienza}
+Si definisce complessit\`a di un algoritmo l'analisi delle risorse necessarie per la sua risoluzione, in funzione di tipologia e dimensione di input. Le 
+risorse si distinguono in tempo, memoria e banda (per gli algoritmi distribuiti).
+\subsubsection{Tempo}
+Il numero di secondi necessari alla risoluzione dell'algoritmo dipende da troppi fattori, si utilizzano pertanto tecniche di analisi che prendono in 
+considerazione il numero di operazioni rilevanti, quelle che caratterizzano lo scopo dell'algoritmo.
+\subsection{Correttezza}
+Per valutare la correttezza di algoritmi si devono considerare le invarianti:
+\begin{itemize}
+\item Invariante: una condizione che deve rimanere vera sempre in un certo punto del programma.
+\item Invariante di ciclo: una condizione che deve rimanere vera all'inizio dell'iterazione di un ciclo.
+\item Invariante di classe: una condizione sempre vera al termine dell'esecuzione di un metodo di una classe.
+\end{itemize}
+\subsubsection{Invariante di ciclo e algoritmi iterativi}
+L'invariante di ciclo permette di dimostrare la correttezza degli algoritmi iterativi attraverso il principio di induzione:
+\begin{itemize}
+\item Inizializzazione (caso base): l'invariante \`e vera prima della prima iterazione.
+\item Conservazione (passo induttivo): se la condizione \`e vera prima di un'interazione allora rimane vera al suo termine.
+\item Conclusione: quando il ciclo termina l'invariante deve rappresentare la correttezza dell'algoritmo.
+\end{itemize}

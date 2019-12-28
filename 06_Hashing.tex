@@ -1,0 +1,219 @@
+\chapter{Hashing}
+Le tabelle hash sono l'implementazione ideale per dizionari, insiemi dinamici di coppie chiave-valore indicizzati sulla chiave. Si sceglie una funzione hash
+$H$ che mappa ogni chiave $k\in\mathcal{U}$ in un intero $H(k)$. La coppia chiave-valore viene memorizzata in un vettore nella posizione $H(k)$ che viene
+detto tabella hash.
+\subsection{Definizioni}
+\begin{itemize}
+\item L'insieme delle possibili chiavi \`e rapprentato dall'insieme universo $\mathcal{U}$ di dimensione $u$.
+\item Il vettore $T[0\dots m-1]$ ha dimensione $m$.
+\item Una funzione hash \`e definita: $H: \mathcal{U}\rightarrow\{0,\dots, m-1\}$.
+\item Quando due o pi\`u chiavi nel dizionario hanno lo stesso valore di hash avviene una collisione, idealmente non dovrebbero avvenire.
+\end{itemize}
+\subsubsection{Tabelle ad accesso diretto}
+Si utilizzano le tabelle ad accesso diretto nel caso particolare in cui $\mathcal{U}\subset\mathbb{Z}^+$. Si utilizza come funzione hash l'identit\`a 
+$H(k)=k$ e $m=|\mathcal{U}|$. Presenta dei problemi quando $u$ \`e molto grande e uno spreco di memoria quando $u$ non \`e grande ma il numero di chiavi 
+effettivamente registrate in memoria \`e molto minore di $m$. 
+\subsubsection{Funzioni hash perfette}
+Una funzione hash si dice perfetta se \`e iniettiva, ovvero $\forall k_1, k_2\in\mathcal{U}, k_1\neq k_2\Rightarrow H(k_1)\neq H(k_2)$. Ci sono dei problemi
+in quanto lo spazio delle chiavi \`e spesso grande, sparso e non conosciuto ed \`e pertanto spesso impraticabile ottenere una funzione di hash perfetta. 
+\section{Funzioni hash}
+Se non \`e possibile eliminare le collisioni si cerca per lo meno di minimizzare il loro numero, cercando funzioni che distribuiscano le chiavi 
+uniformemente negli indici $[0,\dots,m-1]$ della tabella hash.
+\subsubsection{Uniformit\`a semplice}
+Sia $P(k)$ la probabilit\`a che una chiave sia inserita nella tabella. Sia $Q(i)$ la probabilit\`a che una chiave finisca nella cella $i$: $Q(i)=
+\sum\limits_{k\in\mathcal{U}:h(k)=i}P(k)$. Una funzione hash gode dell'uniformit\`a semplice se: $\forall i\in [0,\dots, m-1]: Q(i)=\frac{1}{m}$.
+\subsection{Come realizzare una funzione hash}
+Per realizzare una funzione hash con uniformit\`a semplice \`e necessario che la distribuzione $P$ sia nota, cosa non completamente possibile nella 
+realt\`a. Si utilizzano pertanto tecniche euristiche. Pertanto si assuma che ogni chiave pu\`o essere tradotta in numeri interi non negativi anche 
+interpretando la loro rappresentazione in memoria come un numero. Si intenda pertanto con \emph{bin(k)} la rappresentazione binaria della chiave.
+\subsubsection{Estrazione}
+Si consideri $m=2^p$ e $H(k)=int(b)$, dove $b$ \`e un sottoinsieme di $p$ bit presi da \emph{bin(k)}. Presenta dei problemi in quanto selezionare bit presi
+dal suffisso della chiave pu\`o generare collisioni con alta probabilit\`a (o anche in generale).
+\subsubsection{XOR}
+Si consideri $m=2^p$ e $H(k)=int(b)$ dove $b$ \`e dato dalla somma modulo 2 effettuata bit a bit di sottoinsiemi di $p$ bit di \emph{bin(k)}. Presenta dei 
+problemi in quanto le permutazioni possono generare lo stesso valore di hash.
+\subsubsection{Metodo della divizione}
+Si consideri $m$ numero dispari, meglio se primo. $H(k)=int(k)\mod m$. Non vanno bene $m=2^p$ in quanto considera unicamente i $p$ bit meno significativi
+e $m= 2^p-1$ in quanto permutazioni con set di elementi con dimensione $2^p$ hanno lo stesso valore di hash. Si devono pertanto scegliere numeri primi 
+distanti da potenza di $2$ e $10$. 
+\subsubsection{Metodo della moltiplicazione}
+Si consideri un $m$ qualsiasi, meglio se potenza di $2$, $C\in]0;1[$ una costante reale e $i=int(k)$. $H(k)=\lfloor m(C\cdot i-\lfloor C\cdot i\rfloor)
+\rfloor$.
+\paragraph{Implementazione}
+Si scelga un valore $m=2^p$, sia $w$ la dimensione della parola in memoria: $i, m\le 2^w$. Sia $s=\lfloor C\cdot 2^w\rfloor$. $i\cdot s$ pu\`o essere 
+riscritto come $r_1\cdot 2^w+r_0$, dove $r_1$ contiene la parte intera di $iC$ e $r_0$ la parte frazionaria. Si restituiscando i $p$ bit pi\`u significativi
+di $r_0$.
+\subsubsection{Reality check}
+Il metodo della moltiplicazione non fornisce hashing uniforme. Esistono test per valutare la bont\`a di una funzione hash: Avalanche effect che se si cambia
+un bit nella chiave, deve cambiare almeno la met\`a dei bit del valore hash e test statistici con il chi-quadro. Si devono implementare inoltre funzioni 
+hash crittografiche. 
+\section{Le collisioni}
+Per gestire le collisioni si rende necessario trovare posizioni alternative per le chiavi e se la chiave non si trova nella posizione attesa la si deve 
+cercare nelle posizioni alternative. Questa ricerca deve essere $O(1)$ nel caso medio e $O(n)$ nel caso pessimo. Presentano problemi in quanto sono 
+strutture dati complesse vista la presenza di liste e puntatori.
+\subsection{Liste o vettori di trabocco (Concatenamento o chaining)}
+Le chiavi con lo stesso valore di hash vengono memorizzate in una lista monodirezionale o vettore dinamico. Si memorizza un puntatore alla testa della lista
+nello slot $H(k)$-esimo della tabella hash. Le operazioni sono di inserimento in testa \emph{insert}, di ricerca \emph{lookup} o rimozione \emph{remove} che
+implicano una scansione della tabella per cercare la chiave.
+\subsubsection{Analisi complessit\`a}
+Si considerino i seguenti valori:
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+$n$ & Numero di chiavi memorizzate nella tabella hash\\
+\hline
+$m$ & Capacit\`a della tabella hash\\
+\hline
+$\alpha=\frac{n}{m}$ & fattore di carico\\
+\hline
+$I(\alpha)$ & \makecell{Ricerca con insuccesso o numero medio \\di accessi alla tabella per una chiave non presente}\\
+\hline
+$S(\alpha)$ & \makecell{Ricerca con successo o numero medio \\di accessi alla tabella per una chiave presente}\\
+\hline
+\end{tabular}
+\end{center}
+\paragraph{Caso pessimo}
+Tutte le chiavi sono collocate in un'unica lista: \emph{insert{}} $\Theta(1)$, \emph{lookup(), remove()} $\Theta(n)$.
+\paragraph{Analisi del caso medio}
+Il caso medio dipende dalla distribuzione delle chiavi, si assuma pertanto hashing uniforme semplice e costo di calcolo della funzione di hashing $\Theta(1)
+$. Il valore atteso della lunghezza della lista \`e di $\alpha=\frac{n}{m}$. Una ricerca senza successo visita tutte le chiavi nella lista corrispondente, 
+pertanto ha costo atteso $\Theta(1)+\alpha$, mentre una ricerca con successo visita in media la met\`a delle chiavi nella lista corrispondente, pertanto
+$\Theta(1)+\frac{\alpha}{2}$. Il fattore di carico influenza il costo computazionale delle operazioni sulla tabella hash e se $n=O(m)$, $\alpha=O(1)$, 
+pertanto tutte le operazioni sono $O(1)$. 
+\subsection{Indirizzamento aperto}
+Nell'indirizzamento aperto tutte le chiavi vengono memorizzate nella tabella stessa e ogni slot contiene una chiave oppure un valore \textbf{nil}. 
+Nell'inserimento se uno slot \`e utilizzato se ne cerca uno alternativo. Nella ricerca si cerca nello slot prescelto e poi negli slot alternativi fino a 
+che si trova la chiave oppure un nodo \textbf{nil}.
+\subsubsection{Definizioni}
+\begin{itemize}
+\item Un'ispezione \`e l'esame di uno slot durante la ricerca.
+\item La funzione di hash viene estesa: $H:\mathcal{U}\times[0,\dots, m-1]\rightarrow[0,\dots, m-1]$, dove il secondo insieme del dominio rappresenta il 
+numero di ispezione metre il codominio l'indice del vettore. 
+\item Sequenza di ispezione: una sequenza di ispezione $[H(k, 0), H(k, 1),\dots, H(k, m-1)]$ \`e una permutazione degli indici corrisondente all'ordine in 
+cui vengono visitati gli slot. Non si vogliono visitare gli slot pi\`u di una volta e potrebbe rendersi necessario visitare tutti gli slot della tabella.
+\end{itemize}
+\subparagraph{Fattore di carico}
+Il fattore di carico \`e compreso tra $0$ e $1$ e la tabella pu\`o andare in overflow. 
+\subsubsection{Tecniche di ispezione}
+\paragraph{Hashing uniforme}
+La situazione ideale prende il nome di hashing uniforme, in cui ogni chiave ha la stessa probabilit\`a di avere come sequenza di ispezione una delle 
+qualisasi $m!$ permutazioni degli indici. 
+\paragraph{Ispezione lineare}
+La funzione di $H(k, i)= (H_1(k)+h\cdot i)\mod n$. La sequenza di ispezione \`e determinata dal primo elemento. Al massimo $m$ sequenze di ispezione diverse
+sono possibili. 
+\subparagraph{Agglomerazione primaria}
+Causa lunghe sotto-sequenze occupate che tendono a diventare pi\`u lunghe: uno slot vuoto preceduto da $i$ slot pieni viene riempito con probabilit\`a 
+$\frac{i+1}{m}$. I tempi medi di inserimento e cancellazione crescono.
+\paragraph{Ispezione quadratica}
+La funzione di $H(k, i)= (H_1(k)+h\cdot i^2)\mod n$. Dopo il primo elemento $H_1(k, 0)$, le ispezioni successive hanno un offset che dipende da una funzione
+quadratica nel numero di ispezione $i$. La sequenza risultante non \`e una permutazione, al massimo $m$ sequenze di ispezioni distinte sono possibili.
+\subparagraph{Agglomerazione secondaria}
+Se due chiavi hanno la stessa ispezione iniziale le loro sequenze sono identiche. 
+\paragraph{Doppio hashing}
+Funzione: $H(k, i)=(H_1(k)+ iH_2(k))\mod n$. Esistono pertanto due funzioni ausiliare, $H_1$ fornisce la prima ispezione, $H_2$ fornisce l'offset rispetto
+alla prima ispezione. Sono possibili al massimo $m^2$ sequenze di ispezione. Per garantire una permutazione completa $H_2(k)$ e $m$ devono essere primi tra
+loro. Pertanto se si sceglie $m=2^p$ $H_2(k)$ deve restituire numeri dispari. Se si sceglie $m$ primo, $H_2(k)$ deve restituire numeri minori di $m$. 
+\subsubsection{Cancellazione}
+Non si possono sostituire le chiavi da eliminare con \textbf{nil} in quanto potrebbe introdurre errori nella ricerca che terminerebbe troppo presto. Si
+utilizza pertanto un valore speciale \textbf{deleted} che vengono trattati come slot vuoti dal'inserimento e come slot pieni dalla ricerca. Il tempo di 
+ricerca non dipende pi\`u da $\alpha$ ma il concatenamento diventa pi\`u comune.
+\newpage
+\subsubsection{Implementazione dell'hashing doppio}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{Nil}{nil}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Deleted}{deleted}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{To}{to}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKwData{Item}{Item}
+\SetKwData{Space}{ }
+\SetKwData{Hash}{Hash}
+\SetKwProg{Fn}{}{}{}
+\SetKwFunction{HashCos}{Hash}
+\SetKwFunction{Scan}{scan}
+\SetKwFunction{Lookup}{lookup}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Remove}{remove}
+\caption{\protect\Hash}
+
+\Item[] K	\comment{Tabella delle chiavi}
+\Item[] V	\comment{Tabella dei valori}
+\Int m		\comment{Dimensione della tabella}
+
+\Hash\Space\Fn{\HashCos{\Int dim}}{
+	\Hash t = \New \Hash\;
+	t.m = dim\;
+	t.K = \New \Item$[0,\dots, dim-1]$
+	t.V = \New \Item$[0,\dots, dim-1]$
+	\For{$i=0$ \To dim-1}{
+		t.K[i] = \Nil\;	
+	}
+	\Return t\;
+}
+\Int\Space\Fn{\Scan{\Item k, \Boolean insert}}{
+	\Int c = m\;
+	\Int i = 0\;
+	\Int j = H(k)\;
+	\While{K[j] $\neq$ k \And K[j] $\neq$ \Nil \And i $<$ m}{
+		\If{K[j] == \Deleted \And c == m}{
+			c = j\;		
+		}
+		j = $(j+H'(k))\mod n$\;
+		i += 1\; 	
+	}
+	\If{insert \And K[j] $\neq$ k \And c $<$ m}{
+		j = c\;	
+	}
+	\Return j\;
+}
+
+\Item\Space\Fn{\Lookup{\Item k}}{
+	\Int i = \Scan{k, \False}\;
+	\uIf{K[i] == k}{
+		\Return V[i]\;		
+	}
+	\Else{
+		\Return \Nil\;	
+	}
+}
+
+\Fn{\Insert{\Item k, \Item v}}{
+	\Int i = \Scan{k, \True}\;
+	\uIf{K[i] == \Nil \Or K[i] == \Deleted \Or K[i] == k}{
+		K[i] = k\;
+		V[i] = v\;	
+	}
+	\Else{
+		\comment{Errore, tabella hash piena}	
+	}
+
+}
+
+\Fn{\Remove{\Item k}}{
+	\Int i = \Scan{k, \False}\;
+	\If{k[i] = k}{
+		K[i] = \Deleted\;	
+	}
+}
+\end{algorithm}
+\section{Complessit\`a}
+\begin{tabular}{c c c c}
+\hline
+\textbf{Metodo} & $\alpha$ & $I(\alpha)$ & $S(\alpha)$\\
+\hline
+Lineare & $0\le\alpha< 1$ & $\dfrac{(1-\alpha)^2+1}{2(1-\alpha)^2}$ & $\dfrac{1-\frac{\alpha}{2}}{1-\alpha}$\\
+Hashing doppio & $0\le\alpha< 1$ & $\dfrac{1}{1-\alpha}$ & $-\dfrac{1}{\alpha}\ln(1-\alpha)$\\
+Liste di trabocco & $\alpha\ge 0$ & $1+\alpha$ & $1+\dfrac{\alpha}{2}$\\
+\hline
+\end{tabular}\\
+Si noti come la complessit\`a aumenti con l'aumentare di $\alpha$. Pertanto sopra una soglia prefissata $t_\alpha$, solitamente tra $0.5$ e $0.75$ si alloca
+una nuova dimensione $2m$ e si reinseriscono tutte le chiavi presenti nella tabella. Si dimezza pertanto il fattore di carico e si eliminano tutti gli 
+elementi \textbf{deleted}. Nel caso pessimo c'\`e un costo di $O(m)$ per la ristrutturazione nel caso pessimo con costo ammortizzato costante. 

@@ -1,0 +1,573 @@
+\chapter{Strutture dati speciali}
+\section{Code con priorit\`a}
+Una coda con priorit\`a \`e una struttura dati astratta simile ad una coda in cui ogni elemnto inserito possiede una priorit\`a. Si dividono in min-priority 
+queue in cui l'estrazione avviene per valore crescente di priorit\`a e max-priority queue, in cui l'estrazione avviene per valore decrescente di priorit\`a.
+Le operazioni permesse sono di inserimento in coda, estrazione dell'elemento con priorit\`a di valore min/max e di modifica di priorit\`a di un elemento 
+inserito.
+\subsection{Specifica}
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKwData{Item}{Item}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{MinPriorityQueue}{MinPriorityQueue}
+\SetKwFunction{MinPriorityQueueCos}{MinPriorityQueue}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Min}{min}
+\SetKwFunction{DeleteMin}{DeleteMin}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Decrease}{decrease}
+
+\caption{\protect\MinPriorityQueue}
+
+\comment{Crea una coda con priorit\`a vuota}
+\MinPriorityQueueCos{}\;
+\comment{Restituisce \True se la coda con priorit\`a \`e vuota}
+\Boolean \IsEmpty{}\;
+\comment{Restituisce l'elemento minimo di una coda con priorit\`a non vuota}
+\Item \Min{}\;
+\comment{Rimuove e restituisce l'elemento minimo di una coda con priorit\`a non vuota}
+\Item \DeleteMin{}\;
+\comment{Inerisce l'elemento x con priorit\`a p all'interno della coda con priorit\`a, restituendo un oggetto \PriorityItem che identifica  x all'interno 
+della coda}
+\PriorityItem \Insert{\Item x, \Int p}\;
+\comment{Diminuisce la priorit\`a dell'oggetto identificato da y portandola a p}
+\Decrease{\PriorityItem x, \Int p}
+\end{algorithm}
+\subsection{Implementazioni}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Metodo & \makecell{Lista o vettore \\non ordinato} & \makecell{Lista\\ordinata} & \makecell{Vettore\\ordinato} & \makecell{Albero\\RB}\\
+\hline
+\emph{min()} & $O(n)$ & $O(1)$ & $O(1)$ & $O(\log n)$\\
+\hline
+\emph{deleteMin()} & $O(n)$ & $O(1)$ & $O(n)$ & $O(\log n)$\\
+\hline
+\emph{insert()} & $O(n)$ & $O(n)$ & $O(n)$ & $O(\log n)$\\
+\hline
+\emph{decrease()} & $O(n)$ & $O(n)$ & $O(\log n)$ & $O(\log n)$\\
+\hline
+\end{tabular}\\
+L'implementazione pi\`u comune \`e attraverso gli heap, strutture speciali che associano i vantaggi di un albero (esecuzioni in tempo $O(\log n)$) e 
+vantaggi di un vettore (memorizzazione efficiente).
+\subsection{Heap}
+\subsubsection{Definizioni di alberi}
+\paragraph{Albero binario perfetto}
+In un albero binario perfetto tutte le foglie hanno la stessa altezza $h$, tutti i nodi interni hanno grado $2$ e dato $n$ il numero di nodi ha altezza
+$h=\lfloor \log n\rfloor$. Data l'altezza $h$ ha numero di nodi $n=2^{h+1}-1$.
+\paragraph{Albero binario completo}
+In un albero binario completo tutte le foglie hanno altezza $h$ o $h-1$, tutti i nodi a livello $h$ sono accatastati a sinistra e tutti i nodi hanno grado 
+$2$ tranne al pi\`u uno. Dato il numero di nodi $n$ ha altezza $h=\lfloor \log n\rfloor$.
+\subsubsection{Alberi binari heap}
+Un albero binario max-heap (min-heap) \`e un albero completo tale che il valore memorizzato nel nodo \`e maggiore (minore) dei valori memorizzati nei suoi
+figli. Un albero heap non impone una relazione di ordinamento totale tra i figli di un nodo, pertanto \`e un ordinamento parziale. 
+\subsubsection{Memorizzazione}
+Gli alberi binari heap sono memorizzati tramite un vettore heap $A=[0, \dots, n-1]$ tale per cui: 
+\begin{itemize}
+\item La radice si trova all'indice $i=0$, ovvero \emph{root()=0}.
+\item Il padre del nodo salvato all'indice $i$ si trova in \emph{p(i) = $\lfloor\dfrac{(i-1)}{2} \rfloor$}.
+\item Il figlio sinistro del nodo salvato all'indice $i$ si trova in \emph{l(i) = $2i+1$}.
+\item Il figlio destro del nodo salvato all'indice $i$ si trova in \emph{r(i) = $2i+2$}.
+\end{itemize}
+Propriet\`a max-heap sul vettore: $A[i]\ge A[l(i)], [i]\ge A[r(i)]$. Propriet\`a min-heap sul vettore: $A[i]\le A[l(i)], [i]\le A[r(i)]$.
+\subsubsection{\emph{heapsort()}}
+L'\emph{heapsort()} ordina un max-heap "in-place" prima costruendo un max-heap nel vettore e poi spostando l'elemento max in ultima posizione, ripristinando
+la propriet\`a max-heap. Utilizza pertanto le funzioni \emph{heapBuild()} che costruisce un max-heap a partire dal vettore non ordinato e \emph{ 
+maxHeapRestore()} che ripristina le propriet\`a max-heap.
+\paragraph{\emph{maxHeapRestore()}}
+Riceve come input un vettore $A$ e un indice $i$, tale per cui gli alberi binari con radici $l(i)$ e $r(i)$ sono max-heap e il suo obiettivo \`e modificare
+"in-place" il vettore $A$ in modo tale che l'albero binario con radice $i$ sia un max-heap. Essendo che ad ogni chiamata vengono eseguiti $O(1)$ confronti, 
+e se il nodo $i$ non \`e massimo si chiama ricorsivamente sui figli e che l'esecuzione termina quando si raggiunge una foglia e l'altezza dell'albero \`e
+pari a $\lfloor \log n\rfloor$ $T(n)=O(\log n)$.
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKwData{Item}{Item}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{MinPriorityQueue}{MinPriorityQueue}
+\SetKwFunction{MinPriorityQueueCos}{MinPriorityQueue}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Min}{min}
+\SetKwFunction{DeleteMin}{DeleteMin}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Decrease}{decrease}
+\SetKwFunction{MaxHeapRestore}{maxHeapRestore}
+\SetKwFunction{L}{l}
+\SetKwFunction{R}{r}
+\SetKwFunction{P}{p}
+\caption{\protect\MaxHeapRestore{\protect\Item[] A, \protect\Int i, \protect\Int i}}
+
+\Int max = i\;
+\If{\L{i} $\le$ dim \And A[\L{i}] $>$ A[max]}{
+	max = \L{i}\;
+}
+\If{\R{i} $\le$ dim \And A[\R{i}] $>$ A[max]}{
+	max = \R{i}\;
+}
+\If{i $\neq$ max}{
+	A[i] $\leftrightarrow$ A[max]
+	\MaxHeapRestore{A, max, dim}\;
+}
+\end{algorithm}
+\subparagraph{Dimostrazione della correttezza per induzione sull'altezza}
+Al termine dell'esecuzione l'albero radicato in $A[i]$ rispetta la propriet\`a max-heap.
+\begin{itemize}
+\item Caso base $h=0$: se l'altezza \`e zero esiste un unico nodo che rispetta la propriet\`a.
+\item Ipotesi induttiva: l'algoritmo funziona correttamente su tutti gli alberi di altezza inferiore ad $h$.
+\item Passo induttivo:
+\begin{itemize}
+\item Caso 1: $A[i]\ge A[l(i)], A[i]\ge A[r(i)]$, allora l'albero radicato in $A[i]$ rispetta la propriet\`a di max-heap e l'esecuzione termina.
+\item Caso 2: $A[l(i)] > A[i], A[r(i)]> A[i]$, viene fatto uno scambio $A[i]\leftrightarrow A[l(i)]$, dopo lo scambio $A[i]\ge A[l(i)], A[i]\ge A[r(i)]$, 
+il sottoalbero radicato in $r(i)$ rimasto inalterato,  mentre il sottoalbero radicato in $l(i)$ pu\`o aver perso la propriet\`a, pertanto si svolge la 
+chiamata ricorsiva su di esso che ha altezza minore di $h$, pertanto \`e corretto.
+\item Caso 3: simmetrico rispetto al caso 2.
+\end{itemize}
+\end{itemize}
+\paragraph{\emph{heapBuild()}}
+Sia $A[1,\dots, n]$ un vettore da ordinare, tutti i nodi $A[\lfloor \frac{n}{2}\rfloor+1,\dots, n]$ sono foglie dell'albero e pertanto heap contenenti un 
+elemento. La procedura \emph{heapBuild()} attraversa i restanti nodi dell'albero a partire da $\lfloor \frac{n}{2}\rfloor$ fino ad $1$ ed esegue 
+\emph{maxHeapRestore()} su ognuno di essi. L'algoritmo ha complessit\`a $\Theta(\log n)$. Aggiungere dimostrazione, non la capisco.
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKwData{Item}{Item}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{MinPriorityQueue}{MinPriorityQueue}
+\SetKwFunction{MinPriorityQueueCos}{MinPriorityQueue}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Min}{min}
+\SetKwFunction{DeleteMin}{DeleteMin}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Decrease}{decrease}
+\SetKwFunction{MaxHeapRestore}{maxHeapRestore}
+\SetKwFunction{HeapBuild}{heapBuild}
+\SetKwFunction{L}{l}
+\SetKwFunction{R}{r}
+\SetKwFunction{P}{p}
+\caption{\protect\HeapBuild{\protect\Item[] A, \protect\Int n}}
+
+\For{i = $\lfloor \frac{n}{2}\rfloor$ \Down \To 1}{
+	\MaxHeapRestore{A, i, n}\;
+}
+\end{algorithm}
+\subparagraph{Correttezza}
+Si dimostra attraverso l'invariante di ciclo: all'inizio di ogni iterazione del ciclo \textbf{for} i nodi $[i+1,\dots, n]$ sono radice di uno heap.
+\begin{itemize}
+\item Inizializzazione: all'inizio $i=\lfloor \frac{n}{2}\rfloor$. Si supponga che $\lfloor \frac{n}{2}\rfloor+1$ non sia una foglia, pertanto esiste almeno
+il figlio sinistro $2\lfloor \frac{n}{2}\rfloor+2$, con indice superiore ad $n$, pertanto assurdo. La dimostrazione vale per tutti gli indici successivi.
+\item Conservazione: \`E possibile applicare \emph{maxHeapRestore()} al nodo $i$ in quanto $2i\le 2i+1\le n$ sono entrambi radici di heap. Al termine 
+dell'iterazione tutti i nodi $[1,\dots, n]$ sono radici di heap.
+\item Conclusione: al termine $i=0$, pertanto il nodo $1$ \`e radice di uno heap. 
+\end{itemize}
+\paragraph{Implementazione \emph{heapsort}}
+Il primo elemento contiene il massimo, viene collocato in fondo, l'elemento in fondo viene collocato in testa, si chiama \emph{maxHeapRestore()} per 
+ripristinare la situazione e la dimensione dello heap viene progressivamente ridotta. L'algoritmo ha complessit\`a $\Theta(n\log n)$ in quanto 
+\emph{heapBuild()} ha costo $\Theta(n)$ e la chiamata di \emph{maxHeapRestore()} costa $\Theta(\log i)$ in un heap con $i$ elementi. Pertanto 
+$T(n)=\sum\limits_{i=2}^n\log i+\Theta(n)=\Theta(n\log n)$.
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKwData{Item}{Item}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{MinPriorityQueue}{MinPriorityQueue}
+\SetKwFunction{MinPriorityQueueCos}{MinPriorityQueue}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Min}{min}
+\SetKwFunction{DeleteMin}{DeleteMin}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Decrease}{decrease}
+\SetKwFunction{MaxHeapRestore}{maxHeapRestore}
+\SetKwFunction{HeapBuild}{heapBuild}
+\SetKwFunction{Heapsort}{heapsort}
+\SetKwFunction{L}{l}
+\SetKwFunction{R}{r}
+\SetKwFunction{P}{p}
+\caption{\protect\Heapsort{\protect\Item[] A, \protect\Int n}}
+
+\HeapBuild{A, n}\;
+\For{i = n \Down \To 2}{
+	A[1] $\leftrightarrow$ A[i]\;
+	\MaxHeapRestore{A, 1, i-1}\;
+}
+\end{algorithm}
+\subparagraph{Correttezza}
+Si dimostra la correttezza per invariante di ciclo. Al passo $i$ il sottovettore $A[i+1,\dots, n]$ \`e ordinato, $A[1,\dots, i]\le A[i+1, \dots, n]$ e 
+$A[1]$ \`e la radice di un vettore heap di dimensione $i$. COMPLETARE DIMOSTRAZIONE
+\subsection{Implementazione di code con priorit\`a}
+Si vedr\`a l'implementazione di una min-priority queue, visto che la max-priority \`e speculare. 
+\subsubsection{Memorizzazione}
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKwData{Item}{Item}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{MinPriorityQueue}{MinPriorityQueue}
+\SetKwFunction{MinPriorityQueueCos}{MinPriorityQueue}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Min}{min}
+\SetKwFunction{DeleteMin}{DeleteMin}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Decrease}{decrease}
+\SetKwFunction{MaxHeapRestore}{maxHeapRestore}
+\SetKwFunction{HeapBuild}{heapBuild}
+\SetKwFunction{Heapsort}{heapsort}
+\SetKwFunction{L}{l}
+\SetKwFunction{R}{r}
+\SetKwFunction{P}{p}
+\caption{\protect\PriorityItem}
+\Int priority\;
+\Item value\;
+\Int pos;
+\end{algorithm}
+
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKwData{Item}{Item}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{MinPriorityQueue}{MinPriorityQueue}
+\SetKwFunction{MinPriorityQueueCos}{MinPriorityQueue}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Min}{min}
+\SetKwFunction{DeleteMin}{DeleteMin}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Decrease}{decrease}
+\SetKwFunction{MaxHeapRestore}{maxHeapRestore}
+\SetKwFunction{HeapBuild}{heapBuild}
+\SetKwFunction{Heapsort}{heapsort}
+\SetKwFunction{L}{l}
+\SetKwFunction{R}{r}
+\SetKwFunction{P}{p}
+\SetKwFunction{Swap}{swap}
+\caption{\protect\Swap{\protect\PriorityItem[] H, \protect\Int i, \protect\Int j}}
+H[i] $\leftrightarrow$ H[j]\;
+H[i].pos = i\;
+H[j].pos = j\;
+\end{algorithm}
+\subsubsection{Inizializzazione}
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKwData{Item}{Item}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwFunction{PriorityQueueCos}{PriorityQueue}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Min}{min}
+\SetKwFunction{DeleteMin}{DeleteMin}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Decrease}{decrease}
+\SetKwFunction{MaxHeapRestore}{maxHeapRestore}
+\SetKwFunction{HeapBuild}{heapBuild}
+\SetKwFunction{Heapsort}{heapsort}
+\SetKwFunction{L}{l}
+\SetKwFunction{R}{r}
+\SetKwFunction{P}{p}
+\SetKwFunction{Swap}{swap}
+\SetKwProg{Fn}{}{}
+
+\caption{\protect\PriorityQueue}
+
+\Int capacity\;
+\Int dim\;
+\PriorityItem[] H\;
+\PriorityQueue \Fn{\PriorityQueueCos{\Int n}}{
+	\PriorityQueue t = \New \PriorityQueue\;
+	t.capacity = n\;
+	t.dim = 0\;
+	t.H = \New \PriorityItem[$1, \dots, n$]\;
+	\Return t\;
+}
+\end{algorithm}
+\subsubsection{Inserimento}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{Precondition}{precondition:}
+\SetKwData{Item}{Item}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwFunction{PriorityQueueCos}{PriorityQueue}
+\SetKwFunction{PriorityItemCos}{PriorityItem}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Min}{min}
+\SetKwFunction{DeleteMin}{DeleteMin}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Decrease}{decrease}
+\SetKwFunction{MaxHeapRestore}{maxHeapRestore}
+\SetKwFunction{HeapBuild}{heapBuild}
+\SetKwFunction{Heapsort}{heapsort}
+\SetKwFunction{L}{l}
+\SetKwFunction{R}{r}
+\SetKwFunction{P}{p}
+\SetKwFunction{Swap}{swap}
+\SetKwProg{Fn}{}{}
+
+\caption{\protect\PriorityItem \protect\Insert{\protect\Item x, \protect\Int p}}
+
+\Precondition dim $<$ capacity\;
+dim += 1\;
+H[dim] = \New \PriorityItemCos{}\; 
+H[dim].value = x\;
+H[dim].priority = p\;
+H[dim].pos = dim\;
+\Int i = dim\;
+\While{i $>$ 1 \And H[i].priority $<$ H[\P{i}].priority}{
+	\Swap{H, i, \P{i}}\;
+	i = \P{i}\;
+}
+\Return H[i]\;
+\end{algorithm}
+\subsubsection{\emph{minHeapRestore()}}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{Precondition}{precondition:}
+\SetKwData{Item}{Item}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwFunction{PriorityQueueCos}{PriorityQueue}
+\SetKwFunction{PriorityItemCos}{PriorityItem}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Min}{min}
+\SetKwFunction{DeleteMin}{DeleteMin}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Decrease}{decrease}
+\SetKwFunction{MinHeapRestore}{minHeapRestore}
+\SetKwFunction{HeapBuild}{heapBuild}
+\SetKwFunction{Heapsort}{heapsort}
+\SetKwFunction{L}{l}
+\SetKwFunction{R}{r}
+\SetKwFunction{P}{p}
+\SetKwFunction{Swap}{swap}
+\SetKwProg{Fn}{}{}
+
+\caption{\protect\MinHeapRestore{\protect\PriorityItem[] A, \protect\Int i, \protect\Int dim}}
+\Int min = i\;
+\If{\L{i} $\le$ dim \And A[\L{i}].priority $<$ A[min].priority}{
+	min = \L{i}\;
+}
+\If{\R{i} $\le$ dim \And A[\R{i}].priority $<$ A[min].priority}{
+	min = \R{i}\;
+}
+\If{i $\neq$ min}{
+	\Swap{A, i, min}\;
+	\MinHeapRestore{A, min, dim}\;
+}
+\end{algorithm}
+\subsubsection{Cancellazione e lettura minimo}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{Precondition}{precondition:}
+\SetKwData{Item}{Item}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwFunction{PriorityQueueCos}{PriorityQueue}
+\SetKwFunction{PriorityItemCos}{PriorityItem}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Min}{min}
+\SetKwFunction{DeleteMin}{DeleteMin}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Decrease}{decrease}
+\SetKwFunction{MinHeapRestore}{minHeapRestore}
+\SetKwFunction{HeapBuild}{heapBuild}
+\SetKwFunction{Heapsort}{heapsort}
+\SetKwFunction{L}{l}
+\SetKwFunction{R}{r}
+\SetKwFunction{P}{p}
+\SetKwFunction{Swap}{swap}
+\SetKwProg{Fn}{}{}
+
+\caption{\protect\Item \protect\DeleteMin{}}
+
+\Precondition dim $>$ 0\;
+\Swap{H, 1, dim}\;
+dim -= 1\;
+\MinHeapRestore{H, 1, dim}\;
+\Return H[dim+1].value\;
+\end{algorithm}
+
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{Precondition}{precondition:}
+\SetKwData{Item}{Item}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwFunction{PriorityQueueCos}{PriorityQueue}
+\SetKwFunction{PriorityItemCos}{PriorityItem}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Min}{min}
+\SetKwFunction{DeleteMin}{DeleteMin}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Decrease}{decrease}
+\SetKwFunction{MinHeapRestore}{minHeapRestore}
+\SetKwFunction{HeapBuild}{heapBuild}
+\SetKwFunction{Heapsort}{heapsort}
+\SetKwFunction{L}{l}
+\SetKwFunction{R}{r}
+\SetKwFunction{P}{p}
+\SetKwFunction{Swap}{swap}
+\SetKwProg{Fn}{}{}
+
+\caption{\protect\Item \protect\Min{}}
+
+\Precondition dim $>$ 0\;
+\Return H[1].value\;
+\end{algorithm}
+\subsubsection{Decremento priorit\`a}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{Precondition}{precondition:}
+\SetKwData{Item}{Item}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwFunction{PriorityQueueCos}{PriorityQueue}
+\SetKwFunction{PriorityItemCos}{PriorityItem}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Min}{min}
+\SetKwFunction{DeleteMin}{DeleteMin}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Decrease}{decrease}
+\SetKwFunction{MinHeapRestore}{minHeapRestore}
+\SetKwFunction{HeapBuild}{heapBuild}
+\SetKwFunction{Heapsort}{heapsort}
+\SetKwFunction{L}{l}
+\SetKwFunction{R}{r}
+\SetKwFunction{P}{p}
+\SetKwFunction{Swap}{swap}
+\SetKwProg{Fn}{}{}
+
+\caption{\protect\Decrease{\protect\PriorityItem x, \protect\Int p}}
+
+\Precondition p $<$ x.priority\;
+x.priority = p\;
+\Int i = x.pos\;
+\While{i $>$ 1 \And H[i].priority $<$ H[\P{i}].priority}{
+	\Swap{H, i, \P{i}}\;
+	i = \P{i}\;
+}
+\end{algorithm}
+\subsubsection{Complessit\`a}
+Tutte le operazioni che modificano gli heap devono sistemare la propriet\`a heap lungo un cammino radice-foglia (\emph{deleteMin()}) oppure lungo un cammino
+nodo-radice (\emph{insert()}, \emph{decrease()}). Essendo l'altezza $\lfloor\log n\rfloor$ il costo di tali operazioni \`e $O(\log n)$.
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+Operazione & Costo\\
+\hline
+\emph{insert()}& $O(\log n)$\\
+\hline
+\emph{deleteMin()} & $O(\log n)$\\
+\hline
+\emph{min()} & $\Theta(1)$\\
+\hline
+\emph{decrase()} & $O(\log n)$\\
+\hline
+\end{tabular}
+\end{center}

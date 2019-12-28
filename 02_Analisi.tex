@@ -1,0 +1,332 @@
+\chapter{Analisi di algoritmi}
+Per definire la complessit\`a di un algoritmo occorre definire una funzione che ha come dominio la dimensione dell'input e come insieme immagine il tempo.
+\subsubsection{Dimensione dell'input}
+La dimensione dell'input pu\`o essere definita secondo due criteri:
+\begin{itemize}
+\item Criterio di costo logaritmico: la taglia dell'input \`e il numero di bit necessari a rappresentarlo.
+\item Criterio di costo uniforme: la taglia dell'input \`e il numero di elementi di cui \`e costituito.
+\end{itemize}
+In molti casi si pu\`o assumere che gli elementi siano costituiti da un numero costante di bit, e in tal caso le due misure coincidono a meno di una costante
+moltiplicativa.
+\subsubsection{Definizione di tempo}
+Si definisce il tempo come il numero di istruzioni elementari necessarie al completamento dell'algoritmo. Si definisce elementare una funzione che pu\`o 
+essere svolta in tempo costante dal processore. 
+\section{Modelli di calcolo}
+Un modello di calcolo \`e una rappresentazione astratta del calcolatore. L'astrazione permette di nascondere dei dettagli, il suo realismo permette di 
+riflettere con un certo grado di precisione una situazione reale e la potenza matematica di trarre conclusioni formali sul costo. 
+\subsection{Macchina di Turing}
+Una macchina di Turing \`e una macchina ideale che manipola i dati contenuti su un nastro di lunghezza infinita secondo un insieme prefissato di regole. Ad
+ogni passo la macchina di Turing:
+\begin{itemize}
+\item Legge il simbolo sotto la testina.
+\item Modifica il proprio stato interno.
+\item Scrive un nuovo simbolo nella cella.
+\item Muove la testina a destra o a sinistra.
+\end{itemize}
+Questo modello \`e fondamentale per lo studio della calcolabilit\`a ma \`e troppo dettagliato per l'analisi.
+\subsection{Random Access Machine (RAM)}
+\subsubsection{Memoria}
+La memoria \`e costituita da un numero infinito di celle di dimensione finita a cui si accede, indipendentemente dalla posizione, in tempo costante.
+\subsubsection{Processore (singolo)}
+Un insieme di istruzioni simili a quelle reali: algebriche, logiche e di salto.
+\subsubsection{Costo delle istruzioni elementari}
+Uniforme e ininfluente ai fini dell'analisi. 
+\section{Funzioni di costo, analisi asintotica}
+Per studiare la complessit\`a di un algoritmo si analizza il suo comportamento asintotico, ovvero quando la dimensione del suo input tende a infinito.
+\subsection{Notazione $\mathbf{O}$}
+Sia $g(n)$ una funzione di costo, si indica con $O(g(n))$ l'insieme delle funzioni $f(n)$ tali per cui:
+\begin{equation*}
+\exists c>0,\exists m\ge 0: f(n)\le cg(n),\forall n\ge m
+\end{equation*}
+$g(n)$ si dice limite asintotico superiore di $f(n)$, ovvero $f(n)$ cresce al pi\`u come $g(n)$.
+\subsection{Notazione $\mathbf{\Omega}$}
+Sia $g(n)$ una funzione di costo, si indica con $\Omega(g(n))$ l'insieme delle funzioni $f(n)$ tali per cui:
+\begin{equation*}
+\exists c>0,\exists m\ge 0: f(n)\ge cg(n),\forall n\ge m
+\end{equation*}
+$g(n)$ si dice limite asintotico inferiore di $f(n)$, ovvero $f(n)$ cresce almeno quanto $g(n)$.
+\subsection{Notazione $\mathbf{\Theta}$}
+Sia $g(n)$ una funzione di costo, si indica con $\Theta(g(n))$ l'insieme delle funzioni $f(n)$ tali per cui:
+\begin{equation*}
+\exists c_1>0,\exists c_2>0,\exists m\ge 0: c_1g(n)\le f(n)\le c_2g(n),\forall n\ge m
+\end{equation*}
+$f(n)$ cresce esattamente come $g(n)$ e $f(n)=\Theta(g(n))$ se e solo se $f(n)=O(g(n))$ e $f(n)=\Omega(g(n))$.
+\subsection{Propriet\`a della notazione asintotica}
+\subsubsection{Espressioni polinomiali}
+\paragraph{Enunciato}
+\begin{equation*}
+f(n)=a_kn^k+a_{k-1}n^{k-1}+\cdots+a_1n+a_0, a_k>0\Rightarrow f(n)=\Theta(n^k)
+\end{equation*}
+\paragraph{Limite superiore}
+\begin{equation*}
+\exists c>0, \exists m\ge 0:f(n)\le cn^k,\forall n\ge m
+\end{equation*}
+\subparagraph{Dimostrazione}
+\begin{align*}
+f(n)&=a_kn^k+a_{k-1}n^{k-1}+\cdots+a_1n+a_0\\
+&\le a_kn^k+|a_{k-1}|n^{k-1}+\cdots+|a_1|n+|a_0|\\
+&\le a_kn^k+|a_{k-1}|n^k+\cdots+|a_1|n^k+|a_0|n^k\quad\quad\forall n\ge 1\\
+&= (a_k+|a_{k-1}|+\cdots+|a_1|+|a_0|)n^k\\
+&\overset{?}{\le} cn^k
+\end{align*}
+Vera per $c\ge (a_k+|a_{k-1}|+\cdots+|a_1|+|a_0|)$ e per $m=1$.
+\paragraph{Limite inferiore}
+\begin{equation*}
+\exists d>0, \exists m\ge 0:f(n)\ge dn^k,\forall n\ge m
+\end{equation*}
+\subparagraph{Dimostrazione}
+\begin{align*}
+f(n)&=a_kn^k+a_{k-1}n^{k-1}+\cdots+a_1n+a_0\\
+&\ge a_kn^k-|a_{k-1}|n^{k-1}-\cdots-|a_1|n-|a_0|\\
+&\ge a_kn^k-|a_{k-1}|n^{k-1}-\cdots-|a_1|n^{k-1}-|a_0|n^{k-1}\quad\quad\forall n\ge 1\\
+&= (a_k+|a_{k-1}|+\cdots+|a_1|+|a_0|)n^k\\
+&\overset{?}{\ge} dn^k
+\end{align*}
+Vera per $d\le a_k-\frac{|a_{k-1}|}{n}-\frac{|a_{k-2}|}{n}-\cdots-\frac{|a_{1}|}{n}-\frac{|a_{0}|}{n}>0\Leftrightarrow n>\frac{|a_{k-1}+\cdots+|a_0|}{a_k}$.
+\subsubsection{Dualit\`a}
+\paragraph{Enunciato}
+\begin{equation*}
+f(n)=O(g(n))\Leftrightarrow g(n)=\Omega(f(n))
+\end{equation*}
+\paragraph{Dimostrazione}
+\begin{align*}
+f(n)=O(g(n))&\Leftrightarrow f(n)\le cg(n),\forall n\ge m\\
+&\Leftrightarrow g(n)\ge \frac{1}{c}f(n), \forall n\ge m\\
+&\Leftrightarrow g(n)\ge c'=f(n),\forall n\ge m, c'=\frac{1}{c}\\
+&\Leftrightarrow g(n)=\Omega(f(n))
+\end{align*}
+\subsubsection{Eliminazione delle costanti}
+\paragraph{Enunciato}
+\begin{equation}
+f(n)=O(g(n))\Leftrightarrow af(n)=O(g(n)),\forall a>0
+\end{equation}
+\begin{equation}
+f(n)=\Omega(g(n))\Leftrightarrow af(n)=\Omega(g(n)),\forall a>0
+\end{equation}
+\paragraph{Dimostrazione}
+\begin{align*}
+f(n)=O(g(n))&\Leftrightarrow f(n)\le cg(n),\forall n\ge m\\
+&\Leftrightarrow af(n)\le acg(n),\forall n\ge m,\forall a\ge 0\\
+&\Leftrightarrow af(n)\le c'g(n),\forall n\ge m,c'=ac>0\\
+&\Leftrightarrow af(n)=O(g(n))
+\end{align*}
+La dimostrazione \`e analoga per il limite inferiore.
+\subsubsection{Sommatoria}
+\paragraph{Enunciato}
+\begin{equation*}
+f_1(n)=O(g_1(n)), f_2(n)=O(g_2(n))\Rightarrow f_1(n)+f_2(n)=O(\max(g_1(n), g_2(n)))
+\end{equation*}
+\begin{equation*}
+f_1(n)=\Omega(g_1(n)), f_2(n)=\Omega(g_2(n))\Rightarrow f_1(n)+f_2(n)=\Omega(\min(g_1(n), g_2(n)))
+\end{equation*}
+\paragraph{Dimostrazione}
+\begin{align*}
+f_1(n)=O(g_1(n))\land f_2(n)=O(g_2(n))&\Rightarrow\\
+f_1(n)\le c_1g_1(n)\land f_2(n)\le c_2g_2(n)&\Rightarrow\\
+f_1(n)+f_2(n)\le c_1g_1(n)+c_2g_2(n)&\Rightarrow\\
+f_1(n)+f_2(n)\le \max(c_1, c_2)(2\max(g_1(n), g_2(n)))&\Rightarrow\\
+f_1(n)+f_2(n)=O(\max(g_1(n), g_2(n))& 
+\end{align*}
+La dimostrazione \`e analoga per il limite inferiore.
+\subsubsection{Prodotto}
+\begin{equation*}
+f_1(n)=O(g_1(n)), f_2(n)=O(g_2(n))\Rightarrow f_1(n)\cdot f_2(n)=O(g_1(n)\cdot g_2(n))
+\end{equation*}
+\begin{equation*}
+f_1(n)=\Omega(g_1(n)), f_2(n)=\Omega(g_2(n))\Rightarrow f_1(n)\cdot f_2(n)=\Omega(g_1(n)\cdots g_2(n))
+\end{equation*}
+\paragraph{Dimostrazione}
+\begin{align}
+f_1(n)=O(g_1(n))\land f_2(n)=O(g_2(n))&\Rightarrow\\
+f_1(n)\le c_1g_1(n)\land f_2(n)\le c_2g_2(n)&\Rightarrow\\
+f_1(n)\cdot f_2(n)\le c_1c_2g_1(n)g_2(n)&\Rightarrow\\
+f_1(n)f_2(n)=O(g_1(n)g)2(n))
+\end{align}
+\subsubsection{Simmetria}
+\paragraph{Enunciato}
+\begin{equation*}
+f(n)=\Theta(g(n))\Leftrightarrow g(n)=\Theta(f(n))
+\end{equation*}
+\paragraph{Dimostrazione}
+Grazie alla propriet\`a di dualit\`a:
+\begin{align*}
+f(n)=\Theta(g(n))&\Rightarrow & f(n)=O(g(n)) &\Rightarrow & g(n)=\Omega(f(n))\\
+f(n)=\Theta(g(n))&\Rightarrow & f(n)=\Omega(g(n)) &\Rightarrow & g(n)=O(f(n))
+\end{align*}
+\subsubsection{Transitivit\`a}
+\paragraph{Enunciato}
+\begin{equation*}
+f(n)=O(g(n)), g(n)=O(h(n))\Rightarrow f(n)=O(h(n))
+\end{equation*}
+\paragraph{Dimostrazione}
+\begin{align*}
+f(n)=O(g(n))\land g(n)=O(h(n))&\Rightarrow\\
+f(n)\le c_1g(n)\land g(n)\le c_2h(n)&\Rightarrow\\
+f(n)\le c_1c_2h(n)&\Rightarrow\\
+f(n)=O(h(n))&
+\end{align*}
+\subsubsection{Logaritmi}
+\paragraph{Enunciato}
+Si vuole provare che $\log n=O(n)$. Si dimostri pertanto per induzione che:
+\begin{equation*}
+\exists c>0, \exists m\ge 0: \log n\le cn,\forall n\ge m
+\end{equation*}
+\paragraph{Dimostrazione}
+\begin{itemize}
+\item Caso base, $n=1$: $\log 1=0\le cn=c\dot 1\Leftrightarrow c\ge 0$.
+\item Ipotesi induttiva: sia $\log k\le ck, \forall k\le n$.
+\item Passo induttivo: si dimostri la propriet\`a per $n+1$.
+\begin{align*}
+\log(n+1)&\le\log(n+n)=\log 2n\quad\quad &\forall n\ge 1\\
+&=\log 2+\log n & \log ab=\log a+\log b\\
+&=1+\log n & \log 2=1\\
+&\le 1+cn & \text{per induzione}\\
+&\overset{?}{\le} c(n+1) & \text{obiettivo}\\
+1+cn\le c(n+1)\Leftrightarrow c\ge 1
+\end{align*}
+\end{itemize}
+\subsection{Notazioni $\mathbf{o,\ \omega}$}
+\subsubsection{Notazione $\mathbf{o}$}
+Sia $g(n)$ una funzione di costo, si indica con $o(g(n))$ l'insieme delle funzioni $f(n)$ tali per cui:
+\begin{equation*}
+\forall c, \exists m: f(n)<cg(n),\forall n\ge m
+\end{equation*}
+\subsubsection{Notazione $\mathbf{\omega}$}
+Sia $g(n)$ una funzione di costo, si indica con $\omega(g(n))$ l'insieme delle funzioni $f(n)$ tali per cui:
+\begin{equation*}
+\forall c, \exists m: f(n)>cg(n),\forall n\ge m
+\end{equation*}
+\subsubsection{Significato}
+Utilizzando il concetto di limite si noti come:
+\begin{itemize}
+\item $\lim\limits_{x\rightarrow\infty}\dfrac{f(n)}{g(n)}=0\Rightarrow f(n)=o(g(n))$.
+\item $\lim\limits_{x\rightarrow\infty}\dfrac{f(n)}{g(n)}\neq 0\Rightarrow f(n)=\Theta(g(n))$.
+\item $\lim\limits_{x\rightarrow\infty}\dfrac{f(n)}{g(n)}=\infty\Rightarrow f(n)=\omega(g(n))$.
+\item $f(n)=o(g(n))\Rightarrow f(n)=O(g(n))$.
+\item $f(n)=\omega(g(n))\Rightarrow f(n)=\Omega(g(n))$.
+\end{itemize}
+\subsection{Classificazione delle funzioni}
+Espandendo le relazioni dimostrate \`e possibile ottenere un ordinamento delle principali espressioni. Si consideri per ogni $r<s,\ h<k,\ a<b$:
+\begin{align*}
+O(1)&\subset O(\log^r n)\subset O(\log^s n)\subset O(n^h)\subset O(n^h\log^r n)\\
+&\subset O(n^h\log^s n)\subset O(n^k)\subset O(a^n)\subset O(b^n)
+\end{align*}
+\section{Ricorrenze}
+\subsubsection{Definizioni}
+\begin{itemize}
+\item Equazione di ricorrenza: calcolare la complessit\`a di un algoritmo ricorsivo richiede le creazione di un'equazione di ricorrenza, una formula 
+matematica definita in maniera ricorsiva.
+\item Forma chiusa: l'obiettivo \`e partire dall'equazione di ricorrenza e trasformarla in una forma chiusa in modo da comprendere la classe di 
+complessit\`a dell'algoritmo.
+\end{itemize}
+\subsection{Analisi per livelli}
+Questo metodo di risoluzione delle equazioni ricorsive detto anche metodo dell'albero di ricorsione consiste nell'espandere la ricorrenza in un albero i cui
+nodi rappresentano i costi ai vari livelli della ricorsione considerando poi il livello pi\`u basso in cui tutte le chiamate sono state ricondotte al caso
+base. Si otterr\`a pertanto una sommatoria da cui si potr\`a derivare la forma chiusa e la classe di complessit\`a.
+\subsection{Metodo della sostituzione}
+Questo metodo di risoluzione delle equazioni ricorsive, detto anche metodo per tentativi, consiste nel cercare di indovinare una soluzione in base alla 
+propria esperienza e di tentare di dimostrare tale soluzione per induzione.
+\subsection{Metodo delle ricorrenze comuni}
+Questo metodo di risoluzione delle equazioni ricorsive, detto anche metodo dell'esperto, mette a disposizione dei teoremi che permettono di risolvere 
+facilmente ampie classi di equazioni di ricorrenza.
+\subsubsection{Ricorrenze lineari con partizione bilanciata}
+\paragraph{Teorema}
+Siano $a$ e $b$ costanti intere tali che $a\ge 1$ e $b\ge 2$ e $c$ e $\beta$ costanti reali tali che $c>0$ e $\beta\ge 0$. Sia $T(n)$ l'equazione di 
+ricorrenza nella forma:
+\begin{equation*}
+T(n)=
+\begin{cases}
+aT(\frac{n}{b})+cn^\beta\quad\quad & n>1\\
+d & n\le 1
+\end{cases}
+\end{equation*}
+Posto $\alpha=\frac{\log a}{\log b}=\log_b a$ allora:
+\begin{equation*}
+T(n)=
+\begin{cases}
+\Theta(n^\alpha) \quad\quad & \alpha>\beta\\ 
+\Theta(n^\alpha\log n) & \alpha=\beta\\ 
+\Theta(n^\beta) & \alpha<\beta
+\end{cases}
+\end{equation*}
+\subsubsection{Estensione delle ricorrenze lineari con partizione bilanciata}
+Sia $a\ge 1$, $b>1$ e $f(n)$ asintoticamente positiva e sia 
+\begin{equation*}
+T(n)=
+\begin{cases}
+aT(\frac{n}{b})+f(n)\quad\quad & n>1\\
+d & n\le 1
+\end{cases}
+\end{equation*}
+Sono dati tre casi.
+\begin{itemize}
+\item $\exists \varepsilon >0: f(n)=O(n^{\log_ba-\varepsilon})\Rightarrow T(n)=\Theta(n^{\log_ba})$.
+\item $f(n)=\Theta(n^{\log_ba})\Rightarrow T(n)=\Theta(f(n)\log n)$.
+\item $\exists\varepsilon>0:f(n)=\Omega(n^{\log_ba+\varepsilon})\land \exists c:0<c<1, \exists m>0:af(\frac{n}{b})\le cf(n),\forall n\ge m\Rightarrow T(n)=
+\Theta(f(n))$.
+\end{itemize}
+\subsubsection{Ricorrenze lineari di ordine costante}
+Siano $a_1,\dots,a_n$ costanti intere non negative, con $h$ costante positiva, $c>0$ e $\beta\ge 0$ costanti reali e $T(n)$ una relazione di ricorrenza 
+nella forma:
+\begin{equation*}
+T(n)=
+\begin{cases}
+\sum\limits_{1\le i\le h}a_iT(n-i)+cn^\beta\quad\quad& n>m\\
+\Theta(1) & n\le m\le h
+\end{cases}
+\end{equation*}
+Posto $a=\sum\limits_{1\le i\le h}a_i$ allora:
+\begin{itemize}
+\item $T(n)=\Theta(n^{\beta+1})$ se $a=1$.
+\item $T(n)=\Theta(a^nn^{\beta})$ se $a\ge 2$.
+\end{itemize}
+
+
+
+
+\section{Relazione tra complessit\`a di un problema e di un algoritmo}
+Un problema ha complessit\`a $O(f(n))$ se esiste un algoritmo che lo risolve con complessit\`a $O(f(n))$. Un problema ha complessit\`a $\Omega(f(n))$ se
+tutti gli algoritmi che lo risolvono hanno complessit\`a $\Omega(f(n))$.
+\subsection{Complessit\`a in tempo di un algoritmo}
+La quantit\`a di tempo richiesta per input di dimensione $n$:
+\begin{itemize}
+\item $O(f(n))$: per tutti gli input l'algoritmo costa al pi\`u $f(n)$.
+\item $\Omega(f(n))$: per tutti gli input l'algoritmo costa almeno $f(n)$.
+\item $\Theta(f(n))$: per tutti gli input l'algoritmo richiede $f(n)$.
+\end{itemize}
+\subsection{Complessit\`a in tempo di un problema computazionale}
+La quantit\`a di tempo richiesta per input di dimensione $n$:
+\begin{itemize}
+\item $O(f(n))$: complessit\`a del miglior algoritmo che risolve il problema.
+\item $\Omega(f(n))$: dimostrare che nessun algoritmo pu\`o risolvere il problema in un tempo inferiore a $\Omega(f(n))$.
+\item $\Theta(f(n))$: algoritmo ottimo.
+\end{itemize}
+\section{Valutare algoritmi in base alla tipologia di input}
+In alcuni casi gli algoritmi si comportano in maniera diversa in base a caratteristiche dell'input. Conoscerle in anticipo permette di scegliere il miglior
+algoritmo per la situazione. 
+\subsection{Tipologie di analisi}
+\begin{itemize}
+\item Analisi del caso pessimo: il tempo di esecuzione \`e il limite superiore al tempo di esecuzione per un qualisasi input. 
+\item Analisi del caso medio: molto difficile in quanto si deve trovare una distribuzione uniforme degli input.
+\item Analisi del caso ottimo: ha senso se si conoscono caratteristiche dell'input.
+\end{itemize}
+\section{Analisi ammortizzata}
+Si intende per analisi ammortizzata una tecnica di analisi di complessit\`a che valuta il tempo per eseguire nel caso pessimo una sequenza di operazioni 
+su una struttura dati. Esistono operazioni pi\`u o meno costose e se le operazioni costose sono meno frequenti allora il loro costo pu\`o essere 
+ammortizzato da quelle meno costose. A differenza dell'analisi del caso medio \`e deterministica su operazioni multiple e verifica il caso pessimo.
+\subsection{Metodi per l'analisi ammortizzata}
+\subsubsection{Metodo dell'aggregazione}
+In questo metodo si calcola la complessit\`a $T(n)$ per eseguire $n$ operazioni in sequenza nel caso pessimo. Grazie alla sequenza si considera l'evoluzione
+della struttura dati data una sequenza di operazioni, considerando la sequenza pessima e sommando insieme tutte le complessit\`a individuali. 
+Successivamente questo $T(n)$ viene diviso per il numero di operazioni in modo da verificare la complessit\`a ammortizzata di un'operazione nella sequenza.
+\subsubsection{Metodo degli accantonamenti}
+Alle operazioni vengono assegnati costi ammortizzati che possono essere minori o maggiori del loro costo effettivo. Questa differenza \`e dovuta al fatto
+che le operazioni meno costose vengono caricate di un costo aggiuntivo detto credito: $costo\ ammortizzato=costo\ effettivo+credito\ prodotto$. Questo 
+credito accumulato viene speso dalle operazioni pi\`u costose: $costo\ ammortizzato=costo\ effettivo-credito\ consumato$. Si deve dimostrare che la somma
+dei costi ammortizzato $a_i$ \`e un limite superiore alla somma dei costi effettivi: $\sum\limits_{i=1}^nc_i\le\sum\limits_{i=1}^na_i$ e che il valore 
+cos\`i ottenuto \`e "poco costoso". Considerando il caso pessimo, la dimostrazione deve valere per tutte le sequenze e il credito dopo la t-esima operazione
+deve essere sempre positivo: $\sum\limits_{i=1}^ta_i\le\sum\limits_{i=1}^tc_i\ge 0$.
+\subsubsection{Metodo del potenziale}
+Lo stato del sistema viene descritto attraverso una funzione di potenziale $\Phi(D)$. Le operazioni meno costose devono incrementare $\Phi(D)$ e quelle
+pi\`u costose decrementarlo. Il costo ammortizzato \`e pari al costo effettivo sommato alla differenza di potenziale: $a_i=c_i+\Phi(D_i)-\Phi(D_{i-1})$.
+Per una sequenza di operazioni di lunghezza $n$, se $\Phi(D_n)-\Phi(D_0)\ge 0$ il costo ammortizzato $A$ \`e un limite superiore al costo reale.

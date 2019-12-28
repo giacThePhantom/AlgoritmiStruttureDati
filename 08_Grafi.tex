@@ -1,0 +1,1052 @@
+\chapter{Grafi}
+\subsection{Definizioni}
+\subparagraph{Grafo orientato}
+Si dice grafo orientato la coppia $G=(V, E)$, dove $V$ \`e l'insieme di nodi o vertici ed $E$ \`e l'insieme di coppie ordinate $(u, v)$ di nodi dette anche
+archi. 
+\subparagraph{Grafo non orientato}
+Si dice grafo non orientato la coppia $G=(V, E)$, dove $V$ \`e l'insieme di nodi o vertici ed $E$ \`e l'insieme di coppie non ordinate $(u, v)$ di nodi 
+dette anche archi. 
+\begin{itemize}
+\item Un vertice $v$ \`e detto adiacente a $u$ se esiste un arco $(v, u)$.
+\item Un arco $(v, u)$ \`e detto incidente a $v$ e $u$.
+\item In un grafo non orientato la relazione di adiacenza \`e simmetrica.
+\item $n=|V|$ numero di nodi.
+\item $m=|E|$ numero di archi.
+\item In un grafo non orientato $m\le\dfrac{n(n-1)}{2}=O(n^2)$.
+\item In un grafo orientato $m\le n^2-n=O(n^2)$.
+\item La complessit\`a di algoritmi sui grafi deve essere espressa sia un termini di $n$ che di $m$. 
+\item Un grafo con un arco tra tutte le coppie di nodi \`e detto completo.
+\item Un grafo si dice sparso se ha "pochi archi", ovvero con $m=O(n)$ o $m=O(n\log n)$.
+\item Un grafo si dice dento se ha "molti archi", ovvero con $m=\Omega(n^2)$.
+\item Un albero libero \`e un grafo connesso con $m=n-1$.
+\item Un albero radicato \`e un albero libero sul quale \`e stata scelta una radice. 
+\item Un insieme di alberi \`e un grafo detto foresta.
+\item Il grado di un nodo \`e il numero di archi incidenti su di esso.
+\item Nei grafi orientati si divide il grado in grado entrante per gli archi che incidono su di esso e in grado uscente per gli archi che incidono da esso.
+\item Si dice cammino $C$ di lunghezza $k$ in un grafo $G=(V,E)$ una sequenza di nodi $u_0, \dots, u_k$ tali che $(u_i, u_{i+1})\in E$ per $0\le i\le k-1$.
+\item Si dice semplice un cammino i cui nodi sono tutti distinti.
+\item Si dice peso di un arco un valore associato all'arco dato da una funzione di peso $w: V\times V\rightarrow\mathbb{R}$.
+\item Un nodo $v$ si dice raggiungibile da un nodo $u$ se esiste almeno un cammino da $u$ a $v$. 
+\item Un grafo non orientato $G=(V, E)$ \`e connesso se e solo se ogni suo nodo \`e raggiungibile da ogni altro nodo. 
+\item $G'$ \`e detto sottografo di $G$ $G'\subseteq G$ se e solo se $V'\subseteq V$ e $E'\subseteq E$.
+\item $G'$ \`e sottografo massimale di $G$ se e solo se non esiste un altro sottografo $G''$ tale che $G''$ \`e connesso e pi\`u grande di $G'$.
+\item Un grafo $G'=(V', E')$ \`e una componente connessa di $G$ se e solo se \`e un sottografo connesso e massimale di $G$.
+\item In un grafo non orientato $G=(V, E)$ un ciclo $C$ di lunghezza $k>2$ \`e una sequenza di nodi $u_0, \dots, u_k$ tale che $(u_i, i_{i+1})\in E$ per 
+ogni $0\le i\le k-1$ e $u_0=u_k$. Un ciclo \`e detto semplice se tutti i suoi nodi sono distinti. 
+\item Un grafo \`e detto aciclico se non contiene cicli. Se orientato \`e detto DAG (directed acyclic graph). 
+\item Dato un DAG, un suo ordinamento topologico \`e un ordinamento lineare dei suoi nodi tale che se $(u, v)\in E$, allora $u$ appare prima di $v$ 
+nell'odinamento.
+\item Un grafo orientato $G=(V, E)$ si dice fortemente connesso se e solo se ogni suo nodo \`e raggiungibile da ogni altro suo nodo.
+\item Un grafo $G'=(V', E')$ \`e una componente fortemente connessa di $G$ se e solo se \`e un sottografo connesso e massimale di $G$. 
+\end{itemize}
+\subsection{Specifica}
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKwData{Set}{Set}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\caption{Graph}
+
+\GraphCos{}	\comment{Crea un nuovo grafo}
+\Set \V{}	\comment{Restituisce l'insieme di tutti i nodi}
+\Int \Size{} \comment{Restituisce il numero di nodi}
+\Set \Adj{\Node u} \comment{Restituisce i nodi adiacenti al nodo u}
+\InsertNode{\Node u} \comment{Inserisce il nodo u nel grafo}
+\InsertEdge{\Node u, \Node v}	\comment{Inserisce l'arco tra u e v nel grafo}
+\DeleteNode{\Node u}	\comment{Elimina il nodo u dal grafo}
+\DeleteEdge{\Node u, \Node v}	\comment{Elimina l'arco tra i nodi u e v dal grafo}
+\end{algorithm}
+In alcuni casi il grafo \`e dinamico ma sono possibili solo inserimenti e non \`e necessaria la parte di eliminazione (grafo caricato all'inizio).
+\section{Memorizzare grafi}
+\subsection{Matrice di adiacenza}
+Le matrici di adiacenza sono ideali per i grafi densi. Un grafo orientato viene salvato in una matrice di dimensione $n\times n$ bit tale che:
+\begin{equation*}
+m_{uv}=\begin{cases}1\qquad& (u, v)\in E\\
+0 & (u, v)\not\in E
+\end{cases}
+\end{equation*}
+Per il grafo non orientato basta salvare la matrice sopra la diagonale principale esclusa in modo da occupare solamente $\dfrac{n(n-1)}{2}$ bit.
+\subparagraph{Grafi pesati}
+Per i grafi pesati la matrice di booleani diventa una matrice di reali tale che: 
+\begin{equation*}
+m_{uv}=\begin{cases}peso\qquad& (u, v)\in E\\
++\infty & (u, v)\not\in E
+\end{cases}
+\end{equation*}
+\subsubsection{Analisi complessit\`a}
+\begin{itemize}
+\item Spazio richiesto $O(n^2)$.
+\item Verificare se $u$ \`e adiacente a $v$ richiede $O(1)$.
+\item Iterare su tutti gli archi richiede $O(n^2)$
+\end{itemize}
+\subsection{Liste di adiacenza}
+Le liste di adiacenza sono ideali per i grafi sparsi. Viene creato un vettore di dimensione $n$ tale che in posizione $u$ si trovi un insieme tale che 
+contenga gli adiacenti. Occupa $an+bm$ bit. Dove $a$ \`e la dimensione del puntatore al nodo adiacente e $b$ \`e la dimensione dell'adiacente. Per il grafo 
+non orientato viene salvato anche l'arco inverso e occupa $an+2bm$.
+\subparagraph{Grafi pesati}
+Gli elementi della lista puntata sono coppie nodo di arrivo-peso.
+\subsubsection{Analisi complessit\`a}
+\begin{itemize}
+\item Spazio richiesto $O(n+m)$.
+\item Verificare se $u$ \`e adiacente a $v$ richiede $O(n)$.
+\item Iterare su tutti gli archi richiede $O(n+m)$
+\end{itemize}
+\subsection{Iterazioni su nodi e archi}
+\begin{multicols}{2}
+\begin{algorithm}[H]
+\SetKwFunction{V}{V}
+\caption{Iterazione su tutti i nodi del grafo}
+\ForEach{u $\in$ G.\V{}}{
+	Esegui operazioni sul nodo u
+}
+\end{algorithm}
+\columnbreak
+\begin{algorithm}[H]
+\SetKwFunction{V}{V}
+\SetKwFunction{Adj}{adj}
+\caption{Iterazione su tutti i nodi e archi del grafo}
+\ForEach{u $\in$ G.\V{}}{
+	Esegui operazioni sul nodo u\;
+	\ForEach{v $\in$ G.\Adj{u}}{
+		Esegui operazioni sull'arco (u, v)	
+	}
+}
+\end{algorithm}
+\end{multicols}
+\section{Visite dei grafi}
+Dato un grafo $G=(V,E)$ e $r\in V$ radice o sorgente si intende per visita visitare una e una sola volta tutti i nodi che possono essere raggiunti da $r$.
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKwData{Graph}{Graph}
+\SetKwData{Set}{Set}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{graphTraversal}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Remove}{remove}
+\caption{\protect\GraphTraversal{\protect\Graph G, \protect\Node r}}
+
+\Set S = \SetCos{} \comment{Insieme generico}
+S.\Insert{r}	\comment{Da specificare}
+$\{$Marca il nodo r$\}$\;
+\While{S.\Size{} $>$ 0}{
+	\Node u = S.\Remove{}	\comment{Da specificare}
+	$\{$Visita il nodo u$\}$\;
+	\ForEach{v $\in$ G.\Adj{u}}{
+		$\{$Visita l'arco (u,v)$\}$\;
+		\If{v non \`e stato marcato}{
+			Marca il nodo v\;
+			S.\Insert{v}	\comment{Da specificare}
+		}
+	}
+}
+
+
+\end{algorithm}
+\subsection{Visita in ampiezza o breadth-first search}
+In questo tipo di visita si visitano i nodi per livelli crescenti a partire dalla sorgente. Gli obiettivi di questa visita sono di visitare i nodi a 
+distanza $k$ prima dei nodi a distanza $k+1$, calcolare il cammino pi\`u breve da $r$ a tutti gli altri nodi (distanze misurate come numero di archi 
+attraversati). Generare un albero breadth-first contenente tutti i nodi raggiungibili da $r$ tale per cui il cammino dalla radice $r$ al nodo $u$ 
+nell'albero corrisponde al cammino pi\`u breve nel grafo.
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKwData{Graph}{Graph}
+\SetKwData{Set}{Queue}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{SetCos}{Queue}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{bfs}
+\SetKwFunction{Insert}{enqueue}
+\SetKwFunction{Remove}{dequeue}
+\SetKwFunction{Empty}{empty}
+\caption{\protect\GraphTraversal{\protect\Graph G, \protect\Node r}}
+
+\Set Q = \SetCos{} \;
+Q.\Insert{r}\;
+\Boolean[] visited = \New \Boolean[G.\Size{}]\;
+\ForEach{u $\in$ G.\V{} - $\{$r$\}$}{
+	visited[u] = \False\;
+}
+visited[r] = \True\;
+\While{\Not Q.\Empty{}}{
+	\Node u = Q.\Remove{}\;
+	$\{$Visita il nodo u$\}$\;
+	\ForEach{v $\in$ G.\Adj{u}}{
+		$\{$Visita l'arco (u,v)$\}$\;
+		\If{\Not visited[v]}{
+			visited[v] = \True\;
+			Q.\Insert{v}\;
+		}
+	}
+}
+\end{algorithm}
+\subsubsection{Calcolo dei cammini pi\`u brevi o del numero di Erd\"os}
+L'algoritmo di erdos oltre a determinare la lunghezza del cammino pi\`u breve genera l'arco di copertura bfs che contiene tali cammini.\\
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{Nil}{nil}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKwData{Graph}{Graph}
+\SetKwData{Set}{Queue}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{SetCos}{Queue}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{erdos}
+\SetKwFunction{Insert}{enqueue}
+\SetKwFunction{Remove}{dequeue}
+\SetKwFunction{Empty}{empty}
+\caption{\protect\GraphTraversal{\protect\Graph G, \protect\Node r, \protect\Int[] erdos, \protect\Node[] parents}}
+
+\Set Q = \SetCos{}\; 
+Q.\Insert{r}\;
+\ForEach{u $\in$ G.\V{} - $\{$r$\}$}{
+	erdos[u] = $\infty$\;
+}
+erdos[r] = 0\;
+parents[r] = \Nil\;
+\While{\Not Q.\Empty{}}{
+	\Node u = Q.\Remove{}\;
+	$\{$Visita il nodo u$\}$\;
+	\ForEach{v $\in$ G.\Adj{u}}{
+		\If{erdos[v] = $\infty$}{
+			erdos[v] = erdos[u] + 1\;
+			parents[v] = u\;			
+			Q.\Insert{v}\;
+		}
+	}
+}
+\end{algorithm}
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{Nil}{nil}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{Print}{print}
+\SetKwData{Graph}{Graph}
+\SetKwData{Set}{Queue}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{SetCos}{Queue}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{printPath}
+\SetKwFunction{Insert}{enqueue}
+\SetKwFunction{Remove}{dequeue}
+\SetKwFunction{Empty}{empty}
+\caption{\protect\GraphTraversal{\protect\Node r, \protect\Node s, \protect\Node[] parents}}
+
+\uIf{r = s}{
+	\Print s\;
+}
+\uElseIf{parents[s] == \Nil}{
+	\Print "error"\;
+}
+\Else{
+	\GraphTraversal{r, parents[s], parents}\;
+	\Print s\;
+}
+\end{algorithm}
+\subsubsection{Complessit\`a}
+La complessit\`a di una bfs \`e $O(m+n)$ in quanto ognuno degli $n$ nodi viene salvato nella coda al pi\`u una volta. Ogni volta che un nodo viene estratto
+tutti i suoi archi vengono analizzati una sola volta. Il numero di archi analizzati \`e pertanto $m=\sum\limits_{u\in V}out_d(u)$, dove $out_d(u)$ \`e 
+l'out-degree del nodo $u$. 
+\subsection{Visita in profondit\`a o depth-first search}
+La visita in profondit\`a \`e una visita ricorsiva: per ogni nodo adiacente si visita ricorsivamente tale nodo, visitando ricorsivamente i suoi adiacenti
+e cos\`i via. Questo tipo di ricerca \`e spesso una subroutine in altri problemi, visita tutto il grafo, nono solo i nodi raggiungibili dalla radice e
+genera pertanto una foresta formata da una collezione di alberi depth-first. Si realizza attraverso uno stack che viene reso implicito attraverso la 
+ricorsione.
+\subsubsection{Implementazione ricorsiva}
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKwData{Graph}{Graph}
+\SetKwData{Set}{Queue}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{SetCos}{Queue}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{dfs}
+\SetKwFunction{Insert}{enqueue}
+\SetKwFunction{Remove}{dequeue}
+\SetKwFunction{Empty}{empty}
+\caption{\protect\GraphTraversal{\protect\Graph G, \protect\Node u, \protect\Boolean[] visited}}
+visited[u] = \True\;
+$\{$visita il nodo u in pre-order$\}$\;
+\ForEach{v $\in$ G.\Adj{u}}{
+	\If{\Not visited[v]}{
+		$\{$Visita l'arco (u,v)$\}$\;
+		\GraphTraversal{G, v, visited}\;
+	}
+}
+$\{$visita il nodo u in post-order$\}$\;
+\end{algorithm}
+\subsubsection{Implementazione iterativa}
+Una dfs ricorsiva in casi di grafi molto profondi pu\`o superare la dimensione dello stack del linguaggio, si rende pertanto esplicito lo stack utilizzando 
+una versione iterativa. Un nodo pu\`o essere inserito nella pila pi\`u volte in quanto il controllo viene fatto all'estrazione. Ha complessit\`a $O(m+n)$ 
+con $O(m)$ visite degli archi, $O(m)$ estrazioni e inserimenti e $O(n)$ visite dei nodi. Per la visita in post order quando un nodo viene scoperto viene
+inserito nello stack con il tag \emph{discovery}, quando viene estratto un nodo con il tag \emph{discovery} viene re-inserito con il tag \emph{finish} e 
+vengono inseriti tutti i suoi vicini. Quando viene estratto un nodo con il tag \emph{finish} viene fatta la post-visita.
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKwData{Graph}{Graph}
+\SetKwData{Set}{Stack}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{SetCos}{Stack}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{dfs}
+\SetKwFunction{Insert}{push}
+\SetKwFunction{Remove}{pop}
+\SetKwFunction{Empty}{empty}
+\caption{\protect\GraphTraversal{\protect\Graph G, \protect\Node r}}
+
+\Set S = \SetCos{} \;
+S.\Insert{r}\;
+\Boolean[] visited = \New \Boolean[G.\Size{}]\;
+\ForEach{u $\in$ G.\V{}}{
+	visited[u] = \False\;
+}
+
+\While{\Not S.\Empty{}}{
+	\Node u = S.\Remove{}\;
+	\If{\Not visited[u]}{
+		$\{$Visita il nodo u in pre-order$\}$\;
+		visited[u] = \True\;
+		\ForEach{v $\in$ G.\Adj{u}}{
+			$\{$Visita l'arco (u,v)$\}$\;
+			S.\Insert{v}\;	
+	}	
+	}
+}
+\end{algorithm}
+\newpage
+\subsubsection{Componenti connesse}
+Ci si pone il problema di verificare se il grafo \`e connesso e se non lo \`e di identificare le sue componenti connesse. Un grafo risulta connesso se al
+termine della dfs tutti i suoi nodi sono marcati, altrimenti la visita deve ricominciare da capo da un nodo non marcato identificando una nuova componente
+del grafo. L'appartenenza ad una componente connessa viene identificata attraverso un vettore \emph{id[]} tale per cui \emph{id[u]} \`e l'identificatore
+della componente connessa di appartenenza.
+\begin{multicols}{2}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKwData{Graph}{Graph}
+\SetKwData{Set}{Stack}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{SetCos}{Stack}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{dfs}
+\SetKwFunction{Insert}{push}
+\SetKwFunction{Remove}{pop}
+\SetKwFunction{Empty}{empty}
+\SetKwFunction{CC}{cc}
+\SetKwFunction{CCdfs}{ccdfs}
+
+\caption{\protect\Int[] \protect\CC{\protect\Graph G}}
+
+\Int[] id = \New \Int[G.\Size{}]\;
+\ForEach{u $\in$ G.\V{}}{
+	id[u] = 0\;
+}
+\Int counter = 0\;
+\ForEach{u $\in$ G.\V{}}{
+	\If{id[u] == 0}{
+		counter += 1\;
+		\CCdfs{G, counter, u, id}\;	
+	}
+}
+\Return id\;
+\end{algorithm}
+\columnbreak
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKwData{Graph}{Graph}
+\SetKwData{Set}{Stack}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{SetCos}{Stack}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{dfs}
+\SetKwFunction{Insert}{push}
+\SetKwFunction{Remove}{pop}
+\SetKwFunction{Empty}{empty}
+\SetKwFunction{CC}{cc}
+\SetKwFunction{CCdfs}{ccdfs}
+
+\caption{\protect\Int[] \protect\CCdfs{\protect\Graph G, \protect\Int counter, \protect\Node u, \protect\Int[] id}}
+
+id[u] = counter\;
+\ForEach{v $\in$ G.\Adj{u}}{
+	\If{id[v] == 0}{
+		\CCdfs{G, counter, v, id}\;	
+	}
+}
+\end{algorithm}
+\end{multicols}
+\subsubsection{Grafo non orientato aciclico}
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{Return}{return}
+\SetKwData{Graph}{Graph}
+\SetKwData{Set}{Stack}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{SetCos}{Stack}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{dfs}
+\SetKwFunction{Insert}{push}
+\SetKwFunction{Remove}{pop}
+\SetKwFunction{Empty}{empty}
+\SetKwFunction{CC}{cc}
+\SetKwFunction{CCdfs}{ccdfs}
+\SetKwFunction{HasCycle}{hasCycleRec}
+
+\caption{\protect\Boolean[] \protect\HasCycle{\protect\Graph G, \protect\Node u, \protect\Node p, \protect\Boolean[] visited}}
+
+visited[u] = \True\;
+\ForEach{v $\in$ G.\Adj{u} - $\{$p$\}$}{
+	\uIf{visited[u]}{
+		\Return \True\;	
+	}
+	\ElseIf{\HasCycle{G, v, u, visited}}{
+		\Return \True\;	
+	}
+}
+\Return \False\;
+\end{algorithm}
+
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{Nil}{nil}
+\SetKw{Return}{return}
+\SetKwData{Graph}{Graph}
+\SetKwData{Set}{Stack}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{SetCos}{Stack}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{dfs}
+\SetKwFunction{Insert}{push}
+\SetKwFunction{Remove}{pop}
+\SetKwFunction{Empty}{empty}
+\SetKwFunction{CC}{cc}
+\SetKwFunction{CCdfs}{ccdfs}
+\SetKwFunction{HasCycleRec}{hasCycleRec}
+\SetKwFunction{HasCycle}{hasCycle}
+
+\caption{\protect\Boolean[] \protect\HasCycle{\protect\Graph G}}
+
+\Boolean[] visited = \New \Boolean[G.\Size{}]\;
+\ForEach{u $\in$ G.\V{}}{
+	visited[u] = \False\;
+}
+\ForEach{u $\in$ G.\V{}}{
+	\If{\Not visited[u]}{
+		\If{\HasCycleRec{G, u, \Nil, visited}}{
+			\Return \True\;	
+		}
+	}
+}
+\Return \False\;
+\end{algorithm}
+\subsubsection{Grafo orientato aciclico}
+\paragraph{Classificazione degli archi}
+Ogni qual volta si esamina un arco da un nodo marcato ad un nodo non marcato tale arco diventa un arco dell'albero di copertura dfs $T$. Gli archi non 
+inclusi nell'albero possono essere divisi in tre categorie:
+\begin{itemize}
+\item Se $u$ \`e un antenato di $v$ in $T$ $(u, v)$ \`e detto arco in avanti.
+\item Se $u$ \`e un discendente di $v$ in $T$ $(u, v)$ \`e detto arco all'indietro.
+\item Se i primi due non sussistono viene detto arco di attraversamento. 
+\end{itemize}
+Indicato con time un contatore, il vettore \emph{dt} il discovery time, o tempo di scoperta di un nodo e \emph{ft} il finish time o tempo di fine di un 
+nodo.\\
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Nil}{nil}
+\SetKw{Return}{return}
+\SetKwData{Graph}{Graph}
+\SetKwData{Set}{Stack}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{SetCos}{Stack}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{dfs}
+\SetKwFunction{Insert}{push}
+\SetKwFunction{Remove}{pop}
+\SetKwFunction{Empty}{empty}
+\SetKwFunction{CC}{cc}
+\SetKwFunction{DfsSchema}{dfs-schema}
+\SetKwFunction{HasCycleRec}{hasCycleRec}
+\SetKwFunction{HasCycle}{hasCycle}
+
+\caption{\protect\DfsSchema{\protect\Graph G, \protect\Node u, \protect\Int$\&$ time, \protect\Int[] dt, \protect\Int[] ft}}
+$\{$Visita il nodo u in pre-order$\}$\;
+time += 1\;
+dt[u] = time\;
+\ForEach{v $\in$ G.\Adj{u}}{
+	$\{$Visita l'arco $(u, v)$ qualsiasi$\}$\;
+	\uIf{dt[v] = 0}{
+		$\{$Visita l'arco $(u, v)$ albero$\}$\;
+		\DfsSchema{G, v, time, dt, ft}\;
+	}
+	\uElseIf{dt[u] $>$ dt[v] \And ft[v] = 0}{
+		Visita l'arco $(u, v)$ indietro\;	
+	}
+	\uElseIf{dt[u] $<$ dt[v] \And ft[v] $\neq$ 0}{
+		Visita l'arco $(u, v)$ avanti\;	
+	}
+	\Else{
+		Visita l'arco $(u, v)$ attraversamento\;
+	}	
+}
+$\{$Visita il nodo u in post-order$\}$\;
+time +=1\;
+ft[u] = time\;
+\end{algorithm}
+Classificare gli archi permette di dimostrare propriet\`a rispetto a questa classificazione e pertanto costruire degli algoritmi migliori. In particolare 
+data una visita dfs di un grafo $G$ per ogni coppia di nodi $u, v\in V$ solo una delle seguenti condizioni \`e vera:
+\begin{itemize}
+\item Gli intervalli $[dt[u], ft[u]]$ e $[dt[v], ft[v]]$ sono non-sovrapposti: allora $u$ e $v$ non sono discendenti l'uno dell'altro nella foresta DF.
+\item L'intervallo $[dt[u], ft[u]]$ \`e contenuto in $[dt[v], ft[v]]$, allora $u$ \`e un discendente di $v$ nella foresta DF.
+\item L'intervallo $[dt[v], ft[v]]$ \`e contenuto in $[dt[u], ft[u]]$, allora $v$ \`e un discendente di $u$ nella foresta DF.
+\end{itemize}
+\paragraph{Teorema}
+un grafo \`e aciclico se e solo se non esistono archi all'indietro nel grafo.
+\subparagraph{Dimostrazione}
+Se esiste un ciclo, sia $u$ il primo nodo del ciclo che viene visitato e $(v, u$ un arco del ciclo. Il cammino che connette $v$ a $u$ verr\`a prima o poi
+visitato e da $v$ verr\`a scoperto l'arco all'indietro $(v, u)$. Se esiste un arco all'indietro $(u, v)$, dove $v$ \`e un antenato di $u$ allora esiste
+un cammino da $v$ a $u$ e un arco da $u$ a $v$, ovvero un ciclo.
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Nil}{nil}
+\SetKw{Return}{return}
+\SetKwData{Graph}{Graph}
+\SetKwData{Set}{Stack}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{SetCos}{Stack}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{dfs}
+\SetKwFunction{Insert}{push}
+\SetKwFunction{Remove}{pop}
+\SetKwFunction{Empty}{empty}
+\SetKwFunction{CC}{cc}
+\SetKwFunction{DfsSchema}{dfs-schema}
+\SetKwFunction{HasCycleRec}{hasCycleRec}
+\SetKwFunction{HasCycle}{hasCycle}
+
+\caption{\protect\HasCycle{\protect\Graph G, \protect\Node u, \protect\Int$\&$ time, \protect\Int[] dt, \protect\Int[] ft}}
+
+time += 1\;
+dt[u] = time\;
+\ForEach{v $\in$ G.\Adj{u}}{
+	\uIf{dt[v] == 0}{
+		\If{\HasCycle{G, v, time, dt, ft}}{
+			\Return \True\;		
+		}
+	}
+	\ElseIf{dt[u] $>$ dt[v] \And ft[v] == 0}{
+		\Return \True\;	
+	}
+}
+time +=1\;
+ft[u] = time\;
+\Return \False\;
+\end{algorithm}
+\subsubsection{Ordinamento topologico}
+L'algoritmo per un ordinamento topologico consiste in una dfs in cui l'operazione di visita consiste nell'aggiungere il nodo in testa ad una lista a tempo
+di fine (ovvero post-ordine). L'output sar\`a pertanto una sequenza di nodi ordinata per tempo decrescente di fine. In questo modo quando un nodo \`e finito
+tutti i suoi discendenti sono stati aggiunti alla lista e aggiungendolo in testa \`e nell'ordine corretto. 
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Nil}{nil}
+\SetKw{Return}{return}
+\SetKwData{Graph}{Graph}
+\SetKwData{Stack}{Stack}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{StackCos}{Stack}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{dfs}
+\SetKwFunction{Insert}{push}
+\SetKwFunction{Remove}{pop}
+\SetKwFunction{Empty}{empty}
+\SetKwFunction{CC}{cc}
+\SetKwFunction{DfsSchema}{dfs-schema}
+\SetKwFunction{HasCycleRec}{hasCycleRec}
+\SetKwFunction{HasCycle}{hasCycle}
+\SetKwFunction{TopSort}{topSort}
+\SetKwFunction{TsDfs}{ts-dfs}
+
+\caption{\protect\Stack \protect\TopSort{\protect\Graph G}}
+
+\Stack S = \StackCos{}\;
+\Boolean[] visited = \Boolean[G.\Size{}]\;
+\ForEach{u $\in$ G.\V{}}{
+	visited[u] = \False\;
+}
+\ForEach{u $\in$ G.\V{}}{
+	\If{\Not visited[u]}{
+		\TsDfs{G, visited, S}\;
+	}
+}
+\Return S\;
+\end{algorithm}
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Nil}{nil}
+\SetKw{Return}{return}
+\SetKwData{Graph}{Graph}
+\SetKwData{Stack}{Stack}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{StackCos}{Stack}
+\SetKwFunction{Push}{push}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{dfs}
+\SetKwFunction{Insert}{push}
+\SetKwFunction{Remove}{pop}
+\SetKwFunction{Empty}{empty}
+\SetKwFunction{CC}{cc}
+\SetKwFunction{DfsSchema}{dfs-schema}
+\SetKwFunction{HasCycleRec}{hasCycleRec}
+\SetKwFunction{HasCycle}{hasCycle}
+\SetKwFunction{TopSort}{topSort}
+\SetKwFunction{TsDfs}{ts-dfs}
+
+\caption{\protect\Stack \protect\TsDfs{\protect\Graph G, \protect\Node u, \protect\Boolean[] visited, \protect\Stack S}}
+
+visited[u] = \True\;
+\ForEach{v $\in$ G.\Adj{u}}{
+	\If{\Not visited[v]}{
+		\TsDfs{G, v, visited, S}\;	
+	}
+}
+S.\Push{u}\;
+\end{algorithm}
+\subsubsection{Algoritmo di Kosaraju}
+Utilizzato per trovare le componenti fortemente connesse di un grafo orientato. Per farlo effettua una visita dfs al grafo, calcola il grafo trasposto $G_t$
+ed esegue una visita dfs sul grafo $G_t$ utilizzando \emph{cc} esaminando i nodi in ordine inverso di tempo di fine della prima visita. Le componenti 
+connesse e i relativi alberi DF rappresentano le componenti fortemente connesse di $G$. (Sostituito dall'algoritmo di Tarjan che richiede una sola visita).
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Nil}{nil}
+\SetKw{Return}{return}
+\SetKwData{Graph}{Graph}
+\SetKwData{Stack}{Stack}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{StackCos}{Stack}
+\SetKwFunction{Push}{push}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{dfs}
+\SetKwFunction{Insert}{push}
+\SetKwFunction{Remove}{pop}
+\SetKwFunction{Empty}{empty}
+\SetKwFunction{CC}{cc}
+\SetKwFunction{DfsSchema}{dfs-schema}
+\SetKwFunction{HasCycleRec}{hasCycleRec}
+\SetKwFunction{HasCycle}{hasCycle}
+\SetKwFunction{TopSort}{topSort}
+\SetKwFunction{TsDfs}{ts-dfs}
+\SetKwFunction{Scc}{scc}
+\SetKwFunction{Transpose}{transpose}
+
+\caption{\protect\Int[] \protect\Scc{\protect\Graph G}}
+
+\Stack S = \TopSort{G}		\comment{First visit}
+\Graph $G^T$ = \Transpose{G}			\comment{Graph transposal}
+\Return cc{$G^T$, S}		\comment{Second visit}
+\end{algorithm}
+Applicando l'algoritmo topologico si \`e sicuri che se un arco $(u, v)$ non appartiene ad un ciclo, $u$ viene listato prima di $v$ nella sequenza ordinata e
+gli archi di un ciclo vengono listati in un qualche ordine che \`e ininfluente. Si utilizza \emph{topSort()} per ottenere i nodi in ordine decrescente di 
+tempo di fine. Essendo che ogni passo di questo algoritmo richiede $O(n+m)$, la complessit\`a totale \`e $O(m+n)$.
+\paragraph{Calcolo del grafo trasposto}
+Dato un grafo orientato $G=(V, E)$ il corrispettivo grafo trasposto $G_t=(V, E_t)$ \`e un grafo con gli stessi nodi ma con gli archi orientati nel senso 
+opposto: $E_t=\{(u, v)|(v, u)\in E\}$. L'algoritmo per il suo calcolo ha costo $O(m+n)$.
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Nil}{nil}
+\SetKw{Return}{return}
+\SetKwData{Graph}{Graph}
+\SetKwData{Stack}{Stack}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{StackCos}{Stack}
+\SetKwFunction{Push}{push}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{dfs}
+\SetKwFunction{Insert}{push}
+\SetKwFunction{Remove}{pop}
+\SetKwFunction{Empty}{empty}
+\SetKwFunction{CC}{cc}
+\SetKwFunction{DfsSchema}{dfs-schema}
+\SetKwFunction{HasCycleRec}{hasCycleRec}
+\SetKwFunction{HasCycle}{hasCycle}
+\SetKwFunction{TopSort}{topSort}
+\SetKwFunction{TsDfs}{ts-dfs}
+\SetKwFunction{Scc}{scc}
+\SetKwFunction{Transpose}{transpose}
+
+\caption{\protect\Int[] \protect\Transpose{\protect\Graph G}}
+
+\Graph $G^T$ = \GraphCos{G}\;
+\ForEach{u $\in$ G.\V{}}{
+	$G^T$.\InsertNode{u}\;
+}
+\ForEach{u $\in$ G.\V{}}{
+	\ForEach{v $\in$ G.\Adj{u}}{
+		$G^T$.\InsertEdge{v, u}
+	}
+}
+\Return $G^T$\;
+\end{algorithm}
+\newpage
+\paragraph{Calcolo delle componenti connesse}
+Invece di esaminare i nodi in ordine arbitrario questa versione li esamina nell'ordine LIFO memorizzato nello stack.
+\begin{multicols}{2}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Nil}{nil}
+\SetKw{Return}{return}
+\SetKwData{Graph}{Graph}
+\SetKwData{Stack}{Stack}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{StackCos}{Stack}
+\SetKwFunction{Push}{push}
+\SetKwFunction{Pop}{pop}
+\SetKwFunction{Empty}{isEmpty}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{dfs}
+\SetKwFunction{Insert}{push}
+\SetKwFunction{Remove}{pop}
+\SetKwFunction{Empty}{empty}
+\SetKwFunction{CC}{cc}
+\SetKwFunction{CCdfs}{ccdfs}
+\SetKwFunction{DfsSchema}{dfs-schema}
+\SetKwFunction{HasCycleRec}{hasCycleRec}
+\SetKwFunction{HasCycle}{hasCycle}
+\SetKwFunction{TopSort}{topSort}
+\SetKwFunction{TsDfs}{ts-dfs}
+\SetKwFunction{Scc}{scc}
+\SetKwFunction{Transpose}{transpose}
+
+\caption{\protect\Int[] \protect\CC{\protect\Graph G, \protect\Stack S}}
+
+\Int[] id = \New \Int[G.\Size{}]\;
+\ForEach{u $\in$ G.\V{}}{
+	id[u] = 0\;
+}
+\Int counter = 0\;
+\While{\Not S.\Empty{}}{
+	u = S.\Pop{}\;
+	\If{id[u] == 0}{
+		counter += 1\;
+		\CCdfs{G, counter, u, id}\;
+	}
+}
+\Return id\;
+\end{algorithm}
+\columnbreak
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Nil}{nil}
+\SetKw{Return}{return}
+\SetKwData{Graph}{Graph}
+\SetKwData{Stack}{Stack}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{StackCos}{Stack}
+\SetKwFunction{Push}{push}
+\SetKwFunction{Pop}{pop}
+\SetKwFunction{Empty}{isEmpty}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{dfs}
+\SetKwFunction{Insert}{push}
+\SetKwFunction{Remove}{pop}
+\SetKwFunction{Empty}{empty}
+\SetKwFunction{CC}{cc}
+\SetKwFunction{CCdfs}{ccdfs}
+\SetKwFunction{DfsSchema}{dfs-schema}
+\SetKwFunction{HasCycleRec}{hasCycleRec}
+\SetKwFunction{HasCycle}{hasCycle}
+\SetKwFunction{TopSort}{topSort}
+\SetKwFunction{TsDfs}{ts-dfs}
+\SetKwFunction{Scc}{scc}
+\SetKwFunction{Transpose}{transpose}
+
+\caption{\protect\CCdfs{\protect\Graph G, \protect\Int counter, \protect\Node u, \protect\Int[] id}}
+
+id[u] = counter\;
+\ForEach{v $\in$ G.\Adj{u}}{
+	\If{id[u] == 0}{
+		\CCdfs{G, counter, v, id}\;	
+	}
+}
+\end{algorithm}
+\end{multicols}
+\paragraph{Dimostrazione di correttezza}
+Si costruisca il grafo delle componenti $C(G)=(V_C, E_C)$, dove $V_C=\{C_1, \dots, C_k\}$, dove $C_i$ \`e la i-esima SCC di $G$ e $E_C=\{(C_i, C_j)|\exists 
+(u_i, u_j)\in E: u_i\in C_i\land u)j\in C_j\}$. Il grafo delle componenti \`e aciclico e inoltre $C(G^T)=[C(G)]^T$. I discovery e finish time del grafo 
+delle componenti corrispondono ai corrispettivi del primo nodo visitato in $C$: $dt(C)=\min\{dt(u)|u\in C\}$ e $ft(C)=\max\{ft(u)|u\in C\}$.
+\subparagraph{Teorema}
+Siano $C$ e $C'$ due distinte SCCs nel grafo orientato $G=(V, E)$. Se c'\`e un arco $(C, C')\in E_C$, allora $ft(C)>ft(C')$.
+\subparagraph{Corollario}
+Siano $C_u$ e $C_v$ due SCCs distinte nel grafo orientato $G=(V, E)$, se c\`e un arco $(u, v)\in E_T$ tale che $u\in C_u$ e $v\in C_v$, allora $ft(C_u)<
+ft(C_v)$. 
+\begin{align*}
+(u, v)\in E_T & \Rightarrow\\
+(v, u)\in E & \Rightarrow\\
+(C_v, C_u)\in E_C & \Rightarrow\\
+ft(C_v)>ft(C_u) & \Rightarrow\\
+ft(C_u)<ft(C_v) &
+\end{align*}
+\subparagraph{Conclusione}
+Se le componenti $C_u$ e $C_v$ sono connesse da un arco $(u, v)\in E_T$ allora dal corollario $ft(C_u)<ft(C_v)$ e dall'algoritmo la visita di $C_v$ 
+inizier\`a prima della visita di $C_u$. Non esistono cammini tra $C_u$ e $C_v$ in $E_T$ altrimenti il grafo sarebbe ciclico, pertando dall'algoritmo la
+visita di $C_v$ non raggiunger\`a mai $C_u$, pertanto \emph{cc()} assegner\`a correttamente gli identificatori delle componenti ai nodi.
