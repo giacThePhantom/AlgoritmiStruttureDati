@@ -310,6 +310,154 @@ algoritmo per la situazione.
 \item Analisi del caso medio: molto difficile in quanto si deve trovare una distribuzione uniforme degli input.
 \item Analisi del caso ottimo: ha senso se si conoscono caratteristiche dell'input.
 \end{itemize}
+\subsection{Algoritmi di ordinamento}
+Il problema di ordinamento \`e rappresentato da una sequenza $A=a_1, \dots, a_n$ di valori in input e d\`a in output una sequenza $B=b_1, \dots, b_n$ 
+permutazione di $B$ tale per cui $\forall 0<i<n-1, b_i\le b_{i+1}$.
+\subsubsection{Selection sort}
+Cerco il minimo e lo metto nella posizione corretta, riducendo il problema ai restanti $n-1$ valori.
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{To}{to}
+\SetKwData{Item}{item}
+\SetKwFunction{Min}{min}
+\SetKwFunction{SelectionSort}{selectionSort}
+
+\caption{\protect\SelectionSort{\protect\Item[] A, \protect\Int n}}
+
+\For{i = 1 \To n-1}{
+	\Int min = \Min{A, i, n}\;
+	A[i] $\leftrightarrow$ A[min]\;
+}
+
+\end{algorithm}
+
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{To}{to}
+\SetKw{Return}{return}
+\SetKwData{Item}{item}
+\SetKwFunction{Min}{min}
+\SetKwFunction{SelectionSort}{selectionSort}
+
+\caption{\protect\Min{\protect\Item[] A, \protect\Int i, \protect\Int n}}
+\comment{Posizione del minimo parziale}
+\Int min = i\;
+\For{j = i + 1 \To n}{
+	\If{A[j] $\le$ A[min]}{
+		\comment{Nuovo minimo parziale}
+		min = j\;	
+	}
+	\Return min\;
+}
+
+\end{algorithm}
+\paragraph{Complessit\`a}
+\begin{equation*}
+\sum\limits_{i=1}^{n-1}(n-i)=\sum\limits_{i=1}^{n-1}i=\dfrac{n(n-1)}{2}=n^2-\dfrac{n}{2}=O(n^2)
+\end{equation*}
+\subsubsection{InsertionSort}
+Algoritmo efficiente per ordinare piccoli insiemi. In cui si prende l'i-esimo elemento e lo si mette nella posizione corretta rispetto agli elementi
+precedenti, proseguendo fino alla fine.
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{To}{to}
+\SetKw{And}{and}
+\SetKwData{Item}{item}
+\SetKwFunction{Min}{min}
+\SetKwFunction{InsertionSort}{insertionSort}
+
+\caption{\protect\InsertionSort{\protect\Item[] A, \protect\Int n}}
+
+\For{i = 2 \To n}{
+	\Item temp = A[i]\;
+	\Int j = i\;
+	\While{j $>$ 1 \And A[j-1] $>$ temp}{
+		A[j] = A[j - 1]\;
+		j -= 1\;	
+	}
+	A[j] = temp\;
+}
+\end{algorithm}
+\paragraph{Correttezza e complessit\`a}
+DA COMPLETARE
+\subsubsection{MergeSort}
+Il mergeSort si basa sulla tecnica di divide-et-impera in quanto divide il vettore di $n$ elementi in due sottovettori di $\frac{n}{2}$ elementi, chiama il
+mergeSort ricorsivamente su quei due elementi e unisce (merge) le due sequenze ordinate. Si sfrutta il fatto che i due sottovettori sono gi\`a ordinati per
+ordinare pi\`u velocemente.
+\paragraph{\emph{merge()}}
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{To}{to}
+\SetKw{Down}{down}
+\SetKw{And}{and}
+\SetKwData{Item}{item}
+\SetKwFunction{Min}{min}
+\SetKwFunction{InsertionSort}{insertionSort}
+\SetKwFunction{Merge}{merge}
+\caption{\protect\Merge{\protect\Item[] A, \protect\Int first, \protect\Int last, \protect\Int mid}}
+\Int i, j, k , h\;
+i = first\;
+j = mid + 1\;
+k = first\;
+\While{i $\le$ mid \And j $\le$ last}{
+	\uIf{A[i] $\le$ A[j]}{
+		B[k] = A[i]\;
+		i += 1\;	
+	}
+	\Else{
+		B[k] = A[j]\;
+		j += 1\;	
+	}
+	k += 1\;
+}
+j = last\;
+\For{h = mid \Down \To i}{
+	A[j] = A[h]\;
+	j -= 1\;
+}
+\For{j = first \To k-1}{
+	A[j] = B[j]\;
+}
+\end{algorithm}
+\subparagraph{Costo computazionale} $O(n)$
+\myparagraph{\emph{mergeSort()}}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{To}{to}
+\SetKw{Down}{down}
+\SetKw{And}{and}
+\SetKwData{Item}{item}
+\SetKwFunction{Min}{min}
+\SetKwFunction{MergeSort}{mergeSort}
+\SetKwFunction{Merge}{merge}
+\caption{\protect\MergeSort{\protect\Item[] A, \protect\Int first, \protect\Int last}}
+\If{first $<$ last}{
+	\Int mid = $\lfloor\dfrac{first + last}{2}\rfloor$\;
+	\MergeSort{A, first, mid}\;
+	\MergeSort{A, mid + 1, last}\;
+	\Merge{A, first, last, mid}\; 
+}
+\end{algorithm}
+\subparagraph{Costo computazionale} Si assuma per semplificare che $n = 2^k$ in modo che $k=\log n$ e tutti i sottovettori hanno dimensioni di potenze 
+esatte di due. Si ottiene cos\`i l'equazione di ricorrenza:
+\begin{equation*}
+T(n)=\begin{cases}
+c\quad\quad & n=1\\
+2T(\frac{n}{2})+dn & n>1\\
+\end{cases}
+\end{equation*}
+Si noti come ad ogni chiamata ricorsiva si svolga un'operazione di merge di costo $O(1)$ e $k$ vari tra $0$ e $\log n$. Si ottiene pertanto 
+$O(\sum\limits_{i=0}^ks^i\frac{n}{2^i})=O(\sum\limits_{i=0}^kn)=O(kn)\Leftrightarrow O(n\log n)$. 
 \section{Analisi ammortizzata}
 Si intende per analisi ammortizzata una tecnica di analisi di complessit\`a che valuta il tempo per eseguire nel caso pessimo una sequenza di operazioni 
 su una struttura dati. Esistono operazioni pi\`u o meno costose e se le operazioni costose sono meno frequenti allora il loro costo pu\`o essere 
