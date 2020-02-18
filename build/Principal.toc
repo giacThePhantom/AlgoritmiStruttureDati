@@ -279,8 +279,21 @@
 \contentsline {subsubsection}{Rappresentante}{85}{section*.215}% 
 \contentsline {subsection}{\numberline {9.2.1}Specifica}{86}{subsection.9.2.1}% 
 \contentsline {subsection}{\numberline {9.2.2}Componenti connesse dinamiche}{86}{subsection.9.2.2}% 
-\contentsline {chapter}{\numberline {10}Programmazione dinamica}{87}{chapter.10}% 
-\contentsline {section}{\numberline {10.1}Approccio generale}{87}{section.10.1}% 
-\contentsline {subsection}{\numberline {10.1.1}Evitare di risolvere i problemi pi\`u di una volta}{87}{subsection.10.1.1}% 
-\contentsline {subsection}{\numberline {10.1.2}Ricostruire la soluzione}{88}{subsection.10.1.2}% 
-\contentsline {section}{\numberline {10.2}Memoization}{88}{section.10.2}% 
+\contentsline {subsection}{\numberline {9.2.3}Implementazione con insieme di liste}{86}{subsection.9.2.3}% 
+\contentsline {subsubsection}{Operazione \emph {find(x)}}{86}{section*.216}% 
+\contentsline {subsubsection}{Operazione \emph {merge(x, y)}}{86}{section*.217}% 
+\contentsline {subsection}{\numberline {9.2.4}Implementazione con insieme di alberi}{86}{subsection.9.2.4}% 
+\contentsline {subsubsection}{Operazione \emph {find(x)}}{87}{section*.218}% 
+\contentsline {subsubsection}{Operazione \emph {merge(x, y)}}{87}{section*.219}% 
+\contentsline {subsection}{\numberline {9.2.5}Tecniche euristiche}{87}{subsection.9.2.5}% 
+\contentsline {subsubsection}{Liste: euristica sul peso}{87}{section*.220}% 
+\contentsline {subsubsection}{Alberi: euristica sul rango}{87}{section*.221}% 
+\contentsline {subsubsection}{Alberi: euristica di compressione dei cammini}{88}{section*.222}% 
+\contentsline {subsubsection}{Alberi: euristica sul rango e compressione dei cammini}{88}{section*.223}% 
+\contentsline {chapter}{\numberline {10}Scelta}{89}{chapter.10}% 
+\contentsline {chapter}{\numberline {11}Divide-et-impera}{91}{chapter.11}% 
+\contentsline {chapter}{\numberline {12}Programmazione dinamica}{93}{chapter.12}% 
+\contentsline {section}{\numberline {12.1}Approccio generale}{93}{section.12.1}% 
+\contentsline {subsection}{\numberline {12.1.1}Evitare di risolvere i problemi pi\`u di una volta}{93}{subsection.12.1.1}% 
+\contentsline {subsection}{\numberline {12.1.2}Ricostruire la soluzione}{94}{subsection.12.1.2}% 
+\contentsline {section}{\numberline {12.2}Memoization}{94}{section.12.2}% 

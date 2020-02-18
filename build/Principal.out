@@ -99,8 +99,13 @@
 \BOOKMARK [1][-]{section.9.2}{Insiemi disgiunti - Merge-find set}{chapter.9}% 99
 \BOOKMARK [2][-]{subsection.9.2.1}{Specifica}{section.9.2}% 100
 \BOOKMARK [2][-]{subsection.9.2.2}{Componenti connesse dinamiche}{section.9.2}% 101
-\BOOKMARK [0][-]{chapter.10}{Programmazione dinamica}{}% 102
-\BOOKMARK [1][-]{section.10.1}{Approccio generale}{chapter.10}% 103
-\BOOKMARK [2][-]{subsection.10.1.1}{Evitare di risolvere i problemi pi\371 di una volta}{section.10.1}% 104
-\BOOKMARK [2][-]{subsection.10.1.2}{Ricostruire la soluzione}{section.10.1}% 105
-\BOOKMARK [1][-]{section.10.2}{Memoization}{chapter.10}% 106
+\BOOKMARK [2][-]{subsection.9.2.3}{Implementazione con insieme di liste}{section.9.2}% 102
+\BOOKMARK [2][-]{subsection.9.2.4}{Implementazione con insieme di alberi}{section.9.2}% 103
+\BOOKMARK [2][-]{subsection.9.2.5}{Tecniche euristiche}{section.9.2}% 104
+\BOOKMARK [0][-]{chapter.10}{Scelta}{}% 105
+\BOOKMARK [0][-]{chapter.11}{Divide-et-impera}{}% 106
+\BOOKMARK [0][-]{chapter.12}{Programmazione dinamica}{}% 107
+\BOOKMARK [1][-]{section.12.1}{Approccio generale}{chapter.12}% 108
+\BOOKMARK [2][-]{subsection.12.1.1}{Evitare di risolvere i problemi pi\371 di una volta}{section.12.1}% 109
+\BOOKMARK [2][-]{subsection.12.1.2}{Ricostruire la soluzione}{section.12.1}% 110
+\BOOKMARK [1][-]{section.12.2}{Memoization}{chapter.12}% 111

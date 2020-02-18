@@ -657,3 +657,171 @@ disgiunto rappresenta una componente connessa.
 \end{algorithm}
 \end{multicols}
 Questo algoritmo ha complessit\`a $O(n)+m$ operazioni \emph{merge()}, interessante per la capacit\`a di gestire grafi dinamici.
+\subsection{Implementazione con insieme di liste}
+Ogni insieme viene rappresentato da una lista concatenata: il primo oggetto di una lista \`e il rappresentante dell'insieme e ogni elemento della lista contiene un oggetto, un puntatore all'elemento successivo e
+un puntatore al rappresentante. 
+\subsubsection{Operazione \emph{find(x)}}
+Si restituisce il rappresentante di $x$, l'operazione \emph{find(x)} richiede tempo $O(1)$.
+\subsubsection{Operazione \emph{merge(x, y)}}
+Si appende la lista che contiene $y$ alla lista che contiene $x$ modificando i puntatori ai rappresentanti nella lista appesa. Nel caso pessimo per $n$ operazioni il costo \`e $O(n^2)$, il costo ammortizzato \`e
+$O(n)$.
+\subsection{Implementazione con insieme di alberi}
+Ogni insieme viene rappresentato da un albero, ogni nodo dell'albero contiene un oggetto e un puntatore al padre, la radice \`e il rappresentante dell'insieme e ha un puntatore a s\`e stessa.
+\subsubsection{Operazione \emph{find(x)}}
+Risale la lista dei padri di $x$ fino a trovare la radice e restituisce la radice come rappresentante. Ha costo $O(n)$ nel caso pessimo
+\subsubsection{Operazione \emph{merge(x, y)}}
+Si aggancia l'albero radicato in $y$ a $y$ modificando il puntatore al padre di $y$, con costo $O(1)$.
+\subsection{Tecniche euristiche}
+Si dice algoritmo euristico un particolare tipo di algoritmo progettato per risolvere un problema pi\`u velocemente se i metodi classici siano troppo lenti, trovare una soluzione approssimata qualora i metodi 
+classici falliscano nel trovare una soluzione esatta. 
+\subsubsection{Liste: euristica sul peso}
+Si utilizza per diminuire il costo dell'operazione \emph{merge()} si memorizza nella lista l'informazione sulla loro lunghezza e si aggancia la lista pi\`u corta a quella pi\`u lunga. La lunghezza della lista pu\`o 
+essere mantenuta in tempo $O(1)$. Tramite analisi ammortizzata si nota come il costo di $n-1$ operazioni merge \`e $O(n\log n)$, pertanto il costo ammortizzato delle singole operazioni \`e $O(\log n)$.
+\subsubsection{Alberi: euristica sul rango}
+Si utilizza per diminuire il costo dell'operazione \emph{find(x)}: ogni nodo mantiene informazioni sul proprio rango, \emph{rank[x]} di un nodo $x$ \`e il numero di archi del cammino pi\`u lungo fra $x$ e una 
+foglia sia discendente, ovvero l'altezza del sottoalbero associato al nodo. L'obiettivo \`e mantenere bassa l'altezza degli alberi. Un albero \emph{Mfset} con radice $r$ ottenuto tramite euristica sul
+rango ha almeno $2^{ranl[r]}$ nodi. Inoltre lo stesso albero con radice $r$ e $n$ nodi ha altezza inferiore a $\log n$. 
+\begin{multicols}{2}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+
+\SetKwFunction{V}{V}
+\SetKwFunction{MfsetCos}{Mfset}
+\SetKwFunction{Find}{find}
+\SetKwFunction{Merge}{merge}
+\SetKwFunction{Cc}{cc}
+\SetKwFunction{Adj}{adj}
+
+\SetKwProg{Fn}{}{}
+
+\caption{\protect\Mfset}
+\Int[] parent\;
+\Int[] rank[]\;
+\Mfset\Space\Fn{\MfsetCos{\Int n}}{
+	\Mfset t = \New \MfsetCos{}\;
+	t.\Parent = \Int[1$\dots$n]\;
+	t.\Rank = \Int[1$\dots$n]\;
+	\For{\Int i = 1 \To n}{
+		t.\Parent[i] = i\;
+		t.\Rank[i] = 0\;	
+	}
+	\Return t\;
+}
+\end{algorithm}
+\columnbreak
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+
+\SetKwFunction{V}{V}
+\SetKwFunction{MfsetCos}{Mfset}
+\SetKwFunction{Find}{find}
+\SetKwFunction{Merge}{merge}
+\SetKwFunction{Cc}{cc}
+\SetKwFunction{Adj}{adj}
+
+\SetKwProg{Fn}{}{}
+
+\caption{\protect\Merge{\protect\Int x, \protect\Int y}}
+\Item $r_x$ = \Find{x}\;
+\Item $r_y$ = \Find{y}\;
+\If{$r_x\ \neq\ r_y$}{
+	\uIf{rank[$r_x$] $>$ rank[$r_y$]}{
+		parent[$r_y$] = $r_x$\;	
+	}
+	\uIf{rank[$r_y$] $>$ rank[$r_x$]}{
+		parent[$r_x$] = $r_y$\;	
+	}
+	\Else{
+			parent[$r_x$] = $r_y$\;
+			rank[$r_y$] += 1\;
+	}
+}
+\end{algorithm}
+\end{multicols}
+\subsubsection{Alberi: euristica di compressione dei cammini}
+\begin{multicols}{2}
+Nell'operazione \emph{find(x)} l'albero viene appiattito in modo che ricerche successive di $x$ siano svolte in $O(1)$.
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+
+\SetKwFunction{V}{V}
+\SetKwFunction{MfsetCos}{Mfset}
+\SetKwFunction{Find}{find}
+\SetKwFunction{Merge}{merge}
+\SetKwFunction{Cc}{cc}
+\SetKwFunction{Adj}{adj}
+
+\SetKwProg{Fn}{}{}
+
+\caption{\protect\Int \protect\Find{\protect\Int x}}
+\If{parent[x] $\neq$ x}{
+	parent[x] = \Find{parent[x]}
+}
+\Return parent[x]\;
+\end{algorithm}
+\end{multicols}
+\subsubsection{Alberi: euristica sul rango e compressione dei cammini}
+Applicando entrambe le euristiche il rango non \`e pi\`u l'altezza del nodo ma il limite superiore alla sua altezza. Non viene calcolato il rango corretto. Il costo ammortizzato di $m$ operazioni merge-find in un 
+insieme di $n$ elementi \`e $O(m\alpha(n))$, dove $\alpha(n)$ o funzione inversa di Ackermann cresce lentamente. 
