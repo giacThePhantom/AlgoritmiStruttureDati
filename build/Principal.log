@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2019.11.16)  18 FEB 2020 08:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2019.11.16)  18 FEB 2020 09:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2062,12 +2062,22 @@ l.546 ...\protect\PriorityItem x, \protect\Int p}}
                                                   
 Underfull \vbox (badness 2073) has occurred while \output is active []
 
- [84])
-(./Chapters/10_ProgrammazioneDinamica.tex [85] [86
-
-]
+ [84]pdfTeX warning (ext4): destination with the same identifier (name{algocf.}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.611 \caption{\protect\Mfset}
+                               [85]pdfTeX warning (ext4): destination with the 
+same identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.649 ...tect\Mfset \protect\Cc{\protect\Graph G}}
+                                                  )
+(./Chapters/10_ProgrammazioneDinamica.tex [86]
 Capitolo 10.
-[87] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
+[87
+
+] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2019/09/10 1.8c listings language file
 )
 (build/../Codice/MemoizationAutomatica.py
@@ -2089,10 +2099,10 @@ Package rerunfilecheck Info: File `Principal.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
  ) 
 Here is how much of TeX's memory you used:
- 47642 strings out of 492167
- 1031230 string characters out of 6131557
- 1372529 words of memory out of 5000000
- 50846 multiletter control sequences out of 15000+600000
+ 47660 strings out of 492167
+ 1031404 string characters out of 6131557
+ 1372674 words of memory out of 5000000
+ 50858 multiletter control sequences out of 15000+600000
  547474 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,22n,113p,816b,1614s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2117,15 +2127,16 @@ l10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/
 share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmsy5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texmf-dist/fonts/
-type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/pub
-lic/cm-super/sfrm1000.pfb>
-Output written on build/Principal.pdf (88 pages, 511549 bytes).
+/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><
+/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texmf-dist/fonts/type1/public/am
+sfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sf
+rm1000.pfb>
+Output written on build/Principal.pdf (88 pages, 523653 bytes).
 PDF statistics:
- 1440 PDF objects out of 1440 (max. 8388607)
- 1306 compressed objects within 14 object streams
- 498 named destinations out of 1000 (max. 500000)
- 837 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1463 PDF objects out of 1728 (max. 8388607)
+ 1328 compressed objects within 14 object streams
+ 504 named destinations out of 1000 (max. 500000)
+ 861 words of extra memory for PDF output out of 10000 (max. 10000000)
 

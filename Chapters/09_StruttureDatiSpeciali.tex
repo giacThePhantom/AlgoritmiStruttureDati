@@ -571,3 +571,89 @@ Operazione & Costo\\
 \hline
 \end{tabular}
 \end{center}
+\section{Insiemi disgiunti - Merge-find set}
+In alcune applicazioni si \`e interessati a gestire una collezione $S=\{S_1, \dots, S_k\}$ di insiemi dinamici disgiunti tali che:
+\begin{itemize}
+\item $\forall i, j: i\neq j\Rightarrow S_i\cap S_j = \emptyset$.
+\item $\bigcup\limits_{i =1}^k S_i = S$.
+\end{itemize}
+Un esempio di questi insiemi sono le componenti di un grafo. Le operazioni fondamentali sono: 
+\begin{itemize}
+\item Creare $n$ insiemi disgiunti, ognuno composto da un unico elemento.
+\item \emph{merge()}: unire pi\`u insiemi.
+\item \emph{find()}: identificare l'insieme a cui appartiene un elemento.
+\end{itemize}
+\subsubsection{Rappresentante}
+Ogni insieme \`e identificato da un rappresentante univoco, un qualunque membro dell'insieme. Le operazioni di ricerca del rappresentante su uno stesso insieme devono restituire sempre lo stesso oggetto. Il
+rappresentante pu\`o cambiare solo in caso di unione.
+\subsection{Specifica}
+ \begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{Precondition}{precondition:}
+
+\SetKwData{Mfset}{Mfset}
+
+\SetKwFunction{MfsetCos}{Mfset}
+\SetKwFunction{Find}{find}
+\SetKwFunction{Merge}{merge}
+
+\caption{\protect\Mfset}
+\comment{Crea n componenti $\{1\}, \dots, \{n\}$}
+\Mfset \MfsetCos{\Int n}\;
+\comment{Restituisce il rappresentante della componente x}
+\Int \Find{\Int x}\;
+\comment{Unisce le componenti che contengono x e y}
+\Merge{\Int x, \Int y}
+\end{algorithm}
+\subsection{Componenti connesse dinamiche}
+\begin{multicols}{2}
+Per trovare le componenti connesse di un grafo non orientato dinamico si inizia con componenti connesse costituite da un unico vertice, per ogni $(u, v)\in E$ si esegue \emph{merge(u, v)} e alla fine ogni insieme
+disgiunto rappresenta una componente connessa.
+ \begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{Return}{return}
+
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+
+\SetKwFunction{V}{V}
+\SetKwFunction{MfsetCos}{Mfset}
+\SetKwFunction{Find}{find}
+\SetKwFunction{Merge}{merge}
+\SetKwFunction{Cc}{cc}
+\SetKwFunction{Adj}{adj}
+
+\caption{\protect\Mfset \protect\Cc{\protect\Graph G}}
+\Mfset M = \MfsetCos{G.\N}\;
+\ForEach{u $\in$ G.\V{}}{
+	\ForEach{v $\in$ G.\Adj{u}}{
+		M.\Merge{u, v}\;	
+	}
+}
+\Return M\;
+\end{algorithm}
+\end{multicols}
+Questo algoritmo ha complessit\`a $O(n)+m$ operazioni \emph{merge()}, interessante per la capacit\`a di gestire grafi dinamici.

@@ -275,6 +275,10 @@
 \contentsline {subsubsection}{Cancellazione e lettura minimo}{84}{section*.212}% 
 \contentsline {subsubsection}{Decremento priorit\`a}{85}{section*.213}% 
 \contentsline {subsubsection}{Complessit\`a}{85}{section*.214}% 
+\contentsline {section}{\numberline {9.2}Insiemi disgiunti - Merge-find set}{85}{section.9.2}% 
+\contentsline {subsubsection}{Rappresentante}{85}{section*.215}% 
+\contentsline {subsection}{\numberline {9.2.1}Specifica}{86}{subsection.9.2.1}% 
+\contentsline {subsection}{\numberline {9.2.2}Componenti connesse dinamiche}{86}{subsection.9.2.2}% 
 \contentsline {chapter}{\numberline {10}Programmazione dinamica}{87}{chapter.10}% 
 \contentsline {section}{\numberline {10.1}Approccio generale}{87}{section.10.1}% 
 \contentsline {subsection}{\numberline {10.1.1}Evitare di risolvere i problemi pi\`u di una volta}{87}{subsection.10.1.1}% 
