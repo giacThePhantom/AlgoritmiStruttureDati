@@ -1,0 +1,27 @@
+\chapter{Programmazione dinamica}
+Si dice programmazione dinamica un metodo per dividere un problema ricorsivamente in sottoproblemi in modo che ogni sottoproblema venga rivolto una volta sola e la sua soluzione venga memorizzata in
+una tabella. Se un sottoproblema deve essere risolto nuovamente si ottiene la sua soluzione dalla tabella (lookup in $O(1)$).
+\section{Approccio generale}
+Se si parte da un problema di ottimizzazione si definisce la soluzione in maniera ricorsiva, successivamente si definisce il valore della soluzione in maniera ricorsiva (primo passo per problemi di conteggio). Se da
+qui non sono presenti sottoproblemi ripetuti si utilizza divide et impera; se sono presenti sottoproblemi ripetuti e bisogna risolverli tutti si utilizza la programmazione dinamica, se non devono essere risolti tutti
+si usa memoization. Dalla tabella delle soluzioni si ottiene l'output numerico o la ricostruzione della soluzione che permette di arrivare alla soluzione ottima. 
+\subsection{Evitare di risolvere i problemi pi\`u di una volta}
+Quando si risolve un problema si memorizza il risultato ottenuto in una tabella DP, che pu\`o essere un vettore, una matrice o un dizionario. La tabella deve contenere un elemento per ogni sottoproblema che
+deve essere risolto.
+\begin{itemize}
+\item Casi base: si memorizzano i casi base direttamente nella tabella.
+\item Iterazione bottom-up: si parte dai sottoproblemi che possono essere risolti direttamente a partire dai casi base, si sale verso problemi sempre pi\`u grandi fino a raggiungere il problema originale. 
+\end{itemize} 
+\subsection{Ricostruire la soluzione}
+Per ricostruire la soluzione si parte dalla definizione ricorsiva del problema, la dimensione di $n$ indica l'indice sulla tabella che si deve controllare e si definisce un controllo su quale delle chiamate ricorsive viene
+realmente effettuata.
+\section{Memoization}
+Questa tecnica fonde l'approccio di memorizzazione della programmazione dinamica con quello top-down di divide-et-impera: si crea una tabella DP inizializzata con un valore speciale ad indicare che un certo 
+sottoproblema non \`e ancora stato risolto. Ogni volta che si deve risolvere un sottoproblema si controlla nella tabella se \`e gi\`a stato risolto precedentemente:
+\begin{itemize}
+\item gi\`a risolto: si utilizza il risultato della tabella.
+\item non risolto: si calcola il risultato e lo si memorizza
+\end{itemize}
+In questo modo ogni sottoproblema viene calcolato una sola volta e memorizzato come nella versione bottom-up. Questa tecnica presenta vantaggi quando invece di utilizzare una tabella si utilizza un dizionario in
+quanto non \`e pi\`u necessario fare inizializzazione.
+\lstinputlisting[caption={Memoization automatica in Python}, language={python}]{../Codice/MemoizationAutomatica.py}
