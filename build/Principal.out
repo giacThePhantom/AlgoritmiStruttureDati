@@ -103,9 +103,16 @@
 \BOOKMARK [2][-]{subsection.9.2.4}{Implementazione con insieme di alberi}{section.9.2}% 103
 \BOOKMARK [2][-]{subsection.9.2.5}{Tecniche euristiche}{section.9.2}% 104
 \BOOKMARK [0][-]{chapter.10}{Scelta}{}% 105
-\BOOKMARK [0][-]{chapter.11}{Divide-et-impera}{}% 106
-\BOOKMARK [0][-]{chapter.12}{Programmazione dinamica}{}% 107
-\BOOKMARK [1][-]{section.12.1}{Approccio generale}{chapter.12}% 108
-\BOOKMARK [2][-]{subsection.12.1.1}{Evitare di risolvere i problemi pi\371 di una volta}{section.12.1}% 109
-\BOOKMARK [2][-]{subsection.12.1.2}{Ricostruire la soluzione}{section.12.1}% 110
-\BOOKMARK [1][-]{section.12.2}{Memoization}{chapter.12}% 111
+\BOOKMARK [0][-]{chapter.11}{Risoluzione problemi}{}% 106
+\BOOKMARK [1][-]{section.11.1}{Classificazione dei problemi}{chapter.11}% 107
+\BOOKMARK [1][-]{section.11.2}{Definizione matematica del problema}{chapter.11}% 108
+\BOOKMARK [1][-]{section.11.3}{Tecniche di soluzione problemi}{chapter.11}% 109
+\BOOKMARK [0][-]{chapter.12}{Divide-et-impera}{}% 110
+\BOOKMARK [1][-]{section.12.1}{Le torri di Hanoi}{chapter.12}% 111
+\BOOKMARK [1][-]{section.12.2}{Quicksort}{chapter.12}% 112
+\BOOKMARK [2][-]{subsection.12.2.1}{Caratterizzazione}{section.12.2}% 113
+\BOOKMARK [0][-]{chapter.13}{Programmazione dinamica}{}% 114
+\BOOKMARK [1][-]{section.13.1}{Approccio generale}{chapter.13}% 115
+\BOOKMARK [2][-]{subsection.13.1.1}{Evitare di risolvere i problemi pi\371 di una volta}{section.13.1}% 116
+\BOOKMARK [2][-]{subsection.13.1.2}{Ricostruire la soluzione}{section.13.1}% 117
+\BOOKMARK [1][-]{section.13.2}{Memoization}{chapter.13}% 118

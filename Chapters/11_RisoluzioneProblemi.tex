@@ -1,0 +1,34 @@
+\chapter{Risoluzione problemi}
+Dato un problema \`e possibile evidenziare quattro fasi, non necessariamente sequenziali in modo trovare una soluzione efficiente:
+\begin{itemize}
+\item Classificazione del problema.
+\item Caratterizzazione della soluzione.
+\item Tecnica di progetto.
+\item Utilizzo di strutture dati.
+\end{itemize}
+\section{Classificazione dei problemi}
+\subsubsection{Problemi decisionali}
+Determinare se un dato di ingresso soddisfa una certa propriet\`a.
+\subsubsection{Problemi di ricerca}
+\`E presente uno spazio di ricerca, un insieme di soluzioni possibili, una soluzione ammissibile, che rispetta certi vincoli.
+\subsubsection{Problemi di ottimizzazione}
+Ogni soluzione viene associata ad una funzione di costo, si vuole trovare la soluzione di costo minimo.
+\subsubsection{Problemi di approssimazione}
+Questo tipo di problemi nasce quando trovare la soluzione ottima \`e computazionalmente impossibile e pertanto ci si accontenta di una soluzione approssimata con costo basso, ma l'ottimalit\`a \`e sconosciuta.
+\section{Definizione matematica del problema}
+\`E fondamentale definire il problema dal punto id vista matematico, spesso la formulazione \`e banale ma pu\`o suggerire una prima soluzione. 
+\section{Tecniche di soluzione problemi}
+\subsubsection{Divide-et-impera}
+Un problema viene suddiviso in sotto-problemi indipendenti che vengono risolti ricorsivamente (top-down) nell'ambito di problemi di decisione e ricerca.
+\subsubsection{Programmazione dinamica}
+La soluzione viene costruita bottom-up a partire da un insieme di sotto-problemi potenzialmente ripetuti nell'ambito dei problemi di ottimizzazione.
+\subsubsection{Memoization}
+Una versione top-down della programmazione dinamica.
+\subsubsection{Tecnica greedy}
+Approccio ingordo: si fa sempre la scelta localmente ottima.
+\subsubsection{Backtrack}
+Si procede per tentativi tornando quando necessario all'indietro.
+\subsubsection{Ricerca locale}
+La soluzione ottima viene trovata migliorando via via soluzioni esistenti.
+\subsubsection{Algoritmi probabilistici}
+Algoritmi in cui certe scelte avvengono in maniera casuale. 

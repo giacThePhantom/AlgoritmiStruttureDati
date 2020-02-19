@@ -291,9 +291,31 @@
 \contentsline {subsubsection}{Alberi: euristica di compressione dei cammini}{88}{section*.222}% 
 \contentsline {subsubsection}{Alberi: euristica sul rango e compressione dei cammini}{88}{section*.223}% 
 \contentsline {chapter}{\numberline {10}Scelta}{89}{chapter.10}% 
-\contentsline {chapter}{\numberline {11}Divide-et-impera}{91}{chapter.11}% 
-\contentsline {chapter}{\numberline {12}Programmazione dinamica}{93}{chapter.12}% 
-\contentsline {section}{\numberline {12.1}Approccio generale}{93}{section.12.1}% 
-\contentsline {subsection}{\numberline {12.1.1}Evitare di risolvere i problemi pi\`u di una volta}{93}{subsection.12.1.1}% 
-\contentsline {subsection}{\numberline {12.1.2}Ricostruire la soluzione}{94}{subsection.12.1.2}% 
-\contentsline {section}{\numberline {12.2}Memoization}{94}{section.12.2}% 
+\contentsline {chapter}{\numberline {11}Risoluzione problemi}{91}{chapter.11}% 
+\contentsline {section}{\numberline {11.1}Classificazione dei problemi}{91}{section.11.1}% 
+\contentsline {subsubsection}{Problemi decisionali}{91}{section*.224}% 
+\contentsline {subsubsection}{Problemi di ricerca}{91}{section*.225}% 
+\contentsline {subsubsection}{Problemi di ottimizzazione}{91}{section*.226}% 
+\contentsline {subsubsection}{Problemi di approssimazione}{91}{section*.227}% 
+\contentsline {section}{\numberline {11.2}Definizione matematica del problema}{92}{section.11.2}% 
+\contentsline {section}{\numberline {11.3}Tecniche di soluzione problemi}{92}{section.11.3}% 
+\contentsline {subsubsection}{Divide-et-impera}{92}{section*.228}% 
+\contentsline {subsubsection}{Programmazione dinamica}{92}{section*.229}% 
+\contentsline {subsubsection}{Memoization}{92}{section*.230}% 
+\contentsline {subsubsection}{Tecnica greedy}{92}{section*.231}% 
+\contentsline {subsubsection}{Backtrack}{92}{section*.232}% 
+\contentsline {subsubsection}{Ricerca locale}{92}{section*.233}% 
+\contentsline {subsubsection}{Algoritmi probabilistici}{92}{section*.234}% 
+\contentsline {chapter}{\numberline {12}Divide-et-impera}{93}{chapter.12}% 
+\contentsline {section}{\numberline {12.1}Le torri di Hanoi}{93}{section.12.1}% 
+\contentsline {section}{\numberline {12.2}Quicksort}{94}{section.12.2}% 
+\contentsline {subsection}{\numberline {12.2.1}Caratterizzazione}{94}{subsection.12.2.1}% 
+\contentsline {subsubsection}{Input}{94}{section*.235}% 
+\contentsline {subsubsection}{Divide}{94}{section*.236}% 
+\contentsline {subsubsection}{Impera}{94}{section*.237}% 
+\contentsline {subsubsection}{Combina}{94}{section*.238}% 
+\contentsline {chapter}{\numberline {13}Programmazione dinamica}{95}{chapter.13}% 
+\contentsline {section}{\numberline {13.1}Approccio generale}{95}{section.13.1}% 
+\contentsline {subsection}{\numberline {13.1.1}Evitare di risolvere i problemi pi\`u di una volta}{95}{subsection.13.1.1}% 
+\contentsline {subsection}{\numberline {13.1.2}Ricostruire la soluzione}{96}{subsection.13.1.2}% 
+\contentsline {section}{\numberline {13.2}Memoization}{96}{section.13.2}% 

@@ -1,0 +1,171 @@
+\chapter{Divide-et-impera}
+In questo metodo di risoluzione problemi ci sono tre fasi: 
+\begin{itemize}
+\item Divide: si divide il problema in sotto-problemi pi\`u piccoli e indipendenti.
+\item Impera: si risolvono i sotto-problemi ricorsivamente.
+\item Combina: si uniscono le soluzioni dei sottoproblemi. 
+\end{itemize}
+\section{Le torri di Hanoi}
+Le torri di Hanoi \`e un gioco matematico costituito da tre pioli con $n$ dischi di dimensioni diverse. Inizialmente i dischi sono impilati in ordine decrescente nel piolo di sinistra. Lo scopo del gioco \`e impilare
+in ordine decrescente i dischi sul piolo di destra; senza mai impilare un disco pi\`u grande su uno pi\`u piccolo, muovendo al massimo un disco alla volta e utilizzando il piolo centrale come appoggio. 
+\begin{multicols}{2}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+
+\SetKwFunction{Hanoi}{hanoi}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Hanoi{\protect\Int n, \protect\Int src, \protect\Int middle}}
+\uIf{n = 1}{
+	\Print srt $\rightarrow$ dest\;	
+}
+\Else{
+	\Hanoi{n -1, src, middle, dest}\;
+	\Print src $\rightarrow$ dest\;
+	\Hanoi{n -1, middle, dest, src}\;
+}
+
+
+\end{algorithm}
+Questo algoritmo trova la soluzione ottima, la ricorrenza \`e $$T(n) = 2T(n-1)+1$$ con costo computazionale $O(2^n)$.
+\end{multicols}
+\section{Quicksort}
+Quicksort \`e un algoritmo di ordinamento basato su divide-et-impera, nel caso medio \`e $O(n\log n)$, nel caso pessimo $O(n^2)$. Il fattore costante \`e migliore di quello di Mergesort, non utilizza memoria
+addizionale e presenta tecniche euristiche per evitare il caso pessimo.
+\subsection{Caratterizzazione}
+\subsubsection{Input}
+Un vettore $A[1\dots n]$, indici \emph{start}, \emph{end} tali che $1\le start\le end\le n$.
+\subsubsection{Divide}
+Si sceglie un valore $p\in A[start\dots end]$ detto perno o pivot. Si spostano gli elementi del vettore $A[start\dots end]$ in modo tale che:
+\begin{itemize}
+\item $\forall i\in [start\dots j-1]: A[i]\le p$.
+\item $\forall i\in [j+1\dots end]: A[i]\ge p$.
+\end{itemize}
+L'indice $j$ viene calcolato in modo tale da rispettare tale condizione, il perno viene messo in posizione $A[j]$. 
+\subsubsection{Impera}
+Ordina i due sottovettori $A[start\dots j-1]$ e $A[j+1\dots end]$ richiamando ricorsivamente Quicksort.
+\subsubsection{Combina}
+Non fa nulla: il primo vettore, $A[j]$ e il secondo vettore formano gi\`a un vettore ordinato. 
+\begin{multicols}{2}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+
+\SetKwFunction{Hanoi}{hanoi}
+\SetKwFunction{Pivot}{pivot}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Int \protect\Pivot{\protect\Item[] A, \protect\Int start, \protect\Int end}}
+\Item p = A[start]\;
+\Int j = start\:
+\For{\Int i = start +1 \To end}{
+	\If{A[i] $<$ p}{
+		j += 1\;
+		A[i] $\leftrightarrow$ A[j]\;	
+	}
+}
+A[start] = A[j]\;
+A[j] = p\;
+\Return j\;
+\end{algorithm}
+\columnbreak
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+
+\SetKwFunction{QuickSort}{Quicksort}
+\SetKwFunction{Pivot}{pivot}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\QuickSort{\protect\Item[] A, \protect\Int start, \protect\Int end}}
+\If{start $<$ end}{
+	\Int j = \Pivot{A, start, end}\;
+	\QuickSort{A, start, j -1 }\;
+	\QuickSort{A, j+1, end}\;
+}
+\end{algorithm}
+\end{multicols}
+\subsection{Complessit\`a computazionale}
+Il costo di \emph{pivot()} \`e $\Theta(n)$, mentre il costo di \emph{Quicksort()} dipende dal partizionamento:
+\begin{itemize}
+\item Partizionamento peggiore: dato un vettore di dimensione $n$ viene diviso i due sotto-problemi di dimensione $0$ e $n-1$. $$T(n) = T(n-1) + T(0) + \Theta(n) = \Theta(n^2)$$
+\item Partizionamento migliore: dato un vettore di dimensione $n$ viene sempre diviso in due sotto-problemi di dimensione $\frac{n}{2}$.  $$T(n) = 2T(\frac{n}{2}) + \Theta(n) = \Theta(n\log n)$$
+\end{itemize}
+Nel caso medio si alternano partizionamenti peggiori e migliori con il caso medio nel numero maggiore, pertanto nel caso medio ha complessit\`a $O(n\log n)$.
+\section{Conclusioni}
+Si deve applicare divide-et-impera quando i passi "divide" e "combina" sono semplici e i costi sono migliori del corrispondente algoritmo iterativo. Presenta inoltre una pi\`u facile parallelizzazione e un utilizzo
+ottimale della cache ("cache oblivious"). 
