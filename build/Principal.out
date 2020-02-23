@@ -111,8 +111,14 @@
 \BOOKMARK [1][-]{section.12.1}{Le torri di Hanoi}{chapter.12}% 111
 \BOOKMARK [1][-]{section.12.2}{Quicksort}{chapter.12}% 112
 \BOOKMARK [2][-]{subsection.12.2.1}{Caratterizzazione}{section.12.2}% 113
-\BOOKMARK [0][-]{chapter.13}{Programmazione dinamica}{}% 114
-\BOOKMARK [1][-]{section.13.1}{Approccio generale}{chapter.13}% 115
-\BOOKMARK [2][-]{subsection.13.1.1}{Evitare di risolvere i problemi pi\371 di una volta}{section.13.1}% 116
-\BOOKMARK [2][-]{subsection.13.1.2}{Ricostruire la soluzione}{section.13.1}% 117
-\BOOKMARK [1][-]{section.13.2}{Memoization}{chapter.13}% 118
+\BOOKMARK [2][-]{subsection.12.2.2}{Complessit\340 computazionale}{section.12.2}% 114
+\BOOKMARK [1][-]{section.12.3}{Conclusioni}{chapter.12}% 115
+\BOOKMARK [0][-]{chapter.13}{Programmazione dinamica}{}% 116
+\BOOKMARK [1][-]{section.13.1}{Approccio generale}{chapter.13}% 117
+\BOOKMARK [2][-]{subsection.13.1.1}{Evitare di risolvere i problemi pi\371 di una volta}{section.13.1}% 118
+\BOOKMARK [2][-]{subsection.13.1.2}{Ricostruire la soluzione}{section.13.1}% 119
+\BOOKMARK [1][-]{section.13.2}{Memoization}{chapter.13}% 120
+\BOOKMARK [1][-]{section.13.3}{Problemi}{chapter.13}% 121
+\BOOKMARK [2][-]{subsection.13.3.1}{Domino lineare}{section.13.3}% 122
+\BOOKMARK [2][-]{subsection.13.3.2}{Hateville}{section.13.3}% 123
+\BOOKMARK [2][-]{subsection.13.3.3}{Knapsack}{section.13.3}% 124

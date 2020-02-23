@@ -13,8 +13,8 @@ deve essere risolto.
 \item Iterazione bottom-up: si parte dai sottoproblemi che possono essere risolti direttamente a partire dai casi base, si sale verso problemi sempre pi\`u grandi fino a raggiungere il problema originale. 
 \end{itemize} 
 \subsection{Ricostruire la soluzione}
-Per ricostruire la soluzione si parte dalla definizione ricorsiva del problema, la dimensione di $n$ indica l'indice sulla tabella che si deve controllare e si definisce un controllo su quale delle chiamate ricorsive viene
-realmente effettuata.
+Per ricostruire la soluzione si parte dalla definizione ricorsiva del problema, la dimensione di $n$ indica l'indice sulla tabella che si deve controllare e si definisce un controllo su quale delle chiamate ricorsive 
+viene realmente effettuata.
 \section{Memoization}
 Questa tecnica fonde l'approccio di memorizzazione della programmazione dinamica con quello top-down di divide-et-impera: si crea una tabella DP inizializzata con un valore speciale ad indicare che un certo 
 sottoproblema non \`e ancora stato risolto. Ogni volta che si deve risolvere un sottoproblema si controlla nella tabella se \`e gi\`a stato risolto precedentemente:
@@ -22,6 +22,309 @@ sottoproblema non \`e ancora stato risolto. Ogni volta che si deve risolvere un 
 \item gi\`a risolto: si utilizza il risultato della tabella.
 \item non risolto: si calcola il risultato e lo si memorizza
 \end{itemize}
-In questo modo ogni sottoproblema viene calcolato una sola volta e memorizzato come nella versione bottom-up. Questa tecnica presenta vantaggi quando invece di utilizzare una tabella si utilizza un dizionario in
-quanto non \`e pi\`u necessario fare inizializzazione.
+In questo modo ogni sottoproblema viene calcolato una sola volta e memorizzato come nella versione bottom-up. Questa tecnica presenta vantaggi quando invece di utilizzare una tabella si utilizza un dizionario 
+in quanto non \`e pi\`u necessario fare inizializzazione.
 \lstinputlisting[caption={Memoization automatica in Python}, language={python}]{../Codice/MemoizationAutomatica.py}
+\section{Problemi}
+\subsection{Domino lineare}
+Il gioco del domino \`e basato su tessere di dimensione $2\times 1$. Si scriva un algoritmo efficiente che prenda in input un intero $n$ e restituisca il numero di possibili disposizioni $n$ di tessere in un 
+rettangolo $2\times n$.
+\subsubsection{Definizione ricorrenza}
+Si definisca una formula ricorsiva $DP[n]$ che permetta di calcolare il numero di disposizioni possibili quando si hanno $n$ tessere. Con $n=0$ esiste una sola disposizione possibile, con $n=1$ esiste ancora una
+sola disposizione possibile. Mettendo una tessera in verticale si risolve il problema di dimensione $n-1$, con una in orizzontale ne devo mettere due e risolvo il problema di dimensione $n-2$. Essendo un 
+problema di conteggio queste due possibilit\`a si sommano insieme:
+$$
+DP[n]=
+\begin{cases}
+1\quad & n\le 1\\
+DP[n-2] + DP[n-1]& n>1
+\end{cases}
+$$
+Si noti come $DP[n]$ \`e pari al $n+1$-esimo numero della serie di Fibonacci. 
+\subsubsection{Algoritmo ricorsivo}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+
+\SetKwFunction{Domino}{domino1}
+\SetKwFunction{Pivot}{pivot}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Int \protect\Domino{\protect\Int n}}
+\uIf{n $\le$ 1}{
+	\Return 1\;
+}
+\Else{
+	\Return \Domino{n - 1} + \Domino{n - 2}\;
+}
+\end{algorithm}
+\paragraph{Complessit\`a}
+L'equazione di ricorrenza associata \`e:
+$$
+T(n)=
+\begin{cases}
+1\quad & n\le 1\\
+T(n-2) + T(n-1) + 1& n>1
+\end{cases}
+$$
+Che utilizzando il master theorem per la ricorrenza lineare di ordine costante si ottiene una complessit\`a pari a $T(n)=\Theta(2^n)$.
+\subsubsection{Algoritmo iterativo}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+
+\SetKwFunction{Domino}{domino2}
+\SetKwFunction{Pivot}{pivot}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Int \protect\Domino{\protect\Int n}}
+\Int[] DP = \New \Int$[0\dots n]$\;
+DP[0] = DP[1] = 1\;
+\For{\Int i = 2 \To n}{
+	DP[i] = DP[i - 1] + DP[i-2]\:
+}
+\Return DP[n]\;
+\end{algorithm}
+\paragraph{Complessit\`a}
+Ha complessit\`a temporale $T(n)=\Theta(n)$ e spaziale $S(n)=\Theta(n)$.
+\paragraph{Miglioramento}
+Si pu\`o rendere con complessit\`a spaziale costante $S(n)=\Theta(n)$.
+\begin{algorithm}[h]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+
+\SetKwFunction{Domino}{domino3}
+\SetKwFunction{Pivot}{pivot}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Int \protect\Domino{\protect\Int n}}
+\Int $DP_0$ = 1\;
+\Int $DP_1$ = 1\;
+\Int $DP_2$ = 1\;
+\For{\Int i = 2 \To n}{
+	$DP_0$ =$DP_1$ \;
+	$DP_1$ =$DP_2$ \;
+	$DP_2$ =$DP_0$ + $DP_1$ \;
+}
+\Return DP[n]\;
+\end{algorithm}
+\subsection{Hateville}
+Hateville \`e un villaggio composto da $n$ case numerate da $1$ a $n$ lungo una singola strada. Ad Hateville ognuno odia i propri vicini da entrambi i lati. Si vuole organizzare una sagra e si rende necessario
+raccogliere i fondi. Ogni abitante ha intenzione di donare una quantit\`a $D[i]$, ma non intende partecipare ad una raccolta fondi a cui partecipano uno o entrambi i propri vicini. Si scriva un algoritmo che 
+restituisca la quantit\`a massima di fondi che pu\`o essere raccolta e un algoritmo che restituisca il sottoinsieme di indici $S\subseteq\{1, \dots, n\}$ tale per cui la donazione totale $T=\sum\limits_{i\in S}D[i]$
+\`e massimale.
+\subsubsection{Definizione ricorsiva}
+Sia $HV(i)$ uno di possibili insiemi di indici da selezionare per ottenere una donazione ottimale delle prime $i$ case di Hateville numerate $1\dots n$. $HV(n)$ \`e la soluzione del problema originale. 
+Considerando vicino $i$-esimo si deve considerare se non accettare la sua donazione ($HV(i)=HV(i-1)$) o accettarla: $HV(i) = \{i\}\cup HV(i-2)$ e prendere il risultato massimo. 
+\subsubsection{Sottostruttura ottima}
+Sia $HV_p(i)$ il problema dato dalle prime $i$ case e $HV_s(i)$ una soluzione ottima per il problema $HV_p(i)$ e $|HV_s(i)|$ il totale di donazioni di $HV_s(i)$ ne consegue:
+\begin{itemize}
+\item Se $i\not\in HV_s(i)$ allora $HV_s(i) = HV_s(i-1)$.
+\item Se $i\in HV_s(i)$ allora $HV_s(i) = HV_s(i-2)\cup\{i\}$.
+\end{itemize}
+\paragraph{Dimostrazione}
+\subparagraph{$\mathbf{i\not\in HV_s(i)}$}
+$HV_s(i)$ \`e una soluzione ottima anche per $HV_p(i-1)$, se cos\`i non fosse esisterebbe una soluzione $HV'_s(i-1)$ per il problema $HV_p(i)$ tale che $|HV'_s(i-1)|>|HV_s(i)|$, ma allora $HV'_S(i-1)$ sarebbe 
+una soluzione per $HV_p(i)$ tale che $HV'_s(i-1)|>|HV_s(i)|$, assurdo.
+\subparagraph{$\mathbf{i\in HV_s(i)}$}
+$i-1\not\in HV_s(i)$, altrimenti non sarebbe una soluzione ammissibile, pertanto $HV_s(i)-\{i\}$ \`e una soluzione ottima per $HV_p(i-2)$ per il problema $HV_p(i-2)$ tale che $|HV'_s(i-2)|>|HV_s(i)-\{i\}|$, allora
+$HV'_s(i-2)\cap\{i\}$ sarebbe una soluzione per $HV_p(i)$ tale che $|HV'_s(i-2)\cup\{i\}|>|HV_s(i)|$, assurdo.
+\paragraph{Determinare la ricorsione}
+$$
+HV(i)=
+\begin{cases}
+\emptyset\quad& i=0\\
+\{1\} & i=1\\
+highest(HV(i-1), HV(i-2)\cup\{i\}) & i\ge 2
+\end{cases}
+$$
+\paragraph{Tabella DP}
+Sia $DP[i]$ il valore della massima quanti\`a di donazioni che si possono ottenere dalle prime $i$ case di Hateville. $DP[n]$ \`e il valore della soluzione ottima.
+$$
+DP[i]=
+\begin{cases}
+0 \quad& i=0\\
+D[1] & i=1\\
+\max(DP[i-1], DP[i-2]+D[i]) & i\ge 2
+\end{cases}
+$$
+\subsubsection{Algoritmo iterativo}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+
+\SetKwFunction{Max}{max}
+
+\SetKwFunction{Hateville}{hateville}
+\SetKwFunction{Pivot}{pivot}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Int \protect\Hateville{\protect\Int[] D, \protect\Int n}}
+\Int[] DP = \New \Int[$0\dots n$]\;
+DP[0] = 0\;
+DP[1] = D[1]\;
+\For{\Int i = 2 \To n}{
+	DP[i] = \Max{DP[i-1], DP[i-2]+D[i]}\;
+}
+\Return DP[n]\;
+\end{algorithm}
+\subsubsection{Ricostruire la soluzione originale}
+Considerando l'elemento $DP[i]$ il suo valore pu\`o essere derivato considerando:
+\begin{itemize}
+\item Se $DP[i]=DP[i-1]$ la casa $i$ non \`e stata selezionata.
+\item Se $DP[i]=DP[i-2]+D[i]$ la casa $i$ \`e stata selezionata.
+\end{itemize}
+Si utilizza questa informazione per ricostruire la soluzione in modo ricorsivo: per costruire la soluzione fino a $i$ si ricostruisce la soluzione fino a $i-2$ e si aggiunge $i$ o si ricostruisce la soluzione fino a $i-1$ 
+senza aggiungere nulla. 
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+
+\SetKwFunction{Hateville}{hateville}
+\SetKwFunction{Pivot}{pivot}
+\SetKwFunction{Solution}{solution}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Set \protect\Solution{\protect\Int[] DP, \protect\Int[] D, \protect\Int i}}
+\uIf{ i == 0}{
+	\Return $\emptyset$\;
+}
+\uElseIf{i == 1}{
+	\Return $\{1\}$\;
+}
+\uElseIf{DP[i] == DP[i-1]}{
+	\Return \Solution{DP, D, i - 1}\;
+}
+\Else{
+	\Set sol = \Solution(DP, D, i-2)\;
+	sol.\Insert{i}\;
+	\Return sol\;
+}
+\end{algorithm}
+\subsubsection{Complessit\`a computazionale}
+La complessit\`a computazionale di \emph{solution()} \`e $T(n)=\Theta(n)$, quella computazionale e spaziale di \emph{hateville()} \`e $T(n)=\Theta(n)$ e $S(n)=\Theta(n)$. Questa soluzione non si pu\`o 
+migliorare se si vuole ricostruire la soluzione.
+\subsection{Knapsack}

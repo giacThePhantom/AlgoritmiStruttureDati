@@ -314,8 +314,30 @@
 \contentsline {subsubsection}{Divide}{94}{section*.236}% 
 \contentsline {subsubsection}{Impera}{94}{section*.237}% 
 \contentsline {subsubsection}{Combina}{94}{section*.238}% 
-\contentsline {chapter}{\numberline {13}Programmazione dinamica}{95}{chapter.13}% 
-\contentsline {section}{\numberline {13.1}Approccio generale}{95}{section.13.1}% 
-\contentsline {subsection}{\numberline {13.1.1}Evitare di risolvere i problemi pi\`u di una volta}{95}{subsection.13.1.1}% 
-\contentsline {subsection}{\numberline {13.1.2}Ricostruire la soluzione}{96}{subsection.13.1.2}% 
-\contentsline {section}{\numberline {13.2}Memoization}{96}{section.13.2}% 
+\contentsline {subsection}{\numberline {12.2.2}Complessit\`a computazionale}{95}{subsection.12.2.2}% 
+\contentsline {section}{\numberline {12.3}Conclusioni}{95}{section.12.3}% 
+\contentsline {chapter}{\numberline {13}Programmazione dinamica}{97}{chapter.13}% 
+\contentsline {section}{\numberline {13.1}Approccio generale}{97}{section.13.1}% 
+\contentsline {subsection}{\numberline {13.1.1}Evitare di risolvere i problemi pi\`u di una volta}{97}{subsection.13.1.1}% 
+\contentsline {subsection}{\numberline {13.1.2}Ricostruire la soluzione}{98}{subsection.13.1.2}% 
+\contentsline {section}{\numberline {13.2}Memoization}{98}{section.13.2}% 
+\contentsline {section}{\numberline {13.3}Problemi}{98}{section.13.3}% 
+\contentsline {subsection}{\numberline {13.3.1}Domino lineare}{98}{subsection.13.3.1}% 
+\contentsline {subsubsection}{Definizione ricorrenza}{99}{section*.239}% 
+\contentsline {subsubsection}{Algoritmo ricorsivo}{99}{section*.240}% 
+\contentsline {paragraph}{Complessit\`a}{99}{section*.241}% 
+\contentsline {subsubsection}{Algoritmo iterativo}{99}{section*.242}% 
+\contentsline {paragraph}{Complessit\`a}{99}{section*.243}% 
+\contentsline {paragraph}{Miglioramento}{99}{section*.244}% 
+\contentsline {subsection}{\numberline {13.3.2}Hateville}{100}{subsection.13.3.2}% 
+\contentsline {subsubsection}{Definizione ricorsiva}{100}{section*.246}% 
+\contentsline {subsubsection}{Sottostruttura ottima}{100}{section*.247}% 
+\contentsline {paragraph}{Dimostrazione}{100}{section*.248}% 
+\contentsline {subparagraph}{$\mathbf {i\not \in HV_s(i)}$}{100}{section*.249}% 
+\contentsline {subparagraph}{$\mathbf {i\in HV_s(i)}$}{101}{section*.250}% 
+\contentsline {paragraph}{Determinare la ricorsione}{101}{section*.251}% 
+\contentsline {paragraph}{Tabella DP}{101}{section*.252}% 
+\contentsline {subsubsection}{Algoritmo iterativo}{101}{section*.253}% 
+\contentsline {subsubsection}{Ricostruire la soluzione originale}{101}{section*.254}% 
+\contentsline {subsubsection}{Complessit\`a computazionale}{102}{section*.255}% 
+\contentsline {subsection}{\numberline {13.3.3}Knapsack}{102}{subsection.13.3.3}% 
