@@ -314,8 +314,10 @@
 \contentsline {subsubsection}{Divide}{94}{section*.236}% 
 \contentsline {subsubsection}{Impera}{94}{section*.237}% 
 \contentsline {subsubsection}{Combina}{94}{section*.238}% 
-\contentsline {chapter}{\numberline {13}Programmazione dinamica}{95}{chapter.13}% 
-\contentsline {section}{\numberline {13.1}Approccio generale}{95}{section.13.1}% 
-\contentsline {subsection}{\numberline {13.1.1}Evitare di risolvere i problemi pi\`u di una volta}{95}{subsection.13.1.1}% 
-\contentsline {subsection}{\numberline {13.1.2}Ricostruire la soluzione}{96}{subsection.13.1.2}% 
-\contentsline {section}{\numberline {13.2}Memoization}{96}{section.13.2}% 
+\contentsline {subsection}{\numberline {12.2.2}Complessit\`a computazionale}{95}{subsection.12.2.2}% 
+\contentsline {section}{\numberline {12.3}Conclusioni}{95}{section.12.3}% 
+\contentsline {chapter}{\numberline {13}Programmazione dinamica}{97}{chapter.13}% 
+\contentsline {section}{\numberline {13.1}Approccio generale}{97}{section.13.1}% 
+\contentsline {subsection}{\numberline {13.1.1}Evitare di risolvere i problemi pi\`u di una volta}{97}{subsection.13.1.1}% 
+\contentsline {subsection}{\numberline {13.1.2}Ricostruire la soluzione}{98}{subsection.13.1.2}% 
+\contentsline {section}{\numberline {13.2}Memoization}{98}{section.13.2}% 

@@ -162,10 +162,13 @@ A[j] = p\;
 \subsection{Complessit\`a computazionale}
 Il costo di \emph{pivot()} \`e $\Theta(n)$, mentre il costo di \emph{Quicksort()} dipende dal partizionamento:
 \begin{itemize}
-\item Partizionamento peggiore: dato un vettore di dimensione $n$ viene diviso i due sotto-problemi di dimensione $0$ e $n-1$. $$T(n) = T(n-1) + T(0) + \Theta(n) = \Theta(n^2)$$
-\item Partizionamento migliore: dato un vettore di dimensione $n$ viene sempre diviso in due sotto-problemi di dimensione $\frac{n}{2}$.  $$T(n) = 2T(\frac{n}{2}) + \Theta(n) = \Theta(n\log n)$$
+\item Partizionamento peggiore: dato un vettore di dimensione $n$ viene diviso i due sotto-problemi di dimensione $0$ e $n-1$. $$T(n) = T(n-1) + T(0) + 
+\Theta(n) = \Theta(n^2)$$
+\item Partizionamento migliore: dato un vettore di dimensione $n$ viene sempre diviso in due sotto-problemi di dimensione $\frac{n}{2}$.  $$T(n) = 
+2T(\frac{n}{2}) + \Theta(n) = \Theta(n\log n)$$
 \end{itemize}
-Nel caso medio si alternano partizionamenti peggiori e migliori con il caso medio nel numero maggiore, pertanto nel caso medio ha complessit\`a $O(n\log n)$.
+Nel caso medio si alternano partizionamenti peggiori e migliori con il caso medio nel numero maggiore, pertanto nel caso medio ha complessit\`a $O(n\log n)
+$.
 \section{Conclusioni}
 Si deve applicare divide-et-impera quando i passi "divide" e "combina" sono semplici e i costi sono migliori del corrispondente algoritmo iterativo. Presenta inoltre una pi\`u facile parallelizzazione e un utilizzo
 ottimale della cache ("cache oblivious"). 
