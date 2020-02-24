@@ -118,3 +118,10 @@
 \BOOKMARK [2][-]{subsection.13.1.1}{Evitare di risolvere i problemi pi\371 di una volta}{section.13.1}% 118
 \BOOKMARK [2][-]{subsection.13.1.2}{Ricostruire la soluzione}{section.13.1}% 119
 \BOOKMARK [1][-]{section.13.2}{Memoization}{chapter.13}% 120
+<<<<<<< HEAD
+=======
+\BOOKMARK [1][-]{section.13.3}{Problemi}{chapter.13}% 121
+\BOOKMARK [2][-]{subsection.13.3.1}{Domino lineare}{section.13.3}% 122
+\BOOKMARK [2][-]{subsection.13.3.2}{Hateville}{section.13.3}% 123
+\BOOKMARK [2][-]{subsection.13.3.3}{Knapsack}{section.13.3}% 124
+>>>>>>> 6e8d6c780e8d2d3faa5c092719827d57150772df
