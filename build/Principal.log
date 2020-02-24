@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.6.28)  20 FEB 2020 11:36
-=======
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.2.23)  23 FEB 2020 16:14
->>>>>>> 6e8d6c780e8d2d3faa5c092719827d57150772df
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.6.28)  24 FEB 2020 23:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2164,13 +2160,8 @@ l.154 ...A, \protect\Int start, \protect\Int end}}
 
 ]
 Capitolo 13.
-<<<<<<< HEAD
 [97] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2018/09/02 1.7 listings language file
-=======
-[97] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2019/09/10 1.8c listings language file
->>>>>>> 6e8d6c780e8d2d3faa5c092719827d57150772df
 )
 (build/../Codice/MemoizationAutomatica.py
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 4.
@@ -2180,9 +2171,6 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 4.
-<<<<<<< HEAD
-)) [98]
-=======
 ) [98]pdfTeX warning (ext4): destination with the same identifier (name{algocf.
 }) has been already used, duplicate ignored
 <to be read again> 
@@ -2218,104 +2206,111 @@ l.311 ...[] DP, \protect\Int[] D, \protect\Int i}}
                                                   
 Underfull \vbox (badness 1033) has occurred while \output is active []
 
- [101])
-[102]
->>>>>>> 6e8d6c780e8d2d3faa5c092719827d57150772df
+ [101]
+Overfull \hbox (15.6679pt too wide) in paragraph at lines 348--350
+ []\OT1/cmr/bx/n/10 Parte ri-cor-si-va[] \OT1/cmr/m/n/10 Con-si-de-ran-do l'ul-
+ti-mo og-get-to lo si pu^^Ro non pren-de-re: $\OML/cmm/m/it/10 DP\OT1/cmr/m/n/1
+0 [\OML/cmm/m/it/10 i\OT1/cmr/m/n/10 ][\OML/cmm/m/it/10 c\OT1/cmr/m/n/10 ] =
+ []
+
+[102]pdfTeX warning (ext4): destination with the same identifier (name{algocf.}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.399 ...Int[] p, \protect\Int n, \protect\Int C}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{algocf.}) has been already used, duplicate
+ ignored
+<to be read again> 
+                   \relax 
+l.465 \caption{Knapsack con memoization}
+                                         [103]pdfTeX warning (ext4): destinatio
+n with the same identifier (name{algocf.}) has been already used, duplicate ign
+ored
+<to be read again> 
+                   \relax 
+l.558 ...on{Knapsack senza limiti con memoization}
+                                                  
+Underfull \vbox (badness 7203) has occurred while \output is active []
+
+ [104]pdfTeX warning (ext4): destination with the same identifier (name{algocf.
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.635 ...on{Knapsack senza limiti con memoization}
+                                                  
+Overfull \hbox (201.81842pt too wide) in paragraph at lines 593--680
+ []\OT1/cmr/bx/n/10 Implementazione tra-mi-te me-moi-za-tion[] $[]$ 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [105]
+[106]pdfTeX warning (ext4): destination with the same identifier (name{algocf.}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.740 ...CS{\protect\Item[] T, \protect\Item[] U}}
+                                                  
+Overfull \hbox (81.75955pt too wide) detected at line 774
+\OML/cmm/m/it/10 LCS\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 T\OT1/cmr/m/n/10 (\OML/cm
+m/m/it/10 i\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; U\OT1/cmr/m/n/10 (\OML/cmm/m/it/
+10 j\OT1/cmr/m/n/10 )) = []
+ []
+
+[107]) [108]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 23.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 23.
-
-(build/Principal.aux)
+ (build/Principal.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 23.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 23.
 Package rerunfilecheck Info: File `Principal.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
  ) 
 Here is how much of TeX's memory you used:
-<<<<<<< HEAD
- 46519 strings out of 492615
- 1014862 string characters out of 6131390
- 1343824 words of memory out of 5000000
- 49204 multiletter control sequences out of 15000+600000
+ 46608 strings out of 492615
+ 1015893 string characters out of 6131390
+ 1344872 words of memory out of 5000000
+ 49226 multiletter control sequences out of 15000+600000
  547474 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  66i,22n,111p,816b,1504s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
-i5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/sy
-mbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on build/Principal.pdf (98 pages, 548602 bytes).
+t/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
+12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/m
+sbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on build/Principal.pdf (108 pages, 586685 bytes).
 PDF statistics:
- 1620 PDF objects out of 1728 (max. 8388607)
- 1473 compressed objects within 15 object streams
- 557 named destinations out of 1000 (max. 500000)
- 973 words of extra memory for PDF output out of 10000 (max. 10000000)
-=======
- 47788 strings out of 492167
- 1033065 string characters out of 6131558
- 1373818 words of memory out of 5000000
- 50894 multiletter control sequences out of 15000+600000
- 547474 words of font info for 81 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 71i,22n,113p,816b,1614s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmbx7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mbx8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/
-share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.
-pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/s
-hare/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/sh
-are/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/share/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmss8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><
-/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8
-.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></us
-r/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on build/Principal.pdf (102 pages, 568415 bytes).
-PDF statistics:
- 1689 PDF objects out of 1728 (max. 8388607)
- 1536 compressed objects within 16 object streams
- 587 named destinations out of 1000 (max. 500000)
- 1005 words of extra memory for PDF output out of 10000 (max. 10000000)
->>>>>>> 6e8d6c780e8d2d3faa5c092719827d57150772df
+ 1761 PDF objects out of 2073 (max. 8388607)
+ 1601 compressed objects within 17 object streams
+ 624 named destinations out of 1000 (max. 500000)
+ 1021 words of extra memory for PDF output out of 10000 (max. 10000000)
 

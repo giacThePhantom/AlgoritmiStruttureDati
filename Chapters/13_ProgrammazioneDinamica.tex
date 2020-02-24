@@ -23,7 +23,7 @@ sottoproblema non \`e ancora stato risolto. Ogni volta che si deve risolvere un 
 \item non risolto: si calcola il risultato e lo si memorizza
 \end{itemize}
 In questo modo ogni sottoproblema viene calcolato una sola volta e memorizzato come nella versione bottom-up. Questa tecnica presenta vantaggi quando invece di utilizzare una tabella si utilizza un dizionario 
-in quanto non \`e pi\`u necessario fare inizializzazione.
+in quanto non \`e pi\`u necessario fare inizializzazione e il costo di esecuzione passa da $O(nC)$ a $O(\min(2^n, nC)$.
 \lstinputlisting[caption={Memoization automatica in Python}, language={python}]{../Codice/MemoizationAutomatica.py}
 \section{Problemi}
 \subsection{Domino lineare}
@@ -328,3 +328,447 @@ senza aggiungere nulla.
 La complessit\`a computazionale di \emph{solution()} \`e $T(n)=\Theta(n)$, quella computazionale e spaziale di \emph{hateville()} \`e $T(n)=\Theta(n)$ e $S(n)=\Theta(n)$. Questa soluzione non si pu\`o 
 migliorare se si vuole ricostruire la soluzione.
 \subsection{Knapsack}
+Dato un insieme di oggetti, ognuno caratterizzato da un peso e da un profitto e uno zaino con un limite di capacit\`a trovare un sottoinsieme di oggetti il 
+cui peso sia inferiore alla capacit\`a dello zaino e il profitto sia massimale, ovvero maggiore o uguale di qualunque altro sottoinsieme di oggetti. 
+\subsubsection{Caratterizzazione}
+\paragraph{Input}
+\begin{itemize}
+\item Un vettore $w$, dove $w[i]$ \`e il peso dell'oggetto $i$-esimo.
+\item Un vettore $p$, dove $p[i]$ \`e il profitto dell'oggetto $i$-esimo.
+\item La capacit\`a $C$ dello zaino.
+\end{itemize}
+\paragraph{Output}
+Un insieme $S\subseteq\{1,\dots, n\}$ tale che il volume totale deve essere minore uguale alla capacit\`a: $w(S)\sum\limits_{i\in S}w[i]<C$ e il profitto
+totale sia massimizzato: $p(S)=\sum\limits_{i\in S}p[i]$.
+\subsubsection{Definizione matematica del valore della soluzione}
+Dato uno zaino di capacit\`a $C$ e $n$ oggetti caratterizzati da peso $w$ e profitto $p$ si definisce $DP[i][c]$ il massimo profitto che pu\`o essere 
+ottenuta dai primi $i\le n$ oggetti contenuti in uno zaino di capacit\`a $c\le C$. Il massimo profitto ottenibile dal problema originale \`e rappresentato
+da $DP[n][C]$.
+\paragraph{Parte ricorsiva}
+Considerando l'ultimo oggetto lo si pu\`o non prendere: $DP[i][c]=DP[i-1][c]$, ovvero la capacit\`a non cambia e non c'\`e profitto; se invece lo prendo
+$DP[i][c]=DP[i-1][c-w[i]]+p[i]$, ovvero si sottrae il peso alla capacit\`a e si aggiunge il profitto relativo. La scelta della soluzione migliore \`e:
+$$DP[i][c] = \max(DP[i-1][c], DP[i-1][c-w[i]]+p[i])$$
+\paragraph{Casi base}
+Il profitto massimo in caso di assenza di oggetti o di capacit\`a \`e $0$, se invece si ha capacit\`a negativa vale $-\infty$. 
+\paragraph{Formula completa}
+$$
+DP[i][c] =
+\begin{cases}
+0\quad & i = 0 \lor c = 0\\
+-\infty & c<0\\
+\max(DP[i-1][c], DP[i-1][c-w[i]]+p[i]) & altrimenti
+\end{cases}
+$$
+\subsubsection{Pseudocodice}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+
+\SetKwFunction{KnapSack}{knapsack}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Int \protect\KnapSack{\protect\Int[] w, \protect\Int[] p, \protect\Int n, \protect\Int C}}
+\Int[][] DP = \New \Int$[0\dots n][0\dots C]$\;
+\For{\Int i = 0 \To n}{
+	DP[i][0] = 0\;
+}
+\For{\Int c = 0 \To C}{
+	DP[0][c] = 0\;
+}
+\For{\Int i = 1 \To n}{
+	\For{\Int c = 1 \To C}{
+		\uIf{w[i] < C}{
+			DP[i][c] = \Max{DP[i - 1][c - w[i]] + p[i], DP[i - 1][c]}\;		
+		}	
+		\Else{
+			DP[i][c] = DP[i - 1][c]\;		
+		}
+	}
+}
+\Return DP[n][C]
+\end{algorithm}
+\subsubsection{Complessit\`a computazionale}
+La complessit\`a della funzione \emph{knapsack()} \`e $T(n) = O(nC)$, una complessit\`a pseudo-polinomiale in quanto sono necessari $k = \log C$ bit per 
+rappresentare $C$ e pertanto la complessit\`a \`e $T(n) = O(n2^k)$.
+\subsubsection{Implementazione con memoization}
+Si nota come non tutti gli elementi della matrice sono necessari alla soluzione del problema. Risulta vantaggioso pertanto utilizzare la tecnica di 
+memoization, in cui la tabella viene inizializzata esternamente in una funzione wrapper e il valore $-1$ viene utilizzato per identificare il valore di
+una cella non calcolata. 
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{KnapSack}{knapsack}
+\SetKwFunction{KnapsackRec}{knapsackRec}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{Knapsack con memoization}
+
+\Int\Space\Fn{\KnapSack{\Int[] w, \Int[] p, \Int n, \Int C}}{
+	\Int[][] DP = \New \Int$[1\dots n][1\dots C]$\;
+	\For{\Int i = 1 \To n}{
+		\For{\Int c = 1 \To C}{
+			DP[i][c] = -1\;		
+		}	
+	}
+	\Return \KnapsackRec{w, p, n, C, DP}\;
+	
+}
+
+\Int\Space\Fn{\KnapsackRec{\Int[] w, \Int[] p, \Int i, \Int c, \Int[][] DP}}{
+	\uIf{c $<$ 0}{
+		\Return $-\infty$\;	
+	}
+	\uElseIf{i == 0 \Or c == 0}{
+		\Return 0\;	
+	}
+	\Else{
+		\If{DP[i][c] $<$ 0}{
+			\Int nottaken = \KnapsackRec{w, p, i - 1, c, DP}\;
+			\Int taken = \KnapsackRec{w, p, i - 1, c - w[i], DP} + p[i]\;
+			DP[i][c] = \Max{nottaken, taken}\;
+		}
+		\Return DP[i][c]\;
+	}
+}
+
+
+\end{algorithm}
+\subsection{Knapsack senza limiti}
+Dato uno zaino di capacit\`a $C$ e $n$ oggetti caratterizzati da peso $w$ e profitto $p$ si definisce $DP[i][c]$ come il massimo profitto che pu\`o essere
+ottenuto dai primi $i\le n$ oggetti contenuti in uno zaino di capacit\`a $c\le C$ senza porre limiti al numero di volte che un oggetto pu\`o essere 
+selezionato. Si modifica pertanto la funzione ricorsiva come:
+$$
+DP[i][c] =
+\begin{cases}
+0\quad & i = 0 \lor c = 0\\
+-\infty & c<0\\
+\max(DP[i][c], DP[i-1][c-w[i]]+p[i]) & altrimenti
+\end{cases}
+$$
+In questo possibile \`e possibile semplificare la soluzione riducendo lo spazio occupato: si definisce $DP[c]$ il massimo profitto che pu\`o essere ottenuto
+da tali oggetti in uno zaino di capacit\`a $c\le C$. 
+$$
+DP[c] =
+\begin{cases}
+0\quad & c = 0\\
+\max\limits_{w[i]<c}\{DP[c-w[i]]+p[i]\} &  c > 0
+\end{cases}
+$$
+\subsubsection{Implementazione tramite memoization}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{KnapSack}{knapsack}
+\SetKwFunction{KnapsackRec}{knapsackRec}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{Knapsack senza limiti con memoization}
+
+\Int\Space\Fn{\KnapSack{\Int[] w, \Int[] p, \Int n, \Int C}}{
+	\Int[] DP = \New \Int$[0\dots C]$\;
+	\For{\Int c = 0 \To C}{
+		DP[i] = -1\;		
+	}
+	\KnapsackRec{w, p, n, C, DP}\;
+	\Return DP[C]\;
+	
+}
+
+\Int\Space\Fn{\KnapsackRec{\Int[] w, \Int[] p, \Int n, \Int c, \Int[][] DP}}{
+	\uIf{c == 0}{
+		\Return 0\;	
+	}
+	\ElseIf{DP[c] $<$ 0}{
+		DP[c] = 0\;
+		\For{\Int i = 1 \To n}{
+			\If{w[i] $\le$ c}{
+				\Int val = \KnapsackRec{w, p, n, c - w[i], DP} + p[i]\;
+				DP[c] = \Max{DP[c], val}\;			
+			}		
+		}
+	}
+	\Return DP[c]\;
+}
+
+
+\end{algorithm}
+Attraverso questo algoritmo non \`e detto che tutti gli elementi debbano essere riempiti e la complessit\`a in spazio \`e $\Theta(C)$.
+\subsubsection{Ricostruire la soluzione}
+Questo approccio rende pi\`u difficile ricostruire la soluzione: si possono ispezionare tutti gli elementi per capire da dove deriva il massimo, ma 
+risulta pi\`u semplice memorizzare l'indice da cui deriva il massimo. 
+\paragraph{Implementazione tramite memoization}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{KnapSack}{knapsack}
+\SetKwFunction{KnapsackRec}{knapsackRec}
+\SetKwFunction{Solution}{solution}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{Knapsack senza limiti con memoization}
+
+\Int\Space\Fn{\KnapSack{\Int[] w, \Int[] p, \Int n, \Int C}}{
+	\Int[] DP = \New \Int$[0\dots C]$\;
+	\Int[] pos = \New \Int$[0\dots C]$\;
+	\For{\Int c = 0 \To C}{
+		DP[i] = -1\;
+		pos[i] = -1\;		
+	}
+	\KnapsackRec{w, p, n, C, DP, pos}\;
+	\Return \Solution{w, C, pos}\;
+	
+}
+
+\Int\Space\Fn{\KnapsackRec{\Int[] w, \Int[] p, \Int n, \Int c, \Int[][] DP}}{
+	\uIf{c == 0}{
+		\Return 0\;	
+	}
+	\ElseIf{DP[c] $<$ 0}{
+		DP[c] = 0\;
+		\For{\Int i = 1 \To n}{
+			\If{w[i] $\le$ c}{
+				\Int val = \KnapsackRec{w, p, n, c - w[i], DP} + p[i]\;
+				\If{val $\ge$ DP[c]}{
+					DP[c] = val\;
+					pos[c] = i\;
+				}				
+							
+			}		
+		}
+	}
+	\Return DP[c]\;
+}
+
+\List\Space\Fn{\Solution{\Int[] w, \Int c, \Int[] pos}}{
+	\uIf{c == 0 \Or pos[c] $>$ 0}{
+		\Return \ListCos{}\;
+	}
+	\Else{
+		\List L = \Solution{w, c - w[pos[c]], pos}\;
+		L.\Insert{L.\Head{}, pos[c]}\;
+		\Return L\;	
+	}
+}
+
+\end{algorithm}
+Restituisce una lista di indici selezionati, se $c=0$ lo zaino \`e stato riempito perfettamente, se $pos[c]<0$ lo zaino non pu\`o essere riempito 
+interamente.
+\subsection{Sottosequenza comune massimale}
+\paragraph{Sottosequenza}
+Si definisce una sequenza $P$ come sottosequenza di $T$ se $P$ \`e ottenuto da $T$ rimuovendo uno o pi\`u dei suoi elementi o come il sottoinsieme di indici
+$\{1, \dots, n\}$ degli elementi di $T$ che compaiono anche in $P$. I rimanenti elementi sono indicati in ordine senza essere necessariamente contigui. La
+sottosequenza vuota $\emptyset$ \`e sottosequenza di qualsiasi altra sottosequenza. 
+\paragraph{Sottosequenza comune}
+Una sottosequenza $X$ \`e detta sottosequenza comune di due sequenze $T$ e $U$ se \`e sottosequenza sia di $T$ che di $U$: $X\in \mathcal{CS}(T, U)$.
+\paragraph{Sottosequenza comune massimale}
+Una sequenza $X\in \mathcal{CS}(T, U)$ \`e una sottosequenza comune massimale di due sequenze $T$ e $U$ se non esiste altra sottosequenza comune $Y\in 
+\mathcal{CS}(T, U)$ tale che $Y$ sia pi\`u lunga di $X$, si scrive: $X\in \mathcal{LCS}(T, U)$.
+\subsubsection{Definizione del problema}
+Date due sequenze $T$ e $U$ si trovi la pi\`u lunga sottosequenza comune di $T$ e $U$. 
+\subsubsection{Soluzione di forza bruta}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{KnapSack}{knapsack}
+\SetKwFunction{KnapsackRec}{knapsackRec}
+\SetKwFunction{Solution}{solution}
+\SetKwFunction{LCS}{LCS}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Int \protect\LCS{\protect\Item[] T, \protect\Item[] U}}
+\Item[] maxsofar = \Nil\;
+\ForEach{subsequence X of T}{
+	\If{X is subsequence of U }{
+		\If{\Len{X} $>$ \Len{maxsofar}}{
+			maxsofar = X\;		
+		}	
+	}
+}
+\Return maxsofar\;
+
+\end{algorithm}
+Si noti come data una sottosequenza lunga $n$, le sue sottosequenze sono $2^n$ e verificare che una sequenza \`e sottosequenza di un'altra sottosequenza
+\`e $O(m+n)$, la complessit\`a computazionale dell'algoritmo sopra \`e pertanto $\Theta(2^n(m+n))$. 
+\subsubsection{Descrizione matematica della soluzione ottima}
+Data una sequenza $T$ composta da caratteri $t_1\dots t_n$, $T(i)$ denota il prefisso di $T$ dato dai primi caratteri. L'obiettivo \`e, date due sequenze
+$T$ e $U$ di lunghezza $n$ e $m$, di scrivere una formula ricorsiva $LCS(T(i), U(i))$ che restituisa la LCS dei prefissi $T(i)$ e $U(i)$. 
+\paragraph{Casi ricorsivi}
+\subparagraph{Primo caso}
+Si considerino due prefissi $T(i)$ e $U(j)$ tali per cui l'ultimo carattere coincide, $t_i = u_j$ allora: 
+$$LCS(T(i), U(j)) = LCS(T(i - 1), U(j - 1))\oplus t_i$$
+\subparagraph{Secondo caso}
+Si considerino due prefissi $T(i)$ e $U(j)$ tali per cui l'ultimo carattere non coincide, $t_i \neq u_j$ allora: 
+$$LCS(T(i), U(j)) = longest(LCS(T(i - 1), U(j)), LCS(T(i), U(j - 1)))$$
+\paragraph{Casi base}
+La sottosequenza pi\`u lunga quando una delle due sequenze \`e vuota, ovvero $i = 0$ o $j = 0$ \`e la sequenza vuota. 
+\paragraph{Soluzione completa}
+$$
+LCS(T(i), U(j)) = 
+\begin{cases}
+\emptyset & i = 0 \lor j = 0\\
+LCS(T(i - 1), U(j - 1))\oplus t_i & i > 0 \land j > 0 \land t_i = u_j\\
+longest(LCS(T(i - 1), U(j)), LCS(T(i), U(j - 1))) & i > 0 \land j > 0 \land t_i \neq u_j
+\end{cases}
+$$

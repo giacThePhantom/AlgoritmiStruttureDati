@@ -321,8 +321,6 @@
 \contentsline {subsection}{\numberline {13.1.1}Evitare di risolvere i problemi pi\`u di una volta}{97}{subsection.13.1.1}% 
 \contentsline {subsection}{\numberline {13.1.2}Ricostruire la soluzione}{98}{subsection.13.1.2}% 
 \contentsline {section}{\numberline {13.2}Memoization}{98}{section.13.2}% 
-<<<<<<< HEAD
-=======
 \contentsline {section}{\numberline {13.3}Problemi}{98}{section.13.3}% 
 \contentsline {subsection}{\numberline {13.3.1}Domino lineare}{98}{subsection.13.3.1}% 
 \contentsline {subsubsection}{Definizione ricorrenza}{99}{section*.239}% 
@@ -343,4 +341,29 @@
 \contentsline {subsubsection}{Ricostruire la soluzione originale}{101}{section*.254}% 
 \contentsline {subsubsection}{Complessit\`a computazionale}{102}{section*.255}% 
 \contentsline {subsection}{\numberline {13.3.3}Knapsack}{102}{subsection.13.3.3}% 
->>>>>>> 6e8d6c780e8d2d3faa5c092719827d57150772df
+\contentsline {subsubsection}{Caratterizzazione}{102}{section*.256}% 
+\contentsline {paragraph}{Input}{102}{section*.257}% 
+\contentsline {paragraph}{Output}{102}{section*.258}% 
+\contentsline {subsubsection}{Definizione matematica del valore della soluzione}{102}{section*.259}% 
+\contentsline {paragraph}{Parte ricorsiva}{103}{section*.260}% 
+\contentsline {paragraph}{Casi base}{103}{section*.261}% 
+\contentsline {paragraph}{Formula completa}{103}{section*.262}% 
+\contentsline {subsubsection}{Pseudocodice}{103}{section*.263}% 
+\contentsline {subsubsection}{Complessit\`a computazionale}{103}{section*.264}% 
+\contentsline {subsubsection}{Implementazione con memoization}{103}{section*.265}% 
+\contentsline {subsection}{\numberline {13.3.4}Knapsack senza limiti}{104}{subsection.13.3.4}% 
+\contentsline {subsubsection}{Implementazione tramite memoization}{105}{section*.266}% 
+\contentsline {subsubsection}{Ricostruire la soluzione}{105}{section*.267}% 
+\contentsline {paragraph}{Implementazione tramite memoization}{106}{algocfline.95}% 
+\contentsline {subsection}{\numberline {13.3.5}Sottosequenza comune massimale}{106}{subsection.13.3.5}% 
+\contentsline {paragraph}{Sottosequenza}{106}{section*.269}% 
+\contentsline {paragraph}{Sottosequenza comune}{106}{section*.270}% 
+\contentsline {paragraph}{Sottosequenza comune massimale}{107}{section*.271}% 
+\contentsline {subsubsection}{Definizione del problema}{107}{section*.272}% 
+\contentsline {subsubsection}{Soluzione di forza bruta}{107}{section*.273}% 
+\contentsline {subsubsection}{Descrizione matematica della soluzione ottima}{107}{section*.274}% 
+\contentsline {paragraph}{Casi ricorsivi}{107}{section*.275}% 
+\contentsline {subparagraph}{Primo caso}{107}{section*.276}% 
+\contentsline {subparagraph}{Secondo caso}{107}{section*.277}% 
+\contentsline {paragraph}{Casi base}{107}{section*.278}% 
+\contentsline {paragraph}{Soluzione completa}{108}{section*.279}% 
