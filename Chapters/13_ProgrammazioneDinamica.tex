@@ -589,7 +589,7 @@ Attraverso questo algoritmo non \`e detto che tutti gli elementi debbano essere 
 \subsubsection{Ricostruire la soluzione}
 Questo approccio rende pi\`u difficile ricostruire la soluzione: si possono ispezionare tutti gli elementi per capire da dove deriva il massimo, ma 
 risulta pi\`u semplice memorizzare l'indice da cui deriva il massimo. 
-\paragraph{Implementazione tramite memoization}
+\paragraph{Implementazione tramite memoization}\mbox{}\\
 \begin{algorithm}[H]
 \DontPrintSemicolon
 \SetKwComment{comment}{$\%$}{}
@@ -772,3 +772,170 @@ LCS(T(i - 1), U(j - 1))\oplus t_i & i > 0 \land j > 0 \land t_i = u_j\\
 longest(LCS(T(i - 1), U(j)), LCS(T(i), U(j - 1))) & i > 0 \land j > 0 \land t_i \neq u_j
 \end{cases}
 $$
+\subsubsection{Sottostruttura ottima}
+Date le due sequenze $T=(t_1, \dots t_n)$ e $U=(u_1, \dots, u_m)$ e $X=(x_1, \dots x_k)$ una LCS di $T$ e $U$. Sono dati tre casi:
+\begin{center}
+\begin{tabular}{c c c c}
+1. & $t_n = u_m$ & $\Rightarrow$ & $x_k = t_n = u_m$ $\land$ $X(k-1)\in\mathcal{LCS}(T(n-1), U(m-1))$\\
+2. & $t_n\neq u_m\land x_k\neq t_n$ & $\Rightarrow$ & $X\in \mathcal{LCS}(T(n-1), U(m))$\\
+3. & $t_n\neq u_m\land x_k\neq u_m$ & $\Rightarrow$ & $X\in \mathcal{LCS}(T(n), U(m-1))$\\
+\end{tabular}
+\end{center}
+\paragraph{Dimostrazione primo caso}
+\subparagraph{Prima parte}
+$$t_n = u_m \Rightarrow x_k = t_n = u_m$$
+Si consideri per assurdo $x_k \neq t_n = u_m$. Si consideri ora $Y= X\oplus t_n$, allora $Y\in\mathcal{CS}(T, U)$ e $|Y|>|X|$, che \`e una contraddizione.
+\subparagraph{Seconda parte}
+$$t_n = u_m \Rightarrow X(k-1)\in\mathcal{LCS}(T(n-1), U(m-1))$$
+Si consideri per assurdo $X(k-1)\not\in\mathcal{LCS}(T(n-1), U(m-1))$, allora $\exists Y\in\mathcal{LCS}(T(n-1), U(m-1))$ tale che $|Y|>|X(k-1)|$, pertanto
+$Y\oplus t_n\in\mathcal{CS}(T, U)$ e $|Y\oplus t_n|>|X(k-1)\oplus t_n|=X$, che \`e una contraddizione. 
+\paragraph{Seconda parte (terza simmetrica)}
+$$t_n\neq u_m\land x_k\neq t_n \Rightarrow X\in \mathcal{LCS}(T(n-1), U(m))$$
+Si consideri per assurdo $X\not\in \mathcal{LCS}(T(n-1), U(m))$, allora $\exists Y\in\mathcal{LCS}(T(n-1), U(m))$ tale che $|Y|>|X|$, pertanto \`e anche
+vero che $Y\in \mathcal{LCS}(T, U)$, pertanto $X$ non \`e $\mathcal{LCS}(T, U)$, che \`e un assurdo. 
+\subsubsection{Ricorrenza per il valore della soluzione ottimale}
+Date due sequenze $T$ e $U$ di lunghezza $n$ e $m$ si scriva una formula ricorsiva $DP[i][j]$ che restituisca la lunghezza della $\mathcal{LCS}$ dei 
+prefissi $T(i)$ e $U(j)$.
+$$
+DP[i][j] = 
+\begin{cases}
+0 & i = 0\lor j = 0\\
+DP[i-1][j-1]+1 & i > 0 \land j > 0 land t_i = u_j\\
+\max(DP[i - 1][j], DP[i][j - 1]) & i > 0 \land j > 0 land t_i \neq u_j
+\end{cases}
+$$ 
+$DP[n][m]$ contiene la lunghezza della $\mathcal{LCS}$ del probema originale. \\
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{KnapSack}{knapsack}
+\SetKwFunction{KnapsackRec}{knapsackRec}
+\SetKwFunction{Solution}{solution}
+\SetKwFunction{LCS}{LCS}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Int \protect\LCS{\protect\Item[] T, \protect\Item[] U, \protect\Int n, \protect\Int m}}
+\Int[][] DP = \New \Int$[0\dots n][0\dots m]$\;
+\For{\Int i = 0 \To n}{
+	DP[0][n] = DP[n][0] = 0\;
+}
+\For{\Int i = 1 \To n}{
+	\For{\Int j = 1 \To m}{
+		\uIf{T[i] == U[j]}{
+			DP[i][j] = DP[i - 1][j - 1] +1\;		
+		}
+		\Else{
+			DP[i][j] = \Max{DP[i - 1][j], DP[i][j - 1]}\;		
+		}
+	}
+}
+\Return DP[n][m]\;
+\end{algorithm}
+\subsubsection{Ricostrurie la sottosequenza comune}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{KnapSack}{knapsack}
+\SetKwFunction{KnapsackRec}{knapsackRec}
+\SetKwFunction{Solution}{subsequence}
+\SetKwFunction{LCS}{LCS}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{}
+\Item[]\Space\Fn{\Int \LCS{\Item[] T, \Item[] U, \Int n, \Int m}}{
+	$\dots$\;
+	\Return \Solution{DP, T, U, n, m}\;
+}
+
+\Item[]\Space\Fn{\Solution{\Int[][] DP, \Item[] T, \Item[] U, \Int i, \Int j}}{
+	\uIf{i == 0 \Or j == 0}{
+		\Return \ListCos{}\;	
+	}
+	\uElseIf{T[i] == U[j]}{
+		\List S = \Solution{DP, T, U, i - 1, j - 1}\;
+		S.\Insert{S.\Head{}, T[i]}\;
+		\Return S\;
+	}
+	\Else{
+		\uIf{DP[i - 1][j] > DP[i][j - 1]}{
+			\Return \Solution{DP, T, U, i - 1, j}\;		
+		}	
+		\Else{
+			\Return \Solution{DP, T, U, i, j - 1}\;		
+		}
+	
+	}
+}
+
+\end{algorithm}
+La complessit\`a computazionale di \emph{subsequence()} \`e $O(m+n)$, mentre quella di LCS \`e $O(mn)$. 

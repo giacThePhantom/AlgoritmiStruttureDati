@@ -354,7 +354,7 @@
 \contentsline {subsection}{\numberline {13.3.4}Knapsack senza limiti}{104}{subsection.13.3.4}% 
 \contentsline {subsubsection}{Implementazione tramite memoization}{105}{section*.266}% 
 \contentsline {subsubsection}{Ricostruire la soluzione}{105}{section*.267}% 
-\contentsline {paragraph}{Implementazione tramite memoization}{106}{algocfline.95}% 
+\contentsline {paragraph}{Implementazione tramite memoization}{106}{section*.268}% 
 \contentsline {subsection}{\numberline {13.3.5}Sottosequenza comune massimale}{106}{subsection.13.3.5}% 
 \contentsline {paragraph}{Sottosequenza}{106}{section*.269}% 
 \contentsline {paragraph}{Sottosequenza comune}{106}{section*.270}% 
@@ -367,3 +367,10 @@
 \contentsline {subparagraph}{Secondo caso}{107}{section*.277}% 
 \contentsline {paragraph}{Casi base}{107}{section*.278}% 
 \contentsline {paragraph}{Soluzione completa}{108}{section*.279}% 
+\contentsline {subsubsection}{Sottostruttura ottima}{108}{section*.280}% 
+\contentsline {paragraph}{Dimostrazione primo caso}{108}{section*.281}% 
+\contentsline {subparagraph}{Prima parte}{108}{section*.282}% 
+\contentsline {subparagraph}{Seconda parte}{108}{section*.283}% 
+\contentsline {paragraph}{Seconda parte (terza simmetrica)}{108}{section*.284}% 
+\contentsline {subsubsection}{Ricorrenza per il valore della soluzione ottimale}{108}{section*.285}% 
+\contentsline {subsubsection}{Ricostrurie la sottosequenza comune}{109}{section*.286}% 
