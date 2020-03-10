@@ -374,3 +374,33 @@
 \contentsline {paragraph}{Seconda parte (terza simmetrica)}{108}{section*.284}% 
 \contentsline {subsubsection}{Ricorrenza per il valore della soluzione ottimale}{108}{section*.285}% 
 \contentsline {subsubsection}{Ricostrurie la sottosequenza comune}{109}{section*.286}% 
+\contentsline {subsection}{\numberline {13.3.6}String matching approssimato}{109}{subsection.13.3.6}% 
+\contentsline {subsubsection}{Definizione}{109}{section*.287}% 
+\contentsline {subsubsection}{Problema}{110}{section*.288}% 
+\contentsline {subsubsection}{Sottostruttura ottima}{110}{section*.289}% 
+\contentsline {subsubsection}{Ricostruzione della soluzione finale}{110}{section*.290}% 
+\contentsline {subsubsection}{Algoritmo}{111}{section*.291}% 
+\contentsline {subsection}{\numberline {13.3.7}Prodotto di catena di matrici}{111}{subsection.13.3.7}% 
+\contentsline {subsubsection}{Problema}{111}{section*.292}% 
+\contentsline {subsubsection}{Parentesizzazione}{111}{section*.293}% 
+\contentsline {paragraph}{Parentesizzazione ottima}{111}{section*.294}% 
+\contentsline {subparagraph}{Numero di Catalan}{112}{section*.295}% 
+\contentsline {subsubsection}{Lista di definizioni matematiche}{112}{section*.296}% 
+\contentsline {subsubsection}{Struttura di una parentesizzazione ottima}{112}{section*.297}% 
+\contentsline {paragraph}{Teorema della sottostruttura ottima}{112}{section*.298}% 
+\contentsline {subparagraph}{Enunciato}{112}{section*.299}% 
+\contentsline {subparagraph}{Dimostrazione}{112}{section*.300}% 
+\contentsline {subsubsection}{Valore della soluzione ottima}{112}{section*.301}% 
+\contentsline {subsubsection}{Implementazione}{113}{section*.302}% 
+\contentsline {paragraph}{Input}{113}{section*.303}% 
+\contentsline {paragraph}{Output}{113}{section*.304}% 
+\contentsline {paragraph}{Approccio ricorsivo}{113}{algocfline.100}% 
+\contentsline {subparagraph}{Valutazione}{113}{section*.306}% 
+\contentsline {paragraph}{Versione bottom-up}{113}{section*.307}% 
+\contentsline {subparagraph}{Valutazioni}{114}{section*.308}% 
+\contentsline {subsection}{\numberline {13.3.8}Insieme indipendente di intervalli pesati}{115}{subsection.13.3.8}% 
+\contentsline {subsubsection}{Problema}{115}{section*.309}% 
+\contentsline {paragraph}{Input}{115}{section*.310}% 
+\contentsline {subsubsection}{Pre-elaborazione}{115}{section*.311}% 
+\contentsline {subsubsection}{Implementazione}{116}{section*.312}% 
+\contentsline {subsubsection}{Costo computazionale}{116}{section*.313}% 

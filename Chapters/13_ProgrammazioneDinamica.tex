@@ -939,3 +939,580 @@ $DP[n][m]$ contiene la lunghezza della $\mathcal{LCS}$ del probema originale. \\
 
 \end{algorithm}
 La complessit\`a computazionale di \emph{subsequence()} \`e $O(m+n)$, mentre quella di LCS \`e $O(mn)$. 
+\subsection{String matching approssimato}
+\subsubsection{Definizione}
+Si dice un'occorrenza k-approssimata di $P$ in $T$, dove $P=p_1\dots p_m$ \`e una stringa detta pattern, $T=t_1\dots t_n$ \`e una stringa detta testo con $m\le n$, una copia di $P$ in 
+$T$ in cui sono ammessi $k$ differenze tra caratteri di $P$ e caratteri di $T$ del tipo:
+\begin{itemize}
+	\item I corrispondenti caratteri in $P$, $T$ sono diversi (sostituzione).
+	\item Un carattere in $P$ non \`e incluso in $T$ (inserimento).
+	\item Un carattere in $T$ non \`e incluso in $P$ (cancellazione).
+\end{itemize}
+\subsubsection{Problema}
+Il problema \`e trovare un'occorrenza $k$-approssimata di $P$ in $T$ con $k$ minimo ($0\le k \le m$).
+\subsubsection{Sottostruttura ottima}
+Sia $DP[0\dots m][0\dots n]$ una tabella di programmazione dinamica tale che $DP[i][j]$ sia il minimo valore $k$ per cui esiste un'occorrenza $k$-approssimata di $P(i)$ in $T(j)$ che
+termina nella posizione $j$. Si hanno quattro possibilit\`a:
+\begin{itemize}
+	\item $DP[i-1][j-1]$ se $P[i]=T[j]$.
+	\item $DP[i-1][j-1]+1$ se $P[i]\neq T[j]$ per la sostituzione.
+	\item $DP[i-1][j]+1$ per l'inserimento.
+	\item $DP[i][j-1]+1$ per la cancellazione.
+\end{itemize}
+$$DP[i][j] =
+\begin{cases}
+	0 & i = 0\\
+	i & j = 0\\
+\begin{split}
+	\min\{\	& DP[i-1][j-1]+\delta, \quad\quad \delta = iif(P[i]=T[j], 0, 1)\\
+		& DP[i-1][j]+1, \\
+		& DP[i][j-1]+1\} \\
+	\end{split}& altrimenti
+\end{cases}$$
+\subsubsection{Ricostruzione della soluzione finale}
+$DP[m][j] = k$ se e solo se esiste un'occorrenza k-approssimata di $P$ in $T(j)$ che termina nella posizione $j$. La soluzione del problema \`e data dal pi\`u piccolo falore $DP[m][j]$ 
+per $0\le j\le n$. Si noti pertanto come la soluzione del problema non si trova nella casella ``in basso a destra" ma vada essa stessa ricercata nella tabella $DP$.
+\subsubsection{Algoritmo}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{StringMatching}{stringMatching}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Int \protect\StringMatching{\protect\Item[] P, \protect\Item[] T, \protect\Int m, \protect\Int n}}
+\Int[][] DP = \New \Int$[0\dots m][0\dots n]$\;
+\For{\Int j = 0 \To n}{
+	DP[0][j] = 0\;
+}
+\For{\Int i = 1 \To m}{
+	DP[i][0] = i\;
+}
+\For{\Int i = 1 \To m}{
+	\For{\Int j = 1 \To n}{
+		DP[i][j] = \Min{DP[i-1][j-1] + iif(P[i] == T[j], 0, 1), DP[i-1][j]+1, DP[i][j-1]+1}\;
+	}
+}
+\Int pos = 0;
+\For{\Int j = 1 \To n}{
+	\If{DP[m][j] $<$ DP[m][pos]}{
+		pos = j\;
+	}
+}
+\Return pos\;
+\end{algorithm}
+\subsection{Prodotto di catena di matrici}
+\subsubsection{Problema}
+Data una sequenza $n$ di matrici $A_1, \dots, A_n$ compatibili due a due al prodotto, si vuole calcolare il loro prodotto. SI noti come il prodotto di 
+matrici non sia commutativo ma associativo. Notando come il prodotto di matrici si basa sulla moltiplicazione scalare come operazione elementare si vuole
+calcolare il prodotto delle $n$ matrici impegando il minor numero possibile di moltiplicazioni scalari. 
+\subsubsection{Parentesizzazione}
+La parentesizzazione $P_{i, j}$ del prodotto $A_i\dot A_{i+1}\cdots A_j$ \`e la matrice $A_i$ se $i=j$, nel prodotto di due parentesizzazioni $(P_{i,k}
+\cdot P_{k+1, j})$ altrimenti. 
+\paragraph{Parentesizzazione ottima}
+La parentesizzazione che richiede il minor numero di moltiplicazioni scalari per essere completata fra tutte le parentesizzazioni possibili si dice 
+ottima. Vale la pena preprocessare i dati per cercare la parentesizzazione migliore per risparmiare tempo nel calcolo vero e proprio. Detto $P(n)$ il
+numero di parentesizzazioni per $n$ matrici $A_1\cdot\cdots\cdot A_n$ l'ultimo prodotto pu\`o occorrere in $n-1$ posizioni diverse. Pertanto fissato 
+l'indice $k$ dell'ultimo prodotto si hanno: $P(k)$ parentesizzazioni per $A_1\cdot\cdots\cdot A_k$ e $P(n-k)$ parentesizzazioni per  $A_{k+1}\cdot\cdots
+\cdot A_n$. Pertanto.
+$$P(n) = 
+\begin{cases}
+	1 & n =1 \\
+	\sum\limits_{i = 1}^{n-1} P(k)P(n-k) & n > 1\\
+\end{cases}$$
+\subparagraph{Numero di Catalan}
+$$P(n+1) = C(n) = \dfrac{1}{n+1}\binom{2n}{n} = \dfrac{(2n)!}{(n+1)!n!} = \Omega\biggl(\dfrac{4^n}{n^{\frac{3}{2}}}\biggr)$$
+In matematica $C(n)$ indica il numero di modi in cui un poligono convesso con $n+2$ lati pu\`o essre suddiviso in triangoli. Si pu\`o mostrare facilmente
+come $P(n)=\Omega(2^n)$. 
+\subsubsection{Lista di definizioni matematiche}
+\begin{itemize}
+	\item $A_1\cdot\cdots\cdot A_n$ \`e il prodotto di $n$ matrici da ottimizzare.
+	\item $c_{i-1}$ \`e il numero di righe della matrice $A_i$.
+	\item $c_i$ \`e il numero di colonne della matrice $A_i$.
+	\item $A[i\dots j]$ \`e il sottoprodotto $A_i\cdot A_{i+1}\cdot\cdots\cdot A_j$.
+	\item $P[i\dots j]$ \`e una parentesizzazione per $A[i\dots j]$, non necessariamente ottima. 
+\end{itemize}
+\subsubsection{Struttura di una parentesizzazione ottima}
+Sia $A[i\dots j]$ una sottosequenza del prodotto di matrici e si consideri una parentesizzazione ottima $P[i\dots j]$ di $A[i\dots j]$. Esiste un ultimo
+prodotto: un indice $k$ tale che $P[i\dots j] = P[i\dots k]\cdot P[k+1\dots j]$.
+\paragraph{Teorema della sottostruttura ottima}
+\subparagraph{Enunciato}
+Se $P[i\dots j]=P[i\dots k]\cdot P[k+1\dots j]$ \`e una parntesizzazione ottima del prodotto $A[i\dots j]$ allora $P[i\dots k]$ \`e una parentesizzazione
+ottima del prodotto $A[i\dots k]$ e $P[k+1\dots j]$ \`e una parentesizzazione ottima del prodotto $A[k+1\dots j]$. 
+\subparagraph{Dimostrazione}
+Si supponga che esista una parentesizzazione ottima $P'[i\dots k]$ di $A[i\dots k]$ con costo inferiore a $P[i\dots k]$. Allora $P'[i\dots k]\cdot 
+P[k+1\dots j]$ sarebbe una parentesizzazione di $A[i\dots j]$ con costo inferiore a $P[i\dots j]$, che \`e un assurdo. 
+\subsubsection{Valore della soluzione ottima}
+Sia $DP[i][j]$ il minimo numero di moltiplicazioni scalari necessarie per calcolare il prodotto $A[i\dots j]$. 
+\begin{itemize}
+	\item Caso base $i=j$. Allora $DP[i][j]=0$.
+	\item Passo ricorsivo: $i<j$ esiste una parentesizzazione ottima $$P[i\dots j] = P[i\dots k]\cdot P[k+1\dots j]$$ Sfruttando la ricorsione 
+		$$DP[i][j] = DP[i][k]+DP[k+1][j]+c_{i-1}\cdot c_k\cdot c_j$$
+\end{itemize}
+Considerando $c_{i-1}\cdot c_k\cdot c_j$ il costo per moltiplicare la matrice $A_i\cdot\cdots\cdot A_k$: $c_{i-1}$ righe, $c_k$ colonne e la matrice $A_{k+1}\cdot\cdots\cdot A_j$:
+$c_k$ righe, $c_j$ colonne. Non si conosce il valore di $k$ si devono provare tutti i valori che pu\`o assumere, tra $i$ e $j-1$:
+$$DP[i][j] = \begin{cases}
+	0 & i = j\\
+	\min\limits_{i\le k < j}\{DP[i][k]+DP[k+1][j]+c_{i-1}\cdot c_k\cdot c_j\} & i < j\\
+\end{cases}$$
+\subsubsection{Implementazione}
+\paragraph{Input}
+L'algoritmo riceve in input un vettore $c[0\dots n]$ contenente le dimensioni delle matrici, dove $c[0]$ \`e il numero di righe della prima matrice. $c[i-1]$ \`e il numero di righe 
+della matrice $A_i$ e $c[i]$ \`e il numero di colonne della matrice $A_i$ e due indici $i$ e $j$ che rappresentano l'intervallo di matrici da moltiplicare. 
+\paragraph{Output}
+Il numero di moltiplicazioni scalari per calcolare il prodotto delle matrici comprese tra gli indici $i$ e $j$.
+\paragraph{Approccio ricorsivo}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{RecPar}{recPar}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Int \protect\RecPar{\protect\Item[] c, \protect\Int i, \protect\Int j}}
+\uIf{i == j}{
+	\Return 0\;
+}
+\Else{
+	\Int min = $+\infty$\;
+	\For{\Int k = i \To j - 1}{
+		\Int q = \RecPar(c, i, k) + \RecPar(c, k + 1, j) +c[i-1]$\cdot$c[k]$\cdot$c[j]\;
+		\If{q $<$ min}{
+			min = q\;
+		}
+	}
+	\Return min\;
+}
+\end{algorithm}
+\subparagraph{Valutazione}
+La soluzione ricorsiva top-down \`e $\Omega(2^n)$. Il problema \`e che i sottoproblemi che sono $\frac{n(n+1)}{2}$ vengono risolti pi\`u volte.
+\paragraph{Versione bottom-up}
+Si creino due tabelle di programmazione dinamica, due matrici $DP$ e $last$ di dimensione $n\times n$ tali che $DP[i][j]$ contiene il numero di moltiplicazioni scalari necessarie per 
+moltiplicare le matrici $A[i\dots j]$ e $last[i][j]$ contiene il valore $k$ dell'ultimo prodotto che minimizza il costo del sottoproblema.
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{ComputePar}{computePar}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Int \protect\ComputePar{\protect\Item[] c, \protect\Int n}}
+\Int[][] DP = \New \Int$[1\dots n][1\dots n]$\;
+\Int[][] last = \New \Int$[1\dots n][1\dots n]$\;
+\For{\Int i = 1 \To n}{
+	DP[i][i] = 0\;
+}
+\For{\Int h = 2 \To n}{
+	\For{\Int i = 1 \To n - h + 1}{
+		\Int j = i + h - 1\;
+		DP[i][j] = $+\infty$\;
+		\For{\Int j = i \To j - 1}{
+			\Int temp = DP[i][k] + DP[k+1][j] + c[i - 1]$\cdot$c[k]$\cdot$c[j]\;
+			\If{temp $<$ DP[i][j]}{
+				DP[i][j] = temp\;
+				last[i][j] = k\;
+			}
+		}
+	}
+}
+\Return DP[1][n]
+\end{algorithm}
+\subparagraph{Valutazioni}
+Il costo computazionale \`e $O(n^3)$, in quanto ogni cella richiede tempo $O(n)$ per essere riempita. Il costo della funzione si trova nella posizione $DP[1][n]$. \`E anche necessario
+motrare la soluzione trovata, motivo per cui si salvano le informazioni nella matrice last. 
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{ComputePar}{computePar}
+\SetKwFunction{PrintPar}{printPar}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{Ricostruzione della soluzione - Stampa}
+\Void\Space\Fn{\ComputePar{\Int[] c, \Int n}}{
+	$[\dots]$\;
+	\PrintPar{last, 1, n}\;
+}
+\Void\Space\Fn{\PrintPar{\Int[][] last, \Int i, \Int j}}{
+	\uIf{i == j}{
+		\Print "A["\;
+		\Print i\;
+		\Print "]"\;
+	}
+	\Else{
+		\Print "("\;
+		\PrintPar{last, i, last[i][j]}\;
+		\Print "$\cdot$"\;
+		\PrintPar{last, last[i][j]+1, j}\;
+		\Print ")"\;
+	}
+}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{Multiply}{Multiply}
+\SetKwFunction{MMultiplication}{matrix-multiplication}
+%\SetKwFunction{}{}
+%\SetKwFunction{}{}
+%%\SetKwFunction{}{}
+%\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+
+\caption{Ricostruzione della soluzione - Calcolo Effettivo}
+\Int[][]\Space\Fn{\Multiply{\Matrix[] A, \Int[][] S, \Int i, \Int j}}{
+	\uIf{i == j}{
+		\Return A[i]\;
+	}
+	\Else{
+		\Int[][] X = \Multiply{S, i, S[i][j]}\;
+		\Int[][] Y = \Multiply{S, S[i][j]+1, j}\;
+		\Return \MMultiplication{X, Y}\;
+	}
+}
+\end{algorithm}
+\subsection{Insieme indipendente di intervalli pesati}
+\subsubsection{Problema}
+So deve trovare un insieme indipendente di peso massimo, un sottoinsieme di intervalli disgiunti tra loro ($b_j \le a_i$ o $b_i\le a_j$ $\forall i\neq j$) tale che la somma dei loro 
+profitti sia la pi\`u grande possibile.
+\paragraph{Input}
+Siano dati $n$ intervalli distinti $[a_1, b_i[, \dots, [a_n, b_n[$ della retta reale aperti a destra, dove all'intervallo $i$ \`e associato un profitto $w_i$ con $1\le i\le n$.
+\subsubsection{Pre-elaborazione}
+Per usare la programmazione dinamica \`e necessario ordinare gli intervalli per estremi finali crescenti. In una prima versione $DP[i]$ contiene il profitto massimo ottenivile con i
+primi $i$ intervalli:
+$$DP[i] =\begin{cases}
+	0 & i = 0\\
+	\max(DP[i-1], max\{DP[j]+w_i: j < i \land b_j\le a_i\}) & i >0\\
+\end{cases}$$
+Il costo computazione dell'algoritmo associato \`e $O(n^2)$.\\
+Una possibile seconda pre-elaborazione consiste nel pre-calcolare il predecessore $pred_i = j$ di $i$, dove $j < i$ \`e il massimo indice tale che $b_j\le a_i$ e se non esite tale 
+indice $pred_i = 0$. 
+$$DP[i] = \begin{cases}
+	0 & i = 0\\
+	\max(DP[i-1], DP[pred_i]+w_i) & i > 0\\
+\end{cases}$$
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{ComputePredecessor}{computePredecessor}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+
+\caption{\protect\Int[] \protect\ComputePredecessor{\protect\Int[] a, \protect\Int[] b, \protect\Int n}}
+\Int[] pred = \New \Int$[0\dots n]$\;
+pred[0] = 0\;
+\For{\Int i = 1 \To n}{
+	\Int j = i - 1\;
+	\While{j $>$ 0 \And b[j] $>$ a[i]}{
+		j = j - 1\;
+	}
+	pred[i] = j\;
+}
+\Return pred\;
+\end{algorithm}
+Si noti come calcolare i predecessori costi $O(n^2$, ma pu\`o essere migliorato in $O(n\log n)$. 
+\subsubsection{Implementazione}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{MaxInterval}{maxInterval}
+\SetKwFunction{ComputePredecessor}{computePredecessor}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+
+\caption{\protect\Set \protect\MaxInterval{\protect\Int[] a, \protect\Int[] b, \protect\Int[] w,  \protect\Int n}}
+$\{$ordina gli intervalli pere estremi di fine crescenti$\}$\;
+\Int[] pred = \ComputePredecessor{a, b, n}\;
+\Int[] DP = \New \Int$[0\dots n]$\;
+DP[0] = 0\;
+\For{\Int i = 1 \To n}{
+	DP[i] = \Max{DP[i - 1], w[i] + DP[pred[i]]}\;
+}
+\Int i = n\;
+\Set S = \SetCos{}\;
+\While{i $>$ 0}{
+	\uIf{DP[i - 1] $>$ w[i] + DP[pred[i]]}{
+		i = i - 1\;
+	}
+	\Else{
+		S.\Insert{i}\;
+		i = pred[i]\;
+	}
+}
+\Return S\;
+\end{algorithm}
+\subsubsection{Costo computazionale}
+\begin{itemize}
+	\item Ordinamento intervalli: $O(n\log n)$.
+	\item Calcolo predecessori: $O(n\log n)$.
+	\item Riempimento tabella DP: $O(n)$.
+	\item Ricostruzione soluzione: $O(n)$.
+	\item Algoritmo completo: $O(n\log n)$.
+\end{itemize}
+
