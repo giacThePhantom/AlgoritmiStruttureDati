@@ -111,27 +111,36 @@
 \BOOKMARK [1][-]{section.10.3}{Algoritmo di Dijkstra}{chapter.10}% 111
 \BOOKMARK [2][-]{subsection.10.3.1}{Funzionamento}{section.10.3}% 112
 \BOOKMARK [2][-]{subsection.10.3.2}{Correttezza per pesi positivi}{section.10.3}% 113
-\BOOKMARK [0][-]{chapter.11}{Risoluzione problemi}{}% 114
-\BOOKMARK [1][-]{section.11.1}{Classificazione dei problemi}{chapter.11}% 115
-\BOOKMARK [1][-]{section.11.2}{Definizione matematica del problema}{chapter.11}% 116
-\BOOKMARK [1][-]{section.11.3}{Tecniche di soluzione problemi}{chapter.11}% 117
-\BOOKMARK [0][-]{chapter.12}{Divide-et-impera}{}% 118
-\BOOKMARK [1][-]{section.12.1}{Le torri di Hanoi}{chapter.12}% 119
-\BOOKMARK [1][-]{section.12.2}{Quicksort}{chapter.12}% 120
-\BOOKMARK [2][-]{subsection.12.2.1}{Caratterizzazione}{section.12.2}% 121
-\BOOKMARK [2][-]{subsection.12.2.2}{Complessit\340 computazionale}{section.12.2}% 122
-\BOOKMARK [1][-]{section.12.3}{Conclusioni}{chapter.12}% 123
-\BOOKMARK [0][-]{chapter.13}{Programmazione dinamica}{}% 124
-\BOOKMARK [1][-]{section.13.1}{Approccio generale}{chapter.13}% 125
-\BOOKMARK [2][-]{subsection.13.1.1}{Evitare di risolvere i problemi pi\371 di una volta}{section.13.1}% 126
-\BOOKMARK [2][-]{subsection.13.1.2}{Ricostruire la soluzione}{section.13.1}% 127
-\BOOKMARK [1][-]{section.13.2}{Memoization}{chapter.13}% 128
-\BOOKMARK [1][-]{section.13.3}{Problemi}{chapter.13}% 129
-\BOOKMARK [2][-]{subsection.13.3.1}{Domino lineare}{section.13.3}% 130
-\BOOKMARK [2][-]{subsection.13.3.2}{Hateville}{section.13.3}% 131
-\BOOKMARK [2][-]{subsection.13.3.3}{Knapsack}{section.13.3}% 132
-\BOOKMARK [2][-]{subsection.13.3.4}{Knapsack senza limiti}{section.13.3}% 133
-\BOOKMARK [2][-]{subsection.13.3.5}{Sottosequenza comune massimale}{section.13.3}% 134
-\BOOKMARK [2][-]{subsection.13.3.6}{String matching approssimato}{section.13.3}% 135
-\BOOKMARK [2][-]{subsection.13.3.7}{Prodotto di catena di matrici}{section.13.3}% 136
-\BOOKMARK [2][-]{subsection.13.3.8}{Insieme indipendente di intervalli pesati}{section.13.3}% 137
+\BOOKMARK [1][-]{section.10.4}{Coda Bellman-Ford, Moore}{chapter.10}% 114
+\BOOKMARK [2][-]{subsection.10.4.1}{Correttezza}{section.10.4}% 115
+\BOOKMARK [1][-]{section.10.5}{Cammini minimi su DAG}{chapter.10}% 116
+\BOOKMARK [1][-]{section.10.6}{Conclusioni}{chapter.10}% 117
+\BOOKMARK [1][-]{section.10.7}{Cammini minimi, sorgente multipla}{chapter.10}% 118
+\BOOKMARK [1][-]{section.10.8}{Floyd-Warshall}{chapter.10}% 119
+\BOOKMARK [2][-]{subsection.10.8.1}{Cammini minimi k-vincolati}{section.10.8}% 120
+\BOOKMARK [2][-]{subsection.10.8.2}{Distanza k-vincolata}{section.10.8}% 121
+\BOOKMARK [1][-]{section.10.9}{Chiusura transitiva \(algoritmo di Warshall\)}{chapter.10}% 122
+\BOOKMARK [0][-]{chapter.11}{Risoluzione problemi}{}% 123
+\BOOKMARK [1][-]{section.11.1}{Classificazione dei problemi}{chapter.11}% 124
+\BOOKMARK [1][-]{section.11.2}{Definizione matematica del problema}{chapter.11}% 125
+\BOOKMARK [1][-]{section.11.3}{Tecniche di soluzione problemi}{chapter.11}% 126
+\BOOKMARK [0][-]{chapter.12}{Divide-et-impera}{}% 127
+\BOOKMARK [1][-]{section.12.1}{Le torri di Hanoi}{chapter.12}% 128
+\BOOKMARK [1][-]{section.12.2}{Quicksort}{chapter.12}% 129
+\BOOKMARK [2][-]{subsection.12.2.1}{Caratterizzazione}{section.12.2}% 130
+\BOOKMARK [2][-]{subsection.12.2.2}{Complessit\340 computazionale}{section.12.2}% 131
+\BOOKMARK [1][-]{section.12.3}{Conclusioni}{chapter.12}% 132
+\BOOKMARK [0][-]{chapter.13}{Programmazione dinamica}{}% 133
+\BOOKMARK [1][-]{section.13.1}{Approccio generale}{chapter.13}% 134
+\BOOKMARK [2][-]{subsection.13.1.1}{Evitare di risolvere i problemi pi\371 di una volta}{section.13.1}% 135
+\BOOKMARK [2][-]{subsection.13.1.2}{Ricostruire la soluzione}{section.13.1}% 136
+\BOOKMARK [1][-]{section.13.2}{Memoization}{chapter.13}% 137
+\BOOKMARK [1][-]{section.13.3}{Problemi}{chapter.13}% 138
+\BOOKMARK [2][-]{subsection.13.3.1}{Domino lineare}{section.13.3}% 139
+\BOOKMARK [2][-]{subsection.13.3.2}{Hateville}{section.13.3}% 140
+\BOOKMARK [2][-]{subsection.13.3.3}{Knapsack}{section.13.3}% 141
+\BOOKMARK [2][-]{subsection.13.3.4}{Knapsack senza limiti}{section.13.3}% 142
+\BOOKMARK [2][-]{subsection.13.3.5}{Sottosequenza comune massimale}{section.13.3}% 143
+\BOOKMARK [2][-]{subsection.13.3.6}{String matching approssimato}{section.13.3}% 144
+\BOOKMARK [2][-]{subsection.13.3.7}{Prodotto di catena di matrici}{section.13.3}% 145
+\BOOKMARK [2][-]{subsection.13.3.8}{Insieme indipendente di intervalli pesati}{section.13.3}% 146

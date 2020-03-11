@@ -262,8 +262,6 @@ $[\dots]$\;
 \SetKwData{List}{List}
 \SetKwData{Node}{Node}
 \SetKwData{DataStructure}{DataStructure}
-\SetKwData{IsEmpty}{isEmpty}
-\SetKwData{Extract}{extract}
 
 \SetKwFunction{Max}{max}
 \SetKwFunction{Insert}{insert}
@@ -274,6 +272,8 @@ $[\dots]$\;
 \SetKwFunction{DataStructureCos}{Datastructure}
 \SetKwFunction{Add}{add}
 \SetKwFunction{Adj}{adj}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Extract}{extract}
 
 \SetKwProg{Fn}{}{}
 
@@ -321,6 +321,14 @@ Si ricerca il minimo all'interno del vettore, una volta trovato si cancella la s
 Si registra la priorit\`a nella posizione $v$-esima con costo $O(1)$.
 \subsubsection{Aggiornamento priorit\`a}
 Si aggiorna la priorit\`a nbella posizione $v$-esima con costo computazionale $O(1)$.
+\subsection{Correttezza per pesi positivi}
+Ogni nodo viene estratto una e una sola volta e al momento dell'estrazione la sua distanza \`e minima. La dimostrazione si fa per induzione sul numero $k$ di nodi estratti.
+\subparagraph{Caso base}
+\`E vero in quanto $d[s]=0$ e non ci sono lunghezze negativa.
+\subparagraph{Passo induttivo}
+Si consideri per ipotesi induttiva che sia vero per i primi $k-1$ nodi. Quando viene estratto il $k$-esimo nodo $u$ la sua distanza $d[u]$ dipende dai $k-1$ nodi gi\`a estratti e non 
+pu\`o dipendere dai nodi ancora da estrarre in quanto hanno distanza $\ge d[u]$, pertanto $d[u]$ \`e minimo e $u$ non verr\`a pi\`u re-inserito in quanto non ci sono distanze negative.
+\subsubsection{Implementazione}
 \begin{algorithm}[H]
 \DontPrintSemicolon
 \SetKwComment{comment}{$\%$}{}
@@ -353,8 +361,6 @@ Si aggiorna la priorit\`a nbella posizione $v$-esima con costo computazionale $O
 \SetKwData{Node}{Node}
 \SetKwData{DataStructure}{DataStructure}
 \SetKwData{PriorityQueue}{PriorityQueue}
-\SetKwData{IsEmpty}{isEmpty}
-\SetKwData{Extract}{extract}
 
 \SetKwFunction{Max}{max}
 \SetKwFunction{Insert}{insert}
@@ -368,6 +374,8 @@ Si aggiorna la priorit\`a nbella posizione $v$-esima con costo computazionale $O
 \SetKwFunction{Decrease}{decrease}
 \SetKwFunction{Add}{add}
 \SetKwFunction{Adj}{adj}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Extract}{extract}
 
 \SetKwProg{Fn}{}{}
 
@@ -402,5 +410,373 @@ Q.\Insert{s, 0}\;
 }
 \Return (T, d)\;
 \end{algorithm}
-\subsection{Correttezza per pesi positivi}
+\paragraph{Costo computazionale con coda con priorit\`a basata su vettore}
+\begin{itemize}
+	\item Inizializzazione: costo $O(n)$ con una ripetizione.
+	\item Estrazione minimo: costo $O(n)$ con $O(n)$ ripetizioni.
+	\item Inserimento in coda: costo $O(1)$ con $O(n)$ ripetizioni.
+	\item Aggiornamento priorit\`a: costo $O(1)$ con $O(m)$ ripetizioni.
+\end{itemize}
+Per un costo totale di $O(n^2)$.
+\paragraph{Costo computazionale con coda con priorit\`a basata su heat binario}
+\begin{itemize}
+	\item Inizializzazione: costo $O(n)$ con una ripetizione.
+	\item Estrazione minimo: costo $O(\log n)$ con $O(n)$ ripetizioni.
+	\item Inserimento in coda: costo $O(\log n)$ con $O(n)$ ripetizioni.
+	\item Aggiornamento priorit\`a: costo $O(\log n)$ con $O(m)$ ripetizioni.
+\end{itemize}
+Per un costo totale di $O(m\log n)$.
+\paragraph{Costo computazionale con coda con priorit\`a basata su heap binario}
+\begin{itemize}
+	\item Inizializzazione: costo $O(n)$ con una ripetizione.
+	\item Estrazione minimo: costo $O(\log n)$ con $O(n)$ ripetizioni.
+	\item Inserimento in coda: costo $O(\log n)$ con $O(n)$ ripetizioni.
+	\item Aggiornamento priorit\`a: costo ammortizzato $O(1)$ con $O(m)$ ripetizioni.
+\end{itemize}
+Per un costo totale di $O(m+n\log n)$.
+\section{Coda Bellman-Ford, Moore}
+Questo algoritmo \`e computazionalmente pi\`u pesante di Dijkstra, ma funziona anche con archi di peso negativo.
+\subsubsection{Inizializzazione}
+Viene creata una coda di dimensione $n$ con costo computazionale $O(n)$.
+\subsubsection{Estrazione}
+Viene estratto il prossimo elemento della coda con costo computazionale $O(1)$.
+\subsubsection{Inserimento in coda}
+Si inserice l'indice $v$ in coda con costo computazionale $O(1)$. Non si deve considerare il caso in cui $v$ sia gi\`a presente in $S$.
+\subsection{Correttezza}
+Si definisce una passata:
+\begin{itemize}
+	\item Per $k=0$ la zeresima passata consiste nell'estrazione del nodo $s$ dalla coda $S$.
+	\item Per $k>0$ la $k$-esima passata consiste nell'estrazione di tutti i nodi presenti in $S$ al termine della passata $k-1$-esima.
+\end{itemize}
+Al termine della passata $k$ i vettori $T$ e $d$ descrivono i cammini minimi di lunghezza al pi\`u $k$, al termine della passata $n-1$ descrivono i cammini minimi di lunghezza al pi\`u
+$n-1$. 
+\subsubsection{Implementazione}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
 
+\SetKw{Int}{int}
+\SetKw{Bool}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{Node}{Node}
+\SetKwData{DataStructure}{DataStructure}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwData{Queue}{Queue}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{DataStructureCos}{Datastructure}
+\SetKwFunction{PriorityQueueCos}{PriorityQueue}
+\SetKwFunction{DeleteMin}{deleteMin}
+\SetKwFunction{Decrease}{decrease}
+\SetKwFunction{Add}{add}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Extract}{extract}
+\SetKwFunction{Dequeue}{dequeue}
+\SetKwFunction{Enqueue}{enqueue}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{ProCamMin}{shortestPath}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+
+\caption{(\protect\Int[], \protect\Int[])  \protect\ProCamMin{\protect\Graph G, \protect\Node s}}
+\Queue Q = \QueueCos{}\;
+Q.\Enqueue{s}\;
+\While{\Not Q.\IsEmpty{}}{
+	\Int u = Q.\Dequeue{}\;
+	b[u] = \False\;
+	\ForEach{v $\in$ G.\Adj{u}}{
+		\If{d[u]+G.w(u, v) $<$ d[v]}{
+			\uIf{\Not b[v]}{
+				Q.\Enqueue{v}\;
+				b[v] = \True\;
+			}
+			\Else{
+				Q.\Decrease{v, D[u]+G.w(u, v)}\;
+			}
+			T[v] = u\;
+			d[v] = d[u] + G.w(u, v)\;
+		}
+	}
+}
+\Return (T, d)\;
+\end{algorithm}
+\subsubsection{Complessit\`a}
+\begin{itemize}
+	\item Inizializzazione: costo $O(1)$ ripetuto una volta.
+	\item Estrazione: costo $O(1)$ ripetuto $O(n^2)$ volte.
+	\item Inserimento in coda: costo $O(1)$ ripetuto $O(nm)$ volte.
+\end{itemize}
+Il costo totale \`e pertanto $O(mn)$. Ogni nodo pu\`o essere inserito ed estratto al massimo $n-1$ volte.
+\section{Cammini minimi su DAG}
+I cammini minimi in un DAG sono sempre ben definiti, anche in presenza di pesi negativi in quanto non esistono cicli negativi. \`E possibile rilassare gli archi in ordine topologico una
+volta sola e non essendoci cicli non \`e possibile tornare su un nodo gi\`a visitato e abbassare il valore del suo campo $d$. L'algoritmo utlizza pertanto l'ordinamento topologico.\\
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Bool}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{Node}{Node}
+\SetKwData{DataStructure}{DataStructure}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwData{Queue}{Queue}
+\SetKwData{Stack}{Stack}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{DataStructureCos}{Datastructure}
+\SetKwFunction{PriorityQueueCos}{PriorityQueue}
+\SetKwFunction{DeleteMin}{deleteMin}
+\SetKwFunction{Decrease}{decrease}
+\SetKwFunction{Add}{add}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Extract}{extract}
+\SetKwFunction{Dequeue}{dequeue}
+\SetKwFunction{Enqueue}{enqueue}
+\SetKwFunction{TopSort}{topSort}
+\SetKwFunction{Pop}{pop}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{ProCamMin}{shortestPath}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+
+\caption{(\protect\Int[], \protect\Int[])  \protect\ProCamMin{\protect\Graph G, \protect\Node s}}
+\Int[] d = \New \Int$[1\dots G.n]$ \comment{$d[u]$ \`e la distanza da $s$ a $u$}
+\Int[] T = \New \Int$[1\dots G.n]$ \comment{$T[u]$ \`e il padre di $u$ nell'albero $T$}
+\ForEach{u $\in$ G.V() - $\{s\}$}{
+	T[u] = \Nil\;
+	d[u] = $+\infty$\;
+}
+T[s] = \Nil\;
+d[s] = 0\;
+\Stack S = \TopSort{G}\;
+\While{\Not S.\IsEmpty{}}{
+	u = S.\Pop{}\;
+	\ForEach{v $\in$ G.\Adj{u}}{
+		\If{d[u] + G.w(u, v) $<$ d[v]}{
+			T[v] = u\;
+			d[v] = d[u] + G.w(u, v)\;
+		}
+	}
+}
+\Return (T, d)\;
+\end{algorithm}
+\section{Conclusioni}
+\begin{tabular}{|c|c|c|}
+	\hline
+	Dijkstra & $O(n^2)$ & Pesi positivi, grafi densi\\
+	\hline
+	Johnson & $O(m\log n)$ & Pesi positivi, grafi sparsi\\
+	\hline
+	Fredman-Tarjan & $O(m+n\log n)$ & \makecell{Pesi positivi, grafi densi \\ dimensioni molto grandi}\\
+	\hline
+	Bellman-Ford & $O(mn)$ & Pesi negativi\\
+	\hline
+		     & $O(m+n)$ & DAG\\
+	\hline
+	DFS & $O(m+n)$ & Senza pes\\
+	\hline
+\end{tabular}
+\section{Cammini minimi, sorgente multipla}
+\begin{tabular}{|c|c|c|}
+	\hline
+	\textbf{Input} & \textbf{Complessit\`a} & \textbf{Approccio}\\
+	\hline
+	\makecell{Pesi positivi, \\ grafo denso} & $O(n\cdot n^2)$ & \makecell{Applicazione ripetuta dell'algoritmo \\ di Dijkstra}\\
+	\hline
+	\makecell{Pesi positivi, \\ grafo sparso}  & $O(n\cdot (m\log n))$ & \makecell{Applicazione ripetuta dell'algoritmo \\ di Johnson}\\
+	\hline
+	Pesi negativi & $O(n\cdot mn)$ & \makecell{Applicazione ripetuta di \\ Bellman-Ford, sconsigliata}\\
+	\hline
+	\makecell{Pesi negativi, \\ grafo denso} & $O(n^3)$ & Algoritmo di Floyd e Warshall\\
+	\hline
+	\makecell{Pesi negativi, \\ grafo sparso} & $O(nm\log n)$ & \makecell{Algoritmo di Johnson per sorgente \\ multipla}\\
+	\hline
+\end{tabular}
+\section{Floyd-Warshall}
+\subsection{Cammini minimi $k$-vincolati}
+Sia $k$ un valore in $\{0, \dots, n\}$. Si dice che un cammino $p^k_{xy}$ \`e un cammino $k$-vincolato fra $x$ e $y$ se esso ha il costo minimo fra tutti i cammini fra $x$ e $y$ che non 
+passano per nessun vertice in $v_{k+1}, \dots, v_n$ ($x$ e $y$ sono esclusi dal vincolo). Si assuma che esista un ordinamento tra i nodi del grafo.
+\subsection{Distanza $k$-vincolata}
+Si denota con $d^k[x][y]$ il costo totale del cammino minimo $k$-vincolato fra $x$ e $y$ se esiste.
+$$ d^k[x][y] = \begin{cases}
+	w(p^k_{xy} & se\ esiste\ p^k_{xy}\\
+	+\infty & altrimenti\\
+\end{cases}$$
+Si pu\`o definire ricorsivamente come:
+$$ d^k[x][y] = \begin{cases}
+	w(x, y) & k = 0\\
+	\min(d^{k-1}[x][y], d^{k-1}[x][k]+d^{k-1}[k][y]) & k>0\\
+\end{cases}$$
+\subsubsection{Matrice dei padri}
+Oltre a definire $d$ si definisce la matrice $T$, dove $T[x][y]$ rappresenta il predecessore di $y$ nel cammino pi\`u breve da $x$ a $y$.\\
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Bool}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{Node}{Node}
+\SetKwData{DataStructure}{DataStructure}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwData{Queue}{Queue}
+\SetKwData{Stack}{Stack}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{DataStructureCos}{Datastructure}
+\SetKwFunction{PriorityQueueCos}{PriorityQueue}
+\SetKwFunction{DeleteMin}{deleteMin}
+\SetKwFunction{Decrease}{decrease}
+\SetKwFunction{Add}{add}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Extract}{extract}
+\SetKwFunction{Dequeue}{dequeue}
+\SetKwFunction{Enqueue}{enqueue}
+\SetKwFunction{TopSort}{topSort}
+\SetKwFunction{Pop}{pop}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{ProCamMin}{floydWarshall}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+
+\caption{(\protect\Int[], \protect\Int[])  \protect\ProCamMin{\protect\Graph G}}
+\Int[] d = \New \Int$[1\dots G.n]$\;
+\Int[] T = \New \Int$[1\dots G.n]$\;
+\ForEach{u, v $\in$ G.V() - $\{s\}$}{
+	T[u][v] = \Nil\;
+	d[u][v] = $+\infty$\;
+}
+T[s] = \Nil\;
+d[s] = 0\;
+\ForEach{u $\in$ G.V()}{
+	\ForEach{v $\in$ G.\Adj{u}}{
+		d[u][v] = G.w(u, v)\;
+		T[u][v] = u\;
+	}
+}
+\For{\Int k = 1 \To G.n}{
+	\ForEach{u $\in$ G.V()}{
+		\ForEach{v $\in$ G.V()}{
+			\If{d[u][k] + d[k][v] $<$ d[u][v]}{
+				d[u][v] = d[u][k] + d[k][u]\;
+				T[u][v] = T[k][v]\;
+			}
+		}
+	}
+}
+\Return (T, d)\;
+\end{algorithm}
+\section{Chiusura transitiva (algoritmo di Warshall)}
+La chiusura transitiva $G* = (V, E*)$ di un grafo $G = (V, E)$ \`e il grafo orientato tale che $(u, v)\in E*$ se e solo se esiste un cammino da $u$ a $v$ in $G$. Supponendo di avere il
+grafo $G$ rappresentato da una matrice di adiacenza $M$, la matrice $M^n$ rappresenta la matrice di adiacenza di $G*$.
+\subsubsection{Formulazione ricorsiva}
+$$M^k[x][y] = \begin{cases}
+	M[x][y] & k = 0\\
+	M^{k-1}[x][y]\lor (M^{k-1}[x][k]\land M^{k-1}[k][y] & k>0\\
+\end{cases}$$
