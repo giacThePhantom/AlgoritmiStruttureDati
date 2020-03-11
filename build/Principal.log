@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.3.5)  11 MAR 2020 00:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.3.5)  11 MAR 2020 11:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2129,20 +2129,50 @@ l.818 ...rotect\Int \protect\Find{\protect\Int x}}
                                                   ) (./Chapters/10_Scelta.tex
 [88]
 Capitolo 10.
-) (./Chapters/11_RisoluzioneProblemi.tex [89
+[89
 
-] [90
+]pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) ha
+s been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.82 ...de s, \protect\Node d, \protect\Node[] T}}
+                                                   [90]pdfTeX warning (ext4): d
+estination with the same identifier (name{algocf.}) has been already used, dupl
+icate ignored
+<to be read again> 
+                   \relax 
+l.158 ...amMin{\protect\Graph G, \protect\Node s}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{algocf.}) has been already used, duplicate
+ ignored
+<to be read again> 
+                   \relax 
+l.219 ...amMin{\protect\Graph G, \protect\Node s}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{algocf.}) has been already used, duplicate
+ ignored
+<to be read again> 
+                   \relax 
+l.289 ...amMin{\protect\Graph G, \protect\Node s}}
+                                                   [91] [92]pdfTeX warning (ext
+4): destination with the same identifier (name{algocf.}) has been already used,
+ duplicate ignored
+<to be read again> 
+                   \relax 
+l.383 ...amMin{\protect\Graph G, \protect\Node s}}
+                                                  )
+(./Chapters/11_RisoluzioneProblemi.tex [93] [94
 
 ]
 Capitolo 11.
-[91]) (./Chapters/12_DivideImpera.tex [92]
+[95]) (./Chapters/12_DivideImpera.tex [96]
 Capitolo 12.
 pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.44 ...n, \protect\Int src, \protect\Int middle}}
-                                                   [93
+                                                   [97
 
 ]pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) ha
 s been already used, duplicate ignored
@@ -2155,12 +2185,12 @@ ation with the same identifier (name{algocf.}) has been already used, duplicate
 <to be read again> 
                    \relax 
 l.154 ...A, \protect\Int start, \protect\Int end}}
-                                                   [94])
-(./Chapters/13_ProgrammazioneDinamica.tex [95] [96
+                                                   [98])
+(./Chapters/13_ProgrammazioneDinamica.tex [99] [100
 
 ]
 Capitolo 13.
-[97] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+[101] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2018/09/02 1.7 listings language file
 )
 (./build/../Codice/MemoizationAutomatica.py
@@ -2171,8 +2201,8 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 4.
-) [98]pdfTeX warning (ext4): destination with the same identifier (name{algocf.
-}) has been already used, duplicate ignored
+) [102]pdfTeX warning (ext4): destination with the same identifier (name{algocf
+.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.77 ...otect\Int \protect\Domino{\protect\Int n}}
@@ -2192,8 +2222,8 @@ l.172 ...tect\Int \protect\Domino{\protect\Int n}}
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[99] [100]pdfTeX warning (ext4): destination with the same identifier (name{alg
-ocf.}) has been already used, duplicate ignored
+[103] [104]pdfTeX warning (ext4): destination with the same identifier (name{al
+gocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.258 ...eville{\protect\Int[] D, \protect\Int n}}
@@ -2206,14 +2236,14 @@ l.311 ...[] DP, \protect\Int[] D, \protect\Int i}}
                                                   
 Underfull \vbox (badness 1033) has occurred while \output is active []
 
- [101]
+ [105]
 Overfull \hbox (15.6679pt too wide) in paragraph at lines 348--350
  []\OT1/cmr/bx/n/10 Parte ri-cor-si-va[] \OT1/cmr/m/n/10 Con-si-de-ran-do l'ul-
 ti-mo og-get-to lo si pu^^Ro non pren-de-re: $\OML/cmm/m/it/10 DP\OT1/cmr/m/n/1
 0 [\OML/cmm/m/it/10 i\OT1/cmr/m/n/10 ][\OML/cmm/m/it/10 c\OT1/cmr/m/n/10 ] =
  []
 
-[102]pdfTeX warning (ext4): destination with the same identifier (name{algocf.}
+[106]pdfTeX warning (ext4): destination with the same identifier (name{algocf.}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -2224,7 +2254,7 @@ ation with the same identifier (name{algocf.}) has been already used, duplicate
 <to be read again> 
                    \relax 
 l.465 \caption{Knapsack con memoization}
-                                         [103]pdfTeX warning (ext4): destinatio
+                                         [107]pdfTeX warning (ext4): destinatio
 n with the same identifier (name{algocf.}) has been already used, duplicate ign
 ored
 <to be read again> 
@@ -2233,7 +2263,7 @@ l.558 ...on{Knapsack senza limiti con memoization}
                                                   
 Underfull \vbox (badness 7203) has occurred while \output is active []
 
- [104]pdfTeX warning (ext4): destination with the same identifier (name{algocf.
+ [108]pdfTeX warning (ext4): destination with the same identifier (name{algocf.
 }) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -2241,8 +2271,8 @@ l.635 ...on{Knapsack senza limiti con memoization}
                                                   
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [105]
-[106]pdfTeX warning (ext4): destination with the same identifier (name{algocf.}
+ [109]
+[110]pdfTeX warning (ext4): destination with the same identifier (name{algocf.}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -2254,7 +2284,7 @@ m/m/it/10 i\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; U\OT1/cmr/m/n/10 (\OML/cmm/m/it/
 10 j\OT1/cmr/m/n/10 )) = []
  []
 
-[107]
+[111]
 Overfull \hbox (41.416pt too wide) in paragraph at lines 778--783
  [] 
  []
@@ -2264,13 +2294,13 @@ pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
 <to be read again> 
                    \relax 
 l.852 ...tem[] U, \protect\Int n, \protect\Int m}}
-                                                   [108]pdfTeX warning (ext4): 
+                                                   [112]pdfTeX warning (ext4): 
 destination with the same identifier (name{algocf.}) has been already used, dup
 licate ignored
 <to be read again> 
                    \relax 
 l.914 \caption{}
-                 [109]
+                 [113]
 Overfull \hbox (2.37256pt too wide) in paragraph at lines 954--956
 \OT1/cmr/m/n/10 Sia $\OML/cmm/m/it/10 DP\OT1/cmr/m/n/10 [0 [] \OML/cmm/m/it/10 
 m\OT1/cmr/m/n/10 ][0 [] \OML/cmm/m/it/10 n\OT1/cmr/m/n/10 ]$ una ta-bel-la di p
@@ -2296,15 +2326,15 @@ l.1020 ...em[] T, \protect\Int m, \protect\Int n}}
                                                   
 Underfull \vbox (badness 1490) has occurred while \output is active []
 
- [110]
-[111]
+ [114]
+[115]
 Overfull \hbox (16.39432pt too wide) in paragraph at lines 1080--1082
  []\OT1/cmr/bx/n/10 Dimostrazione[] \OT1/cmr/m/n/10 Si sup-pon-ga che esi-sta u
 na pa-ren-te-siz-za-zio-ne ot-ti-ma $\OML/cmm/m/it/10 P[]\OT1/cmr/m/n/10 [\OML/
 cmm/m/it/10 i [] k\OT1/cmr/m/n/10 ]$
  []
 
-[112]pdfTeX warning (ext4): destination with the same identifier (name{algocf.}
+[116]pdfTeX warning (ext4): destination with the same identifier (name{algocf.}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -2319,7 +2349,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
 <to be read again> 
                    \relax 
 l.1210 ...ePar{\protect\Item[] c, \protect\Int n}}
-                                                   [113]pdfTeX warning (ext4): 
+                                                   [117]pdfTeX warning (ext4): 
 destination with the same identifier (name{algocf.}) has been already used, dup
 licate ignored
 <to be read again> 
@@ -2338,8 +2368,8 @@ l.1347 ...one della soluzione - Calcolo Effettivo}
                                                   
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [114]
-[115]pdfTeX warning (ext4): destination with the same identifier (name{algocf.}
+ [118]
+[119]pdfTeX warning (ext4): destination with the same identifier (name{algocf.}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -2350,7 +2380,7 @@ ation with the same identifier (name{algocf.}) has been already used, duplicate
 <to be read again> 
                    \relax 
 l.1489 ...] b, \protect\Int[] w,  \protect\Int n}}
-                                                   [116]) [117]
+                                                   [120]) [121]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 23.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 23.
 
@@ -2361,10 +2391,10 @@ Package rerunfilecheck Info: File `Principal.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
  ) 
 Here is how much of TeX's memory you used:
- 46686 strings out of 492615
- 1016846 string characters out of 6131391
- 1344867 words of memory out of 5000000
- 49249 multiletter control sequences out of 15000+600000
+ 46750 strings out of 492615
+ 1017640 string characters out of 6131391
+ 1345374 words of memory out of 5000000
+ 49270 multiletter control sequences out of 15000+600000
  547474 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  66i,22n,111p,816b,1504s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2383,26 +2413,26 @@ hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/m
-sbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on ./build/Principal.pdf (117 pages, 612605 bytes).
+s/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/sy
+mbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/sym
+bols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on ./build/Principal.pdf (121 pages, 627163 bytes).
 PDF statistics:
- 1871 PDF objects out of 2073 (max. 8388607)
- 1701 compressed objects within 18 object streams
- 679 named destinations out of 1000 (max. 500000)
- 1045 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1968 PDF objects out of 2073 (max. 8388607)
+ 1794 compressed objects within 18 object streams
+ 722 named destinations out of 1000 (max. 500000)
+ 1109 words of extra memory for PDF output out of 10000 (max. 10000000)
 

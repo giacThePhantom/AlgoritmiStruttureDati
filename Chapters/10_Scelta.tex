@@ -1,4 +1,406 @@
 \chapter{Scelta}
-\begin{Huge}
-TO DO
-\end{Huge}
+\section{Il problema dei cammini minimi}
+\paragraph{Definizione}
+Dato un cammino $p=<v_1, v_2, \dots, v_k$ con $k>1$ il costo del cammino \`e dato da $$w(p) = \sum\limits_{i =2}^k w(v_{i-1}, v_i)$$
+\paragraph{Input}
+Un grafo orientato $G = (V, E)$, un nodo sorgente $s$ e una funzione di peso $w: E\rightarrow \mathbb{R}$.
+\paragraph{Output}
+Trovare un cammino da $s$ a $u$ per ogni nodo $u\in V$, il cui costo sia minimo.
+\subsection{Varianti del problema}
+\subsubsection{Cammini minimi da sorgente unica}
+\subparagraph{Input:} un grafo pesato con nodo radice $s$.
+\subparagraph{Output:} i cammini minimi che vanno da $s$ a tutti gli altri nodi.
+\subsubsection{Cammino minimo tra una coppia di vertici}
+\subparagraph{Input:} un grafo pesato e una coppia di vertici $s$, $d$.
+\subparagraph{Output:} un cammino minimo fra $s$ e $d$, per risolverlo si risolve il probelma dei cammini minimi da sorgente unica e si estrae il cammino richiesto in quanto non si 
+conoscono algoritmi con tempo di esecuzione migliore.
+\subsubsection{Cammini minimi tra tutte le coppie di vertici}
+\subparagraph{Input:} un grafo pesato.
+\subparagraph{Output:} i cammini minimi fra tutte le coppie di vertici, la soluzione si basa su programmazione dinamica.
+\subsubsection{Pesi}
+Alcuni algoritmi possonofunzionare unicamente con alcune categorie speciali di pesi: positivi o sia positivi che negativi e reali o interi.
+\subsection{Sottostruttura ottima}
+Si noti come due cammini possono avere un tratto in comune $A\rightsquigarrow B$ ma non possono convergere in un nodo comune $B$ dopo aver percorso un tratto iniziale distinto. 
+\subsubsection{Albero dei cammini minimi}
+L'albero dei cammini minimi \`e un albero di copertura radicato in $s$ avente un cammino da $s$ a tutti i nodi raggiungibili da $s$. Viene detto anche spanning tree. Dato un grafo $G=
+(V, E)$ non orientato e connesso, un albero di copertura di $G$ \`e un sottografo $T=(V, E_T)$ tale che $T$ \`e un albeero, $E_T\subseteq E$ e $T$ contiene tutti i vertici di $G$. 
+\paragraph{Rappresentazione albero}
+Per rappresentare l'albero si utilizza la rappresentazione basata sul vettore dei padri.
+\subsubsection{Soluzione ammissibile}
+Una soluzione ammissibile pu\`o essere descritta da un albero di copertura $T$ radicato in $s$ e da un vettore di distanza $d$, i cui valori $d[u]$ rappresentano il costo del cammino da
+$s$ a $u$ in $T$.\\
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{Node}{Node}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{PrintPath}{printPath}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+
+\caption{\protect\Void \protect\PrintPath{\protect\Node s, \protect\Node d, \protect\Node[] T}}
+\uIf{s == d}{
+	\Print s\;
+}
+\uElseIf{ T[d] == \Nil}{
+	\Print "error"\;
+}
+\Else{
+	\PrintPath{s, T[d], T}\;
+	\Print d\;
+
+}
+\end{algorithm}
+\section{Teorema di Bellman}
+\paragraph{Enunciato}
+Una soluzione ammissibile $T$ \`e ottima se e solo se: $$d[v] = d[u]+w(u, v) \quad\quad \text{per ogni arco }(u, v)\in T$$ $$d[v] \le d[u]+w(u, v) \quad\quad \text{per ogni arco }(u, v)
+\in E$$
+\paragraph{Dimostrazione}
+\subparagraph{Se $T$ \`e una soluzione ottima, allora valgono le condizioni di Bellman} Sia $T$ una soluzione ottima e $(u, v)\in E$. Se $(u, v)\in T$ allora $d[v]=d[u]+w(u, v)$. Se
+$(u, v)\not\in T$ allora $d[v]\le d[u]+w(u, v)$ perch\`e altrimenti esisterebbe nel grafo $G$ un cammino da $s$ a $v$ pi\`u corto di quello in $T$, che \`e un assurdo.
+\subparagraph{Se valogono le condizioni di Bellman allora $T$ \`e una soluzione ottima} Si supponga per assurdo che il cammino da $s$ a $u$ non sia ottimo, allora esiste un albero $T'$
+in cui il cammino da $s$ a $u$ ha distanza $d'[u]<d[u]$ con $d'$ il vettore delle distanze associato a $T'$. Essendo $d'[s]=d[s]=0$< ma $d'[u]<d[u]$ esiste un arco $(h, k)$ per cui 
+$d'[h]\ge d[h]$ e $d'[k]<d[k]$. Si noti ora come per costruzione $d'[h]\ge d[h]$ e $d'[k]=d'[h]+w(h, k)$, e per ipotesi $d[k]\le d[h]+w(h, k)$. Combinando queste due relazioni si ottiene
+$$ d'[k] = d'[h]+w(h, k)\ge d[h]+w(h, k)\ge d[k]$$ Pertanto $d'[k]\ge d[k]$, che contraddice $d'[k]<d[k]$. 
+\subsection{Implementazioni}
+\subsubsection{Algoritmo prototipo}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{Node}{Node}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{ProCamMin}{prototipoCamminiMinimi}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+
+\caption{(\protect\Int[], \protect\Int[])  \protect\ProCamMin{\protect\Graph G, \protect\Node s}}
+\comment{Inizializza $T$ ad una foresta di copertura composta da nodi isolati}
+\comment{Inizializza $d$ con sovrastima della distanza: $d[s] = 0,\ d[x]=+\infty$}
+\While{$\exists(u,\ v):d[u]\ +\ G.w(u,\ v)\ <\ d[v]$}{
+	d[v] = d[u] + w(u, v)\;
+	\comment{Sostituisci il padre di $v$ in $T$ con $u$}
+}
+\Return (T, d)\;
+\end{algorithm}
+Se al termine dell'esecuzione qualche nodo mantiene una distanza infinita non \`e raggiungibile.
+\subsubsection{Algoritmo generico}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Bool}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{Node}{Node}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{ProCamMin}{shortestPath}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+
+\caption{(\protect\Int[], \protect\Int[])  \protect\ProCamMin{\protect\Graph G, \protect\Node s}}
+\Int[] d = \New \Int$[1\dots G.n]$\comment{$d[u]$ \`e la distanza da $s$ a $u$}
+\Int[] T = \New \Int$[1\dots G.n]$\comment{$T[u]$ \`e il padre di $u$ nell'albero $T$}
+\Bool[] b = \New \Bool$[1\dots G.n]$\comment{$b[u]$ \`e \textbf{true} se $u\in S$}
+\ForEach{$u\in\ G.V()\ -\ \{s\}$}{
+	T[u] = \Nil\;
+	d[u] = $+\infty$\;
+	b[u] = \False\;
+}
+T[s] = \Nil\;
+d[s] = 0\;
+b[s] = \True\;
+$[\dots]$\;
+\end{algorithm}
+
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Bool}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{Node}{Node}
+\SetKwData{DataStructure}{DataStructure}
+\SetKwData{IsEmpty}{isEmpty}
+\SetKwData{Extract}{extract}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{DataStructureCos}{Datastructure}
+\SetKwFunction{Add}{add}
+\SetKwFunction{Adj}{adj}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{ProCamMin}{shortestPath}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+
+\caption{(\protect\Int[], \protect\Int[])  \protect\ProCamMin{\protect\Graph G, \protect\Node s}}
+\DataStructure S = \DataStructureCos{}\;
+S.\Add{s}\;
+\While{\Not S.\IsEmpty{}}{
+	\Int u = S.\Extract{}\;
+	b[u] = \False\;
+	\ForEach{v $\in$ G.\Adj{u}}{
+		\If{d[u]+G.w(u, v) $<$ d[v]}{
+			\uIf{\Not b[v]}{
+				S.\Add{v}\;
+				b[v] = \True\;
+			}
+			\Else{
+				\comment{Azione da svolgere nel caso $v$ sia gi\`a presente in $S$}
+			}
+			T[v] = u\;
+			d[v] = d[u] + G.w(u, v)\;
+		}
+	}
+}
+\Return (T, d)\;
+\end{algorithm}
+\section{Algoritmo di Dijkstra}
+Nella versione originale viene utilizzatro per trovare la distanza minima fra due nodi utilizzando il concetto di code di priorit\`a. Funziona unicamente con pesi positivi e viene 
+utilizzato in protocolli di rete.
+\subsection{Funzionamento}
+\subsubsection{Inizializzazione}
+Viene creato un vettore di dimensione $n$ in cui l'indice $u$ rappresenta il nodo $u$-esimo. Le priorit\`a vengono inizializzate a $+\infty$ e quella di $s$ uguale a $0$. Questa 
+operazione ha costo computazionale $O(n)$.
+\subsubsection{Estrazione minimo}
+Si ricerca il minimo all'interno del vettore, una volta trovato si cancella la sua priorit\`a, con costo computazionale $O(n)$. 
+\subsubsection{Inserimento in coda}
+Si registra la priorit\`a nella posizione $v$-esima con costo $O(1)$.
+\subsubsection{Aggiornamento priorit\`a}
+Si aggiorna la priorit\`a nbella posizione $v$-esima con costo computazionale $O(1)$.
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Bool}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{Node}{Node}
+\SetKwData{DataStructure}{DataStructure}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwData{IsEmpty}{isEmpty}
+\SetKwData{Extract}{extract}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{DataStructureCos}{Datastructure}
+\SetKwFunction{PriorityQueueCos}{PriorityQueue}
+\SetKwFunction{DeleteMin}{deleteMin}
+\SetKwFunction{Decrease}{decrease}
+\SetKwFunction{Add}{add}
+\SetKwFunction{Adj}{adj}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{ProCamMin}{shortestPath}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+
+\caption{(\protect\Int[], \protect\Int[])  \protect\ProCamMin{\protect\Graph G, \protect\Node s}}
+\PriorityQueue Q = \PriorityQueueCos{}\;
+Q.\Insert{s, 0}\;
+\While{\Not Q.\IsEmpty{}}{
+	\Int u = Q.\DeleteMin{}\;
+	b[u] = \False\;
+	\ForEach{v $\in$ G.\Adj{u}}{
+		\If{d[u]+G.w(u, v) $<$ d[v]}{
+			\uIf{\Not b[v]}{
+				Q.\Insert{v, d[u]+G.w(u, v)}\;
+				b[v] = \True\;
+			}
+			\Else{
+				Q.\Decrease{v, D[u]+G.w(u, v)}\;
+			}
+			T[v] = u\;
+			d[v] = d[u] + G.w(u, v)\;
+		}
+	}
+}
+\Return (T, d)\;
+\end{algorithm}
+\subsection{Correttezza per pesi positivi}
+
