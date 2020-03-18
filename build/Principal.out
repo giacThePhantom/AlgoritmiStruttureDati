@@ -144,3 +144,18 @@
 \BOOKMARK [2][-]{subsection.13.3.6}{String matching approssimato}{section.13.3}% 144
 \BOOKMARK [2][-]{subsection.13.3.7}{Prodotto di catena di matrici}{section.13.3}% 145
 \BOOKMARK [2][-]{subsection.13.3.8}{Insieme indipendente di intervalli pesati}{section.13.3}% 146
+\BOOKMARK [0][-]{chapter.14}{Algoritmi greedy}{}% 147
+\BOOKMARK [1][-]{section.14.1}{Insieme indipendente massimale di intervalli}{chapter.14}% 148
+\BOOKMARK [2][-]{subsection.14.1.1}{Affrontare il problema}{section.14.1}% 149
+\BOOKMARK [2][-]{subsection.14.1.2}{Sottostruttura ottima}{section.14.1}% 150
+\BOOKMARK [2][-]{subsection.14.1.3}{Definizione ricorsiva del costo della soluzione}{section.14.1}% 151
+\BOOKMARK [2][-]{subsection.14.1.4}{Scelta ingorda}{section.14.1}% 152
+\BOOKMARK [1][-]{section.14.2}{Approccio a partire da programmazione dinamica}{chapter.14}% 153
+\BOOKMARK [1][-]{section.14.3}{Problema del resto}{chapter.14}% 154
+\BOOKMARK [2][-]{subsection.14.3.1}{Soluzione basata su programmazione dinamica}{section.14.3}% 155
+\BOOKMARK [2][-]{subsection.14.3.2}{Implementazione}{section.14.3}% 156
+\BOOKMARK [2][-]{subsection.14.3.3}{Scelta greedy}{section.14.3}% 157
+\BOOKMARK [1][-]{section.14.4}{Approccio greedy senza programmazione dinamica}{chapter.14}% 158
+\BOOKMARK [1][-]{section.14.5}{Scheduling}{chapter.14}% 159
+\BOOKMARK [2][-]{subsection.14.5.1}{Dimostrazione di correttezza}{section.14.5}% 160
+\BOOKMARK [1][-]{section.14.6}{Problema dello zaino reale}{chapter.14}% 161

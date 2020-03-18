@@ -1,0 +1,311 @@
+\chapter{Algoritmi greedy}
+Gli algoritmi gridi vengono utilizzati per la risoluzione di problemi di ottimizzazione che eseguono una sequenza di decisioni. Se la programmazione dinamica valuta in maniera bottom-up
+valutando tutte le decisioni possibili evitando di ripetere sotto-problemi o decisioni gi\`a percorse gli algoritmi greedy selezionano una sola delle possibili decisioni che sembra
+ottima, ovvero \`e localmente ottima. In questo caso si rende necessario dimostrare che si ottiene un ottimo globale. La tecnica greedy va applicata se \`e possibile dimostrare che 
+esiste una scelta ingorda, ovvero fra le molte scelte possibili ne pu\`o essere facilmente individuata una che porta sicuramente alla soluzione ottima e se il problema ha sottostruttura
+ottima, ovvero se fatta tale scelta resta un sottoproblema con la stessa struttura del problema principale. Non tutti i problemi hanno una scelta greedy e in alcuni casi soluzioni ottime
+possono comunque essere interessanti.
+\section{Insieme indipendente massimale di intervalli}
+\paragraph{Input}
+Sia $S=\{1, \dots, n\}$ un insieme di intervalli della retta reale. Ogni intervallo $[a_i, b_i[$, con $i\in S$ \`e chiuso a sinistra e aperto a destra. Si indica con $a_i$ il tempo di
+inizio e con $b_i$ iltempo di fine. 
+\paragraph{Output}
+Si vuole trovare un insieem dipendente massimale, ovvero un sottoinsieme di massima cardinalit\`a formato da intervalli tutti disgiunti tra di loro (naturale confronto con l'insieme
+indipendente di intervalli pesati).
+\subsection{Affrontare il problema}
+\subsubsection{Programmazione dinamica}
+Si individui una sottostruttura ottima e si scriva una definizione ricorsiva per la dimensione della soluzione ottima con la corrispettiva versione iterativa bottom-up.
+\subsubsection{Tecnica greedy}
+Si cerchi una possibile scelta ingorda, si dimostri che porta alla soluzione ottima e si scriva un algoritmo ricorsivo o iterativo che effettua sempre la scelta ingorda.
+\subsection{Sottostruttura ottima}
+Si assuma che gli intervalli siano ordinati per tempo di fine: $b_1\le \cdots\le b_n$ e si definisca il sottoproblema $S[i\dots j]$ come l'insieme di intervalli che iniziano dopo la fine
+di $i$ e finiscono prima dell'inizio di $j$: $S[i\dots j] = \{k|b_j\le a_k < b_k\le a_j\}$. Si aggiungano due intervalli fittizi: lo zeresimo $b_0=-\infty$ e l'$n+1$-esimo 
+$a_{n+1} = +\infty$, Il problema iniziale corrisponde a $S[0, n+1]$. 
+\subsubsection{Teorema}
+\paragraph{Enunciato}
+Si supponga che $A[i\dots j]$ sia una soluzione ottimale di $S[i\dots j]$ e sia $k$ un intervallo che appartiene a $A[i\dots j]$, allora:
+\begin{itemize}
+	\item Il problema $S[i\dots j]$ viene diviso in due sottoproblemi:
+		\begin{itemize}
+			\item $S[i\dots k]$, gli intervalli che finiscono prima di $k$.
+			\item $S[k\dots j$, gli intervalli che iniziano dopo $k$.
+		\end{itemize}
+	\item $A[i\dots j]$ contiene le soluzioni ottimali di $S[i\dots k]$ e $S[k\dots j]$.
+		\begin{itemize}
+			\item $A[i\dots j]\cap S[i\dots k]$ \`e la soluzione ottimale di $S[i\dots k]$.
+			\item $A[i\dots j]\cap S[k\dots j]$ \`e la soluzione ottimale di $S[k\dots j]$.
+		\end{itemize}
+\end{itemize}
+\paragraph{Dimostrazione}
+Si dimostra utilizzando il metodo cut-and-paste.
+\subsection{Definizione ricorsiva del costo della soluzione}
+\subsubsection{Definizione ricorsiva della soluzione}
+$$A[i\dots j] = A[i\dots k] \cup \{k\}\cup A[k\dots j]$$
+\subsubsection{Definizione ricorsiva del costo}
+$k$ viene determinato analizzando tutte le possibilit\`a. Sia pertanto $DP[i][j]$ la dimensione del pi\`u grande sottoinsieme $A[i\dots j]\subseteq S[i\dots j]$ di intervalli regolari:
+$$ DP[i][j] = \begin{cases}
+	0 & S[i\dots j] = \emptyset\\
+	\max\limits_{k\in S[i\dots j]}\{DP[i][k]+DP[k][j]+1\} & altrimenti\\
+\end{cases}$$
+Questa soluzione permette di scrivere un algoritmo basato su programmazione dinamica con complessit\`a $O(n^3)$: bisogna risolvere tutti i problemi con $i<j$, con costo $O(n)$ per 
+sottoproblema nel caso peggiore.
+\subsection{Scelta ingorda}
+L'algoritmo risulta migliorabile in quanto non \`e necessario analizzare tutti valori possibili di $k$.
+\subsubsection{Teorema}
+\paragraph{Enunciato}
+Sia $S[i\dots j]$ un sottoproblema non vuoto e $m$ l'intervallo di $S[i\dots j]$ con il minor tempo di fine, allora il sottoproblema $S[i\dots m]$ \`e vuoto e $m$ \`e compreso in 
+qualche soluzione ottima di $S[i\dots j]$.
+\paragraph{Dimostrazione}
+Si sa per definizione di intervallo che $a_m<b_m$ e che essendo che $m$ ha minor tempo di fine $\forall k\in S[i\dots j]:b_m\le b_k$. Ne consegue che $\forall k\in S[i\dots k]:a_m<b_k$
+per la propriet\`a transitiva. Se nessun intervallo in $S[i\dots j]$ termina prima di $a_m$ allora $S[i\dots m] = \emptyset$. Sia ora $A'[i\dots j]$ una soluzione ottima di $S[i\dots j]$
+e $m'$ l'intervallo con minor tempo di fine in $A'[i\dots j]$. Sia ora $A[i\dots j] = A-[j\dots j]-\{m'\}\cup \{m\}$ una nuova soluzione ottenuta togliendo $m'$ e aggiungendo $m$ a
+$A'[i\dots j]$. $A[i\dots j]$ \`e una soluzione ottima che contiene $m$ in quanto ha la stessa dimensione di $A'[i\dots j]$ e gli intervalli sono indipendenti. 
+\subsubsection{Conseguenze}
+Con questo teorema non \`e pi\`u necessario analizzare tutti i valori possibili di $k$: faccio una scelta ingormda ma sicura selezionando l'attivit\`a $m$ con il minor tempo di fine.
+In questo modo non \`e pi\`u necessario analizzare due sottoproblemi eliminando tutte le attivit\`a non compatibili con la scelta ingorda, rimane da risolvere solo $S[m\dots j]$. 
+\subsubsection{Implementazione}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{IndipendentSet}{indipendentSet}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+
+\caption{\protect\Set \protect\IndipendentSet{\protect\Int[] a, \protect\Int[] b}}
+$\{$ordina $a$ e $b$ in modo che $b[1]\le b[2]\le\cdots\le b[n]$ $\}$\;
+\Set S = \SetCos{}\;
+S.\Insert{1}\;
+\Int last = 1\;
+\For{\Int i = 2 \To n}{
+	\If{a[i] $\ge$ b[last]}{
+		S.\Insert{i}\;
+		last = i\;
+	}
+}
+\Return S\;
+\end{algorithm}
+La complessit\`a \`e $O(n\log n)$ se l'input non \`e ordinato, $O(n)$ se ordinato. 
+\section{Approccio a partire da programmazione dinamica}
+Si cerca di risolvere il problema della selezione delle attivit\`a tramite programmazione dinamica individuando una sottostruttura ottima e scrivendo una definizione ricorsiva per la
+dimensione della soluzione ottima. Si dimostra la propriet\`a della scelta greedy: per ogni sottoproblema esiste una soluzione ottima che contiene la scelta greedy e si scrive un
+algoritmo iterativo che effettua sempre la scelta ingorda.
+\section{Problema del resto}
+\paragraph{Input}
+Un insieme di tagli di monete memorizzati in un vettore di interi positivi $t[1\dots n[$ e un intero $R$ rappresentante il resto che si deve restituire.
+\paragraph{Definizione del problema}
+Si deve trovare il pi\`u piccolo numero intero di pezzi necessari per dare un resto di $R$ centesimi utilizzando i tagli dati assumendo di avere un numero illimitato di monete per ogni 
+taglio, ovvero trovare un vettore $x$ di interi non negativi tale che $R=\sum\limits_{i = 1}^nx[i]\cdot t[i]$ e $m=\sum\limits_{i = 1}^nx[i]$ ha un valore minimo.
+\subsection{Soluzione basata su programmazione dinamica}
+\subsubsection{Sottostruttura ottima}
+Sia $S(i)$ il problema per dare un resto pari a $i$ e $A(i)$ la soluzione ottima del problema $S(i)$ rappresentata da un multi insieme e $j\in A(1)$, allora $S(i-t[j])$ \`e un 
+sottoproblema di $S(i)$ la cui solulzione ottima \`e data da $A(i)-\{j\}$. 
+\paragraph{Definizione ricorsiva}
+Sia la tabella di programmazione dinamica $DP[0\dots R]$ e $DP[i]$ il minimo numero di monete per risolvere il problema $S(i)$.
+$$DP[i] = \begin{cases}
+	0 & i = 0 \\
+	\min\limits_{1\le j\le n}\{DP[i-t[j] | t[j]\le i\} + 1 & i>0\\
+\end{cases}$$
+\subsection{Implementazione}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{Resto}{resto}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+
+\caption{\protect\Int[] \protect\Resto{\protect\Int[] t, \protect\Int n, \protect\Int R}}
+\Int[] DP = \New \Int$[0\dots R]$\;
+\Int[] S = \New \Int$[0\dots R]$\;
+DP[0] = 0\;
+\For{\Int i = 1 \To R}{
+	DP[i] = +$\infty$\;
+	\For{\Int j = 1 \To n}{
+		\If{i $>$ t[j] \And DP[i - t[j]] + 1 $<$ DP[i]}{
+			DP[i] = DP[i - t[j]] + 1\;
+			S[i] = j\;
+		}
+	}
+}
+\Int[] x = \New \Int$[1\dots n]$\;
+\For{\Int i = 1 \To n}{
+	x[i] = 0\;
+}
+\While{R $>$ 0}{
+	x[S[r]] = x[S[r]] + 1\;
+	R -= t[S[R]]\;
+}
+\Return x\;
+
+\end{algorithm}
+Questo algoritmo ha complessit\`a $O(nR)$. 
+\subsection{Scelta greedy}
+\`E possibile pensare ad una soluzione greedy selezionando la moneta $j$ pi\`u grande tale per cui $t[j]\le R$ e risolvere il problema $S(R - t[j])$. 
+\subsubsection{Implementazione}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{Resto}{resto}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+
+\caption{\protect\Int[] \protect\Resto{\protect\Int[] t, \protect\Int n, \protect\Int R}}
+\Int[] x = \New \Int$[1\dots n]$\;
+$\{$ordina le monete in modo decrescente$\}$\;
+\For{\Int i = 1 \To n}{
+	x[i] = $\lfloor\frac{R}{t[i]}\rfloor$\;
+	R -= x[i] $\cdot$ t[i]\;
+}
+\Return x\;
+\end{algorithm}
+Questo algoritmo cha complessit\`a $O(n\log n)$ se l'input non \`e ordinato e $O(n)$ se \`e ordinato.
+\section{Approccio greedy senza programmazione dinamica}
+Si evidenzino i passi di decisione trasformando il problema di ottimizzazione in un problema di scelte successive, scegliendo una possibile scelta ingorda dimostrando che ripetta il
+``principio della scelta ingorda". Si evidenzia la sottostruttura ottima dimostrando che la soluzione ottima del problema rimanente dopo la scelta ingorda pu\`o essere unita a tale
+scelta. La struttura del codice \`e top-down, anche iterativamente. Pu\`o essere necessario pre-processare l'input. 
+\section{Scheduling}
+\paragraph{Input}
+Si supponga di avere un processore e $n$ job da eseguire su di esso, ognuno caratterizzato da un tempo di esecuzione $t[i]$ eseguito a priori.
+\paragraph{Problema}
+Si dee trovare una sequenza di esecuzione che minimizzi il tempo di completamento medio. Dato un vettore $A[1\dots n]$ contenente una permutazione di $\{1\dots n\}$ il tempo di 
+completamento dell'$h$-esimo job nella permutazione \`e $T_A(h) = \sum\limits_{i = 1}^h t[A[i]$. 
+\subsection{Dimostrazione di correttezza}
+\subsubsection{Teorema di scelta greedy}
+\paragraph{Enunciato}
+Esiste una soluzioen ottima $A$ in cui il job con minore tempo di fine $m$ si trova in proma posizione: $A[1] = m$.
+\paragraph{Dimostrazione}
+Si consideri la permutazione ottima $B = [B[1], \dots, B[m-1], B[m], B[m+1], \dots, B[n]]$ e sia $m$ la posizione in cui si trova in $B$ il job con il minor tempo di fine. Si consideri
+una permutazione in cui i job in posiizone $1$ vengono scambiatiL $A =[B[m], B[2] \dots, B[m-1], B[1], B[m+1], \dots, B[n]]$. Il tempo di completamento medio di $A$ \`e minore o uguale
+al tempo di completamento medio di $B$. In quanto i job in posizione $1, \dots, m-1$ in $A$ hanno tempo di completamento $\le$ dei job in posizione $1, \dots, m-1$ in $B$ e i job in
+posizione $m, \dots, n$ in $A$ hanno tempo di completamento uguale ai job in posizione $m, \dots, n$ in $B$. Essendo $B$ ottima, $A$ non pu\`o avere tempo di completamento medio minore
+e pertanto anche $A$ \`e ottima. 
+\subsubsection{Teorema della sottostruttura ottima}
+\paragraph{Enunciato}
+Sia $A$ una soluzione ottima di un problema con $n$ job in cui il job con minor tempo di fine $m$ si trova in prima posizione. La permutazione dei seguenti $n-1$ job in $A$ \`e una
+soluzione ottima al sottoproblema in cui il job $m$ non viene considerato. 
+\section{Problema dello zaino reale}
