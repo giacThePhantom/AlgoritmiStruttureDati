@@ -501,3 +501,19 @@
 \contentsline {subsubsection}{Teorema della sottostruttura ottima}{136}{section*.377}% 
 \contentsline {paragraph}{Enunciato}{136}{section*.378}% 
 \contentsline {section}{\numberline {14.6}Problema dello zaino reale}{137}{section.14.6}% 
+\contentsline {paragraph}{Input}{137}{section*.379}% 
+\contentsline {paragraph}{Problema}{137}{section*.380}% 
+\contentsline {subsection}{\numberline {14.6.1}Approcci greedy possibili}{137}{subsection.14.6.1}% 
+\contentsline {subsubsection}{Implementazione}{137}{section*.381}% 
+\contentsline {subsection}{\numberline {14.6.2}Correttezza}{137}{subsection.14.6.2}% 
+\contentsline {section}{\numberline {14.7}Problema della compressione}{137}{section.14.7}% 
+\contentsline {subsection}{\numberline {14.7.1}Codifica a prefissi}{138}{subsection.14.7.1}% 
+\contentsline {subsubsection}{Rappresentazione ad albero per la decodifica}{138}{section*.382}% 
+\contentsline {subsection}{\numberline {14.7.2}Definizione formale del problema}{138}{subsection.14.7.2}% 
+\contentsline {paragraph}{Input}{138}{section*.383}% 
+\contentsline {subsection}{\numberline {14.7.3}Algoritmo di Huffman}{138}{subsection.14.7.3}% 
+\contentsline {subsubsection}{Funzionamento algoritmo}{138}{section*.384}% 
+\contentsline {subsubsection}{Correttezza}{139}{section*.385}% 
+\contentsline {subsubsection}{Scelta greedy}{139}{section*.386}% 
+\contentsline {paragraph}{Enunciato}{139}{section*.387}% 
+\contentsline {paragraph}{Dimostrazione}{139}{section*.388}% 

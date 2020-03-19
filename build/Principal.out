@@ -159,3 +159,9 @@
 \BOOKMARK [1][-]{section.14.5}{Scheduling}{chapter.14}% 159
 \BOOKMARK [2][-]{subsection.14.5.1}{Dimostrazione di correttezza}{section.14.5}% 160
 \BOOKMARK [1][-]{section.14.6}{Problema dello zaino reale}{chapter.14}% 161
+\BOOKMARK [2][-]{subsection.14.6.1}{Approcci greedy possibili}{section.14.6}% 162
+\BOOKMARK [2][-]{subsection.14.6.2}{Correttezza}{section.14.6}% 163
+\BOOKMARK [1][-]{section.14.7}{Problema della compressione}{chapter.14}% 164
+\BOOKMARK [2][-]{subsection.14.7.1}{Codifica a prefissi}{section.14.7}% 165
+\BOOKMARK [2][-]{subsection.14.7.2}{Definizione formale del problema}{section.14.7}% 166
+\BOOKMARK [2][-]{subsection.14.7.3}{Algoritmo di Huffman}{section.14.7}% 167

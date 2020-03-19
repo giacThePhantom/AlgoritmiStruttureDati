@@ -309,3 +309,264 @@ e pertanto anche $A$ \`e ottima.
 Sia $A$ una soluzione ottima di un problema con $n$ job in cui il job con minor tempo di fine $m$ si trova in prima posizione. La permutazione dei seguenti $n-1$ job in $A$ \`e una
 soluzione ottima al sottoproblema in cui il job $m$ non viene considerato. 
 \section{Problema dello zaino reale}
+\paragraph{Input}
+Un intero positivo $C$, la capacit\`a dello zaino e $n$ oggetti, tali che l'oggetto $i$-esimo \`e caratterizzato da un profitto $p_i\in\mathbb{Z}^+$ e un peso $w_i\in\mathbb{Z}^+$.
+\paragraph{Problema}
+Trovare un sottoinsieme $S$ di $\{1,\dots n\}$ di oggetti tale che il loro peso totale non superi la capacit\`a massima e il loro profitto totale sia massimo. Nella variante dello zaino
+reale \`e possibile prendere frazioni di oggetti.
+\subsection{Approcci greedy possibili}
+Gli oggetti si possono ordinare per profitto decrescente, per peso crescente o per profitto specifico ($\frac{p_i}{w_i}$) decrescente. Il terzo approccio funziona unicamente nella
+variante dello zaino reale.
+\subsubsection{Implementazione}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Float}{float}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Min}{min}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{Zaino}{zaino}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+
+\caption{\protect\Float[] \protect\Zaino{\protect\Float[] p, \protect\Float[] v, \protect\Float C,\protect\Float n}}
+\Float[] x = \New \Float$[1\dots n]$\;
+$\{$ordina $p$ e $v$ in modo che $\frac{p[1]}{w[1]}\ge\cdots\ge\frac{p[n]}{w[n]}$ $\}$\;
+\For{\Int i = 1 \To n}{
+	x[i] = \Min{$\frac{C}{w[i]}$, 1}\;
+	C -= x[i] $\cdot$ w[i]\;
+}
+\Return x\;
+\end{algorithm}
+L'algoritmo ha complessit\`a $O(n\log n)$ se l'input non \`e ordinato, $O(n)$ se \`e ordinato. $x[i]\in[0, 1]$ rappresenta la proporzione dell'oggetto $i$-esimo che deve essere 
+prelevata.
+\subsection{Correttezza}
+Si assuma che gli oggetti siano ordinati per profitto specifico decrescente e $x$ una soluzione ottima. Si supponga che $x[1] < \min(\frac{C}{w[i]}, 1)$ e la proporzione di uno o pi\`u
+oggetti \`e ridotta di conseguenza. Si ottiene cos\`i una soluzione di profitto uguale o superiore visto che il profitto specifico dell'oggetto $1$ \`e massimo. 
+\section{Problema della compressione}
+La compressione si occupa di rappresentare i dati in modo efficiente, impiegando il minore numero di bit per la rappresentazione risparmiando spazio su disco e tempo di trasferimento.
+Una possibile tecnica di compressione \`e la codifica di caratteri tramite una funzione di codifica $f:f(c) = x$, dove $c$ \`e un carattere preso da un alfabeto $\Sigma$ e $x$ \`e una
+rappresentazione binaria. 
+\subsection{Codifica a prefissi}
+In un codice a prefisso o senza prefissi nessun codice \`e prefisso di un altro codice, la condizione necessaria per la codifica. 
+\subsubsection{Rappresentazione ad albero per la decodifica}
+L'alfabeto viene rappresentato come un albero binario le cui foglie sono i caratteri dell'alfabeto e tutti gli altri nodi hanno due figli. In base al bit letto si sceglie dove spostarsi
+nell'albero fino a trovare il carattere necessario.
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Float}{float}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Min}{min}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{Zaino}{zaino}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+
+\caption{Algoritmo di decodifica}
+si parte dalla radice\;
+\While{file non finito}{
+	si legge un bit\;
+	\uIf{bit $=$ zero}{
+		vai nel figlio sinistro\;
+	}
+	\Else{
+		vai a destra\;
+	}
+	\If{nodo foglia}{
+		stampa il carattere\;
+		torna alla radice\;
+	}
+}
+\end{algorithm}
+\subsection{Definizione formale del problema}
+\paragraph{Input}
+Un file $F$ composto da caratteri nell'alfabeto $\Sigma$. Sia $T$ un albero che rappresenta la codifica, per ogni $c\in\Sigma$, sia $d_T(c)$ la profondit\`a della foglia che rappresenta
+$c$, il codice richieder\`a $d_T(c)$ bit per $c$. Se $f[c]$ \`e il numero di occorrenze di $c$ in $F$, allora la dimensione della codifica \`e $C[F, T] = \sum\limits_{c\in\Sigma}f[c]
+\cdot d_T(c)$.
+\subsection{Algoritmo di Huffman}
+Il principio del codice di Huffman consiste del minimizzare la lunghezza dei caratteri che compaiono pi\`u frequentemente assegnando ai caratteri con la frequenza minore i codici 
+corrispondenti ai percorsi pi\`u lunghi all'interno dell'albero. Ogni codice \`e progettato per un file specifico: si ottiene la frequenza di tutti i caratteri, si costruisce il 
+codice, si rappresenta il file tramite il codice e si aggiunge al file una rappresentazione del codice per la decodifica. 
+\subsubsection{Funzionamento algoritmo}
+\begin{itemize}
+	\item Si costruisce una lista ordinata di nodi foglia per ogni carattere etichettato con la propria frequenza.
+	\item Si rimuovono i due nodi con frequenze minori $f_x$ e $f_y$ creando un nodo padre con etichetta ``-" e frequenza $f_x+f_y$ collegando i due nodi rimossi con il nuovo nodo e
+		aggiungendolo alla lista mantenendo l'ordine.
+	\item Iterare il secondo punto fino a che rimane un unico nodo nella lista e al termine si etichettano gli archi all'interno dell'albero con bit $0$, $1$.
+\end{itemize}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Float}{float}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Tree}{Tree}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{F}{f}
+\SetKwData{Left}{left}
+\SetKwData{Right}{right}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Min}{min}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{TreeCos}{Tree}
+\SetKwFunction{MinPriorityQueue}{MinPriorityQueue}
+\SetKwFunction{DeleteMin}{deleteMin}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{Huffman}{huffman}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+
+\caption{\protect\Tree \protect\Huffman{\protect\Int[] c, \protect\Int[] f, \protect\Int n}}
+\PriorityQueue Q = \MinPriorityQueue{}\;
+\For{\Int i = 1 \To n}{
+	Q.\Insert{f[i], \TreeCos{F[i], c[i]}}\;
+}
+\For{\Int i = 1 \To n - 1}{
+	\Tree $z_1$ = Q.\DeleteMin{}\;
+	\Tree $z_2$ = Q.\DeleteMin{}\;
+	\Tree $z$ = \TreeCos{$z_1$.\F + $z_2$.\F, \Nil}\;
+	$z$.\Left = $z_1$\;
+	$z$.\Right = $z_2$\;
+	Q.\Insert{$z$.\F. $z$}\;
+}
+\Return Q.\DeleteMin{}\;
+\end{algorithm}
+Questo algoritmo ha complessit\`a $O(n\log n)$. 
+\subsubsection{Correttezza}
+L'output dell'algoritmo di Huffman per un dato file \`e un codice a prefisso ottimo. La propriet\`a della scelta greedy \`e che scegliere i due elementi con la frequenza pi\`u bassa 
+conduce sempre ad una soluzione ottimale. La sottostruttura ottima \`e che dato un problema sull'alfabeto $\Sigma$ \`e possibile costruire un sottoproblema con alfabeto pi\`u piccolo. 
+\subsubsection{Scelta greedy}
+\paragraph{Enunciato} 
+Siano $\Sigma$ un alfabeto, $f$ un vettore di frequenze e $x$ e $y$ i due caratteri con frequenza pi\`u bassa. Esiste un codice prefisso ottimo per $\Sigma$ in cui $x$ e $y$ hanno la
+stessa profondit\`a massima e i loro codici differiscono solo per l'ultimo bit. 
+\paragraph{Dimostrazione}
+Si basa sulla trasformazione di una soluzione ottima. Si supponga che esista un codice ottimo $T$ in cui due catatteri $a$ e $b$ con profondit\`a massima siano diversi da $x$ e $y$. 
+Si pu\`o assumere senza perdere di generalit\`a che $f[x]\le f[y]\land f[a]\le f[b]$. Essendo le frequenze di $x$ e $y$ minime $f[x]\le f[a]\land f[y]\le f[b]$. Scambiando $x$ con $a$
+si ottiene $T'$ e scambiando $y$ con $b$ si ottiene $T''$. Si dimostri ora che $C(f, T'')\le C(f, T')\le C(f, T)$.
+\begin{align*}
+	C(T) - C(T') & = \sum\limits_{c\in \Sigma}f[c]d_T(c) - \sum\limits_{c\in\Sigma}f[c]d_{T'}(c)\\
+	             & = (f[x]d_T(x)+f[a]d_T(a)) - (f[x]d_{T'}(x) + f[a]d_{T'}(a))\\
+		     & = (f[x]d_T(x)+f[a]d_T(a)) - (f[x]d_{T}(x) + f[a]d_{T}(a))\\
+		     & = (f[a] - f[x])(d_T(a) - d_T(x))\\
+		     & \ge 0\\
+	C(T') - C(T'') & \ge 0\quad\quad \text{Come sopra}
+\end{align*}
+Essendo $T$ ottimo allora $C(f, T)\le C(f, T'')$, pertanto anche $T''$ \`e ottimo.
