@@ -165,3 +165,8 @@
 \BOOKMARK [2][-]{subsection.14.7.1}{Codifica a prefissi}{section.14.7}% 165
 \BOOKMARK [2][-]{subsection.14.7.2}{Definizione formale del problema}{section.14.7}% 166
 \BOOKMARK [2][-]{subsection.14.7.3}{Algoritmo di Huffman}{section.14.7}% 167
+\BOOKMARK [1][-]{section.14.8}{Albero di copertura di peso minimo}{chapter.14}% 168
+\BOOKMARK [2][-]{subsection.14.8.1}{Definizione del problema}{section.14.8}% 169
+\BOOKMARK [2][-]{subsection.14.8.2}{Algoritmo generico}{section.14.8}% 170
+\BOOKMARK [2][-]{subsection.14.8.3}{Algoritmo di Kruskal}{section.14.8}% 171
+\BOOKMARK [2][-]{subsection.14.8.4}{Algoritmo di Prim}{section.14.8}% 172

@@ -517,3 +517,19 @@
 \contentsline {subsubsection}{Scelta greedy}{139}{section*.386}% 
 \contentsline {paragraph}{Enunciato}{139}{section*.387}% 
 \contentsline {paragraph}{Dimostrazione}{139}{section*.388}% 
+\contentsline {section}{\numberline {14.8}Albero di copertura di peso minimo}{140}{section.14.8}% 
+\contentsline {subsection}{\numberline {14.8.1}Definizione del problema}{140}{subsection.14.8.1}% 
+\contentsline {subsubsection}{Albero di copertura}{140}{section*.389}% 
+\contentsline {subsubsection}{Output}{140}{section*.390}% 
+\contentsline {subsection}{\numberline {14.8.2}Algoritmo generico}{140}{subsection.14.8.2}% 
+\contentsline {subsubsection}{Arco sicuro}{141}{section*.391}% 
+\contentsline {paragraph}{Definizioni}{141}{section*.392}% 
+\contentsline {paragraph}{Enunciato}{141}{section*.393}% 
+\contentsline {paragraph}{Dimostrazione}{141}{section*.394}% 
+\contentsline {paragraph}{Corollario}{141}{section*.395}% 
+\contentsline {subsection}{\numberline {14.8.3}Algoritmo di Kruskal}{142}{subsection.14.8.3}% 
+\contentsline {subsubsection}{Analisi della complessit\`a}{142}{section*.396}% 
+\contentsline {subsection}{\numberline {14.8.4}Algoritmo di Prim}{142}{subsection.14.8.4}% 
+\contentsline {paragraph}{Correttezza}{142}{section*.397}% 
+\contentsline {subsubsection}{Implementazione}{143}{section*.398}% 
+\contentsline {subsubsection}{Analisi complessit\`a}{143}{section*.399}% 

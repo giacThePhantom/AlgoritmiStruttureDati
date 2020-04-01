@@ -570,3 +570,308 @@ si ottiene $T'$ e scambiando $y$ con $b$ si ottiene $T''$. Si dimostri ora che $
 	C(T') - C(T'') & \ge 0\quad\quad \text{Come sopra}
 \end{align*}
 Essendo $T$ ottimo allora $C(f, T)\le C(f, T'')$, pertanto anche $T''$ \`e ottimo.
+\section{Albero di copertura di peso minimo}
+Dato un grafo pesato determinare come interconnettere tutti i suoi nodi minimizzando il costo del peso associato ai suoi archi, ovvero albero di copertura, di connessione di peso minimo
+o minimum spanning tree.
+\subsection{Definizione del problema}
+Sia $G=(V, E)$ un grafo non orientato e connesso e $w:V\times V\rightarrow\mathbb{R}$ una funzione di peso costo di connessione tale che se $[u, v]\in E$ allora $w(u, v)$ \`e il peso 
+dell'arco $[u, v]$, se $[u, v]\not\in E$, allora $w(u, v)= + \infty$. Essendo $G$ non orientato $w(u, v) = w(v, u)$.
+\subsubsection{Albero di copertura}
+Dato un grafo non orientato e connesso un albero di copertura $G$ \`e un sottografo $T=(V, E_T)$ tale che $T$ \`e un albero, $E_T\subseteq E$ e $T$ contiene tutti i vertici di $G$. 
+\subsubsection{Output}
+Trovare l'albero di copertura il cui peso totale sia minimo rispetto a ogni altro albero di copertura, dove $w(T)=\sum\limits_{[u, v]\in E_T} w(u, v)$. Non \`e detto che sia univoco.
+\subsection{Algoritmo generico}
+Ci approccia al problema tentando di accrescere un sottoinsieme $A$ di archi in modo tale che venga sempre rispettato il fatto \`e $A$ \`e un sottoinsieme di qualche albero di 
+connessione minimo.
+\subsubsection{Arco sicuro}
+Un arco $[u, v]$ si dice sicuro per $A$ se $A\cup\{[u, v]\}$ \`e ancora un sottoinsieme di qualche albero di connessione minimo.\\
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Float}{float}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Tree}{Tree}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{F}{f}
+\SetKwData{Left}{left}
+\SetKwData{Right}{right}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Min}{min}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{TreeCos}{Tree}
+\SetKwFunction{MinPriorityQueue}{MinPriorityQueue}
+\SetKwFunction{DeleteMin}{deleteMin}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{MSTGenerico}{mst-generico}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+\caption{\protect\Set \protect\MSTGenerico{\protect\Graph G, \protect\Int[] w}}
+\Set A = $\emptyset$\;
+\While{A \Not albero di copertura}{
+	trova un arco sicuro $[u, v]$\;
+	A = A $\cup\ \{[u, v]\}$\;
+}
+\Return A\;
+\end{algorithm}
+\paragraph{Definizioni}
+\begin{itemize}
+	\item Un taglio $(S, V - S)$ di un grafo non orientato \`e una partizione di $V$ in due sottoinsiemi disgiunti.
+	\item Un arco $[u, v]$ attraversa il taglio se $u\in S$ e $v\in V-S$.
+	\item Un taglio rispetta un insieme di archi $A$ se nessun arco di $A$ attraversa il taglio.
+	\item Un arco che attraversa un taglio \`e leggero nel taglio se il suo peso \`e minimo fra i pesi degli archi che attraversano un taglio.
+\end{itemize}
+\paragraph{Enunciato}
+Sia $G=(V, E)$ un grafo non orientato e connesso, $w:V\times V\rightarrow\mathbb{R}$, $A\subseteq E$ un sottoinsieme contenuto in un qualche albero di copertura minimo per $G$, 
+$(S, V-S)$ un qualunque taglio che rispetta $A$, sia $[u, v]$ un arco leggero che attraversa il taglio, allora l'arco $[u, v]$ \`e sicuro per $A$. 
+\paragraph{Dimostrazione}
+Sia $T$ un albero di copertura minimo che contiene $A$, se $(u, v)\in T$ allora $(u, v)$ \`e sicuro per $A$, se $(u, v)\not\in T$ si trasforma $T$ in $T'$ che contiene $(u, v)$ e si 
+dimostra che $T'$ \`e un albero di copertura minimo. Per definizione di albero $u$ e $v$ sono connessi da un cammino $C\subseteq T$ e stanno in lati opposti del taglio e $\exists(x, y)
+\in C$ che attraversa il taglio. $T'=T-\{(x, y)\}\cup\{(u, v)\}$, $T'$ \`e un albero di copertura, $w(T')\le w(T)$ perch\`e $w(u, v)\le w(x, y)$, $w(T)\le w(T')$ in quanto $T$ \`e 
+minimo.
+\paragraph{Corollario}
+Sia $G=(V, E)$ un grafo non orientato e connesso , $w:V\times V\rightarrow\mathbb{R}$, $A\subseteq E$ un sottoinsieme contenuto in un qualche albero di copertura minimo per $G$, $C$
+una componente connessa nella foresta $G_A=(V, A)$ e $[u, v]$ un arco leggero che connettte $C$ a qualche altra componente in $G_A$, allora l'arco $[u, v]$ \`e sicuro per $A$. 
+\subsection{Algoritmo di Kruskal}
+Si ingrandiscono sottoinsiemi disgiunti di un albero di copertura minimo connettendoli fra di loro fino ad avere l'albero complessivo. Si individua un arco sicuro scegliendo un arco
+$[u, v]$ di peso minimo tra tutti gli archi che connettono due distinti alberi della foresta. L'algoritmo \`e greedy perch\`e ad ogni passo si aggiunge alla foresta un arco con il peso
+minore. Per implementarlo si utilizza un struttura dati Merge-Find set.\\
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Float}{float}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Tree}{Tree}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{F}{f}
+\SetKwData{Left}{left}
+\SetKwData{Right}{right}
+\SetKwData{Mfset}{Mfset}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Min}{min}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{TreeCos}{Tree}
+\SetKwFunction{MinPriorityQueue}{MinPriorityQueue}
+\SetKwFunction{DeleteMin}{deleteMin}
+\SetKwFunction{MfsetCos}{Mfset}
+\SetKwFunction{Find}{find}
+\SetKwFunction{Merge}{merge}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{Kruskal}{kruskal}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKwData{Edge}{Edge}
+\caption{\protect\Set \protect\Kruskal{\protect\Edge[] A, \protect\Int n, \protect\Int m}}
+\Set T = \SetCos{}\;
+\Mfset M = \MfsetCos{n}\;
+$\{$ordina $A[1. dots, m]$ in modo che $A[1].weight\le\cdots\le A[m].weight\}$\;
+\Int count = 0;
+\Int i = 1;
+\comment{Termina quando l'albero ha $n-1$ archi o non ci sono pi\`u archi}
+\While{count $<$ n - 1 \And i $\le$ m}{
+	\If{M.\Find{A[i].u} $\neq$ M.\Find{A[i].v}}{
+		M.\Merge{A[i].u, A[i].v}\;
+		T.\Insert{A[i]}\;
+		count += 1\;
+	}
+	i += 1\;
+}
+\Return T\;
+\end{algorithm}
+\subsubsection{Analisi della complessit\`a}
+Il tempo di esecuzione per l'algoritmo di Kruskal dipende dalla realizzazione della struttura dati per Merge-Find Set, utilizzando la versione con euristica sul rango e compressione le
+cui operazioni hanno costo ammortizzato costante si ha:\\
+\begin{tabular}{|c|c|c|}
+	\hline
+	\textbf{Fase} & \textbf{Volte} & \textbf{Costo} \\
+	\hline
+	Inizializzaizione & $1$ & $O(n)$ \\
+	\hline
+	Ordinamento & $1$ & $O(m\log m)$ \\
+	\hline
+	Operazioni \emph{find()}, \emph{merge()} & $O(m)$ & $O(1)$\\
+	\hline
+\end{tabular}\\
+Il totale \`e $O(n+m\log m + m) = O(m\log m) = O(m\log n^2) = O(m\log n)$.
+\subsection{Algoritmo di Prim}
+Si mantiene in $A$ un singolo albero che parte da un vertice arbitrario $r$ e cresce fino a che non ricopre tutti i vertici. Ad oggni passo viene aggiunto un arco leggero che collega
+un vertice in $V_A$ conun vertice in $V-V_A$.
+\paragraph{Correttezza} Per definizione $(V_A, V - V_A)$ \`e un taglio che rispetta $A$ e per il corollario gli archi leggeri che attraversano il taglio sono sicuri. 
+\subsubsection{Implementazione}
+Durante l'esecuzione i vertici non ancora nell'albero si trovano in una coda con min-priorit\`a $Q$ ordinata secondo la priorit\`a: la priorit\`a del nodo $v$ \`e il peso minimo di un
+arco che collega $v$ ad un vertice nell'albero o $+\infty$ se tale arco non esite. L'albero viene mantenuto come vettore dei padri. $A$ \`e mantenuto implicitamente: $A=\{[v, p[v]]|v\in
+V-Q-\{r\}\}$. \\
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Float}{float}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Tree}{Tree}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{F}{f}
+\SetKwData{Left}{left}
+\SetKwData{Right}{right}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{Node}{Node}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Min}{min}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{TreeCos}{Tree}
+\SetKwFunction{MinPriorityQueue}{MinPriorityQueue}
+\SetKwFunction{DeleteMin}{deleteMin}
+\SetKwFunction{MfsetCos}{Mfset}
+\SetKwFunction{Find}{find}
+\SetKwFunction{Merge}{merge}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{Decrease}{decrease}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{Prim}{prim}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKwData{Edge}{Edge}
+\caption{\protect\Prim{\protect\Graph G, \protect\Int[] p}}
+\PriorityQueue Q = \MinPriorityQueue{}\;
+\PriorityItem[] pos = \New \PriorityItem$[1\dots G.n]$\;
+\ForEach{u $\in$ G.V() - $\{r\}$}{
+	pos[u] = Q.\Insert{u, $+\infty$}\;
+}
+pos[r] = Q.\Insert{r, 0}\;
+p[r] = 0\;
+\While{\Not Q.\IsEmpty{}}{
+	\Node u = Q.\DeleteMin{}\;
+	pos[u] = \Nil\;
+	\ForEach{v $\in$ G.\Adj{u}}{
+		\If{pos[v] $\neq$ \Nil \And w(u, v) $<$ pos[v].priority}{
+			Q.\Decrease{pos[v], w(u, v)}\;
+			p[v] = u\;
+		}
+	}
+}
+\end{algorithm}
+\subsubsection{Analisi complessit\`a}
+L'efficienza dell'algorimto di Prim dipende dall'implementazione della coda di priorit\`a. Se si utilizza uno heap binario si ha:\\
+\begin{tabular}{|c|c|c|}
+	\hline
+	\textbf{Fase} & \textbf{Volte} & \textbf{Costo} \\
+	\hline
+	Inizializzaizione & $1$ & $O(n\log n)$ \\
+	\hline
+	\emph{deleteMin()} & $O(n)$ & $O(\log m)$ \\
+	\hline
+	\emph{decreasePriority()} & $O(m)$ & $O(\log n)$\\
+	\hline
+\end{tabular}\\
+Per un tempo totale $O(n+n\log n+m\log n) = O(m\log n)$, asintoticamente uguale a quello di Kruskal. Le cose cambiano se si utilizza un vettore non ordinato.
