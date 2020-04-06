@@ -1,0 +1,377 @@
+\chapter{Ricerca locale}
+Se si conosce una soluzione ammissibile e non necessariamente ottima ad un problema di ottimizzazione si pu\`o cercare di trovare una soluzione migliore nelle vicinanze di quella
+precedente, continuando in questo modo fino a che non si \`e pi\`u in grado di continuare.\\
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Float}{float}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Tree}{Tree}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{F}{f}
+\SetKwData{Left}{left}
+\SetKwData{Right}{right}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{Node}{Node}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Min}{min}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{TreeCos}{Tree}
+\SetKwFunction{MinPriorityQueue}{MinPriorityQueue}
+\SetKwFunction{DeleteMin}{deleteMin}
+\SetKwFunction{MfsetCos}{Mfset}
+\SetKwFunction{Find}{find}
+\SetKwFunction{Merge}{merge}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{Decrease}{decrease}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{RicercaLocale}{ricercaLocale}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\RicercaLocale{}}
+Sol = una soluzione ammissibile del problema\;
+\While{$\exists S\in I(sol)$ migliore di Sol}{
+	Sol = S\;
+}
+\Return Sol\;
+
+\end{algorithm}
+\section{Rete di flusso}
+Una rete di flusso $G=(V, E, s, t, c)$ \`e data da un grafo orientato $G=(V, E)$, un nodo $s\in V$ detto sorgente, un nodo $t\in V$ detto pozzo e una funzione di capacit\`a $c:V\times V
+\rightarrow\mathbb{R}^{\ge 0}$. Si assume che per ogni nodo $v\in V$ esiste un cammino $s \rightsquigarrow v \rightsquigarrow t$ da $s$ a $t$ che passa per $v$ e si possono ignorare i 
+nodi che non godono di questa priorit\`a.
+\subsection{Flusso}
+Un flusso in $G$ \`e una funzione $f:V\times V\rightarrow\mathbb{R}$ che soddisfa le priorit\`a:
+\begin{itemize}
+	\item Vincolo sulla capacit\`a: $\forall u, v\in V, f(u, v)\le c(u, u)$, ovvero il flusso non deve eccedere la capacit\`a sull'arco.
+	\item Antisimmetria: $\forall u, v\in V, f(u, v) = -f(v, u)$, in modo da semplificare la propriet\`a successiva e altre regole.
+	\item Conservazione del flusso: $\forall u\in V - \{s, t\}, \sum\limits_{v\in V} f(u, v) = 0$, ovvero per ogni nodo la somma dei flussi entranti deve essere uguale alla somma dei
+		flussi uscenti. 
+\end{itemize}
+\subsection{Definizioni}
+\begin{itemize}
+	\item Valore di flusso $f$: $|f| = \sum\limits_{(s, v)\in E} f(s, v)$, la quantit\`a di flusso uscente da $s$.
+	\item Flusso massimo: data una rete $G=(V, E, s, t, c)$ trovare un flussoo che abbia valore massimo fra tutti i flussi associabili alla rete $f*=\max\{|f|\}$.
+	\item Flusso nuillo: la funzione $f_0: V\times V\rightarrow\mathbb{R}^{\ge 0}$ tale che $f(u, v) = 0 \forall u, v\in V$.
+	\item Somma di flussi: per ogni coppia di flussi $f_1$ e $f_2$ in $G$ si definisce il flusso somma $g= f_1+f_2$ come un flusso tale per cui $g(u, v) = f_1(u, v)+f_2(u, v)$.
+	\item Capacit\`a residua di un flusso $f$ in una rete $G=(V, E, s, t, c)$ una funzione $c_f:V\times V\rightarrow\mathbb{R}^{\ge 0}$ tale che $c_f(u, v) = c(u, v)-f(u, v)$.
+	\item Reti residue: data una rete di flusso $G=(V, E, s, t, c)$ e un flusso $f$ su $G$ si pu\`o costruire una rete residua $G_f=(V, E_f, s, t, c_f)$ tale per cui $(u, v)\in E_f$
+		se e solo se $c_f(u, v)>0$.
+\end{itemize}
+\subsection{metodo delle reti residue}
+Questo algoritmo informalmente memorizza un flusso corrente di $f$ inizialmente nullo e in ripetizione si sottrae il flusso attuale dalla rete iniziale ottenendo una rete residua, 
+si cerca un flusso $g$ all'interno della rete residua e si somma $g$ ad $f$ fino a quando non \`e pi\`u possibile trovare un flusso positivo $g$. Questo approccio restituisce il flusso
+massimo.\\
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKwRepeat{Do}{do}{while}
+\SetKw{Int}{int}
+\SetKw{Float}{float}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Tree}{Tree}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{F}{f}
+\SetKwData{Left}{left}
+\SetKwData{Right}{right}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{Node}{Node}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Min}{min}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{TreeCos}{Tree}
+\SetKwFunction{MinPriorityQueue}{MinPriorityQueue}
+\SetKwFunction{DeleteMin}{deleteMin}
+\SetKwFunction{MfsetCos}{Mfset}
+\SetKwFunction{Find}{find}
+\SetKwFunction{Merge}{merge}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{Decrease}{decrease}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{MaxFlow}{maxFlow}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Int[][] \protect\MaxFlow{\protect\Graph G, \protect\Node s, \protect\Node t, \protect\Int[][] c}}
+f = $f_0$ \comment{Inizializza un flusso nullo}
+r = c \comment{Capacit\`a iniziale}
+\Do{g = $f_0$}{
+	g = trova un flusso in r tale che $|g|>0$, altrimenti $f_0$\;
+	f = f + g\;
+	r = rete di flusso residua del flusso di f in G\;
+}
+\Return f\;
+\end{algorithm}
+\subsubsection{Correttezza}
+\paragraph{Lemma}
+Se $f$ \`e un flusso in $G$ e $g$ \`e un flusso in $G_f$ allora $f+g$ \`e un flusso in $G$.
+\paragraph{Dimostrazione}
+\subparagraph{Vincolo sulla capacit\`a}
+\begin{align*}
+	g(u, v) & \le c_f(u, v) \quad\quad & \text{$g$ \`e un flusso in $G_f$}\\
+	f(u, v) + g(u, v) & \le c_f(u, v) + f(u, v) & \text{Aggiungo un termine uguale}\\
+	(f+g)(u, v) & \le c(u, v) - f(u, v) + f(u, v) & \text{Sostituzione}\\
+	(f+g)(u, v) & \le c(u, v) & \text{Semplificazione}\\
+\end{align*}
+\subparagraph{Antisimmetria}
+\begin{align*}
+	f(u, v) + g(u, v) & = -f(v, u) - g(v, u) \quad\quad & \text{Antisimmetria di $f$ e $g$}\\
+	f(u, v) + g(u, v) & = -(f(v, u) + g(v, u)) & \text{Raccolta segno $-$}\\
+	(f+g)(u, v) = -(f+g)(v, u) & \text{Sostituzione}\\
+\end{align*}
+\subparagraph{Conservazione}
+\begin{align*}
+	\sum\limits_{v\in V} (f+g)(u, v) & = \sum\limits_{v\in V}(f(u, v) + g(u, v))\\
+					 & = \sum\limits_{v\in V} f(u, v) + \sum\limits_{v\in V} g(u, v)\\
+					 & = 0\\
+\end{align*}
+\subsection{Metodo dei cammini aumentanti}
+Il punto principale del metodo precedente \`e come trovare un flusso aggiuntivo.
+\subsubsection{Ford-Fulkerson}
+Si trova un cammino $C=v_0, \dots, v_n$ con $s = v_0$ e $t= v_n$ nella rete residua $G_f$. Si identifica la capacit\`a del cammino, ovvero la minore capacit\`a degli archi incontrati
+$c_f = \min\limits_{i = 2\dots n}c_f(v_{i-1}, v_i)$, si crea un flusso addizionale $g$ tale che: $g(v_{i-1}, v_i) = c_f(C)$, $g(v_i, v_{i-1}) = -c_f(C)$ e $g(x, y) = 0$ per tutte le 
+altre coppie.\\ 
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKwRepeat{Do}{do}{while}
+\SetKw{Int}{int}
+\SetKw{Float}{float}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Tree}{Tree}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{F}{f}
+\SetKwData{Left}{left}
+\SetKwData{Right}{right}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{Node}{Node}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Min}{min}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{TreeCos}{Tree}
+\SetKwFunction{MinPriorityQueue}{MinPriorityQueue}
+\SetKwFunction{DeleteMin}{deleteMin}
+\SetKwFunction{MfsetCos}{Mfset}
+\SetKwFunction{Find}{find}
+\SetKwFunction{Merge}{merge}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{Decrease}{decrease}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{MaxFlow}{maxFlow}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Int[][] \protect\MaxFlow{\protect\Graph G, \protect\Node s, \protect\Node t, \protect\Int[][] c}}
+\Int[][] f = \New \Int[][] \comment{Flusso parziale}
+\Int[][] g = \New \Int[][] \comment{Flusso da cammino aumentante}
+\Int[][] r = \New \Int[][] \comment{Rete residua}
+\ForEach{$u, v\in G.V()$}{
+	f[u][v] = 0 \comment{inizializza un flusso nullo}
+	r[u][v] = c[u][v] \comment{Copia $c$ in $r$}
+}
+\Do{g = $f_0$}{
+	g = flusso associato ad un cammino aumentante in r o $f_0$\;
+	\ForEach{$u, v\in G.V()$}{
+		f[u][v] = f[u][v] + g[u][v] \comment{$f = f + g$}
+		r[u][v] = c[u][v] - f[u][v] \comment{Calcola $c_f$}
+	}
+}
+\Return f\;
+\end{algorithm}
+\subsection{Ricerca del cammino}
+Ford e Fulkerson propongono una visita del grafo semplice in profondit\`a o in ampiezza, mentre Eddomnds e Karp una visita in ampiezza. Il costo della visita \`e $O(V+E)$.
+\subsection{Complessit\`a}
+Se le capacit\`a sono intere l'algoritmo Ford-Fulkerson ha complessit\`a $O((V+E)|f^*|)$ per le liste o $O(V^2|f^*|)$ per la matrice. L'algoritmo parte dal flusso nullo e termina quando
+il valore totale del flusso raggiunge $|f^*|$ e ogni incremento del flusso lo aumenta di almeno un'unit\`a. Ogni ricerca di un cammino richiede una visita del grafo con costo
+$O(V+E)$ o $O(V^2)$. La somma dei flussi e il calcolo della rete residua pu\`o essere effettuato in tempo $O(V+E)$ o $O(V^2)$. Se le capacit\`a della rete sono intere l'algoritmo di 
+Edmonds e Karp ha complessit\`a $O(VE^2)$ nel caso pessimo. 
+\subsubsection{Dimostrazione}
+La complesit\`a dell'algoritmo di Edmonds-Karp \`e $O(VE^2)$. Vegono esesguiti $O(VE)$ aumenti di flusso, ognuno dei quali richiede una visita in ampiezza $O(V+E)$: $O(VE(V+E))=O(VE^2)$.
+\paragraph{Lemma della monotonia}
+Sia $\delta_f(s, v)$ la distanza minima da $s$ a $v$ in una rete residua $G_f$ e $f' = f+g$ un flusso nella rete iniziale con $g$ flusso non nullo derivante da un cammino aumentante, 
+allora $\delta_{f'}(s, v)\ge \delta_f(s, v)$. 
+\subparagraph{Dimostrazione}
+Quando viene aumentato il flusso alcuni archi si spengono utilizzati nei cammini minimi e i cammini minimi non possono diventare pi\`u corti. 
+\paragraph{Lemma degli aumenti di flusso}
+Il numero totale di aumenti di flusso eseguiti dall'algoritmo di Edmonds-Karp \`e $O(VE)$. 
+\subparagraph{Dimostrazione}
+Sia $G_f$ una rete residua e $C$ un cammino aumentante di $G_f$. $(u, v)$ \`e un arco critico in $C$ se $c_f(u, v) = \min\limits_{x, y\in C}\{c_f(x, y)\}$. In ogni cammino esiste almeno
+un arco critico e una volta aggiunto il flusso associato a $C$ l'arco critico scompare dalla rete residua. 
+\paragraph{Conclusione}
+Poich\`e i cammini aumentanti sono cammini minimi si ha che $\delta_f(s, v) = \delta_f(s, u)+1$. L'ascro $(u, v)$ pu\`o ricomparire se e solo se il flusso lungo l'arco diminuisce, ovvero
+se $(v, u)$ appare in un cammino aumentante. Sia $g$ il flusso quando questo accade e come sopra si ha $\delta_g(s, u) = \delta_g(s, v)+1$. Per il lemma della monotonia si ha che
+$\delta_g(s, v)\ge \delta_f(s, v)$, perci\`o:
+\begin{align*}
+	\delta_g(s, u) & = \delta_g(s, v)+1\\
+		       & \ge \delta_f(s, v)+1\\
+		       & = \delta_f(s, u)+2\\
+\end{align*}
+Dal momento in cui un nodo \`e critico al momento in cui pu\`o tornare ad essere critico il cammino si \`e allungato di almeno due passi e la lunghezza massima del cammino fino a $u$ \`e
+$V-2$, pertanto un arco pu\`o diventare critico al massimo $\frac{(V-2)}{2}=\frac{V}{2}-1$ volte. Essendoci $O(E)$ archi che possono diventare critici $O(V)$ volte si ha che il numero
+massimo di flussi aumentanti \`e $O(VE)$.
+\subsection{Dimostrazione Correttezza}
+\subsubsection{Definizioni}
+\begin{itemize}
+	\item Un taglio $(S, T)$ della rete di flusso $G=(V, E, s, t, c)$ \`e una partizione di $V$ in $S$ e $T=V-S$ tale che $s\in S$ e $t\in T$. 
+	\item Si dice capacit\`a del taglio $C(S, T)$ attraverso $(S, T)$ $C(S, T) = \sum\limits_{u\in S, v\in T}c(u, v)$.
+	\item Se $f$ \`e flusso in $G$ il flusso netto $F(S, T)$ attraverso $(S, T)$ \`e $F(S, T) = \sum\limits_{u\in S, v\in T} f(u, v)$.
+\end{itemize}
+\subsubsection{Lemma del valore del flusso di un taglio}
+Dato un flusso $f$ e un taglio $(S, T)$ la quantit\`a di flusso $F(S, T)$ che attraversa il taglio \`e uguale a $|f|$. 
+\paragraph{Dimostrazione}
+\begin{align*}
+	F(S, T) & = \sum\limits_{u\in S, v\in T} f(u, v)\\
+		& = \sum\limits_{u\in S, v\in V} f(u, v)-\sum\limits_{u\in S, v\in S} f(u, v)\quad \quad & T = V - S\\
+		& = \sum\limits_{u\in S, v\in V} f(u, v) & \text{Antisimmetria}\\
+		& = \sum\limits_{u\in S-\{s\}, v\in V} f(u, v)+\sum\limits_{v\in V} f(s, v) & s\in S\\
+		& = \sum\limits_{v\in V} f(s, v) & \text{Conservazione flusso}\\
+		& = |f| & \text{Definizione valore flusso}\\
+\end{align*}
+\subsubsection{Lemma della capacit\`a di taglio}
+Il flusso massimo \`e limitato superiormente dalla capacit\`a del taglio minimo, ovvero il taglio la cui capacit\`a \`e minore fra tutti i tagli.
+\paragraph{Dimostrazione}
+Nessun flusso attraverso un taglio supera la capacit\`a di taglio: $F(S, T) \le C(S, T) \forall S\subseteq V, T = V-S$: 
+$$F(S, T) = \sum\limits_{u\in S, v\in T}f(u, v)\le \sum\limits_{u\in S, v\in T} c(u, v) = C(S, T)$$
+Il flusso che attraversa un taglio \`e uguale al valore di flusso: $|f|=F(S, T)\forall S\subseteq V, T = V-S$, pertanto il valore del flusso massimo \`e limitato superiormente dalla
+capacit\`a di tutti i possibili tagli: $|f|\le C(S, T) \forall S\subseteq V, T = V-S$.
+\subsubsection{Teorema del taglio minimo o del flusso massimo}
+Le seguenti tre affermazioni sono equivalenti:
+\begin{enumerate}
+	\item $f$ \`e un flusso massimo.
+	\item Non esiste nessun cammino aumentante per $G$.
+	\item Esiste un taglio minimo $(S, T)$ tale che $C(S, T) = |f|$.
+\end{enumerate}
+\paragraph{$\mathbf{(1)\Rightarrow(2)}$}
+$f$ \`e un flusso massimo implica che non esiste un cammino aumentante per $G$: se esistesse un cammino aumentante il flusso potrebbe essere aumentato e quindi non sarebbe massimo, che
+\`e un assurdo.
+\paragraph{$\mathbf{(2)\Rightarrow(3)}$}
+Non esiste nessun cammino aumentante per $G$ implica che esiste un taglio minimo $(S, T)$ tale che $C(S, T)=|f|$. Poich\`e non esiste nessun cammino aumentante per $f$, non esiste nessun
+cammino da $s$ a $t$ nella rete residua $G_f$. Sia $S$ l'insieme dei vertici raggiungibili da $s$, $T=V-S$. Ovviamente $s\in S$ e $t\in T$, pertanto $(S, T)$ \`e un taglio. Poich\`e
+$t$ non \`e raggiungibile da $s$ in $G_f$ tutti gli archi $(u, v)$ con $u\in S$ e $v\in T$ sono saturati e $f(u, v) = c(u, v)$. Per il lemma del valore del flusso di taglio
+$|f| = \sum\limits_{u\in S, v\in T} f(u, v)$ e pertanto $|f|=\sum\limits_{u\in S, v\in T}f(u, v) = \sum\limits_{u\in S, v\in T}c(u, v) = C(S, T)$ e $(S, T)$ \`e minimo in quanto $|f| = 
+C(S, T)$ e per ogni taglio $(S', T')$ si ha che $|f|\ge C(S', T')$. 
+\paragraph{$\mathbf{(3)\Rightarrow(1)}$}
+Esiste un taglio $(S, T)$ tale che $C(S, T) = |f|$ implica che $f$ \`e un flusso massimo. In quanto per un qualsiasi flusso $f$ e un qualsiasi taglio $(S, T)$ vale la relazione
+$|f|\le C(S, T)$ il flusso che soddisfa $|f|=C(S, T)$ deve essere massimo. 
+\section{Abbinamento massimo nei grafi bipartiti o problema del job assignment}
+\paragraph{Input}
+Un insieme $J$ contenente $n$ job, un insieme $W$ contenente $m$ worker. Una relazione $R\subseteq J\times W$ tale per cui $(j, w)\in R$ se e solo se il job pu\`o essere eseguito dal
+worker $s$.
+\paragraph{Output}
+Il pi\`u grande sottoinsieme $O\subseteq R$ tale per cui ogni job venga assengato al pi\`u ad un worker e ad ogni worker venga assegnato al pi\`u un job.
+\subsection{Metodo di risoluzione}
+Si crea una rete di flusso in cui $c(w, j)$ vale $1$ se $(j, w)\in R$, altrimenti $0$. Si aggiungono una super fonte che si collega ai lavoratori con archi di peso $1$ e un
+superpozzo che si collega ai job con archi di peso $1$ e si usa l'algoritmo di ricerca locale visto sopra per trovare una soluzione.
+
+
