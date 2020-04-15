@@ -1,0 +1,120 @@
+\chapter{Backtracking}
+Il backtracking \`e una tecnica di programmazione utilizzata per risolvere problemi decisionali, di ricerca e di ottimizzazione con definizioni basate sul concetto di soluzione 
+ammissibile, ovvero una soluzione che soddisfa un certo insieme di criteri. Alla base di questo approccio sta il pensiero di provare a fare qualcosa e disfarlo e provare qualcos'altro
+se non \`e corretta. \`E un modo sistematico per iterare su tutte le possibili istanze di uno spazio di ricerca, una tecnica algoritmica che deve essere personalizzata per ogni
+applicazione individuale.
+\subsection{Problemi tipici}
+\subsubsection{Enumerazione}
+L'enumerazione consiste nell'elencare algoritmicamente tutte le soluzioni ammissibili o lo spaizo di ricerca. Per costruire una soluzione si utilizza l'algoritmo per l'enumerazione, 
+fermandosi alla prima disponibile.
+\subsubsection{Contare le soluzioni}
+In alcuni casi \`e possibile contare le soluzioni in modo analitico, in altri si costruiscono e si contano.
+\subsubsection{Trovare le soluzioni}
+Si enumerano tutte le soluzioni che vengono valutate da una funzione di costo. Altre tecniche possono essere utilizzate come programmazione dinamica o greedy.
+\subsection{Csotruire tutte le soluzioni}
+Il brute force \`e un approccio per costruire tutte le soluzioni esaminando interamente lo spazio delle soluzioni possibili. A volte lo spazio delle soluzioni non deve essere analizzato
+interamente.
+\section{Organizzazione generale}
+Una soluzione viene rappresentata come un vettore $S[1\dots n]$ il contenuto degli elementi $S[i]$ \`e preso da un insieme di scelte $C$ dipendente dal problema.
+\subsection{Soluzioni parziali}
+Ad ogni passo si parte da una soluzione parziale $S[1\dots k]$ in cui $k\ge 0$ scelte osno state prese. Se $S[1\dots k]$ \`e una soluzione ammissibile viene processata, se non \`e 
+una soluzione completa se possibile la si estende con una delle possibili scelte in $S[1\dots k+1]$, altrimenti si cancella l'elemento $S[k]$ (backtrack) e si riparte dalla soluzione
+$S[1\dots k-1]$.
+\subsection{Albero delle decisioni}
+Durante l'algoritmo si genera un albero delle decisioni equivalente allo spazio di ricerca la cui radice \`e la soluzione parziale vuota, i nodi interni le soluzioni parziali e le
+foglie le soluzioni ammissibili.
+\subsection{Pruning}
+I rami dell'albero che sicuramente non portano a soluzioni ammissibili possono essere potati o ``pruned" e la valutazione viene fatta nelle soluzioni parziali radici nel sottoalbero da
+potare.
+\section{Due possibili approcci}
+Per il backtracking ci sono due possibili approcci:
+\begin{itemize}
+	\item Ricorsivo: lavora tramite una visita in profondit\`a nell'albero delle scelte basato su un approccio ricorsivo.
+	\item Iterativo: utilizza un approccio greedy tornando eventualmente sui propri passi, come l'inviluppo convesso o lo string matching.
+\end{itemize}
+\subsection{Enumerazione}
+Sia $S$ il vettore contenente le soluzioni parziali $S[1\dots i]$ con $i$ l'indice corrente, $..$ le informazioni addizionali, $C$ l'insieme dei possibili candidati per estendere la 
+soluzione, \emph{isAdmissible()} restituisce \textbf{true} se $S[1\dots i]$ \`e una soluzione ammissibile e \emph{processSolution()} restituisce \textbf{true} per bloccare l'esecuzione
+alla prima soluzione ammissibile e \textbf{false} per esplorare tutto l'albero.
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKwRepeat{Do}{do}{while}
+\SetKw{Int}{int}
+\SetKw{Float}{float}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Tree}{Tree}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{F}{f}
+\SetKwData{Left}{left}
+\SetKwData{Right}{right}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{Node}{Node}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Min}{min}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{TreeCos}{Tree}
+\SetKwFunction{MinPriorityQueue}{MinPriorityQueue}
+\SetKwFunction{DeleteMin}{deleteMin}
+\SetKwFunction{MfsetCos}{Mfset}
+\SetKwFunction{Find}{find}
+\SetKwFunction{Merge}{merge}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{Decrease}{decrease}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{Enumeration}{enumeration}
+\SetKwFunction{Choices}{choices}
+\SetKwFunction{IsAdmissible}{isAdmissible}
+\SetKwFunction{ProcessSolution}{processSolution}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Boolean \protect\Enumeration{\protect\Item[] S, \protect\Int n, \protect\Int i, $\dots$}}
+\comment{Determina C in funzione di $S[1\dots i-1]$}
+\Set C = \Choices{S, n, i, $\dots$}\;
+\ForEach{c $\in$ C}{
+	S[i] = c\;
+	\If{\IsAdmissible{S, n, i}}{
+		\If{\ProcessSolution{S, n, i, $\dots$}}{
+			\Return \True\;
+		}
+	}
+	\If{\Enumeration{S, n, i + 1, $\dots$}}{
+		\Return \True\;
+	}
+}
+\Return \False\;
+\end{algorithm}

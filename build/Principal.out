@@ -181,3 +181,12 @@
 \BOOKMARK [2][-]{subsection.15.1.7}{Dimostrazione Correttezza}{section.15.1}% 181
 \BOOKMARK [1][-]{section.15.2}{Abbinamento massimo nei grafi bipartiti o problema del job assignment}{chapter.15}% 182
 \BOOKMARK [2][-]{subsection.15.2.1}{Metodo di risoluzione}{section.15.2}% 183
+\BOOKMARK [0][-]{chapter.16}{Backtracking}{}% 184
+\BOOKMARK [1][-]{subsection.16.0.1}{Problemi tipici}{chapter.16}% 185
+\BOOKMARK [2][-]{subsection.16.0.2}{Csotruire tutte le soluzioni}{subsection.16.0.1}% 186
+\BOOKMARK [1][-]{section.16.1}{Organizzazione generale}{chapter.16}% 187
+\BOOKMARK [2][-]{subsection.16.1.1}{Soluzioni parziali}{section.16.1}% 188
+\BOOKMARK [2][-]{subsection.16.1.2}{Albero delle decisioni}{section.16.1}% 189
+\BOOKMARK [2][-]{subsection.16.1.3}{Pruning}{section.16.1}% 190
+\BOOKMARK [1][-]{section.16.2}{Due possibili approcci}{chapter.16}% 191
+\BOOKMARK [2][-]{subsection.16.2.1}{Enumerazione}{section.16.2}% 192

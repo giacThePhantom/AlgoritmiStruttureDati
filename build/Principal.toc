@@ -568,3 +568,15 @@
 \contentsline {paragraph}{Input}{151}{section*.422}% 
 \contentsline {paragraph}{Output}{151}{section*.423}% 
 \contentsline {subsection}{\numberline {15.2.1}Metodo di risoluzione}{151}{subsection.15.2.1}% 
+\contentsline {chapter}{\numberline {16}Backtracking}{153}{chapter.16}% 
+\contentsline {subsection}{\numberline {16.0.1}Problemi tipici}{153}{subsection.16.0.1}% 
+\contentsline {subsubsection}{Enumerazione}{153}{section*.424}% 
+\contentsline {subsubsection}{Contare le soluzioni}{153}{section*.425}% 
+\contentsline {subsubsection}{Trovare le soluzioni}{153}{section*.426}% 
+\contentsline {subsection}{\numberline {16.0.2}Csotruire tutte le soluzioni}{153}{subsection.16.0.2}% 
+\contentsline {section}{\numberline {16.1}Organizzazione generale}{154}{section.16.1}% 
+\contentsline {subsection}{\numberline {16.1.1}Soluzioni parziali}{154}{subsection.16.1.1}% 
+\contentsline {subsection}{\numberline {16.1.2}Albero delle decisioni}{154}{subsection.16.1.2}% 
+\contentsline {subsection}{\numberline {16.1.3}Pruning}{154}{subsection.16.1.3}% 
+\contentsline {section}{\numberline {16.2}Due possibili approcci}{154}{section.16.2}% 
+\contentsline {subsection}{\numberline {16.2.1}Enumerazione}{154}{subsection.16.2.1}% 
