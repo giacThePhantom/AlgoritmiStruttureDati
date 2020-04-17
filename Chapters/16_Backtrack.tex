@@ -1,7 +1,7 @@
 \chapter{Backtracking}
-Dato un problema si dice una soluzione una soluzione che soddifa un insieme di criteri: nel caso dello zaino un sottoinsieme di oggetti di peso inferiore alla capacit\`a, mentre nella
+Dato un problema si dice soluzione ammissibile una soluzione che soddifa un insieme di criteri: nel caso dello zaino un sottoinsieme di oggetti di peso inferiore alla capacit\`a, mentre nella
 sottosequenza comune una stringa che \`e sottosequenza di entrambe le stringhe in input. Nei problemi di ottimizazione viene definita una funzione di costo o guadagno definita 
-sull'insieme delle soluzioni ammissibili: nello zaino \`e la somma dei guadagni degli oggetti selezionati, mentre nella sottosequenza comune massimale la lunghezza della stringa.
+sull'insieme delle soluzioni ammissibili: nello zaino \`e la somma dei guadagni degli oggetti selezionati, mentre nella sottosequenza comune massimale \`e la lunghezza della stringa.
 \section{Brute force}
 In alcuni problemi \`e richiesto o necessario esplorare l'intero spazio delle soluzioni ammissibili. Nell'enumerazione si richiede di elencare tutte le soluzioni possibili, nella ricerca
 di trovare una soluzione ammissibile in uno spazio delle soluzioni molto grande, nel conteggio contare tutte le soluzioni ammissibili (quando non \`e possibile contarle in modo 
@@ -15,7 +15,7 @@ un approccio greedy, tornando eventualmente sui propri passi). Questa tecnica al
 \subsection{Organizzazione generale}
 Una soluzione viene rappresentata come un vettore $S[1\dots n]$ il contenuto degli elementi $S[i]$ \`e preso da un insieme di scelte $C$ dipendente dal problema.
 \subsection{Soluzioni parziali}
-Ad ogni passo si parte da una soluzione parziale $S[1\dots k]$ in cui $k\ge 0$ scelte osno state prese. Se $S[1\dots k]$ \`e una soluzione ammissibile viene processata, se non \`e 
+Ad ogni passo si parte da una soluzione parziale $S[1\dots k]$ in cui $k\ge 0$ scelte sono state prese. Se $S[1\dots k]$ \`e una soluzione ammissibile viene processata, se non \`e 
 una soluzione completa se possibile la si estende con una delle possibili scelte in $S[1\dots k+1]$, altrimenti si cancella l'elemento $S[k]$ (backtrack) e si riparte dalla soluzione
 $S[1\dots k-1]$.
 \subsection{Albero delle decisioni}
@@ -25,9 +25,6 @@ foglie le soluzioni ammissibili.
 I rami dell'albero che sicuramente non portano a soluzioni ammissibili possono essere potati o ``pruned" e la valutazione viene fatta nelle soluzioni parziali radici nel sottoalbero da
 potare.
 \section{Enumerazione}
-Sia $S$ il vettore contenente le soluzioni parziali $S[1\dots i]$ con $i$ l'indice corrente, $C$ l'insieme dei possibili candidati per estendere la 
-soluzione, \emph{isAdmissible()} restituisce \textbf{true} se $S[1\dots i]$ \`e una soluzione ammissibile e \emph{processSolution()} restituisce \textbf{true} per bloccare l'esecuzione
-alla prima soluzione ammissibile e \textbf{false} per esplorare tutto l'albero.
 \begin{algorithm}[H]
 \DontPrintSemicolon
 \SetKwComment{comment}{$\%$}{}
@@ -94,7 +91,7 @@ alla prima soluzione ammissibile e \textbf{false} per esplorare tutto l'albero.
 \SetKwFunction{Accept}{accept}
 \SetKwFunction{}{}
 
-\caption{\protect\Boolean \protect\Enumeration{$<$dati problema$<$, \protect\Item[] S, \protect\Int i,$<$dati parziali$>$}}
+\caption{\protect\Enumeration{$<$dati problema$<$, \protect\Item[] S, \protect\Int i, $<$dati parziali$>$}}
 \comment{Verifica se $S[1\dots i - 1]$ contiene una soluzione ammissibile}
 \uIf{\Accept{$<$dati problema$>$, S, i $<$dati parziali$>$}}{
 	\comment{Processa la soluzione}
@@ -181,7 +178,7 @@ Il problema consiste nell'elencare tutti i sottoinsiemi dell'insieme $\{1, \dots
 \SetKwFunction{Accept}{accept}
 \SetKwFunction{}{}
 
-\caption{\protect\Boolean \protect\SubsetRec{\protect\Int n, \protect\Item[] S, \protect\Int i}}
+\caption{\protect\SubsetRec{\protect\Int n, \protect\Item[] S, \protect\Int i}}
 \comment{S ammissibile dopo $n$ scelte}
 \uIf{i $>$ n}{
 	\ProcessSolution{S, n}\;
@@ -263,7 +260,7 @@ Il problema consiste nell'elencare tutti i sottoinsiemi dell'insieme $\{1, \dots
 \SetKwFunction{Accept}{accept}
 \SetKwFunction{SubsetRec}{subsetsRec}
 
-\caption{\protect\Boolean \protect\Subset{\protect\Int n}}
+\caption{\protect\Subset{\protect\Int n}}
 \comment{Vettore delle scelte}
 \Int[] S = \New \Int$[1\dots n]$\;
 \SubsetRec{N, S, 1}\;
@@ -335,7 +332,7 @@ Il problema consiste nell'elencare tutti i sottoinsiemi dell'insieme $\{1, \dots
 \SetKwFunction{Accept}{accept}
 \SetKwFunction{SubsetRec}{subsetsRec}
 
-\caption{\protect\Boolean \protect\ProcessSolution{\protect\Int[] S, \protect\Int n}}
+\caption{\protect\ProcessSolution{\protect\Int[] S, \protect\Int n}}
 \Print ``$\{$"\;
 \For{\Int i = 1 \To n}{
 	\If{S[i]}{
@@ -414,7 +411,7 @@ Come richiesto dal problema tutto lo spazio possibile viene esplorato con comple
 \SetKwFunction{Accept}{accept}
 \SetKwFunction{SubsetRec}{subsetsRec}
 
-\caption{\protect\Boolean \protect\Subset{\protect\Int n}}
+\caption{\protect\Subset{\protect\Int n}}
 \For{\Int j = 0 \To $2^n-1$}{
 	\Print ``$\{$"\;
 	\For{\Int i = 1 \To n - 1}{
@@ -656,7 +653,6 @@ Complessit\`a:
 \SetKwFunction{Reject}{reject}
 
 \caption{\protect\Enumeration{$<$dati problema$<$, \protect\Item[] S, \protect\Int i,$<$dati parziali$>$}}
-\comment{Verifica se $S[1\dots i - 1]$ contiene una soluzione ammissibile}
 \uIf{\Accept{$<$dati problema$>$, S, i $<$dati parziali$>$}}{
 	\comment{Processa la soluzione $S$ in quanto ammissibile}
 	\ProcessSolution{$<$dati problema$>$, S, i, $<$dati parziali$>$}\;
@@ -667,7 +663,6 @@ Complessit\`a:
 \Else{
 	\comment{Ricorsione}
 	\Set C = \Choices{$<$dati problema$>$, S, i, $<$dati parziali$>$}\;
-	\comment{Itera sull'insieme delle scelte}
 	\ForEach{c $\in$ C}{
 		S[i] = c\;
 		\Enumeration{$<$dati problema$>$, S, n, i + 1, $<$dati parziali$>$}\;
@@ -678,7 +673,7 @@ Ci si pu\`o interrompere alla prima soluzione introcendo un \emph{return} dopo \
 \subsection{K-sottoinsiemi}
 Il problema consiste nell'elencare tutti i sottoinsiemi di $k$ elementi di un insieme $\{1, \dots, n\}$. Si pu\`o in questo caso specializzare l'algoritmo generico introducendo del
 pruning migliorandone l'efficienza. Questo avviene introducendo la variabile \emph{missing} che permette di evitare di ricontare tutte le volte i bit a $1$ ed evitando di proseguire
-in rami che non possono dare origine alla soluzione (non ci sono altri elementi da scegliere o quelli rimanenti sono troppi pochi).
+in rami che non possono dare origine alla soluzione (non ci sono altri elementi da scegliere o quelli rimanenti sono troppi pochi).\\
 \begin{algorithm}[H]
 \DontPrintSemicolon
 \SetKwComment{comment}{$\%$}{}
@@ -740,7 +735,7 @@ in rami che non possono dare origine alla soluzione (non ci sono altri elementi 
 
 \SetKwProg{Fn}{}{}
 
-\SetKwFunction{PermRec}{kssec}
+\SetKwFunction{PermRec}{kssRec}
 \SetKwFunction{Choices}{choices}
 \SetKwFunction{IsAdmissible}{isAdmissible}
 \SetKwFunction{ProcessSolution}{processSolution}
@@ -761,7 +756,7 @@ in rami che non possono dare origine alla soluzione (non ci sono altri elementi 
 \subsection{Somma di sottoinsiemi}
 Dati un insieme $A = \{a_1, \dots, a_n\}$ di interi positivi e un intero positivo $k$, si trovi un sottoinsieme $S$ di indici in $\{1, \dots, n\}$ tale che 
 $\sum\limits_{i\in S}a_i = k$. Lo si risolve in backtracking in tempo $O(2^n)$ e pu\`o essere risolto tramite programmazione dinamica in tempo $O(kn)$, pseudopolinomiale. Si interrompe
-l'esecuzione alla prima soluzione trovata.
+l'esecuzione alla prima soluzione trovata.\\
 \begin{algorithm}[H]
 \DontPrintSemicolon
 \SetKwComment{comment}{$\%$}{}
@@ -828,39 +823,33 @@ l'esecuzione alla prima soluzione trovata.
 \SetKwFunction{IsAdmissible}{isAdmissible}
 \SetKwFunction{ProcessSolution}{processSolution}
 \SetKwFunction{Accept}{accept}
-\SetKwFunction{}{}
+\SetKwFunction{SubsetSum}{subsetSum}
 
-\caption{\protect\Boolean \protect\PermRec{\protect\Int[] A, \protect\Int n, \protect\Int missing, \protect\Item[] S, \protect\Int i}}
-\uIf{missing == 0}{
-	\ProcessSolution{S, i - 1}\comment{Stampa gli indici della soluzione}
-	\Return \True\;
+\caption{Suset sum}
+\Fn{\SubsetSum{\Int[] A, \Int n, \Int k}}{
+	\Int[] S = \New \Int$[1\dots n]$\;
+	\PermRec{A, n, k, S, 1}\;
 }
-\uElseIf{i $>$ n \Or missing $<$ 0}{
-	\Return \False \comment{Terminati i valori o somma eccessiva}
-}
-\Else{
-	\ForEach{c $\in$ $\{0, 1\}$}{
-		S[i] = c\;
-		\If{\PermRec{A, n, missing - A[i] $\cdot$ c, S, i + 1}}{
-			\Return \True\;
-		}
+
+\Boolean\Space\Fn{\PermRec{\Int[] A, \Int n, \Int missing, \Item[] S, \Int i}}{
+	\uIf{missing == 0}{
+		\ProcessSolution{S, i - 1}\comment{Stampa gli indici della soluzione}
+		\Return \True\;
 	}
-	\Return \False\;
+	\uElseIf{i $>$ n \Or missing $<$ 0}{
+		\Return \False \comment{Terminati i valori o somma eccessiva}
+	}
+	\Else{
+		\ForEach{c $\in$ $\{0, 1\}$}{
+			S[i] = c\;
+			\If{\PermRec{A, n, missing - A[i] $\cdot$ c, S, i + 1}}{
+				\Return \True\;
+			}
+		}
+		\Return \False\;
+	}
 }
 \end{algorithm}
-
-
-
-
-
-
-
-
-
-
-
-
-
 \section{Problemi}
 \subsection{Problema delle otto regine}
 Il problema consiste di posizionare $n$ nergine in una scacchiera $n\times n$ in modo tale che nessuna regini ne minacci un'altra.
@@ -877,7 +866,7 @@ Il problema consiste di posizionare $n$ nergine in una scacchiera $n\times n$ in
 	\hline
 	$\#$ soluzioni per $n=8$ & $2^{64}\approx 1.84\cdot 10^{19}$\\
 	\hline
-\end{tabular}
+\end{tabular}\\
 La matrice binaria \`e molto sparsa.
 \subsubsection{Si devono piazzare $\mathbf{n}$ regine in $\mathbf{n^2}$ caselle}
 \begin{tabular}{|c|c|}
@@ -888,11 +877,11 @@ La matrice binaria \`e molto sparsa.
 	\hline
 	\emph{choices(S, n, i)} & $\{1\dots n^2\}$\\
 	\hline
-	pruning & Restituisce il sottoinsieme delle mosse legali\\
+	pruning & \makecell{Restituisce il sottoinsieme\\ delle mosse legali}\\
 	\hline
 	$\#$ soluzioni per $n=8$ & $(n^2)^n = 64^{8}\approx 2.81\cdot 10^{14}$\\
 	\hline
-\end{tabular}
+\end{tabular}\\
 Si nota un miglioramento ma lo spazio \`e ancora grande, inoltre \`e difficile distinguere le permutazioni di una soluzione.
 \subsubsection{Non mettere regine in caselle precedenti a quelle gi\`a scelte}
 \begin{tabular}{|c|c|}
@@ -903,7 +892,7 @@ Si nota un miglioramento ma lo spazio \`e ancora grande, inoltre \`e difficile d
 	\hline
 	\emph{choices(S, n, i)} & $\{1\dots n^2\}$\\
 	\hline
-	pruning & Restituisce il sottoinsieme delle mosse legali, $S[i]>S[i-1]$\\
+	pruning & \makecell{Restituisce il sottoinsieme\\ delle mosse legali, $S[i]>S[i-1]$}\\
 	\hline
 	$\#$ soluzioni per $n=8$ & $\dfrac{(n^2)^n}{n!} = \dfrac{2^{48}}{40320}\approx 6.98\cdot 10^{9}$\\
 	\hline
@@ -935,16 +924,11 @@ Si nota un miglioramento ma lo spazio \`e ancora grande, inoltre \`e difficile d
 	\hline
 	$\#$ soluzioni per $n=8$ & $n! = 8! = 4.320$\\
 	\hline
-\end{tabular}
+\end{tabular}\\
 Le soluzioni effettivamente visitate sono $15720$.
 \subsubsection{Minimum-conflicts heuristic}
 Si parte da una soluzione iniziale ragionevolmente buona e si muove il pezzo con il pi\`u grande numero di conflitti nella casella della stessa colonna che genera il numero minimo di 
-conflitti e si ripete fino a quando non ci sono pi\`u pezzi da muovere. \`E in tempo lineare ma non garantisce che la terminazione sia sempre corretta.
-\subsection{Giro di cavallo}
-Si consideri una scacchera $n\times n$, lo scopo \`e trovare un giro di cavallo, un percorso di mosse valide del cavallo in modo che ogni casella venga visitata al pi\`u una volta.
-\paragraph{Soluzione}
-Matrice $n\times n$ le cui celle contengono $0$ se la cella non \`e mai stata visitata e $i$ se la cella \`e stata visitata al passo $i$-esimo. Il numero di soluzioni \`e 
-$64!\approx 10^{89}$ ma ad ogni passo si hanno al massimo $8$ caselle possibili e pertanto ne visito al pi\`u $8^{64}\approx 10^{57}$.
+conflitti e si ripete fino a quando non ci sono pi\`u pezzi da muovere. \`E in tempo lineare ma non garantisce che la terminazione sia sempre corretta.\\
 \begin{algorithm}[H]
 \DontPrintSemicolon
 \SetKwComment{comment}{$\%$}{}
@@ -1004,22 +988,114 @@ $64!\approx 10^{89}$ ma ad ogni passo si hanno al massimo $8$ caselle possibili 
 
 \SetKwProg{Fn}{}{}
 
-\SetKwFunction{Cavallo}{cavallo}
+\SetKwFunction{Queens}{queens}
 \SetKwFunction{Choices}{mosse}
 \SetKwFunction{IsAdmissible}{isAdmissible}
 \SetKwFunction{ProcessSolution}{processSolution}
 \SetKwFunction{}{}
 \SetKwFunction{}{}
 
+\caption{\protect\Queens{\protect\Int n, \protect\Int[] S, \protect\Int i}}
+\uIf{i $>$ n}{
+	\Print S\;
+}
+\Else{
+	\For{\Int j = 1 \To n}{\comment{Prova a piazzare la regina nella colonna $j$}
+		\Boolean legal = \True\;
+		\For{\Int k = 1 \To i - 1}{
+			\comment{Verifica le regine precedenti}
+			\If{S[k] == j \Or S[k] == j + 1 - k \Or S[k] == j - i + k}{
+				legal = \False\;
+			}
+		}
+		\If{legal}{
+			S[i] = j\;
+			\Queens{n, S, i + 1}\;
+		}
+	}
+}
+\end{algorithm}
+\subsection{Giro di cavallo}
+Si consideri una scacchera $n\times n$, lo scopo \`e trovare un giro di cavallo, un percorso di mosse valide del cavallo in modo che ogni casella venga visitata al pi\`u una volta.
+\paragraph{Soluzione}
+Matrice $n\times n$ le cui celle contengono $0$ se la cella non \`e mai stata visitata e $i$ se la cella \`e stata visitata al passo $i$-esimo. Il numero di soluzioni \`e 
+$64!\approx 10^{89}$ ma ad ogni passo si hanno al massimo $8$ caselle possibili e pertanto ne visito al pi\`u $8^{64}\approx 10^{57}$.\\
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKwRepeat{Do}{do}{while}
+\SetKw{Int}{int}
+\SetKw{Float}{float}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Tree}{Tree}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{F}{f}
+\SetKwData{Left}{left}
+\SetKwData{Right}{right}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{Node}{Node}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Min}{min}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{TreeCos}{Tree}
+\SetKwFunction{MinPriorityQueue}{MinPriorityQueue}
+\SetKwFunction{DeleteMin}{deleteMin}
+\SetKwFunction{MfsetCos}{Mfset}
+\SetKwFunction{Find}{find}
+\SetKwFunction{Merge}{merge}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{Decrease}{decrease}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{Cavallo}{KnightTour}
+\SetKwFunction{Choices}{moves}
+\SetKwFunction{IsAdmissible}{isAdmissible}
+\SetKwFunction{ProcessSolution}{processSolution}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
 \caption{\protect\Boolean \protect\Cavallo{\protect\Int[][] S, \protect\Int i, \protect\Int x, \protect\Int y}}
+\comment{Se $i=64$ ho fatto $63$ mosse e ho completato un tour aperto}
+\If{i == 64}{
+	\ProcessSolution{S}\;
+	\Return \True\;
+}
 \Set C = \Choices{S, x, y}\;
 \ForEach{c $\in$ C}{
 	S[x][y] = i\;
-	\uIf{i = 64}{
-		\ProcessSolution{S}\;
-		\Return \True\;
-	}
-	\ElseIf{\Cavallo{S, i + 1, x + $m_x[c]$, y + $m_y[c]$}}{
+	\If{Cavallo{S, i + 1, x + $m_x$[c], y + $m_y$[c]}}{
 		\Return \True\;
 	}
 	S[x][y] = 0\;
@@ -1088,13 +1164,13 @@ $64!\approx 10^{89}$ ma ad ogni passo si hanno al massimo $8$ caselle possibili 
 \SetKwProg{Fn}{}{}
 
 \SetKwFunction{}{}
-\SetKwFunction{Choices}{mosse}
+\SetKwFunction{Choices}{moves}
 \SetKwFunction{IsAdmissible}{isAdmissible}
 \SetKwFunction{ProcessSolution}{processSolution}
 \SetKwFunction{}{}
 \SetKwFunction{}{}
 
-\caption{\protect\Set \protect\Choices{\protect\Int[][] S, \protect\Int i, \protect\Int x}}
+\caption{\protect\Set \protect\Choices{\protect\Int[][] S, \protect\Int x, \protect\Int y}}
 \Set C = \SetCos{}\;
 \For{\Int i = 1 \To 8}{
 	$n_x = x + m_x[i]$\;
@@ -1107,7 +1183,11 @@ $64!\approx 10^{89}$ ma ad ogni passo si hanno al massimo $8$ caselle possibili 
 \end{algorithm}
 $m_x = \{-1, +1, +2, +2, +1, -1, -2, -2\}$\\
 $m_y = \{-2, -2, -1, +1, +2, +2, +1, -1\}$
+\newpage
 \subsection{Sudoku}
+La soluzione proposta \`e molto veloce per $n=9$, ma \`e possibile generalizzare per $n=k^2$ ed esistono tecniche euristiche per fissare altri numeri che possono risolvere completamente
+il problema o essere usate come pre-processamento.
+\begin{multicols}{2}
 \begin{algorithm}[H]
 \DontPrintSemicolon
 \SetKwComment{comment}{$\%$}{}
@@ -1168,45 +1248,31 @@ $m_y = \{-2, -2, -1, +1, +2, +2, +1, -1\}$
 \SetKwProg{Fn}{}{}
 
 \SetKwFunction{Sudoku}{sudoku}
-\SetKwFunction{Choices}{check}
+\SetKwFunction{Choices}{moves}
 \SetKwFunction{IsAdmissible}{isAdmissible}
 \SetKwFunction{ProcessSolution}{processSolution}
 \SetKwFunction{}{}
 \SetKwFunction{}{}
 
 \caption{\protect\Boolean \protect\Sudoku{\protect\Int[][] S, \protect\Int i}}
-\begin{multicols}{2}
-\Int x = $i \mod 9$\;
-\Int y = $\lfloor\frac{i}{9}\rfloor$\;
-\Set C = \SetCos{}\;
-\If{i $\le 80$}{
-	\uIf{S[x][y] $\neq$ 0}{
-		C.\Insert{S[x][y]}\;
-	}
-	\Else{
-		\For{c = 1 \To 9}{
-			\If{\Choices{S, x, y, c}}{
-				C.\Insert{c}\;
-			}
-		}
-	}
+\If{i == 81}{
+	\ProcessSolution{S, n}\;
+	\Return \True\;
 }
+\Int x = i $\mod 9$\;
+\Int y = $\lfloor\frac{i}{9}\rfloor$\;
+\Set C = \Choices{S, x, y}\;
 \Int old = S[x][y]\;
 \ForEach{c $\in$ C}{
 	S[x][y] = c\;
-	\If{ i == 80}{
-		\ProcessSolution{S, n}\;
-		\Return \True\;
-	}
 	\If{\Sudoku{S, i + 1}}{
 		\Return \True\;
 	}
 }
 S[x][y] = old\;
 \Return \False\;
-\end{multicols}
 \end{algorithm}
-
+\columnbreak
 \begin{algorithm}[H]
 \DontPrintSemicolon
 \SetKwComment{comment}{$\%$}{}
@@ -1267,17 +1333,113 @@ S[x][y] = old\;
 \SetKwProg{Fn}{}{}
 
 \SetKwFunction{}{}
-\SetKwFunction{Choices}{mosse}
+\SetKwFunction{Choices}{moves}
 \SetKwFunction{IsAdmissible}{isAdmissible}
 \SetKwFunction{ProcessSolution}{processSolution}
-\SetKwFunction{}{}
+\SetKwFunction{Check}{check}
 \SetKwFunction{}{}
 
-\caption{\protect\Set \protect\Choices{\protect\Int[][] S, \protect\Int i, \protect\Int x}}
-\begin{multicols}{2}
-TO DOOOO!
-\end{multicols}
-
+\caption{\protect\Set \protect\Choices{\protect\Int[][] S, \protect\Int x, \protect\Int y}}
+\Set C = \SetCos{}\;
+\uIf{S[x][y] $\neq$ 0}{
+	\comment{numero pre-inserito}
+	C.\Insert{S[x][y]}\;
+}
+\Else{
+	\comment{Verifica conflitti}
+	\For{\Int c = 1 \To 9}{
+		\If{\Check{S, x, y, c}}{
+			C.\Insert{c}\;
+		}
+	}
+}
+\Return C\;
 \end{algorithm}
+\end{multicols}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKwRepeat{Do}{do}{while}
+\SetKw{Int}{int}
+\SetKw{Float}{float}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
 
+\SetKwData{Item}{Item}
+\SetKwData{Tree}{Tree}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{F}{f}
+\SetKwData{Left}{left}
+\SetKwData{Right}{right}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{Node}{Node}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Min}{min}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{TreeCos}{Tree}
+\SetKwFunction{MinPriorityQueue}{MinPriorityQueue}
+\SetKwFunction{DeleteMin}{deleteMin}
+\SetKwFunction{MfsetCos}{Mfset}
+\SetKwFunction{Find}{find}
+\SetKwFunction{Merge}{merge}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{Decrease}{decrease}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{}{}
+\SetKwFunction{Choices}{moves}
+\SetKwFunction{IsAdmissible}{isAdmissible}
+\SetKwFunction{ProcessSolution}{processSolution}
+\SetKwFunction{Check}{check}
+\SetKwFunction{}{}
+
+\caption{\protect\Boolean \protect\Check{\protect\Int[][] S, \protect\Int x, \protect\Int y, \protect\Int c}}
+\For{\Int j = 0 \To 8}{
+	\If{S[x][j] == c}{
+		\Return \False \comment{Controllo sulla colonna}
+	}
+	\If{S[j][y] == c}{
+		\Return \False \comment{Controllo sulla riga}
+	}
+}
+\Int $b_x$ = $\lfloor\frac{x}{3}\rfloor$\;
+\Int $b_y$ = $\lfloor\frac{y}{3}\rfloor$\;
+\For{\Int $i_x$ = 0 \To 2}{
+	\For{\Int $i_y$ = 0 \To 2}{
+		\If{S[$b_x\ \cdot\ 3\ +\ i_x$][$b_y\ \cdot\ 3\ +\ i_y$] == c}{
+			\Return \False \comment{Controllo sulla sottotabella}
+		}
+	}
+}
+\Return \True\;
+\end{algorithm}
 
