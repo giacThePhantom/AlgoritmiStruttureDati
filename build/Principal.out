@@ -182,11 +182,20 @@
 \BOOKMARK [1][-]{section.15.2}{Abbinamento massimo nei grafi bipartiti o problema del job assignment}{chapter.15}% 182
 \BOOKMARK [2][-]{subsection.15.2.1}{Metodo di risoluzione}{section.15.2}% 183
 \BOOKMARK [0][-]{chapter.16}{Backtracking}{}% 184
-\BOOKMARK [1][-]{subsection.16.0.1}{Problemi tipici}{chapter.16}% 185
-\BOOKMARK [2][-]{subsection.16.0.2}{Csotruire tutte le soluzioni}{subsection.16.0.1}% 186
-\BOOKMARK [1][-]{section.16.1}{Organizzazione generale}{chapter.16}% 187
-\BOOKMARK [2][-]{subsection.16.1.1}{Soluzioni parziali}{section.16.1}% 188
-\BOOKMARK [2][-]{subsection.16.1.2}{Albero delle decisioni}{section.16.1}% 189
-\BOOKMARK [2][-]{subsection.16.1.3}{Pruning}{section.16.1}% 190
-\BOOKMARK [1][-]{section.16.2}{Due possibili approcci}{chapter.16}% 191
-\BOOKMARK [2][-]{subsection.16.2.1}{Enumerazione}{section.16.2}% 192
+\BOOKMARK [1][-]{section.16.1}{Brute force}{chapter.16}% 185
+\BOOKMARK [2][-]{subsection.16.1.1}{Costruire lo spazio delle soluzioni \350 costoso}{section.16.1}% 186
+\BOOKMARK [1][-]{section.16.2}{Backtracking}{chapter.16}% 187
+\BOOKMARK [2][-]{subsection.16.2.1}{Organizzazione generale}{section.16.2}% 188
+\BOOKMARK [2][-]{subsection.16.2.2}{Soluzioni parziali}{section.16.2}% 189
+\BOOKMARK [2][-]{subsection.16.2.3}{Albero delle decisioni}{section.16.2}% 190
+\BOOKMARK [2][-]{subsection.16.2.4}{Pruning}{section.16.2}% 191
+\BOOKMARK [1][-]{section.16.3}{Enumerazione}{chapter.16}% 192
+\BOOKMARK [2][-]{subsection.16.3.1}{Sottoinsiemi}{section.16.3}% 193
+\BOOKMARK [2][-]{subsection.16.3.2}{Permutazioni}{section.16.3}% 194
+\BOOKMARK [2][-]{subsection.16.3.3}{Enumerazione schema completo}{section.16.3}% 195
+\BOOKMARK [2][-]{subsection.16.3.4}{K-sottoinsiemi}{section.16.3}% 196
+\BOOKMARK [2][-]{subsection.16.3.5}{Somma di sottoinsiemi}{section.16.3}% 197
+\BOOKMARK [1][-]{section.16.4}{Problemi}{chapter.16}% 198
+\BOOKMARK [2][-]{subsection.16.4.1}{Problema delle otto regine}{section.16.4}% 199
+\BOOKMARK [2][-]{subsection.16.4.2}{Giro di cavallo}{section.16.4}% 200
+\BOOKMARK [2][-]{subsection.16.4.3}{Sudoku}{section.16.4}% 201
