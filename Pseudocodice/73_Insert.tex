@@ -1,0 +1,47 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{Precondition}{precondition:}
+\SetKwData{Item}{Item}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwFunction{PriorityQueueCos}{PriorityQueue}
+\SetKwFunction{PriorityItemCos}{PriorityItem}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Min}{min}
+\SetKwFunction{DeleteMin}{DeleteMin}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Decrease}{decrease}
+\SetKwFunction{MaxHeapRestore}{maxHeapRestore}
+\SetKwFunction{HeapBuild}{heapBuild}
+\SetKwFunction{Heapsort}{heapsort}
+\SetKwFunction{L}{l}
+\SetKwFunction{R}{r}
+\SetKwFunction{P}{p}
+\SetKwFunction{Swap}{swap}
+\SetKwProg{Fn}{}{}
+
+\caption{\protect\PriorityItem \protect\Insert{\protect\Item x, \protect\Int p}}
+
+\Precondition dim $<$ capacity\;
+dim += 1\;
+H[dim] = \New \PriorityItemCos{}\; 
+H[dim].value = x\;
+H[dim].priority = p\;
+H[dim].pos = dim\;
+\Int i = dim\;
+\While{i $>$ 1 \And H[i].priority $<$ H[\P{i}].priority}{
+	\Swap{H, i, \P{i}}\;
+	i = \P{i}\;
+}
+\Return H[i]\;
+\end{algorithm}

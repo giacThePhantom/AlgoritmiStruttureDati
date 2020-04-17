@@ -1,0 +1,17 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{To}{to}
+\SetKwData{Item}{item}
+\SetKwFunction{Min}{min}
+\SetKwFunction{SelectionSort}{selectionSort}
+
+\caption{\protect\SelectionSort{\protect\Item[] A, \protect\Int n}}
+
+\For{i = 1 \To n-1}{
+	\Int min = \Min{A, i, n}\;
+	A[i] $\leftrightarrow$ A[min]\;
+}
+
+\end{algorithm}

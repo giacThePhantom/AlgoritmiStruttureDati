@@ -1,0 +1,49 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+
+\SetKwFunction{V}{V}
+\SetKwFunction{MfsetCos}{Mfset}
+\SetKwFunction{Find}{find}
+\SetKwFunction{Merge}{merge}
+\SetKwFunction{Cc}{cc}
+\SetKwFunction{Adj}{adj}
+
+\SetKwProg{Fn}{}{}
+
+\caption{\protect\Merge{\protect\Int x, \protect\Int y}}
+\Item $r_x$ = \Find{x}\;
+\Item $r_y$ = \Find{y}\;
+\If{$r_x\ \neq\ r_y$}{
+	\uIf{rank[$r_x$] $>$ rank[$r_y$]}{
+		parent[$r_y$] = $r_x$\;	
+	}
+	\uIf{rank[$r_y$] $>$ rank[$r_x$]}{
+		parent[$r_x$] = $r_y$\;	
+	}
+	\Else{
+			parent[$r_x$] = $r_y$\;
+			rank[$r_y$] += 1\;
+	}
+}
+\end{algorithm}

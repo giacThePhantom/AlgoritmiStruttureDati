@@ -1,0 +1,38 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKw{Boolean}{boolean}
+\SetKw{Nil}{nil}
+\SetKwData{Item}{Item}
+\SetKwData{Tree}{Tree}
+\SetKwComment{comment}{$\%$}{}
+\SetKwFunction{TreeCos}{Tree}
+\SetKwFunction{Read}{read}
+\SetKwFunction{Write}{write}
+\SetKwFunction{Parent}{Parent}
+\SetKwFunction{Left}{left}
+\SetKwFunction{Right}{right}
+\SetKwFunction{InsertLeft}{insertLeft}
+\SetKwFunction{InsertRight}{insertRight}
+\SetKwFunction{DeleteLeft}{deleteLeft}
+\SetKwFunction{DeleteRight}{deleteRight}
+
+\caption{\protect\Tree}
+
+\comment{Costruisce un nuovo nodo contenente $v$ senza figli o genitori}
+\TreeCos{\Item v}\;
+\comment{Legge il valore memorizzato nel nodo}
+\Item \Read{}\;
+\comment{Modifica il valore memorizzato nel nodo}
+\Write{\Item v}\;
+\comment{Restituisce il padre o \Nil se \`e il nodo radice}
+\Tree \Parent{}\;
+\comment{Restituisce il figlio sinistro (destro) di questo nodo o \Nil se assente}
+\Tree \Left{}\;
+\Tree \Right{}\;
+\comment{Inserisce il sottoalbero radicato in $t$ come figlio sinistro (destro) di questo nodo}
+\InsertLeft{\Tree t}\;
+\InsertRight{\Tree t}\;
+\comment{Distrugge ricorsivamente il figlio sinistro (destro) di questo nodo}
+\DeleteLeft{}\;
+\DeleteRight{}\;
+\end{algorithm}

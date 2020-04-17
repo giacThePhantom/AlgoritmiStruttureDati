@@ -1,0 +1,44 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+
+\SetKwFunction{Hanoi}{hanoi}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Hanoi{\protect\Int n, \protect\Int src, \protect\Int middle}}
+\uIf{n = 1}{
+	\Print srt $\rightarrow$ dest\;	
+}
+\Else{
+	\Hanoi{n -1, src, middle, dest}\;
+	\Print src $\rightarrow$ dest\;
+	\Hanoi{n -1, middle, dest, src}\;
+}
+
+
+\end{algorithm}

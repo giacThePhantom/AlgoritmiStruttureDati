@@ -1,0 +1,61 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwData{Item}{Item}
+\SetKwData{Pos}{Pos}
+\SetKwComment{comment}{$\%$}{}
+\SetKwFunction{Isempty}{isEmpty}
+\SetKwFunction{Finished}{finished}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Tail}{tail}
+\SetKwFunction{Next}{next}
+\SetKwFunction{Prev}{prev}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Remove}{remove}
+\SetKwFunction{Read}{read}
+\SetKwFunction{Write}{write}
+\SetKwData{Sequence}{Sequence}
+
+\caption{\protect\Sequence}
+
+\comment{Restituisce True se la sequenza \`e vuota}
+\textbf{boolean} \Isempty{}\;
+\BlankLine
+\comment{Restituisce True se $p$ \`e uguale a $pos_0$ o a $pos_{n+1}$}
+\BlankLine
+\textbf{boolean} \Finished{\Pos $p$}\;
+\BlankLine
+\comment{Restituisce la posizione del primo elemento}
+\BlankLine
+\Pos \Head{}\;
+\BlankLine
+\comment{Restituisce la posizione dell'ultimo elemento}
+\BlankLine
+\Pos \Tail{}\;
+\BlankLine
+\comment{Restituisce la posizione dell'elemento che segue $p$}
+\BlankLine
+\Pos \Next{\Pos $p$}\;
+\BlankLine
+\comment{Restituisce la posizione dell'elemento che precede$p$}
+\BlankLine
+\Pos \Prev{\Pos $p$}\;
+\BlankLine
+\comment{Inserisce l'elemento $v$ di tipo \Item nella posizione $p$}
+\comment{Restituisce la posizione del nuovo elemento che diventa predecessore di $p$}
+\BlankLine
+\Pos \Insert{\Pos $p$, \Item $v$}\;
+\BlankLine
+\comment{Rimuove l'elemento alla posizione $p$}
+\comment{Restituisce la posizione del successore di $p$}
+\comment{Che diventa il successore del predecessore di $p$}
+\BlankLine
+\Pos \Remove{Pos $p$}\;
+\BlankLine
+\comment{Legge l'elemento di tipo \Item contenuto nella posizione $p$}
+\BlankLine
+\Item \Read{\Pos $p$}\;
+\BlankLine
+\comment{Scrive l'elemento $v$ di tipo \Item nella posizione $p$}
+\BlankLine
+\Write{\Pos $p$, \Item $v$}\;
+\end{algorithm}

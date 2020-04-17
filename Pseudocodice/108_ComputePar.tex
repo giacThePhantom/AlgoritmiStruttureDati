@@ -1,0 +1,65 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{ComputePar}{computePar}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Int \protect\ComputePar{\protect\Item[] c, \protect\Int n}}
+\Int[][] DP = \New \Int$[1\dots n][1\dots n]$\;
+\Int[][] last = \New \Int$[1\dots n][1\dots n]$\;
+\For{\Int i = 1 \To n}{
+	DP[i][i] = 0\;
+}
+\For{\Int h = 2 \To n}{
+	\For{\Int i = 1 \To n - h + 1}{
+		\Int j = i + h - 1\;
+		DP[i][j] = $+\infty$\;
+		\For{\Int j = i \To j - 1}{
+			\Int temp = DP[i][k] + DP[k+1][j] + c[i - 1]$\cdot$c[k]$\cdot$c[j]\;
+			\If{temp $<$ DP[i][j]}{
+				DP[i][j] = temp\;
+				last[i][j] = k\;
+			}
+		}
+	}
+}
+\Return DP[1][n]
+\end{algorithm}

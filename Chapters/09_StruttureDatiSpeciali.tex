@@ -5,41 +5,7 @@ queue in cui l'estrazione avviene per valore crescente di priorit\`a e max-prior
 Le operazioni permesse sono di inserimento in coda, estrazione dell'elemento con priorit\`a di valore min/max e di modifica di priorit\`a di un elemento 
 inserito.
 \subsection{Specifica}
-\begin{algorithm}
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKwData{Item}{Item}
-\SetKwData{PriorityItem}{PriorityItem}
-\SetKwData{MinPriorityQueue}{MinPriorityQueue}
-\SetKwFunction{MinPriorityQueueCos}{MinPriorityQueue}
-\SetKwFunction{IsEmpty}{isEmpty}
-\SetKwFunction{Min}{min}
-\SetKwFunction{DeleteMin}{DeleteMin}
-\SetKwFunction{Insert}{insert}
-\SetKwFunction{Decrease}{decrease}
-
-\caption{\protect\MinPriorityQueue}
-
-\comment{Crea una coda con priorit\`a vuota}
-\MinPriorityQueueCos{}\;
-\comment{Restituisce \True se la coda con priorit\`a \`e vuota}
-\Boolean \IsEmpty{}\;
-\comment{Restituisce l'elemento minimo di una coda con priorit\`a non vuota}
-\Item \Min{}\;
-\comment{Rimuove e restituisce l'elemento minimo di una coda con priorit\`a non vuota}
-\Item \DeleteMin{}\;
-\comment{Inerisce l'elemento x con priorit\`a p all'interno della coda con priorit\`a, restituendo un oggetto \PriorityItem che identifica  x all'interno 
-della coda}
-\PriorityItem \Insert{\Item x, \Int p}\;
-\comment{Diminuisce la priorit\`a dell'oggetto identificato da y portandola a p}
-\Decrease{\PriorityItem x, \Int p}
-\end{algorithm}
+\input{Pseudocodice/66_}
 \subsection{Implementazioni}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
@@ -85,43 +51,7 @@ Riceve come input un vettore $A$ e un indice $i$, tale per cui gli alberi binari
 "in-place" il vettore $A$ in modo tale che l'albero binario con radice $i$ sia un max-heap. Essendo che ad ogni chiamata vengono eseguiti $O(1)$ confronti, 
 e se il nodo $i$ non \`e massimo si chiama ricorsivamente sui figli e che l'esecuzione termina quando si raggiunge una foglia e l'altezza dell'albero \`e
 pari a $\lfloor \log n\rfloor$ $T(n)=O(\log n)$.
-\begin{algorithm}
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKwData{Item}{Item}
-\SetKwData{PriorityItem}{PriorityItem}
-\SetKwData{MinPriorityQueue}{MinPriorityQueue}
-\SetKwFunction{MinPriorityQueueCos}{MinPriorityQueue}
-\SetKwFunction{IsEmpty}{isEmpty}
-\SetKwFunction{Min}{min}
-\SetKwFunction{DeleteMin}{DeleteMin}
-\SetKwFunction{Insert}{insert}
-\SetKwFunction{Decrease}{decrease}
-\SetKwFunction{MaxHeapRestore}{maxHeapRestore}
-\SetKwFunction{L}{l}
-\SetKwFunction{R}{r}
-\SetKwFunction{P}{p}
-\caption{\protect\MaxHeapRestore{\protect\Item[] A, \protect\Int i, \protect\Int i}}
-
-\Int max = i\;
-\If{\L{i} $\le$ dim \And A[\L{i}] $>$ A[max]}{
-	max = \L{i}\;
-}
-\If{\R{i} $\le$ dim \And A[\R{i}] $>$ A[max]}{
-	max = \R{i}\;
-}
-\If{i $\neq$ max}{
-	A[i] $\leftrightarrow$ A[max]
-	\MaxHeapRestore{A, max, dim}\;
-}
-\end{algorithm}
+\input{Pseudocodice/67_MaxHeapRestore}
 \subparagraph{Dimostrazione della correttezza per induzione sull'altezza}
 Al termine dell'esecuzione l'albero radicato in $A[i]$ rispetta la propriet\`a max-heap.
 \begin{itemize}
@@ -140,38 +70,7 @@ chiamata ricorsiva su di esso che ha altezza minore di $h$, pertanto \`e corrett
 Sia $A[1,\dots, n]$ un vettore da ordinare, tutti i nodi $A[\lfloor \frac{n}{2}\rfloor+1,\dots, n]$ sono foglie dell'albero e pertanto heap contenenti un 
 elemento. La procedura \emph{heapBuild()} attraversa i restanti nodi dell'albero a partire da $\lfloor \frac{n}{2}\rfloor$ fino ad $1$ ed esegue 
 \emph{maxHeapRestore()} su ognuno di essi. L'algoritmo ha complessit\`a $\Theta(\log n)$. Aggiungere dimostrazione, non la capisco.
-\begin{algorithm}
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKwData{Item}{Item}
-\SetKwData{PriorityItem}{PriorityItem}
-\SetKwData{MinPriorityQueue}{MinPriorityQueue}
-\SetKwFunction{MinPriorityQueueCos}{MinPriorityQueue}
-\SetKwFunction{IsEmpty}{isEmpty}
-\SetKwFunction{Min}{min}
-\SetKwFunction{DeleteMin}{DeleteMin}
-\SetKwFunction{Insert}{insert}
-\SetKwFunction{Decrease}{decrease}
-\SetKwFunction{MaxHeapRestore}{maxHeapRestore}
-\SetKwFunction{HeapBuild}{heapBuild}
-\SetKwFunction{L}{l}
-\SetKwFunction{R}{r}
-\SetKwFunction{P}{p}
-\caption{\protect\HeapBuild{\protect\Item[] A, \protect\Int n}}
-
-\For{i = $\lfloor \frac{n}{2}\rfloor$ \Down \To 1}{
-	\MaxHeapRestore{A, i, n}\;
-}
-\end{algorithm}
+\input{Pseudocodice/68_HeapBuild}
 \subparagraph{Correttezza}
 Si dimostra attraverso l'invariante di ciclo: all'inizio di ogni iterazione del ciclo \textbf{for} i nodi $[i+1,\dots, n]$ sono radice di uno heap.
 \begin{itemize}
@@ -186,373 +85,28 @@ Il primo elemento contiene il massimo, viene collocato in fondo, l'elemento in f
 ripristinare la situazione e la dimensione dello heap viene progressivamente ridotta. L'algoritmo ha complessit\`a $\Theta(n\log n)$ in quanto 
 \emph{heapBuild()} ha costo $\Theta(n)$ e la chiamata di \emph{maxHeapRestore()} costa $\Theta(\log i)$ in un heap con $i$ elementi. Pertanto 
 $T(n)=\sum\limits_{i=2}^n\log i+\Theta(n)=\Theta(n\log n)$.
-\begin{algorithm}
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKwData{Item}{Item}
-\SetKwData{PriorityItem}{PriorityItem}
-\SetKwData{MinPriorityQueue}{MinPriorityQueue}
-\SetKwFunction{MinPriorityQueueCos}{MinPriorityQueue}
-\SetKwFunction{IsEmpty}{isEmpty}
-\SetKwFunction{Min}{min}
-\SetKwFunction{DeleteMin}{DeleteMin}
-\SetKwFunction{Insert}{insert}
-\SetKwFunction{Decrease}{decrease}
-\SetKwFunction{MaxHeapRestore}{maxHeapRestore}
-\SetKwFunction{HeapBuild}{heapBuild}
-\SetKwFunction{Heapsort}{heapsort}
-\SetKwFunction{L}{l}
-\SetKwFunction{R}{r}
-\SetKwFunction{P}{p}
-\caption{\protect\Heapsort{\protect\Item[] A, \protect\Int n}}
-
-\HeapBuild{A, n}\;
-\For{i = n \Down \To 2}{
-	A[1] $\leftrightarrow$ A[i]\;
-	\MaxHeapRestore{A, 1, i-1}\;
-}
-\end{algorithm}
+\input{Pseudocodice/69_Heapsort}
 \subparagraph{Correttezza}
 Si dimostra la correttezza per invariante di ciclo. Al passo $i$ il sottovettore $A[i+1,\dots, n]$ \`e ordinato, $A[1,\dots, i]\le A[i+1, \dots, n]$ e 
 $A[1]$ \`e la radice di un vettore heap di dimensione $i$. COMPLETARE DIMOSTRAZIONE
 \subsection{Implementazione di code con priorit\`a}
 Si vedr\`a l'implementazione di una min-priority queue, visto che la max-priority \`e speculare. 
 \subsubsection{Memorizzazione}
-\begin{algorithm}
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKwData{Item}{Item}
-\SetKwData{PriorityItem}{PriorityItem}
-\SetKwData{MinPriorityQueue}{MinPriorityQueue}
-\SetKwFunction{MinPriorityQueueCos}{MinPriorityQueue}
-\SetKwFunction{IsEmpty}{isEmpty}
-\SetKwFunction{Min}{min}
-\SetKwFunction{DeleteMin}{DeleteMin}
-\SetKwFunction{Insert}{insert}
-\SetKwFunction{Decrease}{decrease}
-\SetKwFunction{MaxHeapRestore}{maxHeapRestore}
-\SetKwFunction{HeapBuild}{heapBuild}
-\SetKwFunction{Heapsort}{heapsort}
-\SetKwFunction{L}{l}
-\SetKwFunction{R}{r}
-\SetKwFunction{P}{p}
-\caption{\protect\PriorityItem}
-\Int priority\;
-\Item value\;
-\Int pos;
-\end{algorithm}
+\input{Pseudocodice/70_}
 
-\begin{algorithm}
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKwData{Item}{Item}
-\SetKwData{PriorityItem}{PriorityItem}
-\SetKwData{MinPriorityQueue}{MinPriorityQueue}
-\SetKwFunction{MinPriorityQueueCos}{MinPriorityQueue}
-\SetKwFunction{IsEmpty}{isEmpty}
-\SetKwFunction{Min}{min}
-\SetKwFunction{DeleteMin}{DeleteMin}
-\SetKwFunction{Insert}{insert}
-\SetKwFunction{Decrease}{decrease}
-\SetKwFunction{MaxHeapRestore}{maxHeapRestore}
-\SetKwFunction{HeapBuild}{heapBuild}
-\SetKwFunction{Heapsort}{heapsort}
-\SetKwFunction{L}{l}
-\SetKwFunction{R}{r}
-\SetKwFunction{P}{p}
-\SetKwFunction{Swap}{swap}
-\caption{\protect\Swap{\protect\PriorityItem[] H, \protect\Int i, \protect\Int j}}
-H[i] $\leftrightarrow$ H[j]\;
-H[i].pos = i\;
-H[j].pos = j\;
-\end{algorithm}
+\input{Pseudocodice/71_Swap}
 \subsubsection{Inizializzazione}
-\begin{algorithm}
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKwData{Item}{Item}
-\SetKwData{PriorityItem}{PriorityItem}
-\SetKwData{PriorityQueue}{PriorityQueue}
-\SetKwFunction{PriorityQueueCos}{PriorityQueue}
-\SetKwFunction{IsEmpty}{isEmpty}
-\SetKwFunction{Min}{min}
-\SetKwFunction{DeleteMin}{DeleteMin}
-\SetKwFunction{Insert}{insert}
-\SetKwFunction{Decrease}{decrease}
-\SetKwFunction{MaxHeapRestore}{maxHeapRestore}
-\SetKwFunction{HeapBuild}{heapBuild}
-\SetKwFunction{Heapsort}{heapsort}
-\SetKwFunction{L}{l}
-\SetKwFunction{R}{r}
-\SetKwFunction{P}{p}
-\SetKwFunction{Swap}{swap}
-\SetKwProg{Fn}{}{}
-
-\caption{\protect\PriorityQueue}
-
-\Int capacity\;
-\Int dim\;
-\PriorityItem[] H\;
-\PriorityQueue \Fn{\PriorityQueueCos{\Int n}}{
-	\PriorityQueue t = \New \PriorityQueue\;
-	t.capacity = n\;
-	t.dim = 0\;
-	t.H = \New \PriorityItem[$1, \dots, n$]\;
-	\Return t\;
-}
-\end{algorithm}
+\input{Pseudocodice/72_}
 \subsubsection{Inserimento}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{Precondition}{precondition:}
-\SetKwData{Item}{Item}
-\SetKwData{PriorityItem}{PriorityItem}
-\SetKwData{PriorityQueue}{PriorityQueue}
-\SetKwFunction{PriorityQueueCos}{PriorityQueue}
-\SetKwFunction{PriorityItemCos}{PriorityItem}
-\SetKwFunction{IsEmpty}{isEmpty}
-\SetKwFunction{Min}{min}
-\SetKwFunction{DeleteMin}{DeleteMin}
-\SetKwFunction{Insert}{insert}
-\SetKwFunction{Decrease}{decrease}
-\SetKwFunction{MaxHeapRestore}{maxHeapRestore}
-\SetKwFunction{HeapBuild}{heapBuild}
-\SetKwFunction{Heapsort}{heapsort}
-\SetKwFunction{L}{l}
-\SetKwFunction{R}{r}
-\SetKwFunction{P}{p}
-\SetKwFunction{Swap}{swap}
-\SetKwProg{Fn}{}{}
-
-\caption{\protect\PriorityItem \protect\Insert{\protect\Item x, \protect\Int p}}
-
-\Precondition dim $<$ capacity\;
-dim += 1\;
-H[dim] = \New \PriorityItemCos{}\; 
-H[dim].value = x\;
-H[dim].priority = p\;
-H[dim].pos = dim\;
-\Int i = dim\;
-\While{i $>$ 1 \And H[i].priority $<$ H[\P{i}].priority}{
-	\Swap{H, i, \P{i}}\;
-	i = \P{i}\;
-}
-\Return H[i]\;
-\end{algorithm}
+\input{Pseudocodice/73_Insert}
 \subsubsection{\emph{minHeapRestore()}}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{Precondition}{precondition:}
-\SetKwData{Item}{Item}
-\SetKwData{PriorityItem}{PriorityItem}
-\SetKwData{PriorityQueue}{PriorityQueue}
-\SetKwFunction{PriorityQueueCos}{PriorityQueue}
-\SetKwFunction{PriorityItemCos}{PriorityItem}
-\SetKwFunction{IsEmpty}{isEmpty}
-\SetKwFunction{Min}{min}
-\SetKwFunction{DeleteMin}{DeleteMin}
-\SetKwFunction{Insert}{insert}
-\SetKwFunction{Decrease}{decrease}
-\SetKwFunction{MinHeapRestore}{minHeapRestore}
-\SetKwFunction{HeapBuild}{heapBuild}
-\SetKwFunction{Heapsort}{heapsort}
-\SetKwFunction{L}{l}
-\SetKwFunction{R}{r}
-\SetKwFunction{P}{p}
-\SetKwFunction{Swap}{swap}
-\SetKwProg{Fn}{}{}
-
-\caption{\protect\MinHeapRestore{\protect\PriorityItem[] A, \protect\Int i, \protect\Int dim}}
-\Int min = i\;
-\If{\L{i} $\le$ dim \And A[\L{i}].priority $<$ A[min].priority}{
-	min = \L{i}\;
-}
-\If{\R{i} $\le$ dim \And A[\R{i}].priority $<$ A[min].priority}{
-	min = \R{i}\;
-}
-\If{i $\neq$ min}{
-	\Swap{A, i, min}\;
-	\MinHeapRestore{A, min, dim}\;
-}
-\end{algorithm}
+\input{Pseudocodice/74_MinHeapRestore}
 \subsubsection{Cancellazione e lettura minimo}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{Precondition}{precondition:}
-\SetKwData{Item}{Item}
-\SetKwData{PriorityItem}{PriorityItem}
-\SetKwData{PriorityQueue}{PriorityQueue}
-\SetKwFunction{PriorityQueueCos}{PriorityQueue}
-\SetKwFunction{PriorityItemCos}{PriorityItem}
-\SetKwFunction{IsEmpty}{isEmpty}
-\SetKwFunction{Min}{min}
-\SetKwFunction{DeleteMin}{DeleteMin}
-\SetKwFunction{Insert}{insert}
-\SetKwFunction{Decrease}{decrease}
-\SetKwFunction{MinHeapRestore}{minHeapRestore}
-\SetKwFunction{HeapBuild}{heapBuild}
-\SetKwFunction{Heapsort}{heapsort}
-\SetKwFunction{L}{l}
-\SetKwFunction{R}{r}
-\SetKwFunction{P}{p}
-\SetKwFunction{Swap}{swap}
-\SetKwProg{Fn}{}{}
+\input{Pseudocodice/75_}
 
-\caption{\protect\Item \protect\DeleteMin{}}
-
-\Precondition dim $>$ 0\;
-\Swap{H, 1, dim}\;
-dim -= 1\;
-\MinHeapRestore{H, 1, dim}\;
-\Return H[dim+1].value\;
-\end{algorithm}
-
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{Precondition}{precondition:}
-\SetKwData{Item}{Item}
-\SetKwData{PriorityItem}{PriorityItem}
-\SetKwData{PriorityQueue}{PriorityQueue}
-\SetKwFunction{PriorityQueueCos}{PriorityQueue}
-\SetKwFunction{PriorityItemCos}{PriorityItem}
-\SetKwFunction{IsEmpty}{isEmpty}
-\SetKwFunction{Min}{min}
-\SetKwFunction{DeleteMin}{DeleteMin}
-\SetKwFunction{Insert}{insert}
-\SetKwFunction{Decrease}{decrease}
-\SetKwFunction{MinHeapRestore}{minHeapRestore}
-\SetKwFunction{HeapBuild}{heapBuild}
-\SetKwFunction{Heapsort}{heapsort}
-\SetKwFunction{L}{l}
-\SetKwFunction{R}{r}
-\SetKwFunction{P}{p}
-\SetKwFunction{Swap}{swap}
-\SetKwProg{Fn}{}{}
-
-\caption{\protect\Item \protect\Min{}}
-
-\Precondition dim $>$ 0\;
-\Return H[1].value\;
-\end{algorithm}
+\input{Pseudocodice/76_}
 \subsubsection{Decremento priorit\`a}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{Precondition}{precondition:}
-\SetKwData{Item}{Item}
-\SetKwData{PriorityItem}{PriorityItem}
-\SetKwData{PriorityQueue}{PriorityQueue}
-\SetKwFunction{PriorityQueueCos}{PriorityQueue}
-\SetKwFunction{PriorityItemCos}{PriorityItem}
-\SetKwFunction{IsEmpty}{isEmpty}
-\SetKwFunction{Min}{min}
-\SetKwFunction{DeleteMin}{DeleteMin}
-\SetKwFunction{Insert}{insert}
-\SetKwFunction{Decrease}{decrease}
-\SetKwFunction{MinHeapRestore}{minHeapRestore}
-\SetKwFunction{HeapBuild}{heapBuild}
-\SetKwFunction{Heapsort}{heapsort}
-\SetKwFunction{L}{l}
-\SetKwFunction{R}{r}
-\SetKwFunction{P}{p}
-\SetKwFunction{Swap}{swap}
-\SetKwProg{Fn}{}{}
-
-\caption{\protect\Decrease{\protect\PriorityItem x, \protect\Int p}}
-
-\Precondition p $<$ x.priority\;
-x.priority = p\;
-\Int i = x.pos\;
-\While{i $>$ 1 \And H[i].priority $<$ H[\P{i}].priority}{
-	\Swap{H, i, \P{i}}\;
-	i = \P{i}\;
-}
-\end{algorithm}
+\input{Pseudocodice/77_Decrease}
 \subsubsection{Complessit\`a}
 Tutte le operazioni che modificano gli heap devono sistemare la propriet\`a heap lungo un cammino radice-foglia (\emph{deleteMin()}) oppure lungo un cammino
 nodo-radice (\emph{insert()}, \emph{decrease()}). Essendo l'altezza $\lfloor\log n\rfloor$ il costo di tali operazioni \`e $O(\log n)$.
@@ -587,74 +141,12 @@ Un esempio di questi insiemi sono le componenti di un grafo. Le operazioni fonda
 Ogni insieme \`e identificato da un rappresentante univoco, un qualunque membro dell'insieme. Le operazioni di ricerca del rappresentante su uno stesso insieme devono restituire sempre lo stesso oggetto. Il
 rappresentante pu\`o cambiare solo in caso di unione.
 \subsection{Specifica}
- \begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{Precondition}{precondition:}
-
-\SetKwData{Mfset}{Mfset}
-
-\SetKwFunction{MfsetCos}{Mfset}
-\SetKwFunction{Find}{find}
-\SetKwFunction{Merge}{merge}
-
-\caption{\protect\Mfset}
-\comment{Crea n componenti $\{1\}, \dots, \{n\}$}
-\Mfset \MfsetCos{\Int n}\;
-\comment{Restituisce il rappresentante della componente x}
-\Int \Find{\Int x}\;
-\comment{Unisce le componenti che contengono x e y}
-\Merge{\Int x, \Int y}
-\end{algorithm}
+\input{Pseudocodice/78_}
 \subsection{Componenti connesse dinamiche}
 \begin{multicols}{2}
 Per trovare le componenti connesse di un grafo non orientato dinamico si inizia con componenti connesse costituite da un unico vertice, per ogni $(u, v)\in E$ si esegue \emph{merge(u, v)} e alla fine ogni insieme
 disgiunto rappresenta una componente connessa.
- \begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{Return}{return}
-
-\SetKwData{Mfset}{Mfset}
-\SetKwData{Graph}{Graph}
-\SetKwData{N}{n}
-
-\SetKwFunction{V}{V}
-\SetKwFunction{MfsetCos}{Mfset}
-\SetKwFunction{Find}{find}
-\SetKwFunction{Merge}{merge}
-\SetKwFunction{Cc}{cc}
-\SetKwFunction{Adj}{adj}
-
-\caption{\protect\Mfset \protect\Cc{\protect\Graph G}}
-\Mfset M = \MfsetCos{G.\N}\;
-\ForEach{u $\in$ G.\V{}}{
-	\ForEach{v $\in$ G.\Adj{u}}{
-		M.\Merge{u, v}\;	
-	}
-}
-\Return M\;
-\end{algorithm}
+\input{Pseudocodice/79_Cc}
 \end{multicols}
 Questo algoritmo ha complessit\`a $O(n)+m$ operazioni \emph{merge()}, interessante per la capacit\`a di gestire grafi dinamici.
 \subsection{Implementazione con insieme di liste}
@@ -682,145 +174,14 @@ Si utilizza per diminuire il costo dell'operazione \emph{find(x)}: ogni nodo man
 foglia sia discendente, ovvero l'altezza del sottoalbero associato al nodo. L'obiettivo \`e mantenere bassa l'altezza degli alberi. Un albero \emph{Mfset} con radice $r$ ottenuto tramite euristica sul
 rango ha almeno $2^{ranl[r]}$ nodi. Inoltre lo stesso albero con radice $r$ e $n$ nodi ha altezza inferiore a $\log n$. 
 \begin{multicols}{2}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{New}{new}
-\SetKw{Return}{return}
-
-\SetKwData{Mfset}{Mfset}
-\SetKwData{Graph}{Graph}
-\SetKwData{N}{n}
-\SetKwData{Space}{ }
-\SetKwData{Parent}{parent}
-\SetKwData{Rank}{rank}
-
-\SetKwFunction{V}{V}
-\SetKwFunction{MfsetCos}{Mfset}
-\SetKwFunction{Find}{find}
-\SetKwFunction{Merge}{merge}
-\SetKwFunction{Cc}{cc}
-\SetKwFunction{Adj}{adj}
-
-\SetKwProg{Fn}{}{}
-
-\caption{\protect\Mfset}
-\Int[] parent\;
-\Int[] rank[]\;
-\Mfset\Space\Fn{\MfsetCos{\Int n}}{
-	\Mfset t = \New \MfsetCos{}\;
-	t.\Parent = \Int[1$\dots$n]\;
-	t.\Rank = \Int[1$\dots$n]\;
-	\For{\Int i = 1 \To n}{
-		t.\Parent[i] = i\;
-		t.\Rank[i] = 0\;	
-	}
-	\Return t\;
-}
-\end{algorithm}
+\input{Pseudocodice/80_}
 \columnbreak
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{New}{new}
-\SetKw{Return}{return}
-
-\SetKwData{Item}{Item}
-\SetKwData{Mfset}{Mfset}
-\SetKwData{Graph}{Graph}
-\SetKwData{N}{n}
-\SetKwData{Space}{ }
-\SetKwData{Parent}{parent}
-\SetKwData{Rank}{rank}
-
-\SetKwFunction{V}{V}
-\SetKwFunction{MfsetCos}{Mfset}
-\SetKwFunction{Find}{find}
-\SetKwFunction{Merge}{merge}
-\SetKwFunction{Cc}{cc}
-\SetKwFunction{Adj}{adj}
-
-\SetKwProg{Fn}{}{}
-
-\caption{\protect\Merge{\protect\Int x, \protect\Int y}}
-\Item $r_x$ = \Find{x}\;
-\Item $r_y$ = \Find{y}\;
-\If{$r_x\ \neq\ r_y$}{
-	\uIf{rank[$r_x$] $>$ rank[$r_y$]}{
-		parent[$r_y$] = $r_x$\;	
-	}
-	\uIf{rank[$r_y$] $>$ rank[$r_x$]}{
-		parent[$r_x$] = $r_y$\;	
-	}
-	\Else{
-			parent[$r_x$] = $r_y$\;
-			rank[$r_y$] += 1\;
-	}
-}
-\end{algorithm}
+\input{Pseudocodice/81_Merge}
 \end{multicols}
 \subsubsection{Alberi: euristica di compressione dei cammini}
 \begin{multicols}{2}
 Nell'operazione \emph{find(x)} l'albero viene appiattito in modo che ricerche successive di $x$ siano svolte in $O(1)$.
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{New}{new}
-\SetKw{Return}{return}
-
-\SetKwData{Item}{Item}
-\SetKwData{Mfset}{Mfset}
-\SetKwData{Graph}{Graph}
-\SetKwData{N}{n}
-\SetKwData{Space}{ }
-\SetKwData{Parent}{parent}
-\SetKwData{Rank}{rank}
-
-\SetKwFunction{V}{V}
-\SetKwFunction{MfsetCos}{Mfset}
-\SetKwFunction{Find}{find}
-\SetKwFunction{Merge}{merge}
-\SetKwFunction{Cc}{cc}
-\SetKwFunction{Adj}{adj}
-
-\SetKwProg{Fn}{}{}
-
-\caption{\protect\Int \protect\Find{\protect\Int x}}
-\If{parent[x] $\neq$ x}{
-	parent[x] = \Find{parent[x]}
-}
-\Return parent[x]\;
-\end{algorithm}
+\input{Pseudocodice/82_Find}
 \end{multicols}
 \subsubsection{Alberi: euristica sul rango e compressione dei cammini}
 Applicando entrambe le euristiche il rango non \`e pi\`u l'altezza del nodo ma il limite superiore alla sua altezza. Non viene calcolato il rango corretto. Il costo ammortizzato di $m$ operazioni merge-find in un 

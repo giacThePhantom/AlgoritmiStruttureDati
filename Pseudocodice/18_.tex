@@ -1,0 +1,32 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Nil}{nil}
+\SetKw{Not}{not}
+\SetKw{Print}{print}
+\SetKwData{Tree}{Tree}
+\SetKwData{Queue}{Queue}
+\SetKwFunction{Bfs}{bfs}
+\SetKwFunction{QueueCos}{Queue}
+\SetKwFunction{Enqueue}{enqueue}
+\SetKwFunction{Dequeue}{dequeue}
+\SetKwFunction{Left}{leftMostChild}
+\SetKwFunction{Right}{rightSibling}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Bfs}{bfs}
+
+\caption{\protect\Bfs(\protect\Tree t)}
+
+\Queue Q = \QueueCos{}\;
+Q.\Enqueue{t}\;
+\While{\Not Q.\IsEmpty{}}{
+	\Tree u = Q.\Dequeue{}\;
+	\comment{Visita per livelli nodo $u$}
+	\Print u\;
+	u = u.\Left{}\;
+	\While{u $\neq$ \Nil}{
+		Q.\Enqueue{u}\;
+		u = u.\Right{}\;	
+	}
+}
+\end{algorithm}

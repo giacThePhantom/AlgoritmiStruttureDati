@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.3.5)  17 APR 2020 22:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.3.5)  18 APR 2020 01:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1581,279 +1581,289 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 188.
 
-[12] [13] [14]
+[12] [13] [14] (./Pseudocodice/0_SelectionSort.tex)
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
 Make it at least 13.07225pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
-[15] [16pdfTeX warning (ext4): destination with the same identifier (name{algoc
-f.}) has been already used, duplicate ignored
+[15] (./Pseudocodice/1_Min.tex) (./Pseudocodice/2_InsertionSort.tex) [16pdfTeX 
+warning (ext4): destination with the same identifier (name{algocf.}) has been a
+lready used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.393 \paragraph
+l.335 \paragraph
                 {\emph{merge()}}pdfTeX warning (ext4): destination with the sam
 e identifier (name{algocf.}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.393 \paragraph
-                {\emph{merge()}}]pdfTeX warning (ext4): destination with the sa
-me identifier (name{algocf.}) has been already used, duplicate ignored
+l.335 \paragraph
+                {\emph{merge()}}] (./Pseudocodice/3_Merge.texpdfTeX warning (ex
+t4): destination with the same identifier (name{algocf.}) has been already used
+, duplicate ignored
 <to be read again> 
                    \relax 
-l.405 ...st, \protect\Int last, \protect\Int mid}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
+l.12 ...rst, \protect\Int last, \protect\Int mid}}
+                                                  )
+(./Pseudocodice/4_MergeSort.texpdfTeX warning (ext4): destination with the same
+ identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.443 ..., \protect\Int first, \protect\Int last}}
-                                                   [17])
+l.12 ...A, \protect\Int first, \protect\Int last}}
+                                                  ) [17])
 (./Chapters/03_StruttureDati.tex [18]
 Capitolo 3.
-pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
- been already used, duplicate ignored
+(./Pseudocodice/5_.texpdfTeX warning (ext4): destination with the same identifi
+er (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.41 \caption{\protect\Sequence}
-                                 [19
+l.18 \caption{\protect\Sequence}
+                                ) [19
 
-] [20]pdfTeX warning (ext4): destination with the same identifier (name{algocf.
-}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.128 \caption{\protect\Set}
-                            pdfTeX warning (ext4): destination with the same id
-entifier (name{algocf.}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.164 \caption{\protect\Dictionary}
-                                   
-LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <8> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 166.
- [21] [22]pdfTeX warning (ext4): destination with the same identifier (name{alg
-ocf.}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.217 \caption{\protect\List}
-                             
-Overfull \hbox (15.0pt too wide) detected at line 270
-[][] 
- []
-
-pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
- been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.276 \begin{algorithm}\caption{Stack}
-                                      pdfTeX warning (ext4): destination with t
-he same identifier (name{algocf.}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.315 \caption{\protect\Stack}
-                              
-Overfull \hbox (15.0pt too wide) detected at line 348
-[][] 
- []
-
-[23] [24]pdfTeX warning (ext4): destination with the same identifier (name{algo
-cf.}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.367 \caption{\protect\Queue}
-                              pdfTeX warning (ext4): destination with the same 
-identifier (name{algocf.}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.397 \caption{\protect\Queue}
-                              
-Overfull \hbox (15.0pt too wide) detected at line 433
-[][] 
- []
-
-) (./Chapters/04_Alberi.tex [25] [26]
-Capitolo 4.
-[27
-
-]pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) ha
-s been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.62 \caption{\protect\Tree}
-                             [28]pdfTeX warning (ext4): destination with the sa
-me identifier (name{algocf.}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.106 \caption{\protect\Binary}
-                               
-Overfull \hbox (15.0pt too wide) detected at line 145
-[][] 
- []
-
-pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
- been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.157 \caption{\protect\Dfs{\protect\Tree t}}
-                                              [29]pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
-<to be read again> 
-                   \relax 
-l.190 \caption{\protect\Tree}
-                             pdfTeX warning (ext4): destination with the same i
+] [20] (./Pseudocodice/6_.texpdfTeX warning (ext4): destination with the same i
 dentifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.225 \caption{\protect\Dfs{\protect\Tree t}}
-                                              [30]pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
+l.16 \caption{\protect\Set}
+                           ) (./Pseudocodice/7_.texpdfTeX warning (ext4): desti
+nation with the same identifier (name{algocf.}) has been already used, duplicat
+e ignored
 <to be read again> 
                    \relax 
-l.257 \caption{\protect\Bfs(\protect\Tree t)}
-                                              [31]pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
-<to be read again> 
-                   \relax 
-l.302 \caption{\protect\Tree}
-                             
-Overfull \hbox (15.0pt too wide) detected at line 354
-[][] 
- []
-
-) (./Chapters/05_AlberiRicerca.tex [32]
-Capitolo 5.
-pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
- been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.34 \caption{\protect\SearchBinary}
-                                    
-Overfull \hbox (15.0pt too wide) detected at line 62
-[][] 
- []
-
-pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
- been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.71 \caption{\protect\Dictionary}
-                                   [33
-
-]pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) ha
-s been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.92 ...ect\Item \protect\Lookup{\protect\Item k}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
-<to be read again> 
-                   \relax 
-l.118 ...upNode(\protect\Tree t, \protect\Item k)}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
-<to be read again> 
-                   \relax 
-l.145 ...upNode(\protect\Tree t, \protect\Item k)}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
-<to be read again> 
-                   \relax 
-l.175 ...otect\Tree \protect\Min(\protect\Tree t)}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
-<to be read again> 
-                   \relax 
-l.198 ...otect\Tree \protect\Max(\protect\Tree t)}
-                                                   [34]pdfTeX warning (ext4): d
-estination with the same identifier (name{algocf.}) has been already used, dupl
-icate ignored
-<to be read again> 
-                   \relax 
-l.225 ...{\protect\SuccessorNode{\protect\Tree t}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
-<to be read again> 
-                   \relax 
-l.256 ...{\protect\SuccessorNode{\protect\Tree t}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
-<to be read again> 
-                   \relax 
-l.286 ...Insert{\protect\Item k, \protect\Item v}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
-<to be read again> 
-                   \relax 
-l.307 ...ree t, \protect\Item k, \protect\Item v}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
-<to be read again> 
-                   \relax 
-l.348 ...ree p, \protect\Tree u, \protect\Item k}}
-                                                   [35]pdfTeX warning (ext4): d
-estination with the same identifier (name{algocf.}) has been already used, dupl
-icate ignored
-<to be read again> 
-                   \relax 
-l.372 \caption{\protect\Remove{\protect\Item k}}
-                                                pdfTeX warning (ext4): destinat
-ion with the same identifier (name{algocf.}) has been already used, duplicate i
-gnored
-<to be read again> 
-                   \relax 
-l.396 ...veNode{\protect\Tree T, \protect\Item k}}
-                                                   [36] [37]pdfTeX warning (ext
-4): destination with the same identifier (name{algocf.}) has been already used,
- duplicate ignored
-<to be read again> 
-                   \relax 
-l.474 ...ree \protect\RotateLeft{\protect\Tree x}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
-<to be read again> 
-                   \relax 
-l.512 ...ree \protect\RotateLeft{\protect\Tree x}}
-                                                   [38]pdfTeX warning (ext4): d
-estination with the same identifier (name{algocf.}) has been already used, dupl
-icate ignored
-<to be read again> 
-                   \relax 
-l.553 \caption{\protect\Tree}
-                              [39]pdfTeX warning (ext4): destination with the s
+l.10 \caption{\protect\Dictionary}
+                                  
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <8> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 12.
+) [21] [22] (./Pseudocodice/8_.texpdfTeX warning (ext4): destination with the s
 ame identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.615 ...\protect\BalancedInsert{\protect\Tree t}}
-                                                  
-
-LaTeX Warning: Float too large for page by 25.62326pt on input line 674.
-
-[40] [41]pdfTeX warning (ext4): destination with the same identifier (name{algo
-cf.}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.737 ...Delete{\protect\Tree T, \protect\Tree t}}
-                                                  
-Overfull \hbox (30.40001pt too wide) detected at line 804
+l.29 \caption{\protect\List}
+                            
+Overfull \hbox (15.0pt too wide) detected at line 82
 [][] 
  []
 
-[42]) (./Chapters/06_Hashing.tex [43] [44]
+) (./Pseudocodice/9_Stack.texpdfTeX warning (ext4): destination with the same i
+dentifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2 \caption{Stack}
+                   ) (./Pseudocodice/10_.texpdfTeX warning (ext4): destination 
+with the same identifier (name{algocf.}) has been already used, duplicate ignor
+ed
+<to be read again> 
+                   \relax 
+l.19 \caption{\protect\Stack}
+                             
+Overfull \hbox (15.0pt too wide) detected at line 52
+[][] 
+ []
+
+) [23] [24] (./Pseudocodice/11_.texpdfTeX warning (ext4): destination with the 
+same identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.13 \caption{\protect\Queue}
+                             ) (./Pseudocodice/12_.texpdfTeX warning (ext4): de
+stination with the same identifier (name{algocf.}) has been already used, dupli
+cate ignored
+<to be read again> 
+                   \relax 
+l.19 \caption{\protect\Queue}
+                             
+Overfull \hbox (15.0pt too wide) detected at line 55
+[][] 
+ []
+
+)) (./Chapters/04_Alberi.tex [25] [26]
+Capitolo 4.
+[27
+
+] (./Pseudocodice/13_.texpdfTeX warning (ext4): destination with the same ident
+ifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.19 \caption{\protect\Tree}
+                            ) [28] (./Pseudocodice/14_.texpdfTeX warning (ext4)
+: destination with the same identifier (name{algocf.}) has been already used, d
+uplicate ignored
+<to be read again> 
+                   \relax 
+l.22 \caption{\protect\Binary}
+                              
+Overfull \hbox (15.0pt too wide) detected at line 61
+[][] 
+ []
+
+) (./Pseudocodice/15_Dfs.texpdfTeX warning (ext4): destination with the same id
+entifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.11 \caption{\protect\Dfs{\protect\Tree t}}
+                                            ) [29] (./Pseudocodice/16_.texpdfTe
+X warning (ext4): destination with the same identifier (name{algocf.}) has been
+ already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.19 \caption{\protect\Tree}
+                            ) (./Pseudocodice/17_Dfs.texpdfTeX warning (ext4): 
+destination with the same identifier (name{algocf.}) has been already used, dup
+licate ignored
+<to be read again> 
+                   \relax 
+l.12 \caption{\protect\Dfs{\protect\Tree t}}
+                                            ) [30] (./Pseudocodice/18_.texpdfTe
+X warning (ext4): destination with the same identifier (name{algocf.}) has been
+ already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.18 \caption{\protect\Bfs(\protect\Tree t)}
+                                            ) [31] (./Pseudocodice/19_.texpdfTe
+X warning (ext4): destination with the same identifier (name{algocf.}) has been
+ already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.25 \caption{\protect\Tree}
+                            
+Overfull \hbox (15.0pt too wide) detected at line 77
+[][] 
+ []
+
+)) (./Chapters/05_AlberiRicerca.tex [32]
+Capitolo 5.
+(./Pseudocodice/21_.tex (./Pseudocodice/20_.texpdfTeX warning (ext4): destinati
+on with the same identifier (name{algocf.}) has been already used, duplicate ig
+nored
+<to be read again> 
+                   \relax 
+l.24 \caption{\protect\SearchBinary}
+                                    
+Overfull \hbox (15.0pt too wide) detected at line 52
+[][] 
+ []
+
+)pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) ha
+s been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.10 \caption{\protect\Dictionary}
+                                  ) [33
+
+] (./Pseudocodice/22_Lookup.texpdfTeX warning (ext4): destination with the same
+ identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.11 ...ect\Item \protect\Lookup{\protect\Item k}}
+                                                  ) (./Pseudocodice/23_.texpdfT
+eX warning (ext4): destination with the same identifier (name{algocf.}) has bee
+n already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.14 ...kupNode(\protect\Tree t, \protect\Item k)}
+                                                  ) (./Pseudocodice/24_.texpdfT
+eX warning (ext4): destination with the same identifier (name{algocf.}) has bee
+n already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.14 ...kupNode(\protect\Tree t, \protect\Item k)}
+                                                  ) (./Pseudocodice/25_.texpdfT
+eX warning (ext4): destination with the same identifier (name{algocf.}) has bee
+n already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.15 ...rotect\Tree \protect\Min(\protect\Tree t)}
+                                                  ) (./Pseudocodice/26_.texpdfT
+eX warning (ext4): destination with the same identifier (name{algocf.}) has bee
+n already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.15 ...rotect\Tree \protect\Max(\protect\Tree t)}
+                                                  ) [34]
+(./Pseudocodice/27_SuccessorNode.texpdfTeX warning (ext4): destination with the
+ same identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.15 ...n{\protect\SuccessorNode{\protect\Tree t}}
+                                                  )
+(./Pseudocodice/28_SuccessorNode.texpdfTeX warning (ext4): destination with the
+ same identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.15 ...n{\protect\SuccessorNode{\protect\Tree t}}
+                                                  )
+(./Pseudocodice/29_Insert.texpdfTeX warning (ext4): destination with the same i
+dentifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.8 ...t\Insert{\protect\Item k, \protect\Item v}}
+                                                  ) (./Pseudocodice/31_Link.tex
+(./Pseudocodice/30_InsertNode.texpdfTeX warning (ext4): destination with the sa
+me identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.18 ...Tree t, \protect\Item k, \protect\Item v}}
+                                                  )pdfTeX warning (ext4): desti
+nation with the same identifier (name{algocf.}) has been already used, duplicat
+e ignored
+<to be read again> 
+                   \relax 
+l.19 ...Tree p, \protect\Tree u, \protect\Item k}}
+                                                  ) [35]
+(./Pseudocodice/32_Remove.texpdfTeX warning (ext4): destination with the same i
+dentifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.8 \caption{\protect\Remove{\protect\Item k}}
+                                              )
+(./Pseudocodice/33_RemoveNode.texpdfTeX warning (ext4): destination with the sa
+me identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.21 ...oveNode{\protect\Tree T, \protect\Item k}}
+                                                  ) [36] [37]
+(./Pseudocodice/34_RotateLeft.texpdfTeX warning (ext4): destination with the sa
+me identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.18 ...Tree \protect\RotateLeft{\protect\Tree x}}
+                                                  )
+(./Pseudocodice/35_RotateLeft.texpdfTeX warning (ext4): destination with the sa
+me identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.18 ...Tree \protect\RotateLeft{\protect\Tree x}}
+                                                  ) [38]
+(./Pseudocodice/36_.texpdfTeX warning (ext4): destination with the same identif
+ier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.9 \caption{\protect\Tree}
+                           ) [39] (./Pseudocodice/37_BalancedInsert.texpdfTeX w
+arning (ext4): destination with the same identifier (name{algocf.}) has been al
+ready used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.22 ...{\protect\BalancedInsert{\protect\Tree t}}
+                                                  
+
+LaTeX Warning: Float too large for page by 25.62326pt on input line 81.
+
+) [40] [41] (./Pseudocodice/38_BalancedDelete.texpdfTeX warning (ext4): destina
+tion with the same identifier (name{algocf.}) has been already used, duplicate 
+ignored
+<to be read again> 
+                   \relax 
+l.22 ...dDelete{\protect\Tree T, \protect\Tree t}}
+                                                  
+Overfull \hbox (30.40001pt too wide) detected at line 89
+[][] 
+ []
+
+) [42]) (./Chapters/06_Hashing.tex [43] [44]
 Capitolo 6.
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
@@ -1861,53 +1871,54 @@ Package hyperref Warning: Difference (2) between bookmark levels is greater
 
 [45
 
-] [46] [47] [48]pdfTeX warning (ext4): destination with the same identifier (na
-me{algocf.}) has been already used, duplicate ignored
+] [46] [47] [48] (./Pseudocodice/39_.texpdfTeX warning (ext4): destination with
+ the same identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.145 \caption{\protect\Hash}
-                             ) (./Chapters/07_InsiemiDizionari.tex [49]
+l.24 \caption{\protect\Hash}
+                            )) (./Chapters/07_InsiemiDizionari.tex [49]
 [50]
 Capitolo 7.
-pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
- been already used, duplicate ignored
+(./Pseudocodice/40_.texpdfTeX warning (ext4): destination with the same identif
+ier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.35 \caption{\protect\Set (vettore booleano)}
+l.31 \caption{\protect\Set (vettore booleano)}
                                               
-Overfull \hbox (15.0pt too wide) detected at line 115
+Overfull \hbox (15.0pt too wide) detected at line 111
 [][] 
  []
 
-[51
+) [51
 
 ]
 Overfull \vbox (31.6038pt too high) has occurred while \output is active []
 
 
-[52]pdfTeX warning (ext4): destination with the same identifier (name{algocf.})
- has been already used, duplicate ignored
+[52] (./Pseudocodice/41_Difference.texpdfTeX warning (ext4): destination with t
+he same identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.153 ...fference{\protect\Set A, \protect\Set B}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
+l.30 ...ifference{\protect\Set A, \protect\Set B}}
+                                                  )
+(./Pseudocodice/42_Intersection.texpdfTeX warning (ext4): destination with the 
+same identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.199 ...rsection{\protect\Set A, \protect\Set B}}
-                                                   [53] [54]pdfTeX warning (ext
-4): destination with the same identifier (name{algocf.}) has been already used,
- duplicate ignored
+l.35 ...ersection{\protect\Set A, \protect\Set B}}
+                                                  ) [53] [54]
+(./Pseudocodice/43_.texpdfTeX warning (ext4): destination with the same identif
+ier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.260 \caption{\protect\Insert{x}}
-                                  pdfTeX warning (ext4): destination with the s
-ame identifier (name{algocf.}) has been already used, duplicate ignored
+l.19 \caption{\protect\Insert{x}}
+                                 ) (./Pseudocodice/44_.texpdfTeX warning (ext4)
+: destination with the same identifier (name{algocf.}) has been already used, d
+uplicate ignored
 <to be read again> 
                    \relax 
-l.284 ...tion{\protect\Boolean \protect\Insert{x}}
-                                                  ) (./Chapters/08_Grafi.tex
+l.19 \caption{\protect\Boolean \protect\Insert{x}}
+                                                  )) (./Chapters/08_Grafi.tex
 [55]
 Capitolo 8.
 
@@ -1916,345 +1927,357 @@ Package hyperref Warning: Difference (2) between bookmark levels is greater
 
 [56
 
-]pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) ha
-s been already used, duplicate ignored
+] (./Pseudocodice/45_Graph.texpdfTeX warning (ext4): destination with the same 
+identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.57 \caption{Graph}
-                     [57]pdfTeX warning (ext4): destination with the same ident
-ifier (name{algocf.}) has been already used, duplicate ignored
+l.15 \caption{Graph}
+                    ) [57]
+(./Pseudocodice/46_Iterazione_su_tutti_i_nodi_del_grafo.texpdfTeX warning (ext4
+): destination with the same identifier (name{algocf.}) has been already used, 
+duplicate ignored
 <to be read again> 
                    \relax 
-l.107 ...ion{Iterazione su tutti i nodi del grafo}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
+l.3 \caption{Iterazione su tutti i nodi del grafo}
+                                                  )
+(./Pseudocodice/47_Iterazione_su_tutti_i_nodi_e_archi_del_grafo.texpdfTeX warni
+ng (ext4): destination with the same identifier (name{algocf.}) has been alread
+y used, duplicate ignored
 <to be read again> 
                    \relax 
-l.116 ...azione su tutti i nodi e archi del grafo}
-                                                  
+l.4 ...erazione su tutti i nodi e archi del grafo}
+                                                  )
 Overfull \vbox (22.19257pt too high) has occurred while \output is active []
 
 
-[58]pdfTeX warning (ext4): destination with the same identifier (name{algocf.})
- has been already used, duplicate ignored
+[58] (./Pseudocodice/48_GraphTraversal.texpdfTeX warning (ext4): destination wi
+th the same identifier (name{algocf.}) has been already used, duplicate ignored
+
 <to be read again> 
                    \relax 
-l.146 ...ersal{\protect\Graph G, \protect\Node r}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
-<to be read again> 
-                   \relax 
-l.195 ...ersal{\protect\Graph G, \protect\Node r}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
-<to be read again> 
-                   \relax 
-l.244 ...ct\Int[] erdos, \protect\Node[] parents}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
-<to be read again> 
-                   \relax 
-l.292 ...protect\Node s, \protect\Node[] parents}}
-                                                   [59] [60]pdfTeX warning (ext
-4): destination with the same identifier (name{algocf.}) has been already used,
- duplicate ignored
-<to be read again> 
-                   \relax 
-l.340 ...tect\Node u, \protect\Boolean[] visited}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
-<to be read again> 
-                   \relax 
-l.382 ...ersal{\protect\Graph G, \protect\Node r}}
-                                                   [61]pdfTeX warning (ext4): d
-estination with the same identifier (name{algocf.}) has been already used, dupl
-icate ignored
-<to be read again> 
-                   \relax 
-l.438 ...tect\Int[] \protect\CC{\protect\Graph G}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
-<to be read again> 
-                   \relax 
-l.482 ...ter, \protect\Node u, \protect\Int[] id}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
-<to be read again> 
-                   \relax 
-l.523 ...tect\Node p, \protect\Boolean[] visited}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
-<to be read again> 
-                   \relax 
-l.569 ...an[] \protect\HasCycle{\protect\Graph G}}
-                                                   [62]pdfTeX warning (ext4): d
-estination with the same identifier (name{algocf.}) has been already used, dupl
-icate ignored
-<to be read again> 
-                   \relax 
-l.628 ...e, \protect\Int[] dt, \protect\Int[] ft}}
-                                                   [63]pdfTeX warning (ext4): d
-estination with the same identifier (name{algocf.}) has been already used, dupl
-icate ignored
-<to be read again> 
-                   \relax 
-l.698 ...e, \protect\Int[] dt, \protect\Int[] ft}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
-<to be read again> 
-                   \relax 
-l.755 ...Stack \protect\TopSort{\protect\Graph G}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
-<to be read again> 
-                   \relax 
-l.805 ...ect\Boolean[] visited, \protect\Stack S}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
-<to be read again> 
-                   \relax 
-l.857 ...ect\Int[] \protect\Scc{\protect\Graph G}}
-                                                   [64] [65]pdfTeX warning (ext
-4): destination with the same identifier (name{algocf.}) has been already used,
- duplicate ignored
-<to be read again> 
-                   \relax 
-l.907 ...t[] \protect\Transpose{\protect\Graph G}}
-                                                   [66]pdfTeX warning (ext4): d
-estination with the same identifier (name{algocf.}) has been already used, dupl
-icate ignored
-<to be read again> 
-                   \relax 
-l.965 ...t\CC{\protect\Graph G, \protect\Stack S}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
-<to be read again> 
-                   \relax 
-l.1023 ...er, \protect\Node u, \protect\Int[] id}}
+l.20 ...versal{\protect\Graph G, \protect\Node r}}
                                                   )
+(./Pseudocodice/49_GraphTraversal.texpdfTeX warning (ext4): destination with th
+e same identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.26 ...versal{\protect\Graph G, \protect\Node r}}
+                                                  )
+(./Pseudocodice/51_GraphTraversal.tex (./Pseudocodice/50_GraphTraversal.texpdfT
+eX warning (ext4): destination with the same identifier (name{algocf.}) has bee
+n already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.27 ...ect\Int[] erdos, \protect\Node[] parents}}
+                                                  )pdfTeX warning (ext4): desti
+nation with the same identifier (name{algocf.}) has been already used, duplicat
+e ignored
+<to be read again> 
+                   \relax 
+l.29 ...\protect\Node s, \protect\Node[] parents}}
+                                                   [59]) [60]
+(./Pseudocodice/52_GraphTraversal.texpdfTeX warning (ext4): destination with th
+e same identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.26 ...otect\Node u, \protect\Boolean[] visited}}
+                                                  )
+(./Pseudocodice/53_GraphTraversal.texpdfTeX warning (ext4): destination with th
+e same identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.26 ...versal{\protect\Graph G, \protect\Node r}}
+                                                  ) [61]
+(./Pseudocodice/54_CC.texpdfTeX warning (ext4): destination with the same ident
+ifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.29 ...otect\Int[] \protect\CC{\protect\Graph G}}
+                                                  )
+(./Pseudocodice/55_CCdfs.texpdfTeX warning (ext4): destination with the same id
+entifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.29 ...nter, \protect\Node u, \protect\Int[] id}}
+                                                  )
+(./Pseudocodice/56_HasCycle.texpdfTeX warning (ext4): destination with the same
+ identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.31 ...otect\Node p, \protect\Boolean[] visited}}
+                                                  )
+(./Pseudocodice/57_HasCycle.texpdfTeX warning (ext4): destination with the same
+ identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.33 ...ean[] \protect\HasCycle{\protect\Graph G}}
+                                                  ) [62]
+(./Pseudocodice/58_DfsSchema.texpdfTeX warning (ext4): destination with the sam
+e identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.34 ...me, \protect\Int[] dt, \protect\Int[] ft}}
+                                                  ) [63]
+(./Pseudocodice/59_HasCycle.texpdfTeX warning (ext4): destination with the same
+ identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.34 ...me, \protect\Int[] dt, \protect\Int[] ft}}
+                                                  )
+(./Pseudocodice/61_TsDfs.tex (./Pseudocodice/60_TopSort.texpdfTeX warning (ext4
+): destination with the same identifier (name{algocf.}) has been already used, 
+duplicate ignored
+<to be read again> 
+                   \relax 
+l.36 ...\Stack \protect\TopSort{\protect\Graph G}}
+                                                  )pdfTeX warning (ext4): desti
+nation with the same identifier (name{algocf.}) has been already used, duplicat
+e ignored
+<to be read again> 
+                   \relax 
+l.38 ...tect\Boolean[] visited, \protect\Stack S}}
+                                                  ) (./Pseudocodice/62_Scc.texp
+dfTeX warning (ext4): destination with the same identifier (name{algocf.}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.39 ...tect\Int[] \protect\Scc{\protect\Graph G}}
+                                                  ) [64] [65]
+(./Pseudocodice/63_Transpose.texpdfTeX warning (ext4): destination with the sam
+e identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.39 ...nt[] \protect\Transpose{\protect\Graph G}}
+                                                  ) [66]
+(./Pseudocodice/64_CC.texpdfTeX warning (ext4): destination with the same ident
+ifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.42 ...ct\CC{\protect\Graph G, \protect\Stack S}}
+                                                  )
+(./Pseudocodice/65_CCdfs.texpdfTeX warning (ext4): destination with the same id
+entifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.42 ...nter, \protect\Node u, \protect\Int[] id}}
+                                                  ))
 (./Chapters/09_StruttureDatiSpeciali.tex [67]
 Capitolo 9.
+(./Pseudocodice/66_.texpdfTeX warning (ext4): destination with the same identif
+ier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.20 \caption{\protect\MinPriorityQueue}
+                                        ) [68
+
+]
+(./Pseudocodice/67_MaxHeapRestore.texpdfTeX warning (ext4): destination with th
+e same identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.24 ...Item[] A, \protect\Int i, \protect\Int i}}
+                                                  ) [69]
+(./Pseudocodice/68_HeapBuild.texpdfTeX warning (ext4): destination with the sam
+e identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.27 ...pBuild{\protect\Item[] A, \protect\Int n}}
+                                                  ) [70]
+(./Pseudocodice/69_Heapsort.texpdfTeX warning (ext4): destination with the same
+ identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.28 ...apsort{\protect\Item[] A, \protect\Int n}}
+                                                  ) (./Pseudocodice/70_.texpdfT
+eX warning (ext4): destination with the same identifier (name{algocf.}) has bee
+n already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.28 \caption{\protect\PriorityItem}
+                                    ) (./Pseudocodice/71_Swap.texpdfTeX warning
+ (ext4): destination with the same identifier (name{algocf.}) has been already 
+used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.29 ...Item[] H, \protect\Int i, \protect\Int j}}
+                                                  ) (./Pseudocodice/72_.texpdfT
+eX warning (ext4): destination with the same identifier (name{algocf.}) has bee
+n already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.31 \caption{\protect\PriorityQueue}
+                                     ) (./Pseudocodice/73_Insert.texpdfTeX warn
+ing (ext4): destination with the same identifier (name{algocf.}) has been alrea
+dy used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.33 ...t\Insert{\protect\Item x, \protect\Int p}}
+                                                  ) [71]
+(./Pseudocodice/74_MinHeapRestore.texpdfTeX warning (ext4): destination with th
+e same identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.33 ...em[] A, \protect\Int i, \protect\Int dim}}
+                                                  ) [72]
+(./Pseudocodice/75_.texpdfTeX warning (ext4): destination with the same identif
+ier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.33 \caption{\protect\Item \protect\DeleteMin{}}
+                                                 ) (./Pseudocodice/76_.texpdfTe
+X warning (ext4): destination with the same identifier (name{algocf.}) has been
+ already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.33 \caption{\protect\Item \protect\Min{}}
+                                           ) (./Pseudocodice/77_Decrease.texpdf
+TeX warning (ext4): destination with the same identifier (name{algocf.}) has be
+en already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.33 ...{\protect\PriorityItem x, \protect\Int p}}
+                                                  ) [73]
+(./Pseudocodice/78_.texpdfTeX warning (ext4): destination with the same identif
+ier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.22 \caption{\protect\Mfset}
+                             ) (./Pseudocodice/79_Cc.texpdfTeX warning (ext4): 
+destination with the same identifier (name{algocf.}) has been already used, dup
+licate ignored
+<to be read again> 
+                   \relax 
+l.27 ...otect\Mfset \protect\Cc{\protect\Graph G}}
+                                                  ) [74] [75]
+(./Pseudocodice/80_.texpdfTeX warning (ext4): destination with the same identif
+ier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.33 \caption{\protect\Mfset}
+                             ) (./Pseudocodice/81_Merge.texpdfTeX warning (ext4
+): destination with the same identifier (name{algocf.}) has been already used, 
+duplicate ignored
+<to be read again> 
+                   \relax 
+l.34 ...ect\Merge{\protect\Int x, \protect\Int y}}
+                                                  ) (./Pseudocodice/82_Find.tex
 pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.27 \caption{\protect\MinPriorityQueue}
-                                         [68
-
-]pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) ha
-s been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.111 ...tem[] A, \protect\Int i, \protect\Int i}}
-                                                   [69]pdfTeX warning (ext4): d
-estination with the same identifier (name{algocf.}) has been already used, dupl
-icate ignored
-<to be read again> 
-                   \relax 
-l.169 ...Build{\protect\Item[] A, \protect\Int n}}
-                                                   [70]pdfTeX warning (ext4): d
-estination with the same identifier (name{algocf.}) has been already used, dupl
-icate ignored
-<to be read again> 
-                   \relax 
-l.216 ...psort{\protect\Item[] A, \protect\Int n}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
-<to be read again> 
-                   \relax 
-l.257 \caption{\protect\PriorityItem}
-                                     pdfTeX warning (ext4): destination with th
-e same identifier (name{algocf.}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.291 ...tem[] H, \protect\Int i, \protect\Int j}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
-<to be read again> 
-                   \relax 
-l.327 \caption{\protect\PriorityQueue}
-                                      pdfTeX warning (ext4): destination with t
-he same identifier (name{algocf.}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.373 ...\Insert{\protect\Item x, \protect\Int p}}
-                                                   [71]pdfTeX warning (ext4): d
-estination with the same identifier (name{algocf.}) has been already used, dupl
-icate ignored
-<to be read again> 
-                   \relax 
-l.421 ...m[] A, \protect\Int i, \protect\Int dim}}
-                                                   [72]pdfTeX warning (ext4): d
-estination with the same identifier (name{algocf.}) has been already used, dupl
-icate ignored
-<to be read again> 
-                   \relax 
-l.467 \caption{\protect\Item \protect\DeleteMin{}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
-<to be read again> 
-                   \relax 
-l.508 \caption{\protect\Item \protect\Min{}}
-                                            pdfTeX warning (ext4): destination 
-with the same identifier (name{algocf.}) has been already used, duplicate ignor
-ed
-<to be read again> 
-                   \relax 
-l.546 ...\protect\PriorityItem x, \protect\Int p}}
-                                                   [73]pdfTeX warning (ext4): d
-estination with the same identifier (name{algocf.}) has been already used, dupl
-icate ignored
-<to be read again> 
-                   \relax 
-l.611 \caption{\protect\Mfset}
-                              pdfTeX warning (ext4): destination with the same 
-identifier (name{algocf.}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.649 ...tect\Mfset \protect\Cc{\protect\Graph G}}
-                                                   [74] [75]pdfTeX warning (ext
-4): destination with the same identifier (name{algocf.}) has been already used,
- duplicate ignored
-<to be read again> 
-                   \relax 
-l.717 \caption{\protect\Mfset}
-                              pdfTeX warning (ext4): destination with the same 
-identifier (name{algocf.}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.765 ...ct\Merge{\protect\Int x, \protect\Int y}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
-<to be read again> 
-                   \relax 
-l.818 ...rotect\Int \protect\Find{\protect\Int x}}
+l.34 ...protect\Int \protect\Find{\protect\Int x}}
                                                   
-Underfull \hbox (badness 10000) in paragraph at lines 784--823
+Underfull \hbox (badness 10000) in paragraph at lines 183--39
 []\OT1/cmr/m/n/10 Nell'operazione \OT1/cmr/m/it/10 find(x) \OT1/cmr/m/n/10 l'al
 -be-ro vie-
  []
 
 
-Underfull \hbox (badness 6808) in paragraph at lines 784--823
+Underfull \hbox (badness 6808) in paragraph at lines 183--39
 \OT1/cmr/m/n/10 ne ap-piat-ti-to in mo-do che ri-cer-che suc-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 784--823
+Underfull \hbox (badness 10000) in paragraph at lines 183--39
 \OT1/cmr/m/n/10 ces-si-ve di $\OML/cmm/m/it/10 x$ \OT1/cmr/m/n/10 sia-no svol-t
 e in $\OML/cmm/m/it/10 O\OT1/cmr/m/n/10 (1)$.
  []
 
-) (./Chapters/10_Scelta.tex [76]
+)) (./Chapters/10_Scelta.tex [76]
 Capitolo 10.
 [77
 
-]pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) ha
-s been already used, duplicate ignored
+] (./Pseudocodice/83_PrintPath.texpdfTeX warning (ext4): destination with the s
+ame identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.82 ...de s, \protect\Node d, \protect\Node[] T}}
-                                                   [78]pdfTeX warning (ext4): d
-estination with the same identifier (name{algocf.}) has been already used, dupl
-icate ignored
+l.51 ...de s, \protect\Node d, \protect\Node[] T}}
+                                                  ) [78]
+(./Pseudocodice/84_ProCamMin.texpdfTeX warning (ext4): destination with the sam
+e identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.158 ...amMin{\protect\Graph G, \protect\Node s}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
+l.51 ...CamMin{\protect\Graph G, \protect\Node s}}
+                                                  )
+(./Pseudocodice/85_ProCamMin.texpdfTeX warning (ext4): destination with the sam
+e identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.219 ...amMin{\protect\Graph G, \protect\Node s}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
+l.51 ...CamMin{\protect\Graph G, \protect\Node s}}
+                                                  )
+(./Pseudocodice/86_ProCamMin.texpdfTeX warning (ext4): destination with the sam
+e identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.289 ...amMin{\protect\Graph G, \protect\Node s}}
-                                                   [79] [80]pdfTeX warning (ext
-4): destination with the same identifier (name{algocf.}) has been already used,
- duplicate ignored
+l.56 ...CamMin{\protect\Graph G, \protect\Node s}}
+                                                  ) [79] [80]
+(./Pseudocodice/87_ProCamMin.texpdfTeX warning (ext4): destination with the sam
+e identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.391 ...amMin{\protect\Graph G, \protect\Node s}}
-                                                   [81] [82]pdfTeX warning (ext
-4): destination with the same identifier (name{algocf.}) has been already used,
- duplicate ignored
+l.60 ...CamMin{\protect\Graph G, \protect\Node s}}
+                                                  ) [81] [82]
+(./Pseudocodice/88_ProCamMin.texpdfTeX warning (ext4): destination with the sam
+e identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.516 ...amMin{\protect\Graph G, \protect\Node s}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
+l.63 ...CamMin{\protect\Graph G, \protect\Node s}}
+                                                  )
+(./Pseudocodice/89_ProCamMin.texpdfTeX warning (ext4): destination with the sam
+e identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.613 ...amMin{\protect\Graph G, \protect\Node s}}
-                                                   [83]
+l.66 ...CamMin{\protect\Graph G, \protect\Node s}}
+                                                  ) [83]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 667.
+(hyperref)                removing `math shift' on input line 160.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 667.
+(hyperref)                removing `math shift' on input line 160.
 
 [84]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 670.
+(hyperref)                removing `math shift' on input line 163.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 670.
+(hyperref)                removing `math shift' on input line 163.
 
-pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
- been already used, duplicate ignored
+(./Pseudocodice/90_ProCamMin.texpdfTeX warning (ext4): destination with the sam
+e identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.748 ...])  \protect\ProCamMin{\protect\Graph G}}
-                                                   [85])
+l.66 ...[])  \protect\ProCamMin{\protect\Graph G}}
+                                                  ) [85])
 (./Chapters/11_RisoluzioneProblemi.tex [86]
 Capitolo 11.
 [87
 
 ]) (./Chapters/12_DivideImpera.tex [88]
 Capitolo 12.
-pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
- been already used, duplicate ignored
+(./Pseudocodice/91_Hanoi.texpdfTeX warning (ext4): destination with the same id
+entifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.44 ...n, \protect\Int src, \protect\Int middle}}
-                                                   [89
+l.33 ...n, \protect\Int src, \protect\Int middle}}
+                                                  ) [89
 
-]pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) ha
-s been already used, duplicate ignored
+]
+(./Pseudocodice/92_Pivot.texpdfTeX warning (ext4): destination with the same id
+entifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.108 ...A, \protect\Int start, \protect\Int end}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
+l.33 ... A, \protect\Int start, \protect\Int end}}
+                                                  )
+(./Pseudocodice/93_QuickSort.texpdfTeX warning (ext4): destination with the sam
+e identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.154 ...A, \protect\Int start, \protect\Int end}}
-                                                   [90])
+l.33 ... A, \protect\Int start, \protect\Int end}}
+                                                  ) [90])
 (./Chapters/13_ProgrammazioneDinamica.tex [91]
 Capitolo 13.
 [92
@@ -2262,7 +2285,7 @@ Capitolo 13.
 ] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2018/09/02 1.7 listings language file
 )
-(./build/../Codice/MemoizationAutomatica.py
+(./Codice/MemoizationAutomatica.py
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 4.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
@@ -2270,168 +2293,177 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 4.
-)pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) ha
-s been already used, duplicate ignored
+)
+(./Pseudocodice/94_Domino.texpdfTeX warning (ext4): destination with the same i
+dentifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.77 ...otect\Int \protect\Domino{\protect\Int n}}
-                                                   [93]pdfTeX warning (ext4): d
-estination with the same identifier (name{algocf.}) has been already used, dupl
-icate ignored
+l.33 ...otect\Int \protect\Domino{\protect\Int n}}
+                                                  ) [93]
+(./Pseudocodice/95_Domino.texpdfTeX warning (ext4): destination with the same i
+dentifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.128 ...tect\Int \protect\Domino{\protect\Int n}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
+l.33 ...otect\Int \protect\Domino{\protect\Int n}}
+                                                  )
+(./Pseudocodice/96_Domino.texpdfTeX warning (ext4): destination with the same i
+dentifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.172 ...tect\Int \protect\Domino{\protect\Int n}}
-                                                   [94]pdfTeX warning (ext4): d
-estination with the same identifier (name{algocf.}) has been already used, dupl
-icate ignored
+l.33 ...otect\Int \protect\Domino{\protect\Int n}}
+                                                  ) [94]
+(./Pseudocodice/97_Hateville.texpdfTeX warning (ext4): destination with the sam
+e identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.258 ...eville{\protect\Int[] D, \protect\Int n}}
-                                                   [95]pdfTeX warning (ext4): d
-estination with the same identifier (name{algocf.}) has been already used, dupl
-icate ignored
+l.35 ...teville{\protect\Int[] D, \protect\Int n}}
+                                                  ) [95]
+(./Pseudocodice/98_Solution.texpdfTeX warning (ext4): destination with the same
+ identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.311 ...[] DP, \protect\Int[] D, \protect\Int i}}
+l.37 ...t[] DP, \protect\Int[] D, \protect\Int i}}
                                                   
-Overfull \hbox (102.7687pt too wide) in paragraph at lines 273--326
+Overfull \hbox (102.7687pt too wide) in paragraph at lines 111--52
 \OT1/cmr/m/n/10 sen-za ag-giun-ge-re nul-la. []$[]$ 
  []
 
-[96]pdfTeX warning (ext4): destination with the same identifier (name{algocf.})
- has been already used, duplicate ignored
+) [96] (./Pseudocodice/99_KnapSack.texpdfTeX warning (ext4): destination with t
+he same identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.399 ...Int[] p, \protect\Int n, \protect\Int C}}
-                                                   [97]pdfTeX warning (ext4): d
-estination with the same identifier (name{algocf.}) has been already used, dupl
-icate ignored
+l.37 ...\Int[] p, \protect\Int n, \protect\Int C}}
+                                                  ) [97]
+(./Pseudocodice/100_Knapsack_con_memoization.texpdfTeX warning (ext4): destinat
+ion with the same identifier (name{algocf.}) has been already used, duplicate i
+gnored
 <to be read again> 
                    \relax 
-l.465 \caption{Knapsack con memoization}
-                                        
-Overfull \hbox (45.18529pt too wide) in paragraph at lines 423--496
+l.40 \caption{Knapsack con memoization}
+                                       
+Overfull \hbox (45.18529pt too wide) in paragraph at lines 155--71
 \OT1/cmr/m/n/10 cal-co-la-ta. []$[]$ 
  []
 
-pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
- been already used, duplicate ignored
+) (./Pseudocodice/101_Knapsack_senza_limiti_con_memoization.texpdfTeX warning (
+ext4): destination with the same identifier (name{algocf.}) has been already us
+ed, duplicate ignored
 <to be read again> 
                    \relax 
-l.558 ...on{Knapsack senza limiti con memoization}
-                                                   [98]pdfTeX warning (ext4): d
-estination with the same identifier (name{algocf.}) has been already used, dupl
-icate ignored
-<to be read again> 
-                   \relax 
-l.635 ...on{Knapsack senza limiti con memoization}
-                                                   [99] [100]pdfTeX warning (ex
+l.40 ...ion{Knapsack senza limiti con memoization}
+                                                  ) [98]
+(./Pseudocodice/102_Knapsack_senza_limiti_con_memoization.texpdfTeX warning (ex
 t4): destination with the same identifier (name{algocf.}) has been already used
 , duplicate ignored
 <to be read again> 
                    \relax 
-l.740 ...CS{\protect\Item[] T, \protect\Item[] U}}
-                                                   [101]pdfTeX warning (ext4): 
-destination with the same identifier (name{algocf.}) has been already used, dup
-licate ignored
+l.43 ...ion{Knapsack senza limiti con memoization}
+                                                  ) [99] [100]
+(./Pseudocodice/103_LCS.texpdfTeX warning (ext4): destination with the same ide
+ntifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.852 ...tem[] U, \protect\Int n, \protect\Int m}}
-                                                   [102]pdfTeX warning (ext4): 
-destination with the same identifier (name{algocf.}) has been already used, dup
-licate ignored
+l.45 ...LCS{\protect\Item[] T, \protect\Item[] U}}
+                                                  ) [101]
+(./Pseudocodice/104_LCS.texpdfTeX warning (ext4): destination with the same ide
+ntifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.914 \caption{}
-                 [103]
+l.45 ...Item[] U, \protect\Int n, \protect\Int m}}
+                                                  ) [102]
+(./Pseudocodice/105_.texpdfTeX warning (ext4): destination with the same identi
+fier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.45 \caption{}
+               ) [103]
 
 Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 970.
+(amsmath)                trying to recover with `aligned' on input line 292.
 
-pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
- been already used, duplicate ignored
+(./Pseudocodice/106_StringMatching.texpdfTeX warning (ext4): destination with t
+he same identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1020 ...em[] T, \protect\Int m, \protect\Int n}}
-                                                   [104] [105]pdfTeX warning (e
-xt4): destination with the same identifier (name{algocf.}) has been already use
-d, duplicate ignored
+l.45 ...Item[] T, \protect\Int m, \protect\Int n}}
+                                                  ) [104] [105]
+(./Pseudocodice/107_RecPar.texpdfTeX warning (ext4): destination with the same 
+identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1146 ...em[] c, \protect\Int i, \protect\Int j}}
+l.45 ...Item[] c, \protect\Int i, \protect\Int j}}
                                                   
-Overfull \hbox (106.75786pt too wide) in paragraph at lines 1102--1160
+Overfull \hbox (106.75786pt too wide) in paragraph at lines 1--59
  []\OT1/cmr/bx/n/10 Approccio ri-cor-si-vo[] $[]$ 
  []
 
-[106]pdfTeX warning (ext4): destination with the same identifier (name{algocf.}
-) has been already used, duplicate ignored
+) [106] (./Pseudocodice/108_ComputePar.texpdfTeX warning (ext4): destination wi
+th the same identifier (name{algocf.}) has been already used, duplicate ignored
+
 <to be read again> 
                    \relax 
-l.1210 ...ePar{\protect\Item[] c, \protect\Int n}}
+l.45 ...utePar{\protect\Item[] c, \protect\Int n}}
                                                   
-Overfull \hbox (69.15758pt too wide) in paragraph at lines 1164--1230
+Overfull \hbox (69.15758pt too wide) in paragraph at lines 364--65
 \OT1/cmr/m/n/10 sot-to-pro-ble-ma. []$[]$ 
  []
 
-pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
- been already used, duplicate ignored
+) (./Pseudocodice/109_Ricostruzione_della_soluzione_-_Stampa.texpdfTeX warning 
+(ext4): destination with the same identifier (name{algocf.}) has been already u
+sed, duplicate ignored
 <to be read again> 
                    \relax 
-l.1279 ...{Ricostruzione della soluzione - Stampa}
+l.46 ...on{Ricostruzione della soluzione - Stampa}
                                                   
-Overfull \hbox (331.01917pt too wide) in paragraph at lines 1232--1298
+Overfull \hbox (331.01917pt too wide) in paragraph at lines 368--65
 \OT1/cmr/m/n/10 so-lu-zio-ne tro-va-ta, mo-ti-vo per cui si sal-va-no le in-for
 -ma-zio-ni nel-la ma-tri-ce la-st. []$[]$ 
  []
 
-pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
- been already used, duplicate ignored
+) (./Pseudocodice/110_Ricostruzione_della_soluzione_-_Calcolo_Effettivo.texpdfT
+eX warning (ext4): destination with the same identifier (name{algocf.}) has bee
+n already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1347 ...one della soluzione - Calcolo Effettivo}
-                                                   [107] [108]pdfTeX warning (e
-xt4): destination with the same identifier (name{algocf.}) has been already use
-d, duplicate ignored
+l.48 ...zione della soluzione - Calcolo Effettivo}
+                                                  ) [107] [108]
+(./Pseudocodice/111_ComputePredecessor.texpdfTeX warning (ext4): destination wi
+th the same identifier (name{algocf.}) has been already used, duplicate ignored
+
 <to be read again> 
                    \relax 
-l.1426 ...[] a, \protect\Int[] b, \protect\Int n}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
+l.48 ...nt[] a, \protect\Int[] b, \protect\Int n}}
+                                                  )
+(./Pseudocodice/112_MaxInterval.texpdfTeX warning (ext4): destination with the 
+same identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1489 ...] b, \protect\Int[] w,  \protect\Int n}}
-                                                  ) (./Chapters/14_Greedy.tex
+l.50 ...t[] b, \protect\Int[] w,  \protect\Int n}}
+                                                  )) (./Chapters/14_Greedy.tex
 [109]
 Capitolo 14.
 [110
 
-] [111]pdfTeX warning (ext4): destination with the same identifier (name{algocf
-.}) has been already used, duplicate ignored
+] [111] (./Pseudocodice/113_IndipendentSet.texpdfTeX warning (ext4): destinatio
+n with the same identifier (name{algocf.}) has been already used, duplicate ign
+ored
 <to be read again> 
                    \relax 
-l.116 ...tSet{\protect\Int[] a, \protect\Int[] b}}
-                                                   [112]pdfTeX warning (ext4): 
-destination with the same identifier (name{algocf.}) has been already used, dup
-licate ignored
+l.50 ...ntSet{\protect\Int[] a, \protect\Int[] b}}
+                                                  ) [112]
+(./Pseudocodice/114_Resto.texpdfTeX warning (ext4): destination with the same i
+dentifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.200 ...Int[] t, \protect\Int n, \protect\Int R}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
+l.50 ...\Int[] t, \protect\Int n, \protect\Int R}}
+                                                  )
+(./Pseudocodice/115_Resto.texpdfTeX warning (ext4): destination with the same i
+dentifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.277 ...Int[] t, \protect\Int n, \protect\Int R}}
-                                                   [113]
-Overfull \hbox (13.64043pt too wide) in paragraph at lines 302--307
+l.50 ...\Int[] t, \protect\Int n, \protect\Int R}}
+                                                  ) [113]
+Overfull \hbox (13.64043pt too wide) in paragraph at lines 112--117
  []\OT1/cmr/bx/n/10 Dimostrazione[] \OT1/cmr/m/n/10 Si con-si-de-ri la per-mu-t
 a-zio-ne ot-ti-ma $\OML/cmm/m/it/10 B \OT1/cmr/m/n/10 = [\OML/cmm/m/it/10 B\OT1
 /cmr/m/n/10 [1]\OML/cmm/m/it/10 ; [] ; B\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 m \OM
@@ -2441,68 +2473,69 @@ mm/m/it/10 m\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ; B\OT1/cmr/m/n/10 [\OML/cmm/m/it
 it/10 n\OT1/cmr/m/n/10 ]]$
  []
 
-[114]pdfTeX warning (ext4): destination with the same identifier (name{algocf.}
-) has been already used, duplicate ignored
+[114] (./Pseudocodice/116_Zaino.texpdfTeX warning (ext4): destination with the 
+same identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.372 ...[] v, \protect\Float C,\protect\Float n}}
-                                                   [115]pdfTeX warning (ext4): 
-destination with the same identifier (name{algocf.}) has been already used, dup
-licate ignored
+l.52 ...t[] v, \protect\Float C,\protect\Float n}}
+                                                  ) [115]
+(./Pseudocodice/117_Algoritmo_di_decodifica.texpdfTeX warning (ext4): destinati
+on with the same identifier (name{algocf.}) has been already used, duplicate ig
+nored
 <to be read again> 
                    \relax 
-l.446 \caption{Algoritmo di decodifica}
-                                       
-Overfull \hbox (82.0464pt too wide) in paragraph at lines 393--461
+l.52 \caption{Algoritmo di decodifica}
+                                      
+Overfull \hbox (82.0464pt too wide) in paragraph at lines 144--67
 \OT1/cmr/m/n/10 rat-te-re ne-ces-sa-rio. []$[]$ 
  []
 
-pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
- been already used, duplicate ignored
+) (./Pseudocodice/118_Huffman.texpdfTeX warning (ext4): destination with the sa
+me identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.537 ...t[] c, \protect\Int[] f, \protect\Int n}}
-                                                   [116] [117]pdfTeX warning (e
-xt4): destination with the same identifier (name{algocf.}) has been already use
-d, duplicate ignored
+l.60 ...nt[] c, \protect\Int[] f, \protect\Int n}}
+                                                  ) [116] [117]
+(./Pseudocodice/119_MSTGenerico.texpdfTeX warning (ext4): destination with the 
+same identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.646 ...rico{\protect\Graph G, \protect\Int[] w}}
-                                                   [118]pdfTeX warning (ext4): 
-destination with the same identifier (name{algocf.}) has been already used, dup
-licate ignored
+l.59 ...erico{\protect\Graph G, \protect\Int[] w}}
+                                                  ) [118]
+(./Pseudocodice/120_Kruskal.texpdfTeX warning (ext4): destination with the same
+ identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.738 ...dge[] A, \protect\Int n, \protect\Int m}}
-                                                   [119]pdfTeX warning (ext4): 
-destination with the same identifier (name{algocf.}) has been already used, dup
-licate ignored
+l.63 ...Edge[] A, \protect\Int n, \protect\Int m}}
+                                                  ) [119]
+(./Pseudocodice/121_Prim.texpdfTeX warning (ext4): destination with the same id
+entifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.845 ...Prim{\protect\Graph G, \protect\Int[] p}}
-                                                  ) (./Chapters/15_Locale.tex
+l.68 ...\Prim{\protect\Graph G, \protect\Int[] p}}
+                                                  )) (./Chapters/15_Locale.tex
 [120]
 Capitolo 15.
-pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
- been already used, duplicate ignored
+(./Pseudocodice/122_.texpdfTeX warning (ext4): destination with the same identi
+fier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.70 \caption{\protect\RicercaLocale{}}
-                                        [121
+l.67 \caption{\protect\RicercaLocale{}}
+                                       ) [121
 
-]pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) ha
-s been already used, duplicate ignored
+] (./Pseudocodice/123_MaxFlow.texpdfTeX warning (ext4): destination with the sa
+me identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.170 ... s, \protect\Node t, \protect\Int[][] c}}
-                                                   [122]pdfTeX warning (ext4): 
-destination with the same identifier (name{algocf.}) has been already used, dup
-licate ignored
+l.67 ...e s, \protect\Node t, \protect\Int[][] c}}
+                                                  ) [122]
+(./Pseudocodice/124_MaxFlow.texpdfTeX warning (ext4): destination with the same
+ identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.275 ... s, \protect\Node t, \protect\Int[][] c}}
-                                                   [123] [124]
-Overfull \hbox (18.07712pt too wide) in paragraph at lines 344--345
+l.67 ...e s, \protect\Node t, \protect\Int[][] c}}
+                                                  ) [123] [124]
+Overfull \hbox (18.07712pt too wide) in paragraph at lines 114--115
  []\OT1/cmr/bx/n/10 Dimostrazione[] \OT1/cmr/m/n/10 Nes-sun flus-so at-tra-ver-
 so un ta-glio su-pe-ra la ca-pa-cit^^Ra di ta-glio: $\OML/cmm/m/it/10 F\OT1/cmr
 /m/n/10 (\OML/cmm/m/it/10 S; T\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^T \OML/cmm/m
@@ -2521,101 +2554,103 @@ This may cause the page layout to be inconsistent, however.
 Capitolo 16.
 [127
 
-]pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) ha
-s been already used, duplicate ignored
+] (./Pseudocodice/125_.texpdfTeX warning (ext4): destination with the same iden
+tifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.94 ...] S, \protect\Int i, $<$dati parziali$>$}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
+l.67 ...] S, \protect\Int i, $<$dati parziali$>$}}
+                                                  )
+(./Pseudocodice/126_SubsetRec.texpdfTeX warning (ext4): destination with the sa
+me identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.181 ...nt n, \protect\Item[] S, \protect\Int i}}
-                                                   [128]pdfTeX warning (ext4): 
-destination with the same identifier (name{algocf.}) has been already used, dup
-licate ignored
+l.67 ...Int n, \protect\Item[] S, \protect\Int i}}
+                                                  ) [128]
+(./Pseudocodice/128_ProcessSolution.tex (./Pseudocodice/127_Subset.texpdfTeX wa
+rning (ext4): destination with the same identifier (name{algocf.}) has been alr
+eady used, duplicate ignored
 <to be read again> 
                    \relax 
-l.263 \caption{\protect\Subset{\protect\Int n}}
-                                               pdfTeX warning (ext4): destinati
+l.67 \caption{\protect\Subset{\protect\Int n}}
+                                              )pdfTeX warning (ext4): destinati
 on with the same identifier (name{algocf.}) has been already used, duplicate ig
 nored
 <to be read again> 
                    \relax 
-l.335 ...lution{\protect\Int[] S, \protect\Int n}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
+l.69 ...olution{\protect\Int[] S, \protect\Int n}}
+                                                  )
+(./Pseudocodice/129_Subset.texpdfTeX warning (ext4): destination with the same 
+identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.414 \caption{\protect\Subset{\protect\Int n}}
-                                               pdfTeX warning (ext4): destinati
-on with the same identifier (name{algocf.}) has been already used, duplicate ig
-nored
+l.68 \caption{\protect\Subset{\protect\Int n}}
+                                              ) (./Pseudocodice/130_PermRec.tex
+pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
+ been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.497 ...rmRec{\protect\Item[] S, \protect\Int i}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
+l.69 ...ermRec{\protect\Item[] S, \protect\Int i}}
+                                                  )
+(./Pseudocodice/131_Permutation.texpdfTeX warning (ext4): destination with the 
+same identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.577 ...ation{\protect\Item[] S, \protect\Int n}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
+l.67 ...tation{\protect\Item[] S, \protect\Int n}}
+                                                  ) (./Pseudocodice/132_.texpdf
+TeX warning (ext4): destination with the same identifier (name{algocf.}) has be
+en already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.655 ...] S, \protect\Int i,$<$dati parziali$>$}}
-                                                   [129]pdfTeX warning (ext4): 
-destination with the same identifier (name{algocf.}) has been already used, dup
-licate ignored
+l.67 ...[] S, \protect\Int i,$<$dati parziali$>$}}
+                                                  ) [129]
+(./Pseudocodice/133_PermRec.texpdfTeX warning (ext4): destination with the same
+ identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.745 ...sing, \protect\Item[] S, \protect\Int i}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
+l.69 ...ssing, \protect\Item[] S, \protect\Int i}}
+                                                  )
+(./Pseudocodice/134_Suset_sum.texpdfTeX warning (ext4): destination with the sa
+me identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.828 \caption{Suset sum}
-                          [130] [131]pdfTeX warning (ext4): destination with th
-e same identifier (name{algocf.}) has been already used, duplicate ignored
+l.69 \caption{Suset sum}
+                        ) [130] [131] (./Pseudocodice/135_Queens.texpdfTeX warn
+ing (ext4): destination with the same identifier (name{algocf.}) has been alrea
+dy used, duplicate ignored
 <to be read again> 
                    \relax 
-l.998 ...Int n, \protect\Int[] S, \protect\Int i}}
-                                                   [132]pdfTeX warning (ext4): 
-destination with the same identifier (name{algocf.}) has been already used, dup
-licate ignored
+l.67 ...\Int n, \protect\Int[] S, \protect\Int i}}
+                                                  ) [132]
+(./Pseudocodice/136_Cavallo.texpdfTeX warning (ext4): destination with the same
+ identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1089 ...\Int i, \protect\Int x, \protect\Int y}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
+l.67 ...ct\Int i, \protect\Int x, \protect\Int y}}
+                                                  )
+(./Pseudocodice/137_Choices.texpdfTeX warning (ext4): destination with the same
+ identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1173 ...[][] S, \protect\Int x, \protect\Int y}}
-                                                   [133]pdfTeX warning (ext4): 
-destination with the same identifier (name{algocf.}) has been already used, dup
-licate ignored
+l.67 ...nt[][] S, \protect\Int x, \protect\Int y}}
+                                                  ) [133]
+(./Pseudocodice/138_Sudoku.texpdfTeX warning (ext4): destination with the same 
+identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1257 ...oku{\protect\Int[][] S, \protect\Int i}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
+l.67 ...udoku{\protect\Int[][] S, \protect\Int i}}
+                                                  )
+(./Pseudocodice/139_Choices.texpdfTeX warning (ext4): destination with the same
+ identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1342 ...[][] S, \protect\Int x, \protect\Int y}}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{algocf.}) has been already used, duplicate
- ignored
+l.67 ...nt[][] S, \protect\Int x, \protect\Int y}}
+                                                  )
+(./Pseudocodice/140_Check.texpdfTeX warning (ext4): destination with the same i
+dentifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1425 ...\Int x, \protect\Int y, \protect\Int c}}
-                                                  ) [134]
+l.67 ...ct\Int x, \protect\Int y, \protect\Int c}}
+                                                  )) [134]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 26.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 26.
 
@@ -2626,9 +2661,9 @@ Package rerunfilecheck Info: File `Principal.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
  ) 
 Here is how much of TeX's memory you used:
- 47541 strings out of 492615
- 1028833 string characters out of 6131391
- 1361269 words of memory out of 5000000
+ 47964 strings out of 492615
+ 1038522 string characters out of 6131391
+ 1361253 words of memory out of 5000000
  49838 multiletter control sequences out of 15000+600000
  547474 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191

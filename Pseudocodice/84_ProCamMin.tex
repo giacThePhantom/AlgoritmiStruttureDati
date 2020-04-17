@@ -1,0 +1,59 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{Node}{Node}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{ProCamMin}{prototipoCamminiMinimi}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+
+\caption{(\protect\Int[], \protect\Int[])  \protect\ProCamMin{\protect\Graph G, \protect\Node s}}
+\comment{Inizializza $T$ ad una foresta di copertura composta da nodi isolati}
+\comment{Inizializza $d$ con sovrastima della distanza: $d[s] = 0,\ d[x]=+\infty$}
+\While{$\exists(u,\ v):d[u]\ +\ G.w(u,\ v)\ <\ d[v]$}{
+	d[v] = d[u] + w(u, v)\;
+	\comment{Sostituisci il padre di $v$ in $T$ con $u$}
+}
+\Return (T, d)\;
+\end{algorithm}

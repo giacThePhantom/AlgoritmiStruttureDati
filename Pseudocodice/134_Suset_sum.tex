@@ -1,0 +1,93 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKwRepeat{Do}{do}{while}
+\SetKw{Int}{int}
+\SetKw{Float}{float}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{priint}
+\SetKw{Println}{println}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Tree}{Tree}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{F}{f}
+\SetKwData{Left}{left}
+\SetKwData{Right}{right}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{Node}{Node}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Min}{min}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{TreeCos}{Tree}
+\SetKwFunction{MinPriorityQueue}{MinPriorityQueue}
+\SetKwFunction{DeleteMin}{deleteMin}
+\SetKwFunction{MfsetCos}{Mfset}
+\SetKwFunction{Find}{find}
+\SetKwFunction{Merge}{merge}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{Decrease}{decrease}
+\SetKwFunction{Swap}{swap}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{PermRec}{ssRec}
+\SetKwFunction{Choices}{choices}
+\SetKwFunction{IsAdmissible}{isAdmissible}
+\SetKwFunction{ProcessSolution}{processSolution}
+\SetKwFunction{Accept}{accept}
+\SetKwFunction{SubsetSum}{subsetSum}
+
+\caption{Suset sum}
+\Fn{\SubsetSum{\Int[] A, \Int n, \Int k}}{
+	\Int[] S = \New \Int$[1\dots n]$\;
+	\PermRec{A, n, k, S, 1}\;
+}
+
+\Boolean\Space\Fn{\PermRec{\Int[] A, \Int n, \Int missing, \Item[] S, \Int i}}{
+	\uIf{missing == 0}{
+		\ProcessSolution{S, i - 1}\comment{Stampa gli indici della soluzione}
+		\Return \True\;
+	}
+	\uElseIf{i $>$ n \Or missing $<$ 0}{
+		\Return \False \comment{Terminati i valori o somma eccessiva}
+	}
+	\Else{
+		\ForEach{c $\in$ $\{0, 1\}$}{
+			S[i] = c\;
+			\If{\PermRec{A, n, missing - A[i] $\cdot$ c, S, i + 1}}{
+				\Return \True\;
+			}
+		}
+		\Return \False\;
+	}
+}
+\end{algorithm}

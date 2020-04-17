@@ -1,0 +1,29 @@
+ \begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{Precondition}{precondition:}
+
+\SetKwData{Mfset}{Mfset}
+
+\SetKwFunction{MfsetCos}{Mfset}
+\SetKwFunction{Find}{find}
+\SetKwFunction{Merge}{merge}
+
+\caption{\protect\Mfset}
+\comment{Crea n componenti $\{1\}, \dots, \{n\}$}
+\Mfset \MfsetCos{\Int n}\;
+\comment{Restituisce il rappresentante della componente x}
+\Int \Find{\Int x}\;
+\comment{Unisce le componenti che contengono x e y}
+\Merge{\Int x, \Int y}
+\end{algorithm}

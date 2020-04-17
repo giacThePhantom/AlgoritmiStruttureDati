@@ -1,0 +1,55 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKwData{Item}{Item}
+\SetKwData{Queue}{Queue}
+\SetKw{Boolean}{boolean}
+\SetKw{Int}{int}
+\SetKw{Return}{return}
+\SetKw{Prec}{precondition}
+\SetKw{New}{new}
+\SetKw{Space}{ }
+\SetKwProg{Fn}{}{}{}
+\SetKwFunction{QueueCos}{Queue}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Dequeue}{dequeue}
+\SetKwFunction{Enqueue}{enqueue}
+\SetKwFunction{Top}{top}
+
+\caption{\protect\Queue}
+
+\begin{multicols}{2}
+\Item[] A   \comment{Elementi}
+\Int n		\comment{Dimensione attuale}
+\Int testa	\comment{Testa}
+\Int m		\comment{Dimensione massima}
+\Queue\Space\Fn{\QueueCos{\Int dim}}{
+	\Queue t = \New \Queue\;
+	t.A = \New \Int[$1\dots$dim - 1]\;
+	t.m = dim\;	
+	t.testa = 0\;
+	t.n = 0\;
+	\Return t\;
+}
+\Item\Space\Fn{\Top{}}{
+	\Prec : $n>0$\;
+	\Return A[testa]\;
+}
+\Boolean \Space\Fn{\IsEmpty{}}{
+	\Return n=0\;
+}
+\Item\Space\Fn{\Dequeue{}}{
+	\Prec : $n>0$\;
+	\Item t = A[testa]\;
+	testa = (testa + 1) $\mod$ m\;
+	n = n - 1\;
+	\Return t\;
+}
+\Fn{\Enqueue{\Item v}}{
+	\Prec : $n<m$\;
+	A[(testa + n) $\mod$ m] = v\;	
+	n = n + 1\;
+	
+}
+\end{multicols}
+\end{algorithm}

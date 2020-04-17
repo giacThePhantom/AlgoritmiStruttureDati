@@ -1,0 +1,22 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKw{Nil}{nil}
+\SetKw{Return}{return}
+\SetKw{Or}{or}
+\SetKwData{Tree}{Tree}
+\SetKwFunction{LookupNode}{lookupNode}
+\SetKwFunction{Value}{value}
+\SetKwFunction{Key}{key}
+\SetKwFunction{Left}{left}
+\SetKwFunction{Right}{right}
+\SetKwFunction{LookupNode}{lookpuNode}
+\SetKwFunction{Min}{min}
+
+\caption{\protect\Tree \protect\Min(\protect\Tree t)}
+
+\Tree u = t\;
+\While{ u.\Left{} $\neq$ \Nil}{
+	u = u.\Left\;
+}
+\Return u\;
+\end{algorithm}

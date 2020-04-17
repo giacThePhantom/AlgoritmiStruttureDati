@@ -1,0 +1,56 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+
+\SetKwFunction{KnapSack}{knapsack}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Int \protect\KnapSack{\protect\Int[] w, \protect\Int[] p, \protect\Int n, \protect\Int C}}
+\Int[][] DP = \New \Int$[0\dots n][0\dots C]$\;
+\For{\Int i = 0 \To n}{
+	DP[i][0] = 0\;
+}
+\For{\Int c = 0 \To C}{
+	DP[0][c] = 0\;
+}
+\For{\Int i = 1 \To n}{
+	\For{\Int c = 1 \To C}{
+		\uIf{w[i] < C}{
+			DP[i][c] = \Max{DP[i - 1][c - w[i]] + p[i], DP[i - 1][c]}\;		
+		}	
+		\Else{
+			DP[i][c] = DP[i - 1][c]\;		
+		}
+	}
+}
+\Return DP[n][C]
+\end{algorithm}

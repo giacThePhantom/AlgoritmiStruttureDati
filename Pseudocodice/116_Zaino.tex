@@ -1,0 +1,60 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Float}{float}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Min}{min}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{Zaino}{zaino}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+
+\caption{\protect\Float[] \protect\Zaino{\protect\Float[] p, \protect\Float[] v, \protect\Float C,\protect\Float n}}
+\Float[] x = \New \Float$[1\dots n]$\;
+$\{$ordina $p$ e $v$ in modo che $\frac{p[1]}{w[1]}\ge\cdots\ge\frac{p[n]}{w[n]}$ $\}$\;
+\For{\Int i = 1 \To n}{
+	x[i] = \Min{$\frac{C}{w[i]}$, 1}\;
+	C -= x[i] $\cdot$ w[i]\;
+}
+\Return x\;
+\end{algorithm}

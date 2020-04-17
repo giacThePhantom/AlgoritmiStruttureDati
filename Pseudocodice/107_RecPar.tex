@@ -1,0 +1,59 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{RecPar}{recPar}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Int \protect\RecPar{\protect\Item[] c, \protect\Int i, \protect\Int j}}
+\uIf{i == j}{
+	\Return 0\;
+}
+\Else{
+	\Int min = $+\infty$\;
+	\For{\Int k = i \To j - 1}{
+		\Int q = \RecPar(c, i, k) + \RecPar(c, k + 1, j) +c[i-1]$\cdot$c[k]$\cdot$c[j]\;
+		\If{q $<$ min}{
+			min = q\;
+		}
+	}
+	\Return min\;
+}
+\end{algorithm}

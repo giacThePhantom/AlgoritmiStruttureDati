@@ -1,0 +1,43 @@
+\begin{algorithm}[h]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+
+\SetKwFunction{Domino}{domino3}
+\SetKwFunction{Pivot}{pivot}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Int \protect\Domino{\protect\Int n}}
+\Int $DP_0$ = 1\;
+\Int $DP_1$ = 1\;
+\Int $DP_2$ = 1\;
+\For{\Int i = 2 \To n}{
+	$DP_0$ =$DP_1$ \;
+	$DP_1$ =$DP_2$ \;
+	$DP_2$ =$DP_0$ + $DP_1$ \;
+}
+\Return DP[n]\;
+\end{algorithm}

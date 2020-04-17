@@ -1,0 +1,25 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKwData{Set}{Set}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\caption{Graph}
+
+\GraphCos{}	\comment{Crea un nuovo grafo}
+\Set \V{}	\comment{Restituisce l'insieme di tutti i nodi}
+\Int \Size{} \comment{Restituisce il numero di nodi}
+\Set \Adj{\Node u} \comment{Restituisce i nodi adiacenti al nodo u}
+\InsertNode{\Node u} \comment{Inserisce il nodo u nel grafo}
+\InsertEdge{\Node u, \Node v}	\comment{Inserisce l'arco tra u e v nel grafo}
+\DeleteNode{\Node u}	\comment{Elimina il nodo u dal grafo}
+\DeleteEdge{\Node u, \Node v}	\comment{Elimina l'arco tra i nodi u e v dal grafo}
+\end{algorithm}

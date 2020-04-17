@@ -1,0 +1,52 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKwData{Item}{Item}
+\SetKwData{Stack}{Stack}
+\SetKw{Boolean}{boolean}
+\SetKw{Int}{int}
+\SetKw{Return}{return}
+\SetKw{Prec}{precondition}
+\SetKw{New}{new}
+\SetKw{Space}{ }
+\SetKwProg{Fn}{}{}{}
+\SetKwFunction{StackCos}{Stack}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Push}{push}
+\SetKwFunction{Pop}{pop}
+\SetKwFunction{Top}{top}
+
+\caption{\protect\Stack}
+
+\begin{multicols}{2}
+\Item[] A   \comment{Elementi}
+\Int n		\comment{Cursore}
+\Int m		\comment{Dimensione massima}
+
+\Stack\Space\Fn{\StackCos{\Int dim}}{
+	\Stack t = \New \Stack\;
+	t.A = \New \Int[$1\dots$dim]\;
+	t.m = dim\;
+	t.n = 0\;
+	\Return t\;
+}
+\Item\Space\Fn{\Top{}}{
+	\Prec : $n>0$\;
+	\Return A[n]\;
+}
+\Boolean \Space\Fn{\IsEmpty{}}{
+	\Return n=0\;
+}
+\Item\Space\Fn{\Pop{}}{
+	\Prec : $n>0$\;
+	\Item t = A[n]\;
+	n = n - 1\;
+	\Return t\;
+}
+\Fn{\Push{\Item v}}{
+	\Prec : $n<m$\;
+	n = n + 1\;
+	A[n] = v\;
+}
+\end{multicols}
+\end{algorithm}

@@ -1,0 +1,71 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{KnapSack}{knapsack}
+\SetKwFunction{KnapsackRec}{knapsackRec}
+\SetKwFunction{Solution}{subsequence}
+\SetKwFunction{LCS}{LCS}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{}
+\Item[]\Space\Fn{\Int \LCS{\Item[] T, \Item[] U, \Int n, \Int m}}{
+	$\dots$\;
+	\Return \Solution{DP, T, U, n, m}\;
+}
+
+\Item[]\Space\Fn{\Solution{\Int[][] DP, \Item[] T, \Item[] U, \Int i, \Int j}}{
+	\uIf{i == 0 \Or j == 0}{
+		\Return \ListCos{}\;	
+	}
+	\uElseIf{T[i] == U[j]}{
+		\List S = \Solution{DP, T, U, i - 1, j - 1}\;
+		S.\Insert{S.\Head{}, T[i]}\;
+		\Return S\;
+	}
+	\Else{
+		\uIf{DP[i - 1][j] > DP[i][j - 1]}{
+			\Return \Solution{DP, T, U, i - 1, j}\;		
+		}	
+		\Else{
+			\Return \Solution{DP, T, U, i, j - 1}\;		
+		}
+	
+	}
+}
+
+\end{algorithm}

@@ -1,0 +1,65 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{StringMatching}{stringMatching}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Int \protect\StringMatching{\protect\Item[] P, \protect\Item[] T, \protect\Int m, \protect\Int n}}
+\Int[][] DP = \New \Int$[0\dots m][0\dots n]$\;
+\For{\Int j = 0 \To n}{
+	DP[0][j] = 0\;
+}
+\For{\Int i = 1 \To m}{
+	DP[i][0] = i\;
+}
+\For{\Int i = 1 \To m}{
+	\For{\Int j = 1 \To n}{
+		DP[i][j] = \Min{DP[i-1][j-1] + iif(P[i] == T[j], 0, 1), DP[i-1][j]+1, DP[i][j-1]+1}\;
+	}
+}
+\Int pos = 0;
+\For{\Int j = 1 \To n}{
+	\If{DP[m][j] $<$ DP[m][pos]}{
+		pos = j\;
+	}
+}
+\Return pos\;
+\end{algorithm}

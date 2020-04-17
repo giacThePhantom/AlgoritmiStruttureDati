@@ -1,0 +1,111 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{Nil}{nil}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Deleted}{deleted}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{To}{to}
+\SetKw{And}{and}
+\SetKw{Not}{not}
+\SetKw{Or}{or}
+\SetKwData{Item}{Item}
+\SetKwData{Set}{Set}
+\SetKwData{Space}{ }
+\SetKwProg{Fn}{}{}{}
+\SetKwFunction{Max}{max}
+\SetKwFunction{Min}{min}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{Contains}{contains}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Remove}{remove}
+\SetKwFunction{Union}{union}
+\SetKwFunction{Intersection}{intersection}
+\SetKwFunction{Difference}{difference}
+
+\caption{\protect\Set (vettore booleano)}
+\begin{multicols}{2}
+\Boolean[] V\;
+\Int size\;
+\Int dim\;
+
+\Set\Space\Fn{\SetCos{\Int m}}{
+	\Set t = \New \Set\;
+	t.size = 0\;
+	t.dim = =m\;
+	t.V = [\False] * m\;
+	\Return t\;
+}
+
+\Boolean\Space\Fn{\Contains{\Int x}}{
+	\uIf{1 $\le$ x $\le$ dim}{
+		\Return V[x]\;	
+	}
+	\Else{
+		\Return \False\;	
+	}
+}
+
+\Int\Space\Fn{\Size{}}{
+	\Return size\;
+}
+
+\Fn{\Insert{\Int x}}{
+	\If{1 $\le$ x $\le$ dim}{
+		\If{\Not V[x]}{
+			size += 1\;
+			V[x] = \True\;		
+		}	
+	}
+}
+
+\Fn{\Remove{\Int x}}{
+	\If{1 $\le$ x $\le$ dim}{
+		\If{V[x]}{
+			size == 1\;
+			V[x] = \False\;		
+		}	
+	}
+}
+
+\Set\Space\Fn{\Union{\Set A, \Set B}}{
+	\Set C= \SetCos{\Max{A.dim, B.dim}}\;
+	\For{i = 1 \To A.dim}{
+		\If{A.\Contains{i}}{
+			C.\Insert{i}\;		
+		}	
+	}
+	\For{i = 1 \To B.dim}{
+		\If{B.\Contains{i}}{
+			C.\Insert{i}\;		
+		}	
+	}
+	\Return C\;
+}
+
+\Set\Space\Fn{\Intersection{\Set A, \Set B}}{
+	\Set C= \SetCos{\Min{A.dim, B.dim}}\;
+	\For{i = 1 \To \Min{A.dim, B.dim}}{
+		\If{A.\Contains{i} \And B.\Contains{i}}{
+			C.\Insert{i}\;		
+		}	
+	}
+	\Return C\;
+}
+
+\Set\Space\Fn{\Difference{\Set A, \Set B}}{
+	\Set C= \SetCos{A.dim}\;
+	\For{i = 1 \To A.dim}{
+		\If{A.\Contains{i} \And \Not B.\Contains{i}}{
+			C.\Insert{i}\;		
+		}	
+	}
+	\Return C\;
+}
+\end{multicols}
+\end{algorithm}

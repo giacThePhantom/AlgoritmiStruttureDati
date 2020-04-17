@@ -1,0 +1,41 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKw{Nil}{nil}
+\SetKw{Return}{return}
+\SetKw{New}{new}
+\SetKw{And}{and}
+\SetKwData{Tree}{Tree}
+\SetKwData{Item}{Item}
+\SetKwFunction{Value}{value}
+\SetKwFunction{Key}{key}
+\SetKwFunction{Left}{left}
+\SetKwFunction{Right}{right}
+\SetKwFunction{Max}{min}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{Parent}{parent}
+\SetKwFunction{TreeCos}{Tree}
+\SetKwFunction{Link}{link}
+\caption{\protect\Tree \protect\InsertNode{\protect\Tree t, \protect\Item k, \protect\Item v}}
+\Tree p = \Nil\;
+\Tree u = t\;
+\While{u $\neq$ \Nil \And u.\Key $\neq$ k}{
+	p = u\;
+	\uIf{k $<$ u.\Key}{
+		u = u.\Left\;
+	}
+	\Else{
+		u = u.\Right\;	
+	}
+}
+\uIf{u $\neq$ \Nil \And u.\Key == k}{
+	u.\Value = v\;
+}
+\Else{
+	\Tree new = \TreeCos{k, v}\;
+	\Link{p, new, k}\;
+	\If{p = \Nil}{
+		t = new\;	
+	}
+\Return t\;	
+}
+\end{algorithm}

@@ -1,0 +1,71 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{KnapSack}{knapsack}
+\SetKwFunction{KnapsackRec}{knapsackRec}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{Knapsack con memoization}
+
+\Int\Space\Fn{\KnapSack{\Int[] w, \Int[] p, \Int n, \Int C}}{
+	\Int[][] DP = \New \Int$[1\dots n][1\dots C]$\;
+	\For{\Int i = 1 \To n}{
+		\For{\Int c = 1 \To C}{
+			DP[i][c] = -1\;		
+		}	
+	}
+	\Return \KnapsackRec{w, p, n, C, DP}\;
+	
+}
+
+\Int\Space\Fn{\KnapsackRec{\Int[] w, \Int[] p, \Int i, \Int c, \Int[][] DP}}{
+	\uIf{c $<$ 0}{
+		\Return $-\infty$\;	
+	}
+	\uElseIf{i == 0 \Or c == 0}{
+		\Return 0\;	
+	}
+	\Else{
+		\If{DP[i][c] $<$ 0}{
+			\Int nottaken = \KnapsackRec{w, p, i - 1, c, DP}\;
+			\Int taken = \KnapsackRec{w, p, i - 1, c - w[i], DP} + p[i]\;
+			DP[i][c] = \Max{nottaken, taken}\;
+		}
+		\Return DP[i][c]\;
+	}
+}
+
+
+\end{algorithm}

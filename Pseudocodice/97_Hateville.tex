@@ -1,0 +1,43 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+
+\SetKwFunction{Max}{max}
+
+\SetKwFunction{Hateville}{hateville}
+\SetKwFunction{Pivot}{pivot}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Int \protect\Hateville{\protect\Int[] D, \protect\Int n}}
+\Int[] DP = \New \Int[$0\dots n$]\;
+DP[0] = 0\;
+DP[1] = D[1]\;
+\For{\Int i = 2 \To n}{
+	DP[i] = \Max{DP[i-1], DP[i-2]+D[i]}\;
+}
+\Return DP[n]\;
+\end{algorithm}

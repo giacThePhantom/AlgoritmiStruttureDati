@@ -1,0 +1,35 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKwData{Item}{Item}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{MinPriorityQueue}{MinPriorityQueue}
+\SetKwFunction{MinPriorityQueueCos}{MinPriorityQueue}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Min}{min}
+\SetKwFunction{DeleteMin}{DeleteMin}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Decrease}{decrease}
+
+\caption{\protect\MinPriorityQueue}
+
+\comment{Crea una coda con priorit\`a vuota}
+\MinPriorityQueueCos{}\;
+\comment{Restituisce \True se la coda con priorit\`a \`e vuota}
+\Boolean \IsEmpty{}\;
+\comment{Restituisce l'elemento minimo di una coda con priorit\`a non vuota}
+\Item \Min{}\;
+\comment{Rimuove e restituisce l'elemento minimo di una coda con priorit\`a non vuota}
+\Item \DeleteMin{}\;
+\comment{Inerisce l'elemento x con priorit\`a p all'interno della coda con priorit\`a, restituendo un oggetto \PriorityItem che identifica  x all'interno 
+della coda}
+\PriorityItem \Insert{\Item x, \Int p}\;
+\comment{Diminuisce la priorit\`a dell'oggetto identificato da y portandola a p}
+\Decrease{\PriorityItem x, \Int p}
+\end{algorithm}

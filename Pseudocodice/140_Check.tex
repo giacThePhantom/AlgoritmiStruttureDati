@@ -1,0 +1,86 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKwRepeat{Do}{do}{while}
+\SetKw{Int}{int}
+\SetKw{Float}{float}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Tree}{Tree}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{F}{f}
+\SetKwData{Left}{left}
+\SetKwData{Right}{right}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{Node}{Node}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Min}{min}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{TreeCos}{Tree}
+\SetKwFunction{MinPriorityQueue}{MinPriorityQueue}
+\SetKwFunction{DeleteMin}{deleteMin}
+\SetKwFunction{MfsetCos}{Mfset}
+\SetKwFunction{Find}{find}
+\SetKwFunction{Merge}{merge}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{Decrease}{decrease}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{}{}
+\SetKwFunction{Choices}{moves}
+\SetKwFunction{IsAdmissible}{isAdmissible}
+\SetKwFunction{ProcessSolution}{processSolution}
+\SetKwFunction{Check}{check}
+\SetKwFunction{}{}
+
+\caption{\protect\Boolean \protect\Check{\protect\Int[][] S, \protect\Int x, \protect\Int y, \protect\Int c}}
+\For{\Int j = 0 \To 8}{
+	\If{S[x][j] == c}{
+		\Return \False \comment{Controllo sulla colonna}
+	}
+	\If{S[j][y] == c}{
+		\Return \False \comment{Controllo sulla riga}
+	}
+}
+\Int $b_x$ = $\lfloor\frac{x}{3}\rfloor$\;
+\Int $b_y$ = $\lfloor\frac{y}{3}\rfloor$\;
+\For{\Int $i_x$ = 0 \To 2}{
+	\For{\Int $i_y$ = 0 \To 2}{
+		\If{S[$b_x\ \cdot\ 3\ +\ i_x$][$b_y\ \cdot\ 3\ +\ i_y$] == c}{
+			\Return \False \comment{Controllo sulla sottotabella}
+		}
+	}
+}
+\Return \True\;
+\end{algorithm}

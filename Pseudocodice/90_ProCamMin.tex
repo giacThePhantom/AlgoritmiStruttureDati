@@ -1,0 +1,92 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Bool}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{Node}{Node}
+\SetKwData{DataStructure}{DataStructure}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwData{Queue}{Queue}
+\SetKwData{Stack}{Stack}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{DataStructureCos}{Datastructure}
+\SetKwFunction{PriorityQueueCos}{PriorityQueue}
+\SetKwFunction{DeleteMin}{deleteMin}
+\SetKwFunction{Decrease}{decrease}
+\SetKwFunction{Add}{add}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Extract}{extract}
+\SetKwFunction{Dequeue}{dequeue}
+\SetKwFunction{Enqueue}{enqueue}
+\SetKwFunction{TopSort}{topSort}
+\SetKwFunction{Pop}{pop}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{ProCamMin}{floydWarshall}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+
+\caption{(\protect\Int[], \protect\Int[])  \protect\ProCamMin{\protect\Graph G}}
+\Int[] d = \New \Int$[1\dots G.n]$\;
+\Int[] T = \New \Int$[1\dots G.n]$\;
+\ForEach{u, v $\in$ G.V() - $\{s\}$}{
+	T[u][v] = \Nil\;
+	d[u][v] = $+\infty$\;
+}
+T[s] = \Nil\;
+d[s] = 0\;
+\ForEach{u $\in$ G.V()}{
+	\ForEach{v $\in$ G.\Adj{u}}{
+		d[u][v] = G.w(u, v)\;
+		T[u][v] = u\;
+	}
+}
+\For{\Int k = 1 \To G.n}{
+	\ForEach{u $\in$ G.V()}{
+		\ForEach{v $\in$ G.V()}{
+			\If{d[u][k] + d[k][v] $<$ d[u][v]}{
+				d[u][v] = d[u][k] + d[k][u]\;
+				T[u][v] = T[k][v]\;
+			}
+		}
+	}
+}
+\Return (T, d)\;
+\end{algorithm}

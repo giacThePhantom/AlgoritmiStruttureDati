@@ -1,0 +1,52 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwData{Tree}{Tree}
+\SetKwData{Item}{Item}
+\SetKwData{SearchBinary}{Search Binary Tree}
+\SetKw{Private}{private}
+\SetKwComment{comment}{$\%$}{}
+\SetKwFunction{Key}{key}
+\SetKwFunction{Value}{value}
+\SetKwFunction{Parent}{parent}
+\SetKwFunction{Left}{left}
+\SetKwFunction{Right}{right}
+\SetKwFunction{Lookup}{lookup}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Remove}{remove}
+\SetKwFunction{SuccessorNode}{successorNode}
+\SetKwFunction{PredecessorNode}{predecessorNode}
+\SetKwFunction{Min}{min}
+\SetKwFunction{Max}{max}
+\SetKwFunction{LookupNode}{lookupNode}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{RemoveNode}{removeNode}
+
+\caption{\protect\SearchBinary}
+
+\begin{multicols}{2}
+\Tree parent\;
+\Tree left\;
+\Tree right\;
+\Item value\;
+\Item key\;
+\comment{Getters}
+\Item \Key{}\;
+\Item \Value{}\;
+\Tree \Parent{}\;
+\Tree \Right{}\;
+\Tree \Left{}\;
+\comment{Dizionario}
+\Item \Lookup{\Item k}\;
+\Insert{\Item k, \Item v}\;
+\Remove{\Item k}\;
+\comment{Ordinamento}
+\Tree \SuccessorNode{\Tree t}\;
+\Tree \PredecessorNode{\Tree t}\;
+\Tree \Min{}\;
+\Tree \Max{}\;
+\comment{Funzioni interne}
+\Private : \Tree \LookupNode{\Tree t, \Item k}\;
+\Private : \Tree \InsertNode{\Tree t, \Item k, \Item v}\;
+\Private : \Tree \RemoveNode{\Tree t, \Item k}
+\end{multicols}
+\end{algorithm}

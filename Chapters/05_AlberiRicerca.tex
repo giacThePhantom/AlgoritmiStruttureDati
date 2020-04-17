@@ -8,425 +8,49 @@ Si vuole portare la ricerca binaria negli alberi in modo da implementare un dizi
 Le chiavi contenute nel sottoalbero sinistro di $u$ sono minori di $u.key$ e quelle contenute nel sottoalbero destro maggiori. In questo modo \`e possibile
 realizzare un algoritmo di ricerca dicotomica.
 \section{Specifica}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwData{Tree}{Tree}
-\SetKwData{Item}{Item}
-\SetKwData{SearchBinary}{Search Binary Tree}
-\SetKw{Private}{private}
-\SetKwComment{comment}{$\%$}{}
-\SetKwFunction{Key}{key}
-\SetKwFunction{Value}{value}
-\SetKwFunction{Parent}{parent}
-\SetKwFunction{Left}{left}
-\SetKwFunction{Right}{right}
-\SetKwFunction{Lookup}{lookup}
-\SetKwFunction{Insert}{insert}
-\SetKwFunction{Remove}{remove}
-\SetKwFunction{SuccessorNode}{successorNode}
-\SetKwFunction{PredecessorNode}{predecessorNode}
-\SetKwFunction{Min}{min}
-\SetKwFunction{Max}{max}
-\SetKwFunction{LookupNode}{lookupNode}
-\SetKwFunction{InsertNode}{insertNode}
-\SetKwFunction{RemoveNode}{removeNode}
-
-\caption{\protect\SearchBinary}
-
-\begin{multicols}{2}
-\Tree parent\;
-\Tree left\;
-\Tree right\;
-\Item value\;
-\Item key\;
-\comment{Getters}
-\Item \Key{}\;
-\Item \Value{}\;
-\Tree \Parent{}\;
-\Tree \Right{}\;
-\Tree \Left{}\;
-\comment{Dizionario}
-\Item \Lookup{\Item k}\;
-\Insert{\Item k, \Item v}\;
-\Remove{\Item k}\;
-\comment{Ordinamento}
-\Tree \SuccessorNode{\Tree t}\;
-\Tree \PredecessorNode{\Tree t}\;
-\Tree \Min{}\;
-\Tree \Max{}\;
-\comment{Funzioni interne}
-\Private : \Tree \LookupNode{\Tree t, \Item k}\;
-\Private : \Tree \InsertNode{\Tree t, \Item k, \Item v}\;
-\Private : \Tree \RemoveNode{\Tree t, \Item k}
-\end{multicols}
-\end{algorithm}
-\begin{algorithm}
-\DontPrintSemicolon
-\SetKw{Nil}{nil}
-\SetKwData{Tree}{Tree}
-\SetKwData{Dictionary}{Dictionary}
-\SetKwFunction{DictionaryCos}{Dictionary}
-\SetKwProg{Fn}{}{}{}
-
-\caption{\protect\Dictionary}
-
-\Tree tree\;
-\Fn{\DictionaryCos{}}{
-	tree = \Nil\;
-}
-\end{algorithm}
+\input{Pseudocodice/21_}
 \newpage
 \subsection{Ricerca}
 La funzione \emph{lookUpNode(Tree t, Item k)} restituisce il nodo dell'albero $t$ che contiene la chiave $k$ o \textbf{nil} se non presente.
 \subsubsection{Implementazione nel dizionario}
-\begin{algorithm}
-\DontPrintSemicolon
-\SetKw{Nil}{nil}
-\SetKw{Return}{return}
-\SetKwData{Tree}{Tree}
-\SetKwData{Item}{Item}
-\SetKwFunction{LookupNode}{lookupNode}
-\SetKwFunction{Value}{value}
-\SetKwFunction{Lookup}{lookup}
-
-\caption{\protect\Item \protect\Lookup{\protect\Item k}}
-
-\Tree t = \LookupNode{tree, k}\;
-\If{t $\neq$ \Nil}{
-	\Return t.\Value\;
-}
-\Else{
-	\Return \Nil\;
-}
-\end{algorithm}
+\input{Pseudocodice/22_Lookup}
 \subsubsection{Implementazione}
 \begin{multicols}{2}
 \myparagraph{Iterativa}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKw{Nil}{nil}
-\SetKw{Return}{return}
-\SetKw{And}{and}
-\SetKwData{Tree}{Tree}
-\SetKwData{Item}{Item}
-\SetKwFunction{LookupNode}{lookupNode}
-\SetKwFunction{Value}{value}
-\SetKwFunction{Key}{key}
-\SetKwFunction{Left}{left}
-\SetKwFunction{Right}{right}
-
-\caption{\protect\Tree \protect\LookupNode(\protect\Tree t, \protect\Item k)}
-
-\Tree u = t\;
-\While{u $\neq$ \Nil \And u.\Key $\neq$ k}{
-	\uIf{k $<$ u.\Key}{
-		u = u.\Left\;	
-	}
-	\Else{
-		u = u.\Right\;	
-	}
-}
-\Return u\;
-\end{algorithm}
+\input{Pseudocodice/23_}
 \myparagraph{Ricorsiva}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKw{Nil}{nil}
-\SetKw{Return}{return}
-\SetKw{Or}{or}
-\SetKwData{Tree}{Tree}
-\SetKwData{Item}{Item}
-\SetKwFunction{LookupNode}{lookupNode}
-\SetKwFunction{Value}{value}
-\SetKwFunction{Key}{key}
-\SetKwFunction{Left}{left}
-\SetKwFunction{Right}{right}
-
-\caption{\protect\Tree \protect\LookupNode(\protect\Tree t, \protect\Item k)}
-
-\uIf{t == \Nil \Or t.\Key == k}{
-	\Return t\;
-}
-\uElseIf{k $<$ t.\Key}{
-	\Return \LookupNode{t.\Left, k}
-}
-\Else{
-	\Return \LookupNode{t.\Right, k}
-}
-\end{algorithm}
+\input{Pseudocodice/24_}
 \end{multicols}
 \subsection{Minimo e massimo}
 \subsubsection{Implementazione}
 \begin{multicols}{2}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKw{Nil}{nil}
-\SetKw{Return}{return}
-\SetKw{Or}{or}
-\SetKwData{Tree}{Tree}
-\SetKwFunction{LookupNode}{lookupNode}
-\SetKwFunction{Value}{value}
-\SetKwFunction{Key}{key}
-\SetKwFunction{Left}{left}
-\SetKwFunction{Right}{right}
-\SetKwFunction{LookupNode}{lookpuNode}
-\SetKwFunction{Min}{min}
-
-\caption{\protect\Tree \protect\Min(\protect\Tree t)}
-
-\Tree u = t\;
-\While{ u.\Left{} $\neq$ \Nil}{
-	u = u.\Left\;
-}
-\Return u\;
-\end{algorithm}
+\input{Pseudocodice/25_}
 \columnbreak
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKw{Nil}{nil}
-\SetKw{Return}{return}
-\SetKw{Or}{or}
-\SetKwData{Tree}{Tree}
-\SetKwFunction{LookupNode}{lookupNode}
-\SetKwFunction{Value}{value}
-\SetKwFunction{Key}{key}
-\SetKwFunction{Left}{left}
-\SetKwFunction{Right}{right}
-\SetKwFunction{LookupNode}{lookpuNode}
-\SetKwFunction{Max}{max}
-
-\caption{\protect\Tree \protect\Max(\protect\Tree t)}
-
-\Tree u = t\;
-\While{ u.\Right $\neq$ \Nil}{
-	u = u.\Right\;
-}
-\Return u\;
-\end{algorithm}
+\input{Pseudocodice/26_}
 \end{multicols}
 \subsection{Successore e predecessore}
 Si definisce successore di un nodo $u$ il pi\`u piccolo nodo maggiore di $u$. 
 \subsubsection{Implementazione}
 \begin{multicols}{2}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKw{Nil}{nil}
-\SetKw{Return}{return}
-\SetKw{And}{and}
-\SetKwData{Tree}{Tree}
-\SetKwFunction{LookupNode}{lookupNode}
-\SetKwFunction{Value}{value}
-\SetKwFunction{Key}{key}
-\SetKwFunction{Left}{left}
-\SetKwFunction{Right}{right}
-\SetKwFunction{Max}{max}
-\SetKwFunction{SuccessorNode}{successorNode}
-\SetKwFunction{Parent}{parent}
-\caption{\protect\SuccessorNode{\protect\Tree t}}
-\If{t = \Nil}{
-	\Return t\;
-}
-\uIf{t.\Left $\neq$ \Nil}{
-	\Return \Max{t.\Left}\;
-}
-\Else{
-	\Tree p = t.\Parent{}\;
-	\While{p $\neq$ \Nil \And t = p.\Left}{
-		t = p\;
-		p = p.\Parent\;	
-	}
-	\Return p\;
-}
-\end{algorithm}
+\input{Pseudocodice/27_SuccessorNode}
 \columnbreak
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKw{Nil}{nil}
-\SetKw{Return}{return}
-\SetKw{And}{and}
-\SetKwData{Tree}{Tree}
-\SetKwFunction{LookupNode}{lookupNode}
-\SetKwFunction{Value}{value}
-\SetKwFunction{Key}{key}
-\SetKwFunction{Left}{left}
-\SetKwFunction{Right}{right}
-\SetKwFunction{Max}{min}
-\SetKwFunction{SuccessorNode}{predecessorNode}
-\SetKwFunction{Parent}{Parent}
-\caption{\protect\SuccessorNode{\protect\Tree t}}
-
-\If{t = \Nil}{
-	\Return t\;
-}
-\uIf{t.\Right{} $\neq$ \Nil}{
-	\Return \Max{t.\Right}\;
-}
-\Else{
-	\Tree p = t.\Parent\;
-	\While{p $\neq$ \Nil \And t = p.\Right}{
-		t = p\;
-		p = p.\Parent\;	
-	}
-	\Return p\;
-}
-\end{algorithm}
+\input{Pseudocodice/28_SuccessorNode}
 \end{multicols}
 \subsection{Inserimento}
 L'operazione \emph{insertNode(Tree t, Item k, Item v)} inserisce un'associazione chiave-valore \emph{(k, v)} nell'albero \emph{t}. Se la chiave \`e gi\`a 
 presente sostiutuisce il valore associato, altrimenti viene inserita una nuova associazione. Se \emph{T = \textbf{nil}} restituisce il primo nodo
 dell'albero, altrimenti restituisce \emph{t} inalterato.
 \subsubsection{Implementazione dizionario}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwData{Tree}{Tree}
-\SetKwData{Item}{Item}
-\SetKwFunction{Insert}{insert}
-\SetKwFunction{InsertNode}{insertNode}
-
-\caption{\protect\Insert{\protect\Item k, \protect\Item v}}
-tree = \InsertNode{tree, k, v}\;
-\end{algorithm}
+\input{Pseudocodice/29_Insert}
 \subsubsection{Implementazione}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKw{Nil}{nil}
-\SetKw{Return}{return}
-\SetKw{New}{new}
-\SetKw{And}{and}
-\SetKwData{Tree}{Tree}
-\SetKwData{Item}{Item}
-\SetKwFunction{Value}{value}
-\SetKwFunction{Key}{key}
-\SetKwFunction{Left}{left}
-\SetKwFunction{Right}{right}
-\SetKwFunction{Max}{min}
-\SetKwFunction{InsertNode}{insertNode}
-\SetKwFunction{Parent}{parent}
-\SetKwFunction{TreeCos}{Tree}
-\SetKwFunction{Link}{link}
-\caption{\protect\Tree \protect\InsertNode{\protect\Tree t, \protect\Item k, \protect\Item v}}
-\Tree p = \Nil\;
-\Tree u = t\;
-\While{u $\neq$ \Nil \And u.\Key $\neq$ k}{
-	p = u\;
-	\uIf{k $<$ u.\Key}{
-		u = u.\Left\;
-	}
-	\Else{
-		u = u.\Right\;	
-	}
-}
-\uIf{u $\neq$ \Nil \And u.\Key == k}{
-	u.\Value = v\;
-}
-\Else{
-	\Tree new = \TreeCos{k, v}\;
-	\Link{p, new, k}\;
-	\If{p = \Nil}{
-		t = new\;	
-	}
-\Return t\;	
-}
-\end{algorithm}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKw{Nil}{nil}
-\SetKw{Return}{return}
-\SetKw{New}{new}
-\SetKw{And}{and}
-\SetKwData{Tree}{Tree}
-\SetKwData{Item}{Item}
-\SetKwFunction{Value}{value}
-\SetKwFunction{Key}{key}
-\SetKwFunction{Left}{left}
-\SetKwFunction{Right}{right}
-\SetKwFunction{Max}{min}
-\SetKwFunction{InsertNode}{insertNode}
-\SetKwFunction{Parent}{parent}
-\SetKwFunction{TreeCos}{Tree}
-\SetKwFunction{Link}{link}
-\caption{\protect\Link{\protect\Tree p, \protect\Tree u, \protect\Item k}}
-\If{u $\neq$ \Nil}{
-	u.\Parent = p\;
-}
-\If{p $\neq$ \Nil}{
-	\uIf{k $<$ p.\Key}{
-		p.\Left = u\; 	
-	}
-	\Else{
-		p.\Right = u\;	
-	}
-}
-\end{algorithm}
+\input{Pseudocodice/31_Link}
 \subsection{Cancellazione}
 L'operazione \emph{Tree removeNode(Tree t, Item k)} rimuove il nodo contenente la chiave \emph{k} dall'albero \emph{t} e restituisce la radice dell'albero
 possibilmente cambiata.
 \subsubsection{Implementazione dizionario}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwData{Tree}{Tree}
-\SetKwData{Item}{Item}
-\SetKwFunction{Remove}{remove}
-\SetKwFunction{RemoveNode}{removeNode}
-
-\caption{\protect\Remove{\protect\Item k}}
-tree = \RemoveNode{tree, k}\;
-\end{algorithm}
+\input{Pseudocodice/32_Remove}
 \subsubsection{Implementazione}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKw{Nil}{nil}
-\SetKw{Return}{return}
-\SetKw{New}{new}
-\SetKw{And}{and}
-\SetKw{Delete}{delete}
-\SetKwData{Tree}{Tree}
-\SetKwData{Item}{Item}
-\SetKwFunction{Value}{value}
-\SetKwFunction{Key}{key}
-\SetKwFunction{Left}{left}
-\SetKwFunction{Right}{right}
-\SetKwFunction{Max}{min}
-\SetKwFunction{RemoveNode}{removeNode}
-\SetKwFunction{LookupNode}{lookupNode}
-\SetKwFunction{Parent}{parent}
-\SetKwFunction{TreeCos}{Tree}
-\SetKwFunction{Link}{link}
-\SetKwFunction{SuccessorNode}{successorNode}
-\caption{\protect\Tree \protect\RemoveNode{\protect\Tree T, \protect\Item k}}
-
-\Tree t\;
-\Tree u = \LookupNode{T, k}\;
-\If{u $\neq$ \Nil}{
-	\uIf{u.\Left == \Nil \And u.\Right == \Nil}{
-		\Link{u.parent, \Nil, k}\;
-		\Delete u\;
-	}
-	\uElseIf{u.\Left $\neq$ \Nil \And u.\Right $\neq$ \Nil}{
-		\Tree s = \SuccessorNode{}\;
-		\Link{s.\Parent, s.\Right, s.\Key}\;
-		u.\Key{} = s.\Key{}\;
-		u.\Value{} = s.\Value{}\;
-		\Delete s\;
-	}
-	\uElseIf{u.\Left $\neq$ \Nil \And u.\Right == \Nil}{
-		\Link{u.\Parent, s.\Left, k}\;
-		\If{u.\Parent = \Nil}{
-			T = u.\Left\;		
-		}
-	}
-	\Else{
-		\Link{u.\Parent, s.\Right, k}\;
-		\If{u.\Parent = \Nil}{
-			T = u.\Right\;		
-		}
-	}
-
-}
-\Return T\;
-
-
-\end{algorithm}
+\input{Pseudocodice/33_RemoveNode}
 \subsubsection{Dimostrazione correttezza}
 \begin{itemize}
 \item Caso 1: Eliminare foglie non cambia l'ordine dei nodi rimanenti.
@@ -454,81 +78,9 @@ sinistro del vecchio nodo destro e il vecchio genitore del nodo iniziale diventa
 Si prende un nodo di un albero, si fa diventare suo figlio sinistro il figlio destro del suo figlio sinistro, successivamente si pone il nodo iniziale come
 figlio destro del vecchio nodo sinistro e il vecchio genitore del nodo iniziale diventa il genitore del vecchio nodo sinistro.
 \begin{multicols}{2}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Nil}{nil}
-\SetKw{Return}{return}
-\SetKw{New}{new}
-\SetKw{Int}{int}
-\SetKw{Delete}{delete}
-\SetKwData{Tree}{Tree}
-\SetKwData{Item}{Item}
-\SetKwFunction{Value}{value}
-\SetKwFunction{Key}{key}
-\SetKwFunction{Left}{left}
-\SetKwFunction{Right}{right}
-\SetKwFunction{Color}{color}
-\SetKwFunction{RotateLeft}{rotateLeft}
-
-\caption{\protect\Tree \protect\RotateLeft{\protect\Tree x}}
-\Tree y $\leftarrow$ x.\Right\;
-\Tree p $\leftarrow$ x.\Parent\;
-x.\Right $\leftarrow$ y.\Left\;
-\If{y.\Left $\neq$ \Nil}{
-	y.\Left.\Parent $\leftarrow$ x\;
-}
-y.\Left $\leftarrow$ x\;
-x.\Parent $\leftarrow$ y\;
-y.\Parent $\leftarrow$ p\;
-\If{p $\neq$ \Nil}{
-	\uIf{p.\Left == x}{
-		p.\Left $\leftarrow$ y\;
-	}
-	\Else{
-		p.\Right $\leftarrow$ y\;
-	}
-}
-\Return y\;
-\end{algorithm}
+\input{Pseudocodice/34_RotateLeft}
 \columnbreak
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Nil}{nil}
-\SetKw{Return}{return}
-\SetKw{New}{new}
-\SetKw{Int}{int}
-\SetKw{Delete}{delete}
-\SetKwData{Tree}{Tree}
-\SetKwData{Item}{Item}
-\SetKwFunction{Value}{value}
-\SetKwFunction{Key}{key}
-\SetKwFunction{Left}{left}
-\SetKwFunction{Right}{right}
-\SetKwFunction{Color}{color}
-\SetKwFunction{RotateLeft}{rotateRight}
-
-\caption{\protect\Tree \protect\RotateLeft{\protect\Tree x}}
-\Tree y $\leftarrow$ x.\Left\;
-\Tree p $\leftarrow$ x.\Parent\;
-x.\Right $\leftarrow$ y.\Right\;
-\If{y.\Right $\neq$ \Nil}{
-	y.\Right.\Parent $\leftarrow$ x\;
-}
-y.\Right $\leftarrow$ x\;
-x.\Parent $\leftarrow$ y\;
-y.\Parent $\leftarrow$ p\;
-\If{p $\neq$ \Nil}{
-	\uIf{p.\Left == x}{
-		p.\Left $\leftarrow$ y\;
-	}
-	\Else{
-		p.\Right $\leftarrow$ y\;
-	}
-}
-\Return y\;
-\end{algorithm}
+\input{Pseudocodice/35_RotateLeft}
 \end{multicols}
 
 \subsection{Alberi red-black}
@@ -542,22 +94,7 @@ all'albero e le foglie sono costituiti da nodi speciali \textbf{Nil}. Un albero 
 \end{itemize}
 \subsubsection{Memorizzazione}
 \begin{multicols}{2}
-\begin{algorithm}[H]
-\SetKw{Nil}{nil}
-\SetKw{Return}{return}
-\SetKw{New}{new}
-\SetKw{Int}{int}
-\SetKw{Delete}{delete}
-\SetKwData{Tree}{Tree}
-\SetKwData{Item}{Item}
-\caption{\protect\Tree}
-\Tree parent\;
-\Tree left\;
-\Tree right\;
-\Int color\;
-\Item key\;
-\Item value\;
-\end{algorithm}
+\input{Pseudocodice/36_}
 \columnbreak
 I nodi \textbf{Nil} sono nodi sentinella il cui scopo \`e evitare di trattare diversamente i puntatori ai nodi dai puntatori \textbf{nil}. Al posto di un
 puntatore \textbf{nil} si utilizza un puntatore ad un nodo speciale \textbf{Nil}. Ne esiste solo uno per risparmiare memoria e un nodo con figli 
@@ -591,87 +128,7 @@ rotazione a destra su $n$ porta ad una situazione in cui $t$ e $n$ sono figli di
 in cui tutti i vincoli sono rispettati. 
 \end{itemize}
 \end{multicols}
-\begin{algorithm}
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Nil}{nil}
-\SetKw{Return}{return}
-\SetKw{New}{new}
-\SetKw{Int}{int}
-\SetKw{And}{and}
-\SetKw{Delete}{delete}
-\SetKwData{Tree}{Tree}
-\SetKwData{Red}{RED}
-\SetKwData{Black}{BLACK}
-\SetKwData{Item}{Item}
-\SetKwFunction{Value}{value}
-\SetKwFunction{Key}{key}
-\SetKwFunction{Left}{left}
-\SetKwFunction{Right}{right}
-\SetKwFunction{Color}{color}
-\SetKwFunction{BalancedInsert}{balancedInsert}
-\SetKwFunction{RotateLeft}{rotateLeft}
-\SetKwFunction{RotateRight}{rotateRight}
-\caption{\protect\BalancedInsert{\protect\Tree t}}
-t.\Color{} $\leftarrow$  \Red\;
-\While{t $\neq$ \Nil}{
-	\Tree p $\leftarrow$ t.\Parent  \comment{padre}
-	\Tree n	\comment{nonno}
-	\Tree z \comment{zio}
-	\uIf{p $\neq$ \Nil}{
-		n $\leftarrow$ p.\Parent\;
-	}
-	\Else{
-		n $\leftarrow$ \Nil\;	
-	}
-	\uIf{n == \Nil}{
-		z $\leftarrow$ \Nil\;		
-	}
-	\Else{
-		\uIf{n.\Left == p}{
-			z $\leftarrow$ p.\Right\;		
-		}	
-		\Else{
-			z $\leftarrow$ p.\Left\;		
-		}
-	}
-	\uIf{p == \Nil}{	\comment{Caso 1}
-		t.\Color $\leftarrow$ \Black\;
-		t $\leftarrow$ \Nil\;	
-	}
-	\uElseIf{p.\Color == \Black}{	\comment{Caso 2}
-		t $\leftarrow$ \Nil	
-	}
-	\uElseIf{z.\Color == \Red}{	\comment{Caso 3}
-		p.\Color $\leftarrow$ z.\Color $\leftarrow$ \Black\;
-		n.\Color $\leftarrow$ \Red\;
-		t $\leftarrow$ n\;
-	}
-	\Else{
-		\uIf{t == p.\Right \And p == n.\Left}{	\comment{Caso 4a}
-			\RotateLeft{p}\;
-			t $\leftarrow$ p\;
-		}
-		\uElseIf{t == p.\Left \And p == n.\Right}{	\comment{Caso 4b}
-			\RotateRight{p}\;
-			t $\leftarrow$ p\;
-		}	
-		\Else{
-			\uIf{t == p.\Left \And p == n.\Left}{ \comment{Caso 5a}
-				\RotateRight{n}\;
-			}
-			\ElseIf{t == p.\Right \And p == n.\Right}{	\comment{Caso 5b}
-				\RotateLeft{n}\;
-			}
-			p.\Color $\leftarrow$ \Black\;
-			n.\Color $\leftarrow$ \Red\;
-			t $\leftarrow$ \Nil\;
-		}
-	
-	
-	}
-}
-\end{algorithm}
+\input{Pseudocodice/37_BalancedInsert}
 \newpage
 \paragraph{Complessit\`a}
 La complessit\`a totale per un inserimento \`e $O(\log n)$, con tre passaggi: $O(\log n)$ per scendere fino al punto di inserimento, $O(1)$ per effettuare
@@ -713,95 +170,7 @@ decidere se ribalanciare o meno. Le operazioni di ripristino sono necessarie sol
 rosso l'altezza nera rimane invariata, non sono creati nodi rossi consecutivi e la radice resta nera. Se il nodo cancellato \`e nero si possono rompere i 
 vincoli uno, tre e quattro. L'algoritmo seguente ripristina i vincoli con rotazioni e cambiamenti di colore. Ci sono quattro casi possibili con i 
 corrispettivi simmetrici. 
-\begin{algorithm}
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Nil}{nil}
-\SetKw{Return}{return}
-\SetKw{New}{new}
-\SetKw{Int}{int}
-\SetKw{And}{and}
-\SetKw{Delete}{delete}
-\SetKwData{Tree}{Tree}
-\SetKwData{Red}{RED}
-\SetKwData{Black}{BLACK}
-\SetKwData{Item}{Item}
-\SetKwFunction{Value}{value}
-\SetKwFunction{Key}{key}
-\SetKwFunction{Left}{left}
-\SetKwFunction{Right}{right}
-\SetKwFunction{Color}{color}
-\SetKwFunction{BalancedDelete}{balancedDelete}
-\SetKwFunction{RotateLeft}{rotateLeft}
-\SetKwFunction{RotateRight}{rotateRight}
-\caption{\protect\BalancedDelete{\protect\Tree T, \protect\Tree t}}
-
-\While{T $\neq$ t \And t.\Color == \Black}{
-	\begin{multicols}{2}
-	\Tree p = t.\Parent	\comment{Padre}
-	\uIf{t == p.\Left}{
-		\Tree f = p.\Right	\comment{Fratello}
-		\Tree ns = f.\Left	\comment{Nipote sinistro}
-		\Tree nd = f.\Right	\comment{Nipote destro}
-		\uIf{f.\Color == \Red}{	\comment{Caso 1a}
-			p.\Color = \Red\;
-			f.\Color = \Black\;
-			\RotateLeft{p}\;
-			\comment{t viene lasciato inalterato, pertanto si ricade nei casi 2, 3 o 4}
-		}
-		\Else{
-			\uIf{ns.\Color == nd.\Color == \Black}{	\comment{Caso 2a}
-				f.\Color = \Red\;
-				t = p\;
-			}
-			\uElseIf{ns.\Color == \Red \And nd.\Color == \Black}{	\comment{Caso 3a}
-				ns.\Color = \Black\;
-				f.\Color = \Red\;
-				\RotateRight{f}\;
-				\comment{t viene lasciato inalterato, pertanto si ricade nel caso 4}
-			}
-			\ElseIf{nd.\Color == \Red}{	\comment{Caso 4a}
-				f.\Color = p.\Color{}\;
-				p.\Color = \Black\;
-				nd.\Color = \Black\;
-				\RotateLeft{p}\;
-				t = T\;
-			}
-		}
-	}
-	\Else{
-		\Tree f = p.\Left	\comment{Fratello}
-		\Tree ns = f.\Left	\comment{Nipote sinistro}
-		\Tree nd = f.\Right	\comment{Nipote destro}
-		\uIf{f.\Color == \Red}{	\comment{Caso 1b}
-			p.\Color = \Red\;
-			f.\Color = \Black\;
-			\RotateRight{p}\;
-			\comment{t viene lasciato inalterato, pertanto si ricade nei casi 2, 3 o 4}
-		}
-		\Else{
-			\uIf{ns.\Color == nd.\Color == \Black}{	\comment{Caso 2b}
-				f.\Color = \Red\;
-				t = p\;
-			}
-			\uElseIf{nd.\Color == \Red \And ns.\Color == \Black}{	\comment{Caso 3b}
-				nd.\Color = \Black\;
-				f.\Color = \Red\;
-				\RotateLeft{f}\;
-				\comment{t viene lasciato inalterato, pertanto si ricade nel caso 4}
-			}
-			\ElseIf{ns.\Color == \Red}{	\comment{Caso 4a}
-				f.\Color = p.\Color{}\;
-				p.\Color = \Black\;
-				ns.\Color = \Black\;
-				\RotateRight{p}\;
-				t = T\;
-			}
-		}
-	}
-\end{multicols}
-}
-\end{algorithm}
+\input{Pseudocodice/38_BalancedDelete}
 \paragraph{Complessit\`a}
 La cancellazione \`e concettualmente complicata ma efficiente in quanto dal caso 1 si passa al 2, 3 o 4, dal caso 2 si passa agli altri risalendo l'albero,
 dal caso 3 si passa al caso 4 e al caso 4 termina. \`E possibile visitare un massimo di $O(\log n)$ di casi, ognuno dei quali risolti in $O(1)$.

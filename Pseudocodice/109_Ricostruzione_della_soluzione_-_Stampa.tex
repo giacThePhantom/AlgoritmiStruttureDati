@@ -1,0 +1,65 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{ComputePar}{computePar}
+\SetKwFunction{PrintPar}{printPar}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{Ricostruzione della soluzione - Stampa}
+\Void\Space\Fn{\ComputePar{\Int[] c, \Int n}}{
+	$[\dots]$\;
+	\PrintPar{last, 1, n}\;
+}
+\Void\Space\Fn{\PrintPar{\Int[][] last, \Int i, \Int j}}{
+	\uIf{i == j}{
+		\Print "A["\;
+		\Print i\;
+		\Print "]"\;
+	}
+	\Else{
+		\Print "("\;
+		\PrintPar{last, i, last[i][j]}\;
+		\Print "$\cdot$"\;
+		\PrintPar{last, last[i][j]+1, j}\;
+		\Print ")"\;
+	}
+}
+\end{algorithm}

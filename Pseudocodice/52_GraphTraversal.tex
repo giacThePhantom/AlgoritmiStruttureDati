@@ -1,0 +1,36 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKwData{Graph}{Graph}
+\SetKwData{Set}{Queue}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{SetCos}{Queue}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{dfs}
+\SetKwFunction{Insert}{enqueue}
+\SetKwFunction{Remove}{dequeue}
+\SetKwFunction{Empty}{empty}
+\caption{\protect\GraphTraversal{\protect\Graph G, \protect\Node u, \protect\Boolean[] visited}}
+visited[u] = \True\;
+$\{$visita il nodo u in pre-order$\}$\;
+\ForEach{v $\in$ G.\Adj{u}}{
+	\If{\Not visited[v]}{
+		$\{$Visita l'arco (u,v)$\}$\;
+		\GraphTraversal{G, v, visited}\;
+	}
+}
+$\{$visita il nodo u in post-order$\}$\;
+\end{algorithm}

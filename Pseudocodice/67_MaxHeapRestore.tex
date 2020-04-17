@@ -1,0 +1,37 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKwData{Item}{Item}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{MinPriorityQueue}{MinPriorityQueue}
+\SetKwFunction{MinPriorityQueueCos}{MinPriorityQueue}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Min}{min}
+\SetKwFunction{DeleteMin}{DeleteMin}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Decrease}{decrease}
+\SetKwFunction{MaxHeapRestore}{maxHeapRestore}
+\SetKwFunction{L}{l}
+\SetKwFunction{R}{r}
+\SetKwFunction{P}{p}
+\caption{\protect\MaxHeapRestore{\protect\Item[] A, \protect\Int i, \protect\Int i}}
+
+\Int max = i\;
+\If{\L{i} $\le$ dim \And A[\L{i}] $>$ A[max]}{
+	max = \L{i}\;
+}
+\If{\R{i} $\le$ dim \And A[\R{i}] $>$ A[max]}{
+	max = \R{i}\;
+}
+\If{i $\neq$ max}{
+	A[i] $\leftrightarrow$ A[max]
+	\MaxHeapRestore{A, max, dim}\;
+}
+\end{algorithm}

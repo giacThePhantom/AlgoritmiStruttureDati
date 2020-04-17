@@ -1,0 +1,59 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{Multiply}{Multiply}
+\SetKwFunction{MMultiplication}{matrix-multiplication}
+%\SetKwFunction{}{}
+%\SetKwFunction{}{}
+%%\SetKwFunction{}{}
+%\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+
+\caption{Ricostruzione della soluzione - Calcolo Effettivo}
+\Int[][]\Space\Fn{\Multiply{\Matrix[] A, \Int[][] S, \Int i, \Int j}}{
+	\uIf{i == j}{
+		\Return A[i]\;
+	}
+	\Else{
+		\Int[][] X = \Multiply{S, i, S[i][j]}\;
+		\Int[][] Y = \Multiply{S, S[i][j]+1, j}\;
+		\Return \MMultiplication{X, Y}\;
+	}
+}
+\end{algorithm}

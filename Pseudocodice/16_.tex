@@ -1,0 +1,41 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKw{Boolean}{boolean}
+\SetKw{Nil}{nil}
+\SetKwData{Item}{Item}
+\SetKwData{Tree}{Tree}
+\SetKwComment{comment}{$\%$}{}
+\SetKwFunction{TreeCos}{Tree}
+\SetKwFunction{Read}{read}
+\SetKwFunction{Write}{write}
+\SetKwFunction{Parent}{Parent}
+\SetKwFunction{Left}{leftmostchild}
+\SetKwFunction{Right}{rightSibling}
+\SetKwFunction{InsertChild}{insertChild}
+\SetKwFunction{InsertSibling}{insertSibling}
+\SetKwFunction{DeleteLeft}{deleteChild}
+\SetKwFunction{DeleteRight}{deleteSibling}
+
+\caption{\protect\Tree}
+
+\comment{Costruisce un nuovo nodo contenente $v$ senza figli o genitori}
+\TreeCos{\Item v}\;
+\comment{Legge il valore memorizzato nel nodo}
+\Item \Read{}\;
+\comment{Modifica il valore memorizzato nel nodo}
+\Write{\Item v}\;
+\comment{Restituisce il padre o \Nil se \`e il nodo radice}
+\Tree \Parent{}\;
+\comment{Restituisce il primo figlio o \Nil se \`e un nodo foglia}
+\Tree \Left{}\;
+\comment{Restituisce il prossimo fratello o \Nil se assente}
+\Tree \Right{}\;
+\comment{Inserisce il sottoalbero $t$ come primo figlio di questo nodo}
+\InsertChild{\Tree t}\;
+\comment{Inserisce il sottoalbero $t$ come prossimo fratello di questo nodo}
+\InsertSibling{\Tree t}\;
+\comment{Distrugge l'albero radicato nel primo figlio}
+\DeleteLeft{}\;
+\comment{Distrugge l'albero radicato nel prossimo fratello}
+\DeleteRight{}\;
+\end{algorithm}

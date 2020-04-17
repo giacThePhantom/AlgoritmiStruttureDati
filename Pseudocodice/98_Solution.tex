@@ -1,0 +1,52 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+
+\SetKwFunction{Hateville}{hateville}
+\SetKwFunction{Pivot}{pivot}
+\SetKwFunction{Solution}{solution}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Set \protect\Solution{\protect\Int[] DP, \protect\Int[] D, \protect\Int i}}
+\uIf{ i == 0}{
+	\Return $\emptyset$\;
+}
+\uElseIf{i == 1}{
+	\Return $\{1\}$\;
+}
+\uElseIf{DP[i] == DP[i-1]}{
+	\Return \Solution{DP, D, i - 1}\;
+}
+\Else{
+	\Set sol = \Solution(DP, D, i-2)\;
+	sol.\Insert{i}\;
+	\Return sol\;
+}
+\end{algorithm}

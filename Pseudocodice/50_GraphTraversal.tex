@@ -1,0 +1,47 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{Nil}{nil}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKwData{Graph}{Graph}
+\SetKwData{Set}{Queue}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{SetCos}{Queue}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{erdos}
+\SetKwFunction{Insert}{enqueue}
+\SetKwFunction{Remove}{dequeue}
+\SetKwFunction{Empty}{empty}
+\caption{\protect\GraphTraversal{\protect\Graph G, \protect\Node r, \protect\Int[] erdos, \protect\Node[] parents}}
+
+\Set Q = \SetCos{}\; 
+Q.\Insert{r}\;
+\ForEach{u $\in$ G.\V{} - $\{$r$\}$}{
+	erdos[u] = $\infty$\;
+}
+erdos[r] = 0\;
+parents[r] = \Nil\;
+\While{\Not Q.\Empty{}}{
+	\Node u = Q.\Remove{}\;
+	$\{$Visita il nodo u$\}$\;
+	\ForEach{v $\in$ G.\Adj{u}}{
+		\If{erdos[v] = $\infty$}{
+			erdos[v] = erdos[u] + 1\;
+			parents[v] = u\;			
+			Q.\Insert{v}\;
+		}
+	}
+}
+\end{algorithm}

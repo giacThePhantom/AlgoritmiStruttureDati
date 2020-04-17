@@ -1,0 +1,25 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKw{Nil}{nil}
+\SetKw{Return}{return}
+\SetKw{Or}{or}
+\SetKwData{Tree}{Tree}
+\SetKwData{Item}{Item}
+\SetKwFunction{LookupNode}{lookupNode}
+\SetKwFunction{Value}{value}
+\SetKwFunction{Key}{key}
+\SetKwFunction{Left}{left}
+\SetKwFunction{Right}{right}
+
+\caption{\protect\Tree \protect\LookupNode(\protect\Tree t, \protect\Item k)}
+
+\uIf{t == \Nil \Or t.\Key == k}{
+	\Return t\;
+}
+\uElseIf{k $<$ t.\Key}{
+	\Return \LookupNode{t.\Left, k}
+}
+\Else{
+	\Return \LookupNode{t.\Right, k}
+}
+\end{algorithm}

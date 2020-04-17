@@ -1,0 +1,47 @@
+\input{Pseudocodice/60_TopSort}
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Nil}{nil}
+\SetKw{Return}{return}
+\SetKwData{Graph}{Graph}
+\SetKwData{Stack}{Stack}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{StackCos}{Stack}
+\SetKwFunction{Push}{push}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{dfs}
+\SetKwFunction{Insert}{push}
+\SetKwFunction{Remove}{pop}
+\SetKwFunction{Empty}{empty}
+\SetKwFunction{CC}{cc}
+\SetKwFunction{DfsSchema}{dfs-schema}
+\SetKwFunction{HasCycleRec}{hasCycleRec}
+\SetKwFunction{HasCycle}{hasCycle}
+\SetKwFunction{TopSort}{topSort}
+\SetKwFunction{TsDfs}{ts-dfs}
+
+\caption{\protect\Stack \protect\TsDfs{\protect\Graph G, \protect\Node u, \protect\Boolean[] visited, \protect\Stack S}}
+
+visited[u] = \True\;
+\ForEach{v $\in$ G.\Adj{u}}{
+	\If{\Not visited[v]}{
+		\TsDfs{G, v, visited, S}\;	
+	}
+}
+S.\Push{u}\;
+\end{algorithm}

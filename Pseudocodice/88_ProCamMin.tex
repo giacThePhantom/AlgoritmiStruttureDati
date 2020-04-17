@@ -1,0 +1,84 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Bool}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{Node}{Node}
+\SetKwData{DataStructure}{DataStructure}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwData{Queue}{Queue}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{DataStructureCos}{Datastructure}
+\SetKwFunction{PriorityQueueCos}{PriorityQueue}
+\SetKwFunction{DeleteMin}{deleteMin}
+\SetKwFunction{Decrease}{decrease}
+\SetKwFunction{Add}{add}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Extract}{extract}
+\SetKwFunction{Dequeue}{dequeue}
+\SetKwFunction{Enqueue}{enqueue}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{ProCamMin}{shortestPath}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+
+\caption{(\protect\Int[], \protect\Int[])  \protect\ProCamMin{\protect\Graph G, \protect\Node s}}
+\Queue Q = \QueueCos{}\;
+Q.\Enqueue{s}\;
+\While{\Not Q.\IsEmpty{}}{
+	\Int u = Q.\Dequeue{}\;
+	b[u] = \False\;
+	\ForEach{v $\in$ G.\Adj{u}}{
+		\If{d[u]+G.w(u, v) $<$ d[v]}{
+			\uIf{\Not b[v]}{
+				Q.\Enqueue{v}\;
+				b[v] = \True\;
+			}
+			\Else{
+				Q.\Decrease{v, D[u]+G.w(u, v)}\;
+			}
+			T[v] = u\;
+			d[v] = d[u] + G.w(u, v)\;
+		}
+	}
+}
+\Return (T, d)\;
+\end{algorithm}

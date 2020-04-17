@@ -1,0 +1,22 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKw{Nil}{nil}
+\SetKw{Return}{return}
+\SetKw{Or}{or}
+\SetKwData{Tree}{Tree}
+\SetKwFunction{LookupNode}{lookupNode}
+\SetKwFunction{Value}{value}
+\SetKwFunction{Key}{key}
+\SetKwFunction{Left}{left}
+\SetKwFunction{Right}{right}
+\SetKwFunction{LookupNode}{lookpuNode}
+\SetKwFunction{Max}{max}
+
+\caption{\protect\Tree \protect\Max(\protect\Tree t)}
+
+\Tree u = t\;
+\While{ u.\Right $\neq$ \Nil}{
+	u = u.\Right\;
+}
+\Return u\;
+\end{algorithm}

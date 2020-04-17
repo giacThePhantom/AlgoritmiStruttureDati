@@ -1,0 +1,55 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{Nil}{nil}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Deleted}{deleted}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{To}{to}
+\SetKw{And}{and}
+\SetKw{Not}{not}
+\SetKw{Or}{or}
+\SetKwData{Item}{Item}
+\SetKwData{Set}{List}
+\SetKwData{Pos}{Pos}
+\SetKwProg{Fn}{}{}{}
+\SetKwFunction{Max}{max}
+\SetKwFunction{Min}{min}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{Contains}{contains}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Remove}{remove}
+\SetKwFunction{Union}{union}
+\SetKwFunction{Intersection}{intersection}
+\SetKwFunction{Difference}{difference}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Next}{next}
+\SetKwFunction{Read}{read}
+\SetKwFunction{Tail}{tail}
+\SetKwFunction{Finished}{finished}
+\caption{\protect\Set \protect\Intersection{\protect\Set A, \protect\Set B}}
+
+\Set C = \Set{}\;
+\Pos p = A.\Head{}\;
+\Pos q = B.\Head{}\;
+
+\While{\Not A.\Finished{p} \And \Not B.\Finished{q}}{
+	\uIf{A.\Read{p} = B.\Read{q}}{
+		C.\Insert{C.\Tail{}, A.\Read{p}}\;
+		p = A.\Next{p}\;
+		q = B.\Next{q}\;	
+	}
+	\uElseIf{A.\Read{p} < B.\Read{q}}{
+		p = A.\Next{p}\;
+	}
+	\Else{
+		q = B.\Next{q}\;	
+	}
+}
+\Return C\;
+\end{algorithm}

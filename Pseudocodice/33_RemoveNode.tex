@@ -1,0 +1,54 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKw{Nil}{nil}
+\SetKw{Return}{return}
+\SetKw{New}{new}
+\SetKw{And}{and}
+\SetKw{Delete}{delete}
+\SetKwData{Tree}{Tree}
+\SetKwData{Item}{Item}
+\SetKwFunction{Value}{value}
+\SetKwFunction{Key}{key}
+\SetKwFunction{Left}{left}
+\SetKwFunction{Right}{right}
+\SetKwFunction{Max}{min}
+\SetKwFunction{RemoveNode}{removeNode}
+\SetKwFunction{LookupNode}{lookupNode}
+\SetKwFunction{Parent}{parent}
+\SetKwFunction{TreeCos}{Tree}
+\SetKwFunction{Link}{link}
+\SetKwFunction{SuccessorNode}{successorNode}
+\caption{\protect\Tree \protect\RemoveNode{\protect\Tree T, \protect\Item k}}
+
+\Tree t\;
+\Tree u = \LookupNode{T, k}\;
+\If{u $\neq$ \Nil}{
+	\uIf{u.\Left == \Nil \And u.\Right == \Nil}{
+		\Link{u.parent, \Nil, k}\;
+		\Delete u\;
+	}
+	\uElseIf{u.\Left $\neq$ \Nil \And u.\Right $\neq$ \Nil}{
+		\Tree s = \SuccessorNode{}\;
+		\Link{s.\Parent, s.\Right, s.\Key}\;
+		u.\Key{} = s.\Key{}\;
+		u.\Value{} = s.\Value{}\;
+		\Delete s\;
+	}
+	\uElseIf{u.\Left $\neq$ \Nil \And u.\Right == \Nil}{
+		\Link{u.\Parent, s.\Left, k}\;
+		\If{u.\Parent = \Nil}{
+			T = u.\Left\;		
+		}
+	}
+	\Else{
+		\Link{u.\Parent, s.\Right, k}\;
+		\If{u.\Parent = \Nil}{
+			T = u.\Right\;		
+		}
+	}
+
+}
+\Return T\;
+
+
+\end{algorithm}

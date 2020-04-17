@@ -1,0 +1,22 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{To}{to}
+\SetKw{And}{and}
+\SetKwData{Item}{item}
+\SetKwFunction{Min}{min}
+\SetKwFunction{InsertionSort}{insertionSort}
+
+\caption{\protect\InsertionSort{\protect\Item[] A, \protect\Int n}}
+
+\For{i = 2 \To n}{
+	\Item temp = A[i]\;
+	\Int j = i\;
+	\While{j $>$ 1 \And A[j-1] $>$ temp}{
+		A[j] = A[j - 1]\;
+		j -= 1\;	
+	}
+	A[j] = temp\;
+}
+\end{algorithm}

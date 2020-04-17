@@ -1,0 +1,50 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Nil}{nil}
+\SetKw{Return}{return}
+\SetKwData{Graph}{Graph}
+\SetKwData{Stack}{Stack}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{StackCos}{Stack}
+\SetKwFunction{Push}{push}
+\SetKwFunction{Pop}{pop}
+\SetKwFunction{Empty}{isEmpty}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{dfs}
+\SetKwFunction{Insert}{push}
+\SetKwFunction{Remove}{pop}
+\SetKwFunction{Empty}{empty}
+\SetKwFunction{CC}{cc}
+\SetKwFunction{CCdfs}{ccdfs}
+\SetKwFunction{DfsSchema}{dfs-schema}
+\SetKwFunction{HasCycleRec}{hasCycleRec}
+\SetKwFunction{HasCycle}{hasCycle}
+\SetKwFunction{TopSort}{topSort}
+\SetKwFunction{TsDfs}{ts-dfs}
+\SetKwFunction{Scc}{scc}
+\SetKwFunction{Transpose}{transpose}
+
+\caption{\protect\CCdfs{\protect\Graph G, \protect\Int counter, \protect\Node u, \protect\Int[] id}}
+
+id[u] = counter\;
+\ForEach{v $\in$ G.\Adj{u}}{
+	\If{id[u] == 0}{
+		\CCdfs{G, counter, v, id}\;	
+	}
+}
+\end{algorithm}

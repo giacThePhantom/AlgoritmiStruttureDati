@@ -1,0 +1,38 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKwData{Graph}{Graph}
+\SetKwData{Set}{Set}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{graphTraversal}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Remove}{remove}
+\caption{\protect\GraphTraversal{\protect\Graph G, \protect\Node r}}
+
+\Set S = \SetCos{} \comment{Insieme generico}
+S.\Insert{r}	\comment{Da specificare}
+$\{$Marca il nodo r$\}$\;
+\While{S.\Size{} $>$ 0}{
+	\Node u = S.\Remove{}	\comment{Da specificare}
+	$\{$Visita il nodo u$\}$\;
+	\ForEach{v $\in$ G.\Adj{u}}{
+		$\{$Visita l'arco (u,v)$\}$\;
+		\If{v non \`e stato marcato}{
+			Marca il nodo v\;
+			S.\Insert{v}	\comment{Da specificare}
+		}
+	}
+}
+
+
+\end{algorithm}

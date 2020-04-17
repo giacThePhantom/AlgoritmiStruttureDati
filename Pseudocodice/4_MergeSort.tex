@@ -1,0 +1,19 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{To}{to}
+\SetKw{Down}{down}
+\SetKw{And}{and}
+\SetKwData{Item}{item}
+\SetKwFunction{Min}{min}
+\SetKwFunction{MergeSort}{mergeSort}
+\SetKwFunction{Merge}{merge}
+\caption{\protect\MergeSort{\protect\Item[] A, \protect\Int first, \protect\Int last}}
+\If{first $<$ last}{
+	\Int mid = $\lfloor\dfrac{first + last}{2}\rfloor$\;
+	\MergeSort{A, first, mid}\;
+	\MergeSort{A, mid + 1, last}\;
+	\Merge{A, first, last, mid}\; 
+}
+\end{algorithm}

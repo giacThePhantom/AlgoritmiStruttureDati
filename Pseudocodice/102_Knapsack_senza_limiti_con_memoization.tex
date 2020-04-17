@@ -1,0 +1,88 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{KnapSack}{knapsack}
+\SetKwFunction{KnapsackRec}{knapsackRec}
+\SetKwFunction{Solution}{solution}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{Knapsack senza limiti con memoization}
+
+\Int\Space\Fn{\KnapSack{\Int[] w, \Int[] p, \Int n, \Int C}}{
+	\Int[] DP = \New \Int$[0\dots C]$\;
+	\Int[] pos = \New \Int$[0\dots C]$\;
+	\For{\Int c = 0 \To C}{
+		DP[i] = -1\;
+		pos[i] = -1\;		
+	}
+	\KnapsackRec{w, p, n, C, DP, pos}\;
+	\Return \Solution{w, C, pos}\;
+	
+}
+
+\Int\Space\Fn{\KnapsackRec{\Int[] w, \Int[] p, \Int n, \Int c, \Int[][] DP}}{
+	\uIf{c == 0}{
+		\Return 0\;	
+	}
+	\ElseIf{DP[c] $<$ 0}{
+		DP[c] = 0\;
+		\For{\Int i = 1 \To n}{
+			\If{w[i] $\le$ c}{
+				\Int val = \KnapsackRec{w, p, n, c - w[i], DP} + p[i]\;
+				\If{val $\ge$ DP[c]}{
+					DP[c] = val\;
+					pos[c] = i\;
+				}				
+							
+			}		
+		}
+	}
+	\Return DP[c]\;
+}
+
+\List\Space\Fn{\Solution{\Int[] w, \Int c, \Int[] pos}}{
+	\uIf{c == 0 \Or pos[c] $>$ 0}{
+		\Return \ListCos{}\;
+	}
+	\Else{
+		\List L = \Solution{w, c - w[pos[c]], pos}\;
+		L.\Insert{L.\Head{}, pos[c]}\;
+		\Return L\;	
+	}
+}
+
+\end{algorithm}

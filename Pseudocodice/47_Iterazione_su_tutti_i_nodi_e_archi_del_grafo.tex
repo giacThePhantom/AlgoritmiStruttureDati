@@ -1,0 +1,11 @@
+\begin{algorithm}[H]
+\SetKwFunction{V}{V}
+\SetKwFunction{Adj}{adj}
+\caption{Iterazione su tutti i nodi e archi del grafo}
+\ForEach{u $\in$ G.\V{}}{
+	Esegui operazioni sul nodo u\;
+	\ForEach{v $\in$ G.\Adj{u}}{
+		Esegui operazioni sull'arco (u, v)	
+	}
+}
+\end{algorithm}

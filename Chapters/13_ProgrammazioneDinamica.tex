@@ -24,7 +24,7 @@ sottoproblema non \`e ancora stato risolto. Ogni volta che si deve risolvere un 
 \end{itemize}
 In questo modo ogni sottoproblema viene calcolato una sola volta e memorizzato come nella versione bottom-up. Questa tecnica presenta vantaggi quando invece di utilizzare una tabella si utilizza un dizionario 
 in quanto non \`e pi\`u necessario fare inizializzazione e il costo di esecuzione passa da $O(nC)$ a $O(\min(2^n, nC)$.
-\lstinputlisting[caption={Memoization automatica in Python}, language={python}]{../Codice/MemoizationAutomatica.py}
+\lstinputlisting[caption={Memoization automatica in Python}, language={python}]{Codice/MemoizationAutomatica.py}
 \section{Problemi}
 \subsection{Domino lineare}
 Il gioco del domino \`e basato su tessere di dimensione $2\times 1$. Si scriva un algoritmo efficiente che prenda in input un intero $n$ e restituisca il numero di possibili disposizioni $n$ di tessere in un 
@@ -42,46 +42,7 @@ DP[n-2] + DP[n-1]& n>1
 $$
 Si noti come $DP[n]$ \`e pari al $n+1$-esimo numero della serie di Fibonacci. 
 \subsubsection{Algoritmo ricorsivo}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{New}{new}
-\SetKw{Return}{return}
-\SetKw{Print}{print}
-
-\SetKwData{Item}{Item}
-\SetKwData{Mfset}{Mfset}
-\SetKwData{Graph}{Graph}
-\SetKwData{N}{n}
-\SetKwData{Space}{ }
-\SetKwData{Parent}{parent}
-\SetKwData{Rank}{rank}
-
-\SetKwFunction{Domino}{domino1}
-\SetKwFunction{Pivot}{pivot}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-
-\caption{\protect\Int \protect\Domino{\protect\Int n}}
-\uIf{n $\le$ 1}{
-	\Return 1\;
-}
-\Else{
-	\Return \Domino{n - 1} + \Domino{n - 2}\;
-}
-\end{algorithm}
+\input{Pseudocodice/94_Domino}
 \paragraph{Complessit\`a}
 L'equazione di ricorrenza associata \`e:
 $$
@@ -93,93 +54,12 @@ T(n-2) + T(n-1) + 1& n>1
 $$
 Che utilizzando il master theorem per la ricorrenza lineare di ordine costante si ottiene una complessit\`a pari a $T(n)=\Theta(2^n)$.
 \subsubsection{Algoritmo iterativo}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{New}{new}
-\SetKw{Return}{return}
-\SetKw{Print}{print}
-
-\SetKwData{Item}{Item}
-\SetKwData{Mfset}{Mfset}
-\SetKwData{Graph}{Graph}
-\SetKwData{N}{n}
-\SetKwData{Space}{ }
-\SetKwData{Parent}{parent}
-\SetKwData{Rank}{rank}
-
-\SetKwFunction{Domino}{domino2}
-\SetKwFunction{Pivot}{pivot}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-
-\caption{\protect\Int \protect\Domino{\protect\Int n}}
-\Int[] DP = \New \Int$[0\dots n]$\;
-DP[0] = DP[1] = 1\;
-\For{\Int i = 2 \To n}{
-	DP[i] = DP[i - 1] + DP[i-2]\:
-}
-\Return DP[n]\;
-\end{algorithm}
+\input{Pseudocodice/95_Domino}
 \paragraph{Complessit\`a}
 Ha complessit\`a temporale $T(n)=\Theta(n)$ e spaziale $S(n)=\Theta(n)$.
 \paragraph{Miglioramento}
 Si pu\`o rendere con complessit\`a spaziale costante $S(n)=\Theta(n)$.
-\begin{algorithm}[h]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{New}{new}
-\SetKw{Return}{return}
-\SetKw{Print}{print}
-
-\SetKwData{Item}{Item}
-\SetKwData{Mfset}{Mfset}
-\SetKwData{Graph}{Graph}
-\SetKwData{N}{n}
-\SetKwData{Space}{ }
-\SetKwData{Parent}{parent}
-\SetKwData{Rank}{rank}
-
-\SetKwFunction{Domino}{domino3}
-\SetKwFunction{Pivot}{pivot}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-
-\caption{\protect\Int \protect\Domino{\protect\Int n}}
-\Int $DP_0$ = 1\;
-\Int $DP_1$ = 1\;
-\Int $DP_2$ = 1\;
-\For{\Int i = 2 \To n}{
-	$DP_0$ =$DP_1$ \;
-	$DP_1$ =$DP_2$ \;
-	$DP_2$ =$DP_0$ + $DP_1$ \;
-}
-\Return DP[n]\;
-\end{algorithm}
+\input{Pseudocodice/96_Domino}
 \subsection{Hateville}
 Hateville \`e un villaggio composto da $n$ case numerate da $1$ a $n$ lungo una singola strada. Ad Hateville ognuno odia i propri vicini da entrambi i lati. Si vuole organizzare una sagra e si rende necessario
 raccogliere i fondi. Ogni abitante ha intenzione di donare una quantit\`a $D[i]$, ma non intende partecipare ad una raccolta fondi a cui partecipano uno o entrambi i propri vicini. Si scriva un algoritmo che 
@@ -221,49 +101,7 @@ D[1] & i=1\\
 \end{cases}
 $$
 \subsubsection{Algoritmo iterativo}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{New}{new}
-\SetKw{Return}{return}
-\SetKw{Print}{print}
-
-\SetKwData{Item}{Item}
-\SetKwData{Mfset}{Mfset}
-\SetKwData{Graph}{Graph}
-\SetKwData{N}{n}
-\SetKwData{Space}{ }
-\SetKwData{Parent}{parent}
-\SetKwData{Rank}{rank}
-
-\SetKwFunction{Max}{max}
-
-\SetKwFunction{Hateville}{hateville}
-\SetKwFunction{Pivot}{pivot}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-
-\caption{\protect\Int \protect\Hateville{\protect\Int[] D, \protect\Int n}}
-\Int[] DP = \New \Int[$0\dots n$]\;
-DP[0] = 0\;
-DP[1] = D[1]\;
-\For{\Int i = 2 \To n}{
-	DP[i] = \Max{DP[i-1], DP[i-2]+D[i]}\;
-}
-\Return DP[n]\;
-\end{algorithm}
+\input{Pseudocodice/97_Hateville}
 \subsubsection{Ricostruire la soluzione originale}
 Considerando l'elemento $DP[i]$ il suo valore pu\`o essere derivato considerando:
 \begin{itemize}
@@ -272,58 +110,7 @@ Considerando l'elemento $DP[i]$ il suo valore pu\`o essere derivato considerando
 \end{itemize}
 Si utilizza questa informazione per ricostruire la soluzione in modo ricorsivo: per costruire la soluzione fino a $i$ si ricostruisce la soluzione fino a $i-2$ e si aggiunge $i$ o si ricostruisce la soluzione fino a $i-1$ 
 senza aggiungere nulla. 
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{New}{new}
-\SetKw{Return}{return}
-\SetKw{Print}{print}
-
-\SetKwData{Item}{Item}
-\SetKwData{Mfset}{Mfset}
-\SetKwData{Graph}{Graph}
-\SetKwData{N}{n}
-\SetKwData{Space}{ }
-\SetKwData{Parent}{parent}
-\SetKwData{Rank}{rank}
-\SetKwData{Set}{Set}
-
-\SetKwFunction{Max}{max}
-\SetKwFunction{Insert}{insert}
-
-\SetKwFunction{Hateville}{hateville}
-\SetKwFunction{Pivot}{pivot}
-\SetKwFunction{Solution}{solution}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-
-\caption{\protect\Set \protect\Solution{\protect\Int[] DP, \protect\Int[] D, \protect\Int i}}
-\uIf{ i == 0}{
-	\Return $\emptyset$\;
-}
-\uElseIf{i == 1}{
-	\Return $\{1\}$\;
-}
-\uElseIf{DP[i] == DP[i-1]}{
-	\Return \Solution{DP, D, i - 1}\;
-}
-\Else{
-	\Set sol = \Solution(DP, D, i-2)\;
-	sol.\Insert{i}\;
-	\Return sol\;
-}
-\end{algorithm}
+\input{Pseudocodice/98_Solution}
 \subsubsection{Complessit\`a computazionale}
 La complessit\`a computazionale di \emph{solution()} \`e $T(n)=\Theta(n)$, quella computazionale e spaziale di \emph{hateville()} \`e $T(n)=\Theta(n)$ e $S(n)=\Theta(n)$. Questa soluzione non si pu\`o 
 migliorare se si vuole ricostruire la soluzione.
@@ -360,62 +147,7 @@ DP[i][c] =
 \end{cases}
 $$
 \subsubsection{Pseudocodice}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{New}{new}
-\SetKw{Return}{return}
-\SetKw{Print}{print}
-
-\SetKwData{Item}{Item}
-\SetKwData{Mfset}{Mfset}
-\SetKwData{Graph}{Graph}
-\SetKwData{N}{n}
-\SetKwData{Space}{ }
-\SetKwData{Parent}{parent}
-\SetKwData{Rank}{rank}
-\SetKwData{Set}{Set}
-
-\SetKwFunction{Max}{max}
-\SetKwFunction{Insert}{insert}
-
-\SetKwFunction{KnapSack}{knapsack}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-
-\caption{\protect\Int \protect\KnapSack{\protect\Int[] w, \protect\Int[] p, \protect\Int n, \protect\Int C}}
-\Int[][] DP = \New \Int$[0\dots n][0\dots C]$\;
-\For{\Int i = 0 \To n}{
-	DP[i][0] = 0\;
-}
-\For{\Int c = 0 \To C}{
-	DP[0][c] = 0\;
-}
-\For{\Int i = 1 \To n}{
-	\For{\Int c = 1 \To C}{
-		\uIf{w[i] < C}{
-			DP[i][c] = \Max{DP[i - 1][c - w[i]] + p[i], DP[i - 1][c]}\;		
-		}	
-		\Else{
-			DP[i][c] = DP[i - 1][c]\;		
-		}
-	}
-}
-\Return DP[n][C]
-\end{algorithm}
+\input{Pseudocodice/99_KnapSack}
 \subsubsection{Complessit\`a computazionale}
 La complessit\`a della funzione \emph{knapsack()} \`e $T(n) = O(nC)$, una complessit\`a pseudo-polinomiale in quanto sono necessari $k = \log C$ bit per 
 rappresentare $C$ e pertanto la complessit\`a \`e $T(n) = O(n2^k)$.
@@ -423,77 +155,7 @@ rappresentare $C$ e pertanto la complessit\`a \`e $T(n) = O(n2^k)$.
 Si nota come non tutti gli elementi della matrice sono necessari alla soluzione del problema. Risulta vantaggioso pertanto utilizzare la tecnica di 
 memoization, in cui la tabella viene inizializzata esternamente in una funzione wrapper e il valore $-1$ viene utilizzato per identificare il valore di
 una cella non calcolata. 
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Or}{or}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{New}{new}
-\SetKw{Return}{return}
-\SetKw{Print}{print}
-
-\SetKwData{Item}{Item}
-\SetKwData{Mfset}{Mfset}
-\SetKwData{Graph}{Graph}
-\SetKwData{N}{n}
-\SetKwData{Space}{ }
-\SetKwData{Parent}{parent}
-\SetKwData{Rank}{rank}
-\SetKwData{Set}{Set}
-
-\SetKwFunction{Max}{max}
-\SetKwFunction{Insert}{insert}
-
-\SetKwProg{Fn}{}{}
-
-\SetKwFunction{KnapSack}{knapsack}
-\SetKwFunction{KnapsackRec}{knapsackRec}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-
-\caption{Knapsack con memoization}
-
-\Int\Space\Fn{\KnapSack{\Int[] w, \Int[] p, \Int n, \Int C}}{
-	\Int[][] DP = \New \Int$[1\dots n][1\dots C]$\;
-	\For{\Int i = 1 \To n}{
-		\For{\Int c = 1 \To C}{
-			DP[i][c] = -1\;		
-		}	
-	}
-	\Return \KnapsackRec{w, p, n, C, DP}\;
-	
-}
-
-\Int\Space\Fn{\KnapsackRec{\Int[] w, \Int[] p, \Int i, \Int c, \Int[][] DP}}{
-	\uIf{c $<$ 0}{
-		\Return $-\infty$\;	
-	}
-	\uElseIf{i == 0 \Or c == 0}{
-		\Return 0\;	
-	}
-	\Else{
-		\If{DP[i][c] $<$ 0}{
-			\Int nottaken = \KnapsackRec{w, p, i - 1, c, DP}\;
-			\Int taken = \KnapsackRec{w, p, i - 1, c - w[i], DP} + p[i]\;
-			DP[i][c] = \Max{nottaken, taken}\;
-		}
-		\Return DP[i][c]\;
-	}
-}
-
-
-\end{algorithm}
+\input{Pseudocodice/100_Knapsack_con_memoization}
 \subsection{Knapsack senza limiti}
 Dato uno zaino di capacit\`a $C$ e $n$ oggetti caratterizzati da peso $w$ e profitto $p$ si definisce $DP[i][c]$ come il massimo profitto che pu\`o essere
 ottenuto dai primi $i\le n$ oggetti contenuti in uno zaino di capacit\`a $c\le C$ senza porre limiti al numero di volte che un oggetto pu\`o essere 
@@ -516,168 +178,13 @@ DP[c] =
 \end{cases}
 $$
 \subsubsection{Implementazione tramite memoization}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Or}{or}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{New}{new}
-\SetKw{Return}{return}
-\SetKw{Print}{print}
-
-\SetKwData{Item}{Item}
-\SetKwData{Mfset}{Mfset}
-\SetKwData{Graph}{Graph}
-\SetKwData{N}{n}
-\SetKwData{Space}{ }
-\SetKwData{Parent}{parent}
-\SetKwData{Rank}{rank}
-\SetKwData{Set}{Set}
-
-\SetKwFunction{Max}{max}
-\SetKwFunction{Insert}{insert}
-
-\SetKwProg{Fn}{}{}
-
-\SetKwFunction{KnapSack}{knapsack}
-\SetKwFunction{KnapsackRec}{knapsackRec}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-
-\caption{Knapsack senza limiti con memoization}
-
-\Int\Space\Fn{\KnapSack{\Int[] w, \Int[] p, \Int n, \Int C}}{
-	\Int[] DP = \New \Int$[0\dots C]$\;
-	\For{\Int c = 0 \To C}{
-		DP[i] = -1\;		
-	}
-	\KnapsackRec{w, p, n, C, DP}\;
-	\Return DP[C]\;
-	
-}
-
-\Int\Space\Fn{\KnapsackRec{\Int[] w, \Int[] p, \Int n, \Int c, \Int[][] DP}}{
-	\uIf{c == 0}{
-		\Return 0\;	
-	}
-	\ElseIf{DP[c] $<$ 0}{
-		DP[c] = 0\;
-		\For{\Int i = 1 \To n}{
-			\If{w[i] $\le$ c}{
-				\Int val = \KnapsackRec{w, p, n, c - w[i], DP} + p[i]\;
-				DP[c] = \Max{DP[c], val}\;			
-			}		
-		}
-	}
-	\Return DP[c]\;
-}
-
-
-\end{algorithm}
+\input{Pseudocodice/101_Knapsack_senza_limiti_con_memoization}
 Attraverso questo algoritmo non \`e detto che tutti gli elementi debbano essere riempiti e la complessit\`a in spazio \`e $\Theta(C)$.
 \subsubsection{Ricostruire la soluzione}
 Questo approccio rende pi\`u difficile ricostruire la soluzione: si possono ispezionare tutti gli elementi per capire da dove deriva il massimo, ma 
 risulta pi\`u semplice memorizzare l'indice da cui deriva il massimo. 
 \paragraph{Implementazione tramite memoization}\mbox{}\\
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Or}{or}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{New}{new}
-\SetKw{Return}{return}
-\SetKw{Print}{print}
-
-\SetKwData{Item}{Item}
-\SetKwData{Mfset}{Mfset}
-\SetKwData{Graph}{Graph}
-\SetKwData{N}{n}
-\SetKwData{Space}{ }
-\SetKwData{Parent}{parent}
-\SetKwData{Rank}{rank}
-\SetKwData{Set}{Set}
-\SetKwData{List}{List}
-
-\SetKwFunction{Max}{max}
-\SetKwFunction{Insert}{insert}
-\SetKwFunction{ListCos}{List}
-\SetKwFunction{Head}{head}
-
-\SetKwProg{Fn}{}{}
-
-\SetKwFunction{KnapSack}{knapsack}
-\SetKwFunction{KnapsackRec}{knapsackRec}
-\SetKwFunction{Solution}{solution}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-
-\caption{Knapsack senza limiti con memoization}
-
-\Int\Space\Fn{\KnapSack{\Int[] w, \Int[] p, \Int n, \Int C}}{
-	\Int[] DP = \New \Int$[0\dots C]$\;
-	\Int[] pos = \New \Int$[0\dots C]$\;
-	\For{\Int c = 0 \To C}{
-		DP[i] = -1\;
-		pos[i] = -1\;		
-	}
-	\KnapsackRec{w, p, n, C, DP, pos}\;
-	\Return \Solution{w, C, pos}\;
-	
-}
-
-\Int\Space\Fn{\KnapsackRec{\Int[] w, \Int[] p, \Int n, \Int c, \Int[][] DP}}{
-	\uIf{c == 0}{
-		\Return 0\;	
-	}
-	\ElseIf{DP[c] $<$ 0}{
-		DP[c] = 0\;
-		\For{\Int i = 1 \To n}{
-			\If{w[i] $\le$ c}{
-				\Int val = \KnapsackRec{w, p, n, c - w[i], DP} + p[i]\;
-				\If{val $\ge$ DP[c]}{
-					DP[c] = val\;
-					pos[c] = i\;
-				}				
-							
-			}		
-		}
-	}
-	\Return DP[c]\;
-}
-
-\List\Space\Fn{\Solution{\Int[] w, \Int c, \Int[] pos}}{
-	\uIf{c == 0 \Or pos[c] $>$ 0}{
-		\Return \ListCos{}\;
-	}
-	\Else{
-		\List L = \Solution{w, c - w[pos[c]], pos}\;
-		L.\Insert{L.\Head{}, pos[c]}\;
-		\Return L\;	
-	}
-}
-
-\end{algorithm}
+\input{Pseudocodice/102_Knapsack_senza_limiti_con_memoization}
 Restituisce una lista di indici selezionati, se $c=0$ lo zaino \`e stato riempito perfettamente, se $pos[c]<0$ lo zaino non pu\`o essere riempito 
 interamente.
 \subsection{Sottosequenza comune massimale}
@@ -693,62 +200,7 @@ Una sequenza $X\in \mathcal{CS}(T, U)$ \`e una sottosequenza comune massimale di
 \subsubsection{Definizione del problema}
 Date due sequenze $T$ e $U$ si trovi la pi\`u lunga sottosequenza comune di $T$ e $U$. 
 \subsubsection{Soluzione di forza bruta}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Or}{or}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{New}{new}
-\SetKw{Return}{return}
-\SetKw{Nil}{nil}
-\SetKw{Print}{print}
-
-\SetKwData{Item}{Item}
-\SetKwData{Mfset}{Mfset}
-\SetKwData{Graph}{Graph}
-\SetKwData{N}{n}
-\SetKwData{Space}{ }
-\SetKwData{Parent}{parent}
-\SetKwData{Rank}{rank}
-\SetKwData{Set}{Set}
-\SetKwData{List}{List}
-
-\SetKwFunction{Max}{max}
-\SetKwFunction{Insert}{insert}
-\SetKwFunction{ListCos}{List}
-\SetKwFunction{Head}{head}
-\SetKwFunction{Len}{len}
-
-\SetKwProg{Fn}{}{}
-
-\SetKwFunction{KnapSack}{knapsack}
-\SetKwFunction{KnapsackRec}{knapsackRec}
-\SetKwFunction{Solution}{solution}
-\SetKwFunction{LCS}{LCS}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-
-\caption{\protect\Int \protect\LCS{\protect\Item[] T, \protect\Item[] U}}
-\Item[] maxsofar = \Nil\;
-\ForEach{subsequence X of T}{
-	\If{X is subsequence of U }{
-		\If{\Len{X} $>$ \Len{maxsofar}}{
-			maxsofar = X\;		
-		}	
-	}
-}
-\Return maxsofar\;
-
-\end{algorithm}
+\input{Pseudocodice/103_LCS}
 Si noti come data una sottosequenza lunga $n$, le sue sottosequenze sono $2^n$ e verificare che una sequenza \`e sottosequenza di un'altra sottosequenza
 \`e $O(m+n)$, la complessit\`a computazionale dell'algoritmo sopra \`e pertanto $\Theta(2^n(m+n))$. 
 \subsubsection{Descrizione matematica della soluzione ottima}
@@ -805,139 +257,9 @@ DP[i-1][j-1]+1 & i > 0 \land j > 0 land t_i = u_j\\
 \end{cases}
 $$ 
 $DP[n][m]$ contiene la lunghezza della $\mathcal{LCS}$ del probema originale. \\
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Or}{or}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{New}{new}
-\SetKw{Return}{return}
-\SetKw{Nil}{nil}
-\SetKw{Print}{print}
-
-\SetKwData{Item}{Item}
-\SetKwData{Mfset}{Mfset}
-\SetKwData{Graph}{Graph}
-\SetKwData{N}{n}
-\SetKwData{Space}{ }
-\SetKwData{Parent}{parent}
-\SetKwData{Rank}{rank}
-\SetKwData{Set}{Set}
-\SetKwData{List}{List}
-
-\SetKwFunction{Max}{max}
-\SetKwFunction{Insert}{insert}
-\SetKwFunction{ListCos}{List}
-\SetKwFunction{Head}{head}
-\SetKwFunction{Len}{len}
-
-\SetKwProg{Fn}{}{}
-
-\SetKwFunction{KnapSack}{knapsack}
-\SetKwFunction{KnapsackRec}{knapsackRec}
-\SetKwFunction{Solution}{solution}
-\SetKwFunction{LCS}{LCS}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-
-\caption{\protect\Int \protect\LCS{\protect\Item[] T, \protect\Item[] U, \protect\Int n, \protect\Int m}}
-\Int[][] DP = \New \Int$[0\dots n][0\dots m]$\;
-\For{\Int i = 0 \To n}{
-	DP[0][n] = DP[n][0] = 0\;
-}
-\For{\Int i = 1 \To n}{
-	\For{\Int j = 1 \To m}{
-		\uIf{T[i] == U[j]}{
-			DP[i][j] = DP[i - 1][j - 1] +1\;		
-		}
-		\Else{
-			DP[i][j] = \Max{DP[i - 1][j], DP[i][j - 1]}\;		
-		}
-	}
-}
-\Return DP[n][m]\;
-\end{algorithm}
+\input{Pseudocodice/104_LCS}
 \subsubsection{Ricostrurie la sottosequenza comune}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Or}{or}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{New}{new}
-\SetKw{Return}{return}
-\SetKw{Nil}{nil}
-\SetKw{Print}{print}
-
-\SetKwData{Item}{Item}
-\SetKwData{Mfset}{Mfset}
-\SetKwData{Graph}{Graph}
-\SetKwData{N}{n}
-\SetKwData{Space}{ }
-\SetKwData{Parent}{parent}
-\SetKwData{Rank}{rank}
-\SetKwData{Set}{Set}
-\SetKwData{List}{List}
-
-\SetKwFunction{Max}{max}
-\SetKwFunction{Insert}{insert}
-\SetKwFunction{ListCos}{List}
-\SetKwFunction{Head}{head}
-\SetKwFunction{Len}{len}
-
-\SetKwProg{Fn}{}{}
-
-\SetKwFunction{KnapSack}{knapsack}
-\SetKwFunction{KnapsackRec}{knapsackRec}
-\SetKwFunction{Solution}{subsequence}
-\SetKwFunction{LCS}{LCS}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-
-\caption{}
-\Item[]\Space\Fn{\Int \LCS{\Item[] T, \Item[] U, \Int n, \Int m}}{
-	$\dots$\;
-	\Return \Solution{DP, T, U, n, m}\;
-}
-
-\Item[]\Space\Fn{\Solution{\Int[][] DP, \Item[] T, \Item[] U, \Int i, \Int j}}{
-	\uIf{i == 0 \Or j == 0}{
-		\Return \ListCos{}\;	
-	}
-	\uElseIf{T[i] == U[j]}{
-		\List S = \Solution{DP, T, U, i - 1, j - 1}\;
-		S.\Insert{S.\Head{}, T[i]}\;
-		\Return S\;
-	}
-	\Else{
-		\uIf{DP[i - 1][j] > DP[i][j - 1]}{
-			\Return \Solution{DP, T, U, i - 1, j}\;		
-		}	
-		\Else{
-			\Return \Solution{DP, T, U, i, j - 1}\;		
-		}
-	
-	}
-}
-
-\end{algorithm}
+\input{Pseudocodice/105_}
 La complessit\`a computazionale di \emph{subsequence()} \`e $O(m+n)$, mentre quella di LCS \`e $O(mn)$. 
 \subsection{String matching approssimato}
 \subsubsection{Definizione}
@@ -973,71 +295,7 @@ $$DP[i][j] =
 $DP[m][j] = k$ se e solo se esiste un'occorrenza k-approssimata di $P$ in $T(j)$ che termina nella posizione $j$. La soluzione del problema \`e data dal pi\`u piccolo falore $DP[m][j]$ 
 per $0\le j\le n$. Si noti pertanto come la soluzione del problema non si trova nella casella ``in basso a destra" ma vada essa stessa ricercata nella tabella $DP$.
 \subsubsection{Algoritmo}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Or}{or}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{New}{new}
-\SetKw{Return}{return}
-\SetKw{Nil}{nil}
-\SetKw{Print}{print}
-
-\SetKwData{Item}{Item}
-\SetKwData{Mfset}{Mfset}
-\SetKwData{Graph}{Graph}
-\SetKwData{N}{n}
-\SetKwData{Space}{ }
-\SetKwData{Parent}{parent}
-\SetKwData{Rank}{rank}
-\SetKwData{Set}{Set}
-\SetKwData{List}{List}
-
-\SetKwFunction{Max}{max}
-\SetKwFunction{Insert}{insert}
-\SetKwFunction{ListCos}{List}
-\SetKwFunction{Head}{head}
-\SetKwFunction{Len}{len}
-
-\SetKwProg{Fn}{}{}
-
-\SetKwFunction{StringMatching}{stringMatching}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-
-\caption{\protect\Int \protect\StringMatching{\protect\Item[] P, \protect\Item[] T, \protect\Int m, \protect\Int n}}
-\Int[][] DP = \New \Int$[0\dots m][0\dots n]$\;
-\For{\Int j = 0 \To n}{
-	DP[0][j] = 0\;
-}
-\For{\Int i = 1 \To m}{
-	DP[i][0] = i\;
-}
-\For{\Int i = 1 \To m}{
-	\For{\Int j = 1 \To n}{
-		DP[i][j] = \Min{DP[i-1][j-1] + iif(P[i] == T[j], 0, 1), DP[i-1][j]+1, DP[i][j-1]+1}\;
-	}
-}
-\Int pos = 0;
-\For{\Int j = 1 \To n}{
-	\If{DP[m][j] $<$ DP[m][pos]}{
-		pos = j\;
-	}
-}
-\Return pos\;
-\end{algorithm}
+\input{Pseudocodice/106_StringMatching}
 \subsection{Prodotto di catena di matrici}
 \subsubsection{Problema}
 Data una sequenza $n$ di matrici $A_1, \dots, A_n$ compatibili due a due al prodotto, si vuole calcolare il loro prodotto. SI noti come il prodotto di 
@@ -1099,263 +357,19 @@ della matrice $A_i$ e $c[i]$ \`e il numero di colonne della matrice $A_i$ e due 
 \paragraph{Output}
 Il numero di moltiplicazioni scalari per calcolare il prodotto delle matrici comprese tra gli indici $i$ e $j$.
 \paragraph{Approccio ricorsivo}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Or}{or}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{New}{new}
-\SetKw{Return}{return}
-\SetKw{Nil}{nil}
-\SetKw{Print}{print}
-
-\SetKwData{Item}{Item}
-\SetKwData{Mfset}{Mfset}
-\SetKwData{Graph}{Graph}
-\SetKwData{N}{n}
-\SetKwData{Space}{ }
-\SetKwData{Parent}{parent}
-\SetKwData{Rank}{rank}
-\SetKwData{Set}{Set}
-\SetKwData{List}{List}
-
-\SetKwFunction{Max}{max}
-\SetKwFunction{Insert}{insert}
-\SetKwFunction{ListCos}{List}
-\SetKwFunction{Head}{head}
-\SetKwFunction{Len}{len}
-
-\SetKwProg{Fn}{}{}
-
-\SetKwFunction{RecPar}{recPar}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-
-\caption{\protect\Int \protect\RecPar{\protect\Item[] c, \protect\Int i, \protect\Int j}}
-\uIf{i == j}{
-	\Return 0\;
-}
-\Else{
-	\Int min = $+\infty$\;
-	\For{\Int k = i \To j - 1}{
-		\Int q = \RecPar(c, i, k) + \RecPar(c, k + 1, j) +c[i-1]$\cdot$c[k]$\cdot$c[j]\;
-		\If{q $<$ min}{
-			min = q\;
-		}
-	}
-	\Return min\;
-}
-\end{algorithm}
+\input{Pseudocodice/107_RecPar}
 \subparagraph{Valutazione}
 La soluzione ricorsiva top-down \`e $\Omega(2^n)$. Il problema \`e che i sottoproblemi che sono $\frac{n(n+1)}{2}$ vengono risolti pi\`u volte.
 \paragraph{Versione bottom-up}
 Si creino due tabelle di programmazione dinamica, due matrici $DP$ e $last$ di dimensione $n\times n$ tali che $DP[i][j]$ contiene il numero di moltiplicazioni scalari necessarie per 
 moltiplicare le matrici $A[i\dots j]$ e $last[i][j]$ contiene il valore $k$ dell'ultimo prodotto che minimizza il costo del sottoproblema.
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Or}{or}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{New}{new}
-\SetKw{Return}{return}
-\SetKw{Nil}{nil}
-\SetKw{Print}{print}
-
-\SetKwData{Item}{Item}
-\SetKwData{Mfset}{Mfset}
-\SetKwData{Graph}{Graph}
-\SetKwData{N}{n}
-\SetKwData{Space}{ }
-\SetKwData{Parent}{parent}
-\SetKwData{Rank}{rank}
-\SetKwData{Set}{Set}
-\SetKwData{List}{List}
-
-\SetKwFunction{Max}{max}
-\SetKwFunction{Insert}{insert}
-\SetKwFunction{ListCos}{List}
-\SetKwFunction{Head}{head}
-\SetKwFunction{Len}{len}
-
-\SetKwProg{Fn}{}{}
-
-\SetKwFunction{ComputePar}{computePar}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-
-\caption{\protect\Int \protect\ComputePar{\protect\Item[] c, \protect\Int n}}
-\Int[][] DP = \New \Int$[1\dots n][1\dots n]$\;
-\Int[][] last = \New \Int$[1\dots n][1\dots n]$\;
-\For{\Int i = 1 \To n}{
-	DP[i][i] = 0\;
-}
-\For{\Int h = 2 \To n}{
-	\For{\Int i = 1 \To n - h + 1}{
-		\Int j = i + h - 1\;
-		DP[i][j] = $+\infty$\;
-		\For{\Int j = i \To j - 1}{
-			\Int temp = DP[i][k] + DP[k+1][j] + c[i - 1]$\cdot$c[k]$\cdot$c[j]\;
-			\If{temp $<$ DP[i][j]}{
-				DP[i][j] = temp\;
-				last[i][j] = k\;
-			}
-		}
-	}
-}
-\Return DP[1][n]
-\end{algorithm}
+\input{Pseudocodice/108_ComputePar}
 \subparagraph{Valutazioni}
 Il costo computazionale \`e $O(n^3)$, in quanto ogni cella richiede tempo $O(n)$ per essere riempita. Il costo della funzione si trova nella posizione $DP[1][n]$. \`E anche necessario
 motrare la soluzione trovata, motivo per cui si salvano le informazioni nella matrice last. 
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
+\input{Pseudocodice/109_Ricostruzione_della_soluzione_-_Stampa}
 
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Or}{or}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{New}{new}
-\SetKw{Return}{return}
-\SetKw{Nil}{nil}
-\SetKw{Print}{print}
-\SetKw{Void}{void}
-
-\SetKwData{Item}{Item}
-\SetKwData{Mfset}{Mfset}
-\SetKwData{Graph}{Graph}
-\SetKwData{N}{n}
-\SetKwData{Space}{ }
-\SetKwData{Parent}{parent}
-\SetKwData{Rank}{rank}
-\SetKwData{Set}{Set}
-\SetKwData{List}{List}
-
-\SetKwFunction{Max}{max}
-\SetKwFunction{Insert}{insert}
-\SetKwFunction{ListCos}{List}
-\SetKwFunction{Head}{head}
-\SetKwFunction{Len}{len}
-
-\SetKwProg{Fn}{}{}
-
-\SetKwFunction{ComputePar}{computePar}
-\SetKwFunction{PrintPar}{printPar}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-
-\caption{Ricostruzione della soluzione - Stampa}
-\Void\Space\Fn{\ComputePar{\Int[] c, \Int n}}{
-	$[\dots]$\;
-	\PrintPar{last, 1, n}\;
-}
-\Void\Space\Fn{\PrintPar{\Int[][] last, \Int i, \Int j}}{
-	\uIf{i == j}{
-		\Print "A["\;
-		\Print i\;
-		\Print "]"\;
-	}
-	\Else{
-		\Print "("\;
-		\PrintPar{last, i, last[i][j]}\;
-		\Print "$\cdot$"\;
-		\PrintPar{last, last[i][j]+1, j}\;
-		\Print ")"\;
-	}
-}
-\end{algorithm}
-
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Or}{or}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{New}{new}
-\SetKw{Return}{return}
-\SetKw{Nil}{nil}
-\SetKw{Print}{print}
-\SetKw{Void}{void}
-
-\SetKwData{Item}{Item}
-\SetKwData{Mfset}{Mfset}
-\SetKwData{Graph}{Graph}
-\SetKwData{N}{n}
-\SetKwData{Space}{ }
-\SetKwData{Parent}{parent}
-\SetKwData{Rank}{rank}
-\SetKwData{Set}{Set}
-\SetKwData{List}{List}
-
-\SetKwFunction{Max}{max}
-\SetKwFunction{Insert}{insert}
-\SetKwFunction{ListCos}{List}
-\SetKwFunction{Head}{head}
-\SetKwFunction{Len}{len}
-
-\SetKwProg{Fn}{}{}
-
-\SetKwFunction{Multiply}{Multiply}
-\SetKwFunction{MMultiplication}{matrix-multiplication}
-%\SetKwFunction{}{}
-%\SetKwFunction{}{}
-%%\SetKwFunction{}{}
-%\SetKwFunction{}{}
-
-\SetKw{Matrix}{matrix}
-
-\caption{Ricostruzione della soluzione - Calcolo Effettivo}
-\Int[][]\Space\Fn{\Multiply{\Matrix[] A, \Int[][] S, \Int i, \Int j}}{
-	\uIf{i == j}{
-		\Return A[i]\;
-	}
-	\Else{
-		\Int[][] X = \Multiply{S, i, S[i][j]}\;
-		\Int[][] Y = \Multiply{S, S[i][j]+1, j}\;
-		\Return \MMultiplication{X, Y}\;
-	}
-}
-\end{algorithm}
+\input{Pseudocodice/110_Ricostruzione_della_soluzione_-_Calcolo_Effettivo}
 \subsection{Insieme indipendente di intervalli pesati}
 \subsubsection{Problema}
 So deve trovare un insieme indipendente di peso massimo, un sottoinsieme di intervalli disgiunti tra loro ($b_j \le a_i$ o $b_i\le a_j$ $\forall i\neq j$) tale che la somma dei loro 
@@ -1376,137 +390,10 @@ $$DP[i] = \begin{cases}
 	0 & i = 0\\
 	\max(DP[i-1], DP[pred_i]+w_i) & i > 0\\
 \end{cases}$$
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Or}{or}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{New}{new}
-\SetKw{Return}{return}
-\SetKw{Nil}{nil}
-\SetKw{Print}{print}
-\SetKw{Void}{void}
-
-\SetKwData{Item}{Item}
-\SetKwData{Mfset}{Mfset}
-\SetKwData{Graph}{Graph}
-\SetKwData{N}{n}
-\SetKwData{Space}{ }
-\SetKwData{Parent}{parent}
-\SetKwData{Rank}{rank}
-\SetKwData{Set}{Set}
-\SetKwData{List}{List}
-
-\SetKwFunction{Max}{max}
-\SetKwFunction{Insert}{insert}
-\SetKwFunction{ListCos}{List}
-\SetKwFunction{Head}{head}
-\SetKwFunction{Len}{len}
-
-\SetKwProg{Fn}{}{}
-
-\SetKwFunction{ComputePredecessor}{computePredecessor}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-
-\SetKw{Matrix}{matrix}
-
-\caption{\protect\Int[] \protect\ComputePredecessor{\protect\Int[] a, \protect\Int[] b, \protect\Int n}}
-\Int[] pred = \New \Int$[0\dots n]$\;
-pred[0] = 0\;
-\For{\Int i = 1 \To n}{
-	\Int j = i - 1\;
-	\While{j $>$ 0 \And b[j] $>$ a[i]}{
-		j = j - 1\;
-	}
-	pred[i] = j\;
-}
-\Return pred\;
-\end{algorithm}
+\input{Pseudocodice/111_ComputePredecessor}
 Si noti come calcolare i predecessori costi $O(n^2$, ma pu\`o essere migliorato in $O(n\log n)$. 
 \subsubsection{Implementazione}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Or}{or}
-\SetKw{Down}{down}
-\SetKw{To}{to}
-\SetKw{New}{new}
-\SetKw{Return}{return}
-\SetKw{Nil}{nil}
-\SetKw{Print}{print}
-\SetKw{Void}{void}
-
-\SetKwData{Item}{Item}
-\SetKwData{Mfset}{Mfset}
-\SetKwData{Graph}{Graph}
-\SetKwData{N}{n}
-\SetKwData{Space}{ }
-\SetKwData{Parent}{parent}
-\SetKwData{Rank}{rank}
-\SetKwData{Set}{Set}
-\SetKwData{List}{List}
-
-\SetKwFunction{Max}{max}
-\SetKwFunction{Insert}{insert}
-\SetKwFunction{ListCos}{List}
-\SetKwFunction{Head}{head}
-\SetKwFunction{Len}{len}
-\SetKwFunction{SetCos}{Set}
-
-
-\SetKwProg{Fn}{}{}
-
-\SetKwFunction{MaxInterval}{maxInterval}
-\SetKwFunction{ComputePredecessor}{computePredecessor}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-\SetKwFunction{}{}
-
-\SetKw{Matrix}{matrix}
-
-\caption{\protect\Set \protect\MaxInterval{\protect\Int[] a, \protect\Int[] b, \protect\Int[] w,  \protect\Int n}}
-$\{$ordina gli intervalli per estremi di fine crescenti$\}$\;
-\Int[] pred = \ComputePredecessor{a, b, n}\;
-\Int[] DP = \New \Int$[0\dots n]$\;
-DP[0] = 0\;
-\For{\Int i = 1 \To n}{
-	DP[i] = \Max{DP[i - 1], w[i] + DP[pred[i]]}\;
-}
-\Int i = n\;
-\Set S = \SetCos{}\;
-\While{i $>$ 0}{
-	\uIf{DP[i - 1] $>$ w[i] + DP[pred[i]]}{
-		i = i - 1\;
-	}
-	\Else{
-		S.\Insert{i}\;
-		i = pred[i]\;
-	}
-}
-\Return S\;
-\end{algorithm}
+\input{Pseudocodice/112_MaxInterval}
 \subsubsection{Costo computazionale}
 \begin{itemize}
 	\item Ordinamento intervalli: $O(n\log n)$.

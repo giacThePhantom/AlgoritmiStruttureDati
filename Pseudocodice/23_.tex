@@ -1,0 +1,26 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKw{Nil}{nil}
+\SetKw{Return}{return}
+\SetKw{And}{and}
+\SetKwData{Tree}{Tree}
+\SetKwData{Item}{Item}
+\SetKwFunction{LookupNode}{lookupNode}
+\SetKwFunction{Value}{value}
+\SetKwFunction{Key}{key}
+\SetKwFunction{Left}{left}
+\SetKwFunction{Right}{right}
+
+\caption{\protect\Tree \protect\LookupNode(\protect\Tree t, \protect\Item k)}
+
+\Tree u = t\;
+\While{u $\neq$ \Nil \And u.\Key $\neq$ k}{
+	\uIf{k $<$ u.\Key}{
+		u = u.\Left\;	
+	}
+	\Else{
+		u = u.\Right\;	
+	}
+}
+\Return u\;
+\end{algorithm}

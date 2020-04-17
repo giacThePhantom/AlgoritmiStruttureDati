@@ -1,0 +1,77 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKwData{Item}{Item}
+\SetKwData{Tree}{Tree}
+\SetKw{Boolean}{boolean}
+\SetKw{Int}{int}
+\SetKw{This}{this}
+\SetKw{Return}{return}
+\SetKw{Prec}{precondition}
+\SetKw{New}{new}
+\SetKw{Space}{ }
+\SetKw{Nil}{nil}
+\SetKw{Self}{self}
+\SetKwProg{Fn}{}{}{}
+\SetKwFunction{TreeCos}{Tree}
+\SetKwFunction{InsertChild}{insertChild}
+\SetKwFunction{InsertSibling}{insertSibling}
+\SetKwFunction{DeleteChild}{deleteChild}
+\SetKwFunction{DeleteSibling}{deleteSibling}
+\SetKwFunction{Delete}{delete}
+\SetKwFunction{RightSibling}{rightSibling}
+\SetKwFunction{LeftMostChild}{leftMostChild}
+
+\caption{\protect\Tree}
+
+\begin{multicols}{2}
+\Tree parent    \comment{Reference al padre}
+\Tree child		\comment{Reference al primo figlio}
+\Tree sibling 	\comment{Reference al prossimo fratello}
+\Item value		\comment{Valore memorizzato nel nodo}
+
+
+
+
+
+\Fn{\TreeCos{\Item v}}{
+	\Tree t = \New \Tree\;
+	t.value = v\;
+	t.parent = t.child = t.sibling = \Nil\;
+	\Return t\;
+}
+
+\Fn{\InsertChild{\Tree t}}{
+	t.parent = \Self\;
+	t.sibling = child\;
+    child = t\;
+}
+
+\Fn{\InsertSibling{\Tree t}}{
+	t.parent = parent\;
+	t.sibling = sibling\;
+	sibling = t\;
+}
+
+\Fn{\DeleteChild{}}{
+	\Tree newChild = child.\RightSibling{}
+	\Delete{child}\;
+	child = newChild\;
+}
+
+\Fn{\DeleteSibling{}}{
+	\Tree newBrother = sibling.\RightSibling{}\;
+	\Delete{sibling}\;
+	sibling = newBrother\;
+	
+}
+\Fn{\Delete{\Tree t}}{
+	\Tree u = t.\LeftMostChild{}\;
+	\While{u $\neq$ \Nil}{
+		\Tree next = u.\RightSibling{}\;
+		\Delete{u}\;
+		u = next\;	
+	}
+}
+\end{multicols}
+\end{algorithm}

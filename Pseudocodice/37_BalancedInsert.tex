@@ -1,0 +1,81 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Nil}{nil}
+\SetKw{Return}{return}
+\SetKw{New}{new}
+\SetKw{Int}{int}
+\SetKw{And}{and}
+\SetKw{Delete}{delete}
+\SetKwData{Tree}{Tree}
+\SetKwData{Red}{RED}
+\SetKwData{Black}{BLACK}
+\SetKwData{Item}{Item}
+\SetKwFunction{Value}{value}
+\SetKwFunction{Key}{key}
+\SetKwFunction{Left}{left}
+\SetKwFunction{Right}{right}
+\SetKwFunction{Color}{color}
+\SetKwFunction{BalancedInsert}{balancedInsert}
+\SetKwFunction{RotateLeft}{rotateLeft}
+\SetKwFunction{RotateRight}{rotateRight}
+\caption{\protect\BalancedInsert{\protect\Tree t}}
+t.\Color{} $\leftarrow$  \Red\;
+\While{t $\neq$ \Nil}{
+	\Tree p $\leftarrow$ t.\Parent  \comment{padre}
+	\Tree n	\comment{nonno}
+	\Tree z \comment{zio}
+	\uIf{p $\neq$ \Nil}{
+		n $\leftarrow$ p.\Parent\;
+	}
+	\Else{
+		n $\leftarrow$ \Nil\;	
+	}
+	\uIf{n == \Nil}{
+		z $\leftarrow$ \Nil\;		
+	}
+	\Else{
+		\uIf{n.\Left == p}{
+			z $\leftarrow$ p.\Right\;		
+		}	
+		\Else{
+			z $\leftarrow$ p.\Left\;		
+		}
+	}
+	\uIf{p == \Nil}{	\comment{Caso 1}
+		t.\Color $\leftarrow$ \Black\;
+		t $\leftarrow$ \Nil\;	
+	}
+	\uElseIf{p.\Color == \Black}{	\comment{Caso 2}
+		t $\leftarrow$ \Nil	
+	}
+	\uElseIf{z.\Color == \Red}{	\comment{Caso 3}
+		p.\Color $\leftarrow$ z.\Color $\leftarrow$ \Black\;
+		n.\Color $\leftarrow$ \Red\;
+		t $\leftarrow$ n\;
+	}
+	\Else{
+		\uIf{t == p.\Right \And p == n.\Left}{	\comment{Caso 4a}
+			\RotateLeft{p}\;
+			t $\leftarrow$ p\;
+		}
+		\uElseIf{t == p.\Left \And p == n.\Right}{	\comment{Caso 4b}
+			\RotateRight{p}\;
+			t $\leftarrow$ p\;
+		}	
+		\Else{
+			\uIf{t == p.\Left \And p == n.\Left}{ \comment{Caso 5a}
+				\RotateRight{n}\;
+			}
+			\ElseIf{t == p.\Right \And p == n.\Right}{	\comment{Caso 5b}
+				\RotateLeft{n}\;
+			}
+			p.\Color $\leftarrow$ \Black\;
+			n.\Color $\leftarrow$ \Red\;
+			t $\leftarrow$ \Nil\;
+		}
+	
+	
+	}
+}
+\end{algorithm}

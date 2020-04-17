@@ -1,0 +1,23 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKw{Boolean}{boolean}
+\SetKw{True}{True}
+\SetKwData{Item}{Item}
+\SetKwData{Queue}{Queue}
+\SetKwComment{comment}{$\%$}{}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Enqueue}{enqueue}
+\SetKwFunction{Dequeue}{dequeue}
+\SetKwFunction{Top}{top}
+
+\caption{\protect\Queue}
+
+\comment{Restituisce \True se la coda \`e vuota}
+\Boolean \IsEmpty{}\;
+\comment{Inserisce $v$ in fondo alla coda}
+\Enqueue{\Item $v$}\;
+\comment{Estrae l'elemento in testa alla coda e lo restituisce}
+\Item \Dequeue{}\;
+\comment{Legge l'elemento in testa alla coda}
+\Item \Top{}\;
+\end{algorithm}

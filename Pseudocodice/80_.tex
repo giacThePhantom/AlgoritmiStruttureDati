@@ -1,0 +1,46 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+
+\SetKwFunction{V}{V}
+\SetKwFunction{MfsetCos}{Mfset}
+\SetKwFunction{Find}{find}
+\SetKwFunction{Merge}{merge}
+\SetKwFunction{Cc}{cc}
+\SetKwFunction{Adj}{adj}
+
+\SetKwProg{Fn}{}{}
+
+\caption{\protect\Mfset}
+\Int[] parent\;
+\Int[] rank[]\;
+\Mfset\Space\Fn{\MfsetCos{\Int n}}{
+	\Mfset t = \New \MfsetCos{}\;
+	t.\Parent = \Int[1$\dots$n]\;
+	t.\Rank = \Int[1$\dots$n]\;
+	\For{\Int i = 1 \To n}{
+		t.\Parent[i] = i\;
+		t.\Rank[i] = 0\;	
+	}
+	\Return t\;
+}
+\end{algorithm}

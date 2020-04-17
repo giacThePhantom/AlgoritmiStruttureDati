@@ -1,0 +1,35 @@
+ \begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{Return}{return}
+
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+
+\SetKwFunction{V}{V}
+\SetKwFunction{MfsetCos}{Mfset}
+\SetKwFunction{Find}{find}
+\SetKwFunction{Merge}{merge}
+\SetKwFunction{Cc}{cc}
+\SetKwFunction{Adj}{adj}
+
+\caption{\protect\Mfset \protect\Cc{\protect\Graph G}}
+\Mfset M = \MfsetCos{G.\N}\;
+\ForEach{u $\in$ G.\V{}}{
+	\ForEach{v $\in$ G.\Adj{u}}{
+		M.\Merge{u, v}\;	
+	}
+}
+\Return M\;
+\end{algorithm}

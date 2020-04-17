@@ -1,0 +1,43 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKwData{Item}{Item}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwFunction{PriorityQueueCos}{PriorityQueue}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Min}{min}
+\SetKwFunction{DeleteMin}{DeleteMin}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Decrease}{decrease}
+\SetKwFunction{MaxHeapRestore}{maxHeapRestore}
+\SetKwFunction{HeapBuild}{heapBuild}
+\SetKwFunction{Heapsort}{heapsort}
+\SetKwFunction{L}{l}
+\SetKwFunction{R}{r}
+\SetKwFunction{P}{p}
+\SetKwFunction{Swap}{swap}
+\SetKwProg{Fn}{}{}
+
+\caption{\protect\PriorityQueue}
+
+\Int capacity\;
+\Int dim\;
+\PriorityItem[] H\;
+\PriorityQueue \Fn{\PriorityQueueCos{\Int n}}{
+	\PriorityQueue t = \New \PriorityQueue\;
+	t.capacity = n\;
+	t.dim = 0\;
+	t.H = \New \PriorityItem[$1, \dots, n$]\;
+	\Return t\;
+}
+\end{algorithm}

@@ -1,0 +1,36 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{To}{to}
+\SetKw{Down}{down}
+\SetKw{And}{and}
+\SetKwData{Item}{item}
+\SetKwFunction{Min}{min}
+\SetKwFunction{InsertionSort}{insertionSort}
+\SetKwFunction{Merge}{merge}
+\caption{\protect\Merge{\protect\Item[] A, \protect\Int first, \protect\Int last, \protect\Int mid}}
+\Int i, j, k , h\;
+i = first\;
+j = mid + 1\;
+k = first\;
+\While{i $\le$ mid \And j $\le$ last}{
+	\uIf{A[i] $\le$ A[j]}{
+		B[k] = A[i]\;
+		i += 1\;	
+	}
+	\Else{
+		B[k] = A[j]\;
+		j += 1\;	
+	}
+	k += 1\;
+}
+j = last\;
+\For{h = mid \Down \To i}{
+	A[j] = A[h]\;
+	j -= 1\;
+}
+\For{j = first \To k-1}{
+	A[j] = B[j]\;
+}
+\end{algorithm}

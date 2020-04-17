@@ -1,0 +1,18 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwData{Item}{Item}
+\SetKwData{Dictionary}{Dictionary}
+\SetKwComment{comment}{$\%$}{}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Remove}{remove}
+\SetKwFunction{Lookup}{lookup}
+
+\caption{\protect\Dictionary}
+
+\comment{Restituisce il valore associato alla chiave $k$ se presente, \textbf{nil} altrimenti}
+\Item \Lookup{\Item $k$}\;
+\comment{Associa il valore $v$ alla chiave $k$}
+\Insert{\Item $k$, \Item $v$}\;
+\comment{Rimuove l'associazione della chiave $k$}
+\Remove{\Item $k$}\;
+\end{algorithm}

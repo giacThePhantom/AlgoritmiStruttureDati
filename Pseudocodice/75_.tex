@@ -1,0 +1,40 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{Precondition}{precondition:}
+\SetKwData{Item}{Item}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwFunction{PriorityQueueCos}{PriorityQueue}
+\SetKwFunction{PriorityItemCos}{PriorityItem}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Min}{min}
+\SetKwFunction{DeleteMin}{DeleteMin}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Decrease}{decrease}
+\SetKwFunction{MinHeapRestore}{minHeapRestore}
+\SetKwFunction{HeapBuild}{heapBuild}
+\SetKwFunction{Heapsort}{heapsort}
+\SetKwFunction{L}{l}
+\SetKwFunction{R}{r}
+\SetKwFunction{P}{p}
+\SetKwFunction{Swap}{swap}
+\SetKwProg{Fn}{}{}
+
+\caption{\protect\Item \protect\DeleteMin{}}
+
+\Precondition dim $>$ 0\;
+\Swap{H, 1, dim}\;
+dim -= 1\;
+\MinHeapRestore{H, 1, dim}\;
+\Return H[dim+1].value\;
+\end{algorithm}

@@ -1,0 +1,37 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKwData{Graph}{Graph}
+\SetKwData{Set}{Stack}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{SetCos}{Stack}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{dfs}
+\SetKwFunction{Insert}{push}
+\SetKwFunction{Remove}{pop}
+\SetKwFunction{Empty}{empty}
+\SetKwFunction{CC}{cc}
+\SetKwFunction{CCdfs}{ccdfs}
+
+\caption{\protect\Int[] \protect\CCdfs{\protect\Graph G, \protect\Int counter, \protect\Node u, \protect\Int[] id}}
+
+id[u] = counter\;
+\ForEach{v $\in$ G.\Adj{u}}{
+	\If{id[v] == 0}{
+		\CCdfs{G, counter, v, id}\;	
+	}
+}
+\end{algorithm}

@@ -1,0 +1,30 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKw{Nil}{nil}
+\SetKw{Return}{return}
+\SetKw{And}{and}
+\SetKwData{Tree}{Tree}
+\SetKwFunction{LookupNode}{lookupNode}
+\SetKwFunction{Value}{value}
+\SetKwFunction{Key}{key}
+\SetKwFunction{Left}{left}
+\SetKwFunction{Right}{right}
+\SetKwFunction{Max}{max}
+\SetKwFunction{SuccessorNode}{successorNode}
+\SetKwFunction{Parent}{parent}
+\caption{\protect\SuccessorNode{\protect\Tree t}}
+\If{t = \Nil}{
+	\Return t\;
+}
+\uIf{t.\Left $\neq$ \Nil}{
+	\Return \Max{t.\Left}\;
+}
+\Else{
+	\Tree p = t.\Parent{}\;
+	\While{p $\neq$ \Nil \And t = p.\Left}{
+		t = p\;
+		p = p.\Parent\;	
+	}
+	\Return p\;
+}
+\end{algorithm}

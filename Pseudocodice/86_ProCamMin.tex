@@ -1,0 +1,77 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Bool}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{Node}{Node}
+\SetKwData{DataStructure}{DataStructure}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{DataStructureCos}{Datastructure}
+\SetKwFunction{Add}{add}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Extract}{extract}
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{ProCamMin}{shortestPath}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+
+\caption{(\protect\Int[], \protect\Int[])  \protect\ProCamMin{\protect\Graph G, \protect\Node s}}
+\DataStructure S = \DataStructureCos{}\;
+S.\Add{s}\;
+\While{\Not S.\IsEmpty{}}{
+	\Int u = S.\Extract{}\;
+	b[u] = \False\;
+	\ForEach{v $\in$ G.\Adj{u}}{
+		\If{d[u]+G.w(u, v) $<$ d[v]}{
+			\uIf{\Not b[v]}{
+				S.\Add{v}\;
+				b[v] = \True\;
+			}
+			\Else{
+				\comment{Azione da svolgere nel caso $v$ sia gi\`a presente in $S$}
+			}
+			T[v] = u\;
+			d[v] = d[u] + G.w(u, v)\;
+		}
+	}
+}
+\Return (T, d)\;
+\end{algorithm}

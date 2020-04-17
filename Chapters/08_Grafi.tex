@@ -40,31 +40,7 @@ nell'odinamento.
 \item Un grafo $G'=(V', E')$ \`e una componente fortemente connessa di $G$ se e solo se \`e un sottografo connesso e massimale di $G$. 
 \end{itemize}
 \subsection{Specifica}
-\begin{algorithm}
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKwData{Set}{Set}
-\SetKwData{Node}{Node}
-\SetKwFunction{GraphCos}{Graph}
-\SetKwFunction{V}{V}
-\SetKwFunction{Size}{size}
-\SetKwFunction{Adj}{adj}
-\SetKwFunction{InsertNode}{insertNode}
-\SetKwFunction{InsertEdge}{insertEdge}
-\SetKwFunction{DeleteNode}{deleteNode}
-\SetKwFunction{DeleteEdge}{deleteEdge}
-\caption{Graph}
-
-\GraphCos{}	\comment{Crea un nuovo grafo}
-\Set \V{}	\comment{Restituisce l'insieme di tutti i nodi}
-\Int \Size{} \comment{Restituisce il numero di nodi}
-\Set \Adj{\Node u} \comment{Restituisce i nodi adiacenti al nodo u}
-\InsertNode{\Node u} \comment{Inserisce il nodo u nel grafo}
-\InsertEdge{\Node u, \Node v}	\comment{Inserisce l'arco tra u e v nel grafo}
-\DeleteNode{\Node u}	\comment{Elimina il nodo u dal grafo}
-\DeleteEdge{\Node u, \Node v}	\comment{Elimina l'arco tra i nodi u e v dal grafo}
-\end{algorithm}
+\input{Pseudocodice/45_Graph}
 In alcuni casi il grafo \`e dinamico ma sono possibili solo inserimenti e non \`e necessaria la parte di eliminazione (grafo caricato all'inizio).
 \section{Memorizzare grafi}
 \subsection{Matrice di adiacenza}
@@ -102,206 +78,22 @@ Gli elementi della lista puntata sono coppie nodo di arrivo-peso.
 \end{itemize}
 \subsection{Iterazioni su nodi e archi}
 \begin{multicols}{2}
-\begin{algorithm}[H]
-\SetKwFunction{V}{V}
-\caption{Iterazione su tutti i nodi del grafo}
-\ForEach{u $\in$ G.\V{}}{
-	Esegui operazioni sul nodo u
-}
-\end{algorithm}
+\input{Pseudocodice/46_Iterazione_su_tutti_i_nodi_del_grafo}
 \columnbreak
-\begin{algorithm}[H]
-\SetKwFunction{V}{V}
-\SetKwFunction{Adj}{adj}
-\caption{Iterazione su tutti i nodi e archi del grafo}
-\ForEach{u $\in$ G.\V{}}{
-	Esegui operazioni sul nodo u\;
-	\ForEach{v $\in$ G.\Adj{u}}{
-		Esegui operazioni sull'arco (u, v)	
-	}
-}
-\end{algorithm}
+\input{Pseudocodice/47_Iterazione_su_tutti_i_nodi_e_archi_del_grafo}
 \end{multicols}
 \section{Visite dei grafi}
 Dato un grafo $G=(V,E)$ e $r\in V$ radice o sorgente si intende per visita visitare una e una sola volta tutti i nodi che possono essere raggiunti da $r$.
-\begin{algorithm}
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKwData{Graph}{Graph}
-\SetKwData{Set}{Set}
-\SetKwData{Node}{Node}
-\SetKwFunction{GraphCos}{Graph}
-\SetKwFunction{SetCos}{Set}
-\SetKwFunction{V}{V}
-\SetKwFunction{Size}{size}
-\SetKwFunction{Adj}{adj}
-\SetKwFunction{InsertNode}{insertNode}
-\SetKwFunction{InsertEdge}{insertEdge}
-\SetKwFunction{DeleteNode}{deleteNode}
-\SetKwFunction{DeleteEdge}{deleteEdge}
-\SetKwFunction{GraphTraversal}{graphTraversal}
-\SetKwFunction{Insert}{insert}
-\SetKwFunction{Remove}{remove}
-\caption{\protect\GraphTraversal{\protect\Graph G, \protect\Node r}}
-
-\Set S = \SetCos{} \comment{Insieme generico}
-S.\Insert{r}	\comment{Da specificare}
-$\{$Marca il nodo r$\}$\;
-\While{S.\Size{} $>$ 0}{
-	\Node u = S.\Remove{}	\comment{Da specificare}
-	$\{$Visita il nodo u$\}$\;
-	\ForEach{v $\in$ G.\Adj{u}}{
-		$\{$Visita l'arco (u,v)$\}$\;
-		\If{v non \`e stato marcato}{
-			Marca il nodo v\;
-			S.\Insert{v}	\comment{Da specificare}
-		}
-	}
-}
-
-
-\end{algorithm}
+\input{Pseudocodice/48_GraphTraversal}
 \subsection{Visita in ampiezza o breadth-first search}
 In questo tipo di visita si visitano i nodi per livelli crescenti a partire dalla sorgente. Gli obiettivi di questa visita sono di visitare i nodi a 
 distanza $k$ prima dei nodi a distanza $k+1$, calcolare il cammino pi\`u breve da $r$ a tutti gli altri nodi (distanze misurate come numero di archi 
 attraversati). Generare un albero breadth-first contenente tutti i nodi raggiungibili da $r$ tale per cui il cammino dalla radice $r$ al nodo $u$ 
 nell'albero corrisponde al cammino pi\`u breve nel grafo.
-\begin{algorithm}
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKwData{Graph}{Graph}
-\SetKwData{Set}{Queue}
-\SetKwData{Node}{Node}
-\SetKwFunction{GraphCos}{Graph}
-\SetKwFunction{SetCos}{Queue}
-\SetKwFunction{V}{V}
-\SetKwFunction{Size}{size}
-\SetKwFunction{Adj}{adj}
-\SetKwFunction{InsertNode}{insertNode}
-\SetKwFunction{InsertEdge}{insertEdge}
-\SetKwFunction{DeleteNode}{deleteNode}
-\SetKwFunction{DeleteEdge}{deleteEdge}
-\SetKwFunction{GraphTraversal}{bfs}
-\SetKwFunction{Insert}{enqueue}
-\SetKwFunction{Remove}{dequeue}
-\SetKwFunction{Empty}{empty}
-\caption{\protect\GraphTraversal{\protect\Graph G, \protect\Node r}}
-
-\Set Q = \SetCos{} \;
-Q.\Insert{r}\;
-\Boolean[] visited = \New \Boolean[G.\Size{}]\;
-\ForEach{u $\in$ G.\V{} - $\{$r$\}$}{
-	visited[u] = \False\;
-}
-visited[r] = \True\;
-\While{\Not Q.\Empty{}}{
-	\Node u = Q.\Remove{}\;
-	$\{$Visita il nodo u$\}$\;
-	\ForEach{v $\in$ G.\Adj{u}}{
-		$\{$Visita l'arco (u,v)$\}$\;
-		\If{\Not visited[v]}{
-			visited[v] = \True\;
-			Q.\Insert{v}\;
-		}
-	}
-}
-\end{algorithm}
+\input{Pseudocodice/49_GraphTraversal}
 \subsubsection{Calcolo dei cammini pi\`u brevi o del numero di Erd\"os}
 L'algoritmo di erdos oltre a determinare la lunghezza del cammino pi\`u breve genera l'arco di copertura bfs che contiene tali cammini.\\
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{Nil}{nil}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKwData{Graph}{Graph}
-\SetKwData{Set}{Queue}
-\SetKwData{Node}{Node}
-\SetKwFunction{GraphCos}{Graph}
-\SetKwFunction{SetCos}{Queue}
-\SetKwFunction{V}{V}
-\SetKwFunction{Size}{size}
-\SetKwFunction{Adj}{adj}
-\SetKwFunction{InsertNode}{insertNode}
-\SetKwFunction{InsertEdge}{insertEdge}
-\SetKwFunction{DeleteNode}{deleteNode}
-\SetKwFunction{DeleteEdge}{deleteEdge}
-\SetKwFunction{GraphTraversal}{erdos}
-\SetKwFunction{Insert}{enqueue}
-\SetKwFunction{Remove}{dequeue}
-\SetKwFunction{Empty}{empty}
-\caption{\protect\GraphTraversal{\protect\Graph G, \protect\Node r, \protect\Int[] erdos, \protect\Node[] parents}}
-
-\Set Q = \SetCos{}\; 
-Q.\Insert{r}\;
-\ForEach{u $\in$ G.\V{} - $\{$r$\}$}{
-	erdos[u] = $\infty$\;
-}
-erdos[r] = 0\;
-parents[r] = \Nil\;
-\While{\Not Q.\Empty{}}{
-	\Node u = Q.\Remove{}\;
-	$\{$Visita il nodo u$\}$\;
-	\ForEach{v $\in$ G.\Adj{u}}{
-		\If{erdos[v] = $\infty$}{
-			erdos[v] = erdos[u] + 1\;
-			parents[v] = u\;			
-			Q.\Insert{v}\;
-		}
-	}
-}
-\end{algorithm}
-\begin{algorithm}
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{Nil}{nil}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{Print}{print}
-\SetKwData{Graph}{Graph}
-\SetKwData{Set}{Queue}
-\SetKwData{Node}{Node}
-\SetKwFunction{GraphCos}{Graph}
-\SetKwFunction{SetCos}{Queue}
-\SetKwFunction{V}{V}
-\SetKwFunction{Size}{size}
-\SetKwFunction{Adj}{adj}
-\SetKwFunction{InsertNode}{insertNode}
-\SetKwFunction{InsertEdge}{insertEdge}
-\SetKwFunction{DeleteNode}{deleteNode}
-\SetKwFunction{DeleteEdge}{deleteEdge}
-\SetKwFunction{GraphTraversal}{printPath}
-\SetKwFunction{Insert}{enqueue}
-\SetKwFunction{Remove}{dequeue}
-\SetKwFunction{Empty}{empty}
-\caption{\protect\GraphTraversal{\protect\Node r, \protect\Node s, \protect\Node[] parents}}
-
-\uIf{r = s}{
-	\Print s\;
-}
-\uElseIf{parents[s] == \Nil}{
-	\Print "error"\;
-}
-\Else{
-	\GraphTraversal{r, parents[s], parents}\;
-	\Print s\;
-}
-\end{algorithm}
+\input{Pseudocodice/51_GraphTraversal}
 \subsubsection{Complessit\`a}
 La complessit\`a di una bfs \`e $O(m+n)$ in quanto ognuno degli $n$ nodi viene salvato nella coda al pi\`u una volta. Ogni volta che un nodo viene estratto
 tutti i suoi archi vengono analizzati una sola volta. Il numero di archi analizzati \`e pertanto $m=\sum\limits_{u\in V}out_d(u)$, dove $out_d(u)$ \`e 
@@ -312,94 +104,14 @@ e cos\`i via. Questo tipo di ricerca \`e spesso una subroutine in altri problemi
 genera pertanto una foresta formata da una collezione di alberi depth-first. Si realizza attraverso uno stack che viene reso implicito attraverso la 
 ricorsione.
 \subsubsection{Implementazione ricorsiva}
-\begin{algorithm}
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKwData{Graph}{Graph}
-\SetKwData{Set}{Queue}
-\SetKwData{Node}{Node}
-\SetKwFunction{GraphCos}{Graph}
-\SetKwFunction{SetCos}{Queue}
-\SetKwFunction{V}{V}
-\SetKwFunction{Size}{size}
-\SetKwFunction{Adj}{adj}
-\SetKwFunction{InsertNode}{insertNode}
-\SetKwFunction{InsertEdge}{insertEdge}
-\SetKwFunction{DeleteNode}{deleteNode}
-\SetKwFunction{DeleteEdge}{deleteEdge}
-\SetKwFunction{GraphTraversal}{dfs}
-\SetKwFunction{Insert}{enqueue}
-\SetKwFunction{Remove}{dequeue}
-\SetKwFunction{Empty}{empty}
-\caption{\protect\GraphTraversal{\protect\Graph G, \protect\Node u, \protect\Boolean[] visited}}
-visited[u] = \True\;
-$\{$visita il nodo u in pre-order$\}$\;
-\ForEach{v $\in$ G.\Adj{u}}{
-	\If{\Not visited[v]}{
-		$\{$Visita l'arco (u,v)$\}$\;
-		\GraphTraversal{G, v, visited}\;
-	}
-}
-$\{$visita il nodo u in post-order$\}$\;
-\end{algorithm}
+\input{Pseudocodice/52_GraphTraversal}
 \subsubsection{Implementazione iterativa}
 Una dfs ricorsiva in casi di grafi molto profondi pu\`o superare la dimensione dello stack del linguaggio, si rende pertanto esplicito lo stack utilizzando 
 una versione iterativa. Un nodo pu\`o essere inserito nella pila pi\`u volte in quanto il controllo viene fatto all'estrazione. Ha complessit\`a $O(m+n)$ 
 con $O(m)$ visite degli archi, $O(m)$ estrazioni e inserimenti e $O(n)$ visite dei nodi. Per la visita in post order quando un nodo viene scoperto viene
 inserito nello stack con il tag \emph{discovery}, quando viene estratto un nodo con il tag \emph{discovery} viene re-inserito con il tag \emph{finish} e 
 vengono inseriti tutti i suoi vicini. Quando viene estratto un nodo con il tag \emph{finish} viene fatta la post-visita.
-\begin{algorithm}
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKwData{Graph}{Graph}
-\SetKwData{Set}{Stack}
-\SetKwData{Node}{Node}
-\SetKwFunction{GraphCos}{Graph}
-\SetKwFunction{SetCos}{Stack}
-\SetKwFunction{V}{V}
-\SetKwFunction{Size}{size}
-\SetKwFunction{Adj}{adj}
-\SetKwFunction{InsertNode}{insertNode}
-\SetKwFunction{InsertEdge}{insertEdge}
-\SetKwFunction{DeleteNode}{deleteNode}
-\SetKwFunction{DeleteEdge}{deleteEdge}
-\SetKwFunction{GraphTraversal}{dfs}
-\SetKwFunction{Insert}{push}
-\SetKwFunction{Remove}{pop}
-\SetKwFunction{Empty}{empty}
-\caption{\protect\GraphTraversal{\protect\Graph G, \protect\Node r}}
-
-\Set S = \SetCos{} \;
-S.\Insert{r}\;
-\Boolean[] visited = \New \Boolean[G.\Size{}]\;
-\ForEach{u $\in$ G.\V{}}{
-	visited[u] = \False\;
-}
-
-\While{\Not S.\Empty{}}{
-	\Node u = S.\Remove{}\;
-	\If{\Not visited[u]}{
-		$\{$Visita il nodo u in pre-order$\}$\;
-		visited[u] = \True\;
-		\ForEach{v $\in$ G.\Adj{u}}{
-			$\{$Visita l'arco (u,v)$\}$\;
-			S.\Insert{v}\;	
-	}	
-	}
-}
-\end{algorithm}
+\input{Pseudocodice/53_GraphTraversal}
 \newpage
 \subsubsection{Componenti connesse}
 Ci si pone il problema di verificare se il grafo \`e connesso e se non lo \`e di identificare le sue componenti connesse. Un grafo risulta connesso se al
@@ -407,180 +119,14 @@ termine della dfs tutti i suoi nodi sono marcati, altrimenti la visita deve rico
 del grafo. L'appartenenza ad una componente connessa viene identificata attraverso un vettore \emph{id[]} tale per cui \emph{id[u]} \`e l'identificatore
 della componente connessa di appartenenza.
 \begin{multicols}{2}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKwData{Graph}{Graph}
-\SetKwData{Set}{Stack}
-\SetKwData{Node}{Node}
-\SetKwFunction{GraphCos}{Graph}
-\SetKwFunction{SetCos}{Stack}
-\SetKwFunction{V}{V}
-\SetKwFunction{Size}{size}
-\SetKwFunction{Adj}{adj}
-\SetKwFunction{InsertNode}{insertNode}
-\SetKwFunction{InsertEdge}{insertEdge}
-\SetKwFunction{DeleteNode}{deleteNode}
-\SetKwFunction{DeleteEdge}{deleteEdge}
-\SetKwFunction{GraphTraversal}{dfs}
-\SetKwFunction{Insert}{push}
-\SetKwFunction{Remove}{pop}
-\SetKwFunction{Empty}{empty}
-\SetKwFunction{CC}{cc}
-\SetKwFunction{CCdfs}{ccdfs}
-
-\caption{\protect\Int[] \protect\CC{\protect\Graph G}}
-
-\Int[] id = \New \Int[G.\Size{}]\;
-\ForEach{u $\in$ G.\V{}}{
-	id[u] = 0\;
-}
-\Int counter = 0\;
-\ForEach{u $\in$ G.\V{}}{
-	\If{id[u] == 0}{
-		counter += 1\;
-		\CCdfs{G, counter, u, id}\;	
-	}
-}
-\Return id\;
-\end{algorithm}
+\input{Pseudocodice/54_CC}
 \columnbreak
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKwData{Graph}{Graph}
-\SetKwData{Set}{Stack}
-\SetKwData{Node}{Node}
-\SetKwFunction{GraphCos}{Graph}
-\SetKwFunction{SetCos}{Stack}
-\SetKwFunction{V}{V}
-\SetKwFunction{Size}{size}
-\SetKwFunction{Adj}{adj}
-\SetKwFunction{InsertNode}{insertNode}
-\SetKwFunction{InsertEdge}{insertEdge}
-\SetKwFunction{DeleteNode}{deleteNode}
-\SetKwFunction{DeleteEdge}{deleteEdge}
-\SetKwFunction{GraphTraversal}{dfs}
-\SetKwFunction{Insert}{push}
-\SetKwFunction{Remove}{pop}
-\SetKwFunction{Empty}{empty}
-\SetKwFunction{CC}{cc}
-\SetKwFunction{CCdfs}{ccdfs}
-
-\caption{\protect\Int[] \protect\CCdfs{\protect\Graph G, \protect\Int counter, \protect\Node u, \protect\Int[] id}}
-
-id[u] = counter\;
-\ForEach{v $\in$ G.\Adj{u}}{
-	\If{id[v] == 0}{
-		\CCdfs{G, counter, v, id}\;	
-	}
-}
-\end{algorithm}
+\input{Pseudocodice/55_CCdfs}
 \end{multicols}
 \subsubsection{Grafo non orientato aciclico}
-\begin{algorithm}
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{Return}{return}
-\SetKwData{Graph}{Graph}
-\SetKwData{Set}{Stack}
-\SetKwData{Node}{Node}
-\SetKwFunction{GraphCos}{Graph}
-\SetKwFunction{SetCos}{Stack}
-\SetKwFunction{V}{V}
-\SetKwFunction{Size}{size}
-\SetKwFunction{Adj}{adj}
-\SetKwFunction{InsertNode}{insertNode}
-\SetKwFunction{InsertEdge}{insertEdge}
-\SetKwFunction{DeleteNode}{deleteNode}
-\SetKwFunction{DeleteEdge}{deleteEdge}
-\SetKwFunction{GraphTraversal}{dfs}
-\SetKwFunction{Insert}{push}
-\SetKwFunction{Remove}{pop}
-\SetKwFunction{Empty}{empty}
-\SetKwFunction{CC}{cc}
-\SetKwFunction{CCdfs}{ccdfs}
-\SetKwFunction{HasCycle}{hasCycleRec}
+\input{Pseudocodice/56_HasCycle}
 
-\caption{\protect\Boolean[] \protect\HasCycle{\protect\Graph G, \protect\Node u, \protect\Node p, \protect\Boolean[] visited}}
-
-visited[u] = \True\;
-\ForEach{v $\in$ G.\Adj{u} - $\{$p$\}$}{
-	\uIf{visited[u]}{
-		\Return \True\;	
-	}
-	\ElseIf{\HasCycle{G, v, u, visited}}{
-		\Return \True\;	
-	}
-}
-\Return \False\;
-\end{algorithm}
-
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{Nil}{nil}
-\SetKw{Return}{return}
-\SetKwData{Graph}{Graph}
-\SetKwData{Set}{Stack}
-\SetKwData{Node}{Node}
-\SetKwFunction{GraphCos}{Graph}
-\SetKwFunction{SetCos}{Stack}
-\SetKwFunction{V}{V}
-\SetKwFunction{Size}{size}
-\SetKwFunction{Adj}{adj}
-\SetKwFunction{InsertNode}{insertNode}
-\SetKwFunction{InsertEdge}{insertEdge}
-\SetKwFunction{DeleteNode}{deleteNode}
-\SetKwFunction{DeleteEdge}{deleteEdge}
-\SetKwFunction{GraphTraversal}{dfs}
-\SetKwFunction{Insert}{push}
-\SetKwFunction{Remove}{pop}
-\SetKwFunction{Empty}{empty}
-\SetKwFunction{CC}{cc}
-\SetKwFunction{CCdfs}{ccdfs}
-\SetKwFunction{HasCycleRec}{hasCycleRec}
-\SetKwFunction{HasCycle}{hasCycle}
-
-\caption{\protect\Boolean[] \protect\HasCycle{\protect\Graph G}}
-
-\Boolean[] visited = \New \Boolean[G.\Size{}]\;
-\ForEach{u $\in$ G.\V{}}{
-	visited[u] = \False\;
-}
-\ForEach{u $\in$ G.\V{}}{
-	\If{\Not visited[u]}{
-		\If{\HasCycleRec{G, u, \Nil, visited}}{
-			\Return \True\;	
-		}
-	}
-}
-\Return \False\;
-\end{algorithm}
+\input{Pseudocodice/57_HasCycle}
 \subsubsection{Grafo orientato aciclico}
 \paragraph{Classificazione degli archi}
 Ogni qual volta si esamina un arco da un nodo marcato ad un nodo non marcato tale arco diventa un arco dell'albero di copertura dfs $T$. Gli archi non 
@@ -592,63 +138,7 @@ inclusi nell'albero possono essere divisi in tre categorie:
 \end{itemize}
 Indicato con time un contatore, il vettore \emph{dt} il discovery time, o tempo di scoperta di un nodo e \emph{ft} il finish time o tempo di fine di un 
 nodo.\\
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Nil}{nil}
-\SetKw{Return}{return}
-\SetKwData{Graph}{Graph}
-\SetKwData{Set}{Stack}
-\SetKwData{Node}{Node}
-\SetKwFunction{GraphCos}{Graph}
-\SetKwFunction{SetCos}{Stack}
-\SetKwFunction{V}{V}
-\SetKwFunction{Size}{size}
-\SetKwFunction{Adj}{adj}
-\SetKwFunction{InsertNode}{insertNode}
-\SetKwFunction{InsertEdge}{insertEdge}
-\SetKwFunction{DeleteNode}{deleteNode}
-\SetKwFunction{DeleteEdge}{deleteEdge}
-\SetKwFunction{GraphTraversal}{dfs}
-\SetKwFunction{Insert}{push}
-\SetKwFunction{Remove}{pop}
-\SetKwFunction{Empty}{empty}
-\SetKwFunction{CC}{cc}
-\SetKwFunction{DfsSchema}{dfs-schema}
-\SetKwFunction{HasCycleRec}{hasCycleRec}
-\SetKwFunction{HasCycle}{hasCycle}
-
-\caption{\protect\DfsSchema{\protect\Graph G, \protect\Node u, \protect\Int$\&$ time, \protect\Int[] dt, \protect\Int[] ft}}
-$\{$Visita il nodo u in pre-order$\}$\;
-time += 1\;
-dt[u] = time\;
-\ForEach{v $\in$ G.\Adj{u}}{
-	$\{$Visita l'arco $(u, v)$ qualsiasi$\}$\;
-	\uIf{dt[v] = 0}{
-		$\{$Visita l'arco $(u, v)$ albero$\}$\;
-		\DfsSchema{G, v, time, dt, ft}\;
-	}
-	\uElseIf{dt[u] $>$ dt[v] \And ft[v] = 0}{
-		Visita l'arco $(u, v)$ indietro\;	
-	}
-	\uElseIf{dt[u] $<$ dt[v] \And ft[v] $\neq$ 0}{
-		Visita l'arco $(u, v)$ avanti\;	
-	}
-	\Else{
-		Visita l'arco $(u, v)$ attraversamento\;
-	}	
-}
-$\{$Visita il nodo u in post-order$\}$\;
-time +=1\;
-ft[u] = time\;
-\end{algorithm}
+\input{Pseudocodice/58_DfsSchema}
 Classificare gli archi permette di dimostrare propriet\`a rispetto a questa classificazione e pertanto costruire degli algoritmi migliori. In particolare 
 data una visita dfs di un grafo $G$ per ogni coppia di nodi $u, v\in V$ solo una delle seguenti condizioni \`e vera:
 \begin{itemize}
@@ -662,373 +152,31 @@ un grafo \`e aciclico se e solo se non esistono archi all'indietro nel grafo.
 Se esiste un ciclo, sia $u$ il primo nodo del ciclo che viene visitato e $(v, u$ un arco del ciclo. Il cammino che connette $v$ a $u$ verr\`a prima o poi
 visitato e da $v$ verr\`a scoperto l'arco all'indietro $(v, u)$. Se esiste un arco all'indietro $(u, v)$, dove $v$ \`e un antenato di $u$ allora esiste
 un cammino da $v$ a $u$ e un arco da $u$ a $v$, ovvero un ciclo.
-\begin{algorithm}
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Nil}{nil}
-\SetKw{Return}{return}
-\SetKwData{Graph}{Graph}
-\SetKwData{Set}{Stack}
-\SetKwData{Node}{Node}
-\SetKwFunction{GraphCos}{Graph}
-\SetKwFunction{SetCos}{Stack}
-\SetKwFunction{V}{V}
-\SetKwFunction{Size}{size}
-\SetKwFunction{Adj}{adj}
-\SetKwFunction{InsertNode}{insertNode}
-\SetKwFunction{InsertEdge}{insertEdge}
-\SetKwFunction{DeleteNode}{deleteNode}
-\SetKwFunction{DeleteEdge}{deleteEdge}
-\SetKwFunction{GraphTraversal}{dfs}
-\SetKwFunction{Insert}{push}
-\SetKwFunction{Remove}{pop}
-\SetKwFunction{Empty}{empty}
-\SetKwFunction{CC}{cc}
-\SetKwFunction{DfsSchema}{dfs-schema}
-\SetKwFunction{HasCycleRec}{hasCycleRec}
-\SetKwFunction{HasCycle}{hasCycle}
-
-\caption{\protect\HasCycle{\protect\Graph G, \protect\Node u, \protect\Int$\&$ time, \protect\Int[] dt, \protect\Int[] ft}}
-
-time += 1\;
-dt[u] = time\;
-\ForEach{v $\in$ G.\Adj{u}}{
-	\uIf{dt[v] == 0}{
-		\If{\HasCycle{G, v, time, dt, ft}}{
-			\Return \True\;		
-		}
-	}
-	\ElseIf{dt[u] $>$ dt[v] \And ft[v] == 0}{
-		\Return \True\;	
-	}
-}
-time +=1\;
-ft[u] = time\;
-\Return \False\;
-\end{algorithm}
+\input{Pseudocodice/59_HasCycle}
 \subsubsection{Ordinamento topologico}
 L'algoritmo per un ordinamento topologico consiste in una dfs in cui l'operazione di visita consiste nell'aggiungere il nodo in testa ad una lista a tempo
 di fine (ovvero post-ordine). L'output sar\`a pertanto una sequenza di nodi ordinata per tempo decrescente di fine. In questo modo quando un nodo \`e finito
 tutti i suoi discendenti sono stati aggiunti alla lista e aggiungendolo in testa \`e nell'ordine corretto. 
-\begin{algorithm}
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Nil}{nil}
-\SetKw{Return}{return}
-\SetKwData{Graph}{Graph}
-\SetKwData{Stack}{Stack}
-\SetKwData{Node}{Node}
-\SetKwFunction{GraphCos}{Graph}
-\SetKwFunction{StackCos}{Stack}
-\SetKwFunction{V}{V}
-\SetKwFunction{Size}{size}
-\SetKwFunction{Adj}{adj}
-\SetKwFunction{InsertNode}{insertNode}
-\SetKwFunction{InsertEdge}{insertEdge}
-\SetKwFunction{DeleteNode}{deleteNode}
-\SetKwFunction{DeleteEdge}{deleteEdge}
-\SetKwFunction{GraphTraversal}{dfs}
-\SetKwFunction{Insert}{push}
-\SetKwFunction{Remove}{pop}
-\SetKwFunction{Empty}{empty}
-\SetKwFunction{CC}{cc}
-\SetKwFunction{DfsSchema}{dfs-schema}
-\SetKwFunction{HasCycleRec}{hasCycleRec}
-\SetKwFunction{HasCycle}{hasCycle}
-\SetKwFunction{TopSort}{topSort}
-\SetKwFunction{TsDfs}{ts-dfs}
-
-\caption{\protect\Stack \protect\TopSort{\protect\Graph G}}
-
-\Stack S = \StackCos{}\;
-\Boolean[] visited = \Boolean[G.\Size{}]\;
-\ForEach{u $\in$ G.\V{}}{
-	visited[u] = \False\;
-}
-\ForEach{u $\in$ G.\V{}}{
-	\If{\Not visited[u]}{
-		\TsDfs{G, visited, S}\;
-	}
-}
-\Return S\;
-\end{algorithm}
-\begin{algorithm}
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Nil}{nil}
-\SetKw{Return}{return}
-\SetKwData{Graph}{Graph}
-\SetKwData{Stack}{Stack}
-\SetKwData{Node}{Node}
-\SetKwFunction{GraphCos}{Graph}
-\SetKwFunction{StackCos}{Stack}
-\SetKwFunction{Push}{push}
-\SetKwFunction{V}{V}
-\SetKwFunction{Size}{size}
-\SetKwFunction{Adj}{adj}
-\SetKwFunction{InsertNode}{insertNode}
-\SetKwFunction{InsertEdge}{insertEdge}
-\SetKwFunction{DeleteNode}{deleteNode}
-\SetKwFunction{DeleteEdge}{deleteEdge}
-\SetKwFunction{GraphTraversal}{dfs}
-\SetKwFunction{Insert}{push}
-\SetKwFunction{Remove}{pop}
-\SetKwFunction{Empty}{empty}
-\SetKwFunction{CC}{cc}
-\SetKwFunction{DfsSchema}{dfs-schema}
-\SetKwFunction{HasCycleRec}{hasCycleRec}
-\SetKwFunction{HasCycle}{hasCycle}
-\SetKwFunction{TopSort}{topSort}
-\SetKwFunction{TsDfs}{ts-dfs}
-
-\caption{\protect\Stack \protect\TsDfs{\protect\Graph G, \protect\Node u, \protect\Boolean[] visited, \protect\Stack S}}
-
-visited[u] = \True\;
-\ForEach{v $\in$ G.\Adj{u}}{
-	\If{\Not visited[v]}{
-		\TsDfs{G, v, visited, S}\;	
-	}
-}
-S.\Push{u}\;
-\end{algorithm}
+\input{Pseudocodice/61_TsDfs}
 \subsubsection{Algoritmo di Kosaraju}
 Utilizzato per trovare le componenti fortemente connesse di un grafo orientato. Per farlo effettua una visita dfs al grafo, calcola il grafo trasposto $G_t$
 ed esegue una visita dfs sul grafo $G_t$ utilizzando \emph{cc} esaminando i nodi in ordine inverso di tempo di fine della prima visita. Le componenti 
 connesse e i relativi alberi DF rappresentano le componenti fortemente connesse di $G$. (Sostituito dall'algoritmo di Tarjan che richiede una sola visita).
-\begin{algorithm}
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Nil}{nil}
-\SetKw{Return}{return}
-\SetKwData{Graph}{Graph}
-\SetKwData{Stack}{Stack}
-\SetKwData{Node}{Node}
-\SetKwFunction{GraphCos}{Graph}
-\SetKwFunction{StackCos}{Stack}
-\SetKwFunction{Push}{push}
-\SetKwFunction{V}{V}
-\SetKwFunction{Size}{size}
-\SetKwFunction{Adj}{adj}
-\SetKwFunction{InsertNode}{insertNode}
-\SetKwFunction{InsertEdge}{insertEdge}
-\SetKwFunction{DeleteNode}{deleteNode}
-\SetKwFunction{DeleteEdge}{deleteEdge}
-\SetKwFunction{GraphTraversal}{dfs}
-\SetKwFunction{Insert}{push}
-\SetKwFunction{Remove}{pop}
-\SetKwFunction{Empty}{empty}
-\SetKwFunction{CC}{cc}
-\SetKwFunction{DfsSchema}{dfs-schema}
-\SetKwFunction{HasCycleRec}{hasCycleRec}
-\SetKwFunction{HasCycle}{hasCycle}
-\SetKwFunction{TopSort}{topSort}
-\SetKwFunction{TsDfs}{ts-dfs}
-\SetKwFunction{Scc}{scc}
-\SetKwFunction{Transpose}{transpose}
-
-\caption{\protect\Int[] \protect\Scc{\protect\Graph G}}
-
-\Stack S = \TopSort{G}		\comment{First visit}
-\Graph $G^T$ = \Transpose{G}			\comment{Graph transposal}
-\Return cc{$G^T$, S}		\comment{Second visit}
-\end{algorithm}
+\input{Pseudocodice/62_Scc}
 Applicando l'algoritmo topologico si \`e sicuri che se un arco $(u, v)$ non appartiene ad un ciclo, $u$ viene listato prima di $v$ nella sequenza ordinata e
 gli archi di un ciclo vengono listati in un qualche ordine che \`e ininfluente. Si utilizza \emph{topSort()} per ottenere i nodi in ordine decrescente di 
 tempo di fine. Essendo che ogni passo di questo algoritmo richiede $O(n+m)$, la complessit\`a totale \`e $O(m+n)$.
 \paragraph{Calcolo del grafo trasposto}
 Dato un grafo orientato $G=(V, E)$ il corrispettivo grafo trasposto $G_t=(V, E_t)$ \`e un grafo con gli stessi nodi ma con gli archi orientati nel senso 
 opposto: $E_t=\{(u, v)|(v, u)\in E\}$. L'algoritmo per il suo calcolo ha costo $O(m+n)$.
-\begin{algorithm}
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Nil}{nil}
-\SetKw{Return}{return}
-\SetKwData{Graph}{Graph}
-\SetKwData{Stack}{Stack}
-\SetKwData{Node}{Node}
-\SetKwFunction{GraphCos}{Graph}
-\SetKwFunction{StackCos}{Stack}
-\SetKwFunction{Push}{push}
-\SetKwFunction{V}{V}
-\SetKwFunction{Size}{size}
-\SetKwFunction{Adj}{adj}
-\SetKwFunction{InsertNode}{insertNode}
-\SetKwFunction{InsertEdge}{insertEdge}
-\SetKwFunction{DeleteNode}{deleteNode}
-\SetKwFunction{DeleteEdge}{deleteEdge}
-\SetKwFunction{GraphTraversal}{dfs}
-\SetKwFunction{Insert}{push}
-\SetKwFunction{Remove}{pop}
-\SetKwFunction{Empty}{empty}
-\SetKwFunction{CC}{cc}
-\SetKwFunction{DfsSchema}{dfs-schema}
-\SetKwFunction{HasCycleRec}{hasCycleRec}
-\SetKwFunction{HasCycle}{hasCycle}
-\SetKwFunction{TopSort}{topSort}
-\SetKwFunction{TsDfs}{ts-dfs}
-\SetKwFunction{Scc}{scc}
-\SetKwFunction{Transpose}{transpose}
-
-\caption{\protect\Int[] \protect\Transpose{\protect\Graph G}}
-
-\Graph $G^T$ = \GraphCos{G}\;
-\ForEach{u $\in$ G.\V{}}{
-	$G^T$.\InsertNode{u}\;
-}
-\ForEach{u $\in$ G.\V{}}{
-	\ForEach{v $\in$ G.\Adj{u}}{
-		$G^T$.\InsertEdge{v, u}
-	}
-}
-\Return $G^T$\;
-\end{algorithm}
+\input{Pseudocodice/63_Transpose}
 \newpage
 \paragraph{Calcolo delle componenti connesse}
 Invece di esaminare i nodi in ordine arbitrario questa versione li esamina nell'ordine LIFO memorizzato nello stack.
 \begin{multicols}{2}
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Nil}{nil}
-\SetKw{Return}{return}
-\SetKwData{Graph}{Graph}
-\SetKwData{Stack}{Stack}
-\SetKwData{Node}{Node}
-\SetKwFunction{GraphCos}{Graph}
-\SetKwFunction{StackCos}{Stack}
-\SetKwFunction{Push}{push}
-\SetKwFunction{Pop}{pop}
-\SetKwFunction{Empty}{isEmpty}
-\SetKwFunction{V}{V}
-\SetKwFunction{Size}{size}
-\SetKwFunction{Adj}{adj}
-\SetKwFunction{InsertNode}{insertNode}
-\SetKwFunction{InsertEdge}{insertEdge}
-\SetKwFunction{DeleteNode}{deleteNode}
-\SetKwFunction{DeleteEdge}{deleteEdge}
-\SetKwFunction{GraphTraversal}{dfs}
-\SetKwFunction{Insert}{push}
-\SetKwFunction{Remove}{pop}
-\SetKwFunction{Empty}{empty}
-\SetKwFunction{CC}{cc}
-\SetKwFunction{CCdfs}{ccdfs}
-\SetKwFunction{DfsSchema}{dfs-schema}
-\SetKwFunction{HasCycleRec}{hasCycleRec}
-\SetKwFunction{HasCycle}{hasCycle}
-\SetKwFunction{TopSort}{topSort}
-\SetKwFunction{TsDfs}{ts-dfs}
-\SetKwFunction{Scc}{scc}
-\SetKwFunction{Transpose}{transpose}
-
-\caption{\protect\Int[] \protect\CC{\protect\Graph G, \protect\Stack S}}
-
-\Int[] id = \New \Int[G.\Size{}]\;
-\ForEach{u $\in$ G.\V{}}{
-	id[u] = 0\;
-}
-\Int counter = 0\;
-\While{\Not S.\Empty{}}{
-	u = S.\Pop{}\;
-	\If{id[u] == 0}{
-		counter += 1\;
-		\CCdfs{G, counter, u, id}\;
-	}
-}
-\Return id\;
-\end{algorithm}
+\input{Pseudocodice/64_CC}
 \columnbreak
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetKwComment{comment}{$\%$}{}
-\SetKw{Int}{int}
-\SetKw{Boolean}{boolean}
-\SetKw{New}{new}
-\SetKw{True}{true}
-\SetKw{False}{false}
-\SetKw{Not}{not}
-\SetKw{And}{and}
-\SetKw{Nil}{nil}
-\SetKw{Return}{return}
-\SetKwData{Graph}{Graph}
-\SetKwData{Stack}{Stack}
-\SetKwData{Node}{Node}
-\SetKwFunction{GraphCos}{Graph}
-\SetKwFunction{StackCos}{Stack}
-\SetKwFunction{Push}{push}
-\SetKwFunction{Pop}{pop}
-\SetKwFunction{Empty}{isEmpty}
-\SetKwFunction{V}{V}
-\SetKwFunction{Size}{size}
-\SetKwFunction{Adj}{adj}
-\SetKwFunction{InsertNode}{insertNode}
-\SetKwFunction{InsertEdge}{insertEdge}
-\SetKwFunction{DeleteNode}{deleteNode}
-\SetKwFunction{DeleteEdge}{deleteEdge}
-\SetKwFunction{GraphTraversal}{dfs}
-\SetKwFunction{Insert}{push}
-\SetKwFunction{Remove}{pop}
-\SetKwFunction{Empty}{empty}
-\SetKwFunction{CC}{cc}
-\SetKwFunction{CCdfs}{ccdfs}
-\SetKwFunction{DfsSchema}{dfs-schema}
-\SetKwFunction{HasCycleRec}{hasCycleRec}
-\SetKwFunction{HasCycle}{hasCycle}
-\SetKwFunction{TopSort}{topSort}
-\SetKwFunction{TsDfs}{ts-dfs}
-\SetKwFunction{Scc}{scc}
-\SetKwFunction{Transpose}{transpose}
-
-\caption{\protect\CCdfs{\protect\Graph G, \protect\Int counter, \protect\Node u, \protect\Int[] id}}
-
-id[u] = counter\;
-\ForEach{v $\in$ G.\Adj{u}}{
-	\If{id[u] == 0}{
-		\CCdfs{G, counter, v, id}\;	
-	}
-}
-\end{algorithm}
+\input{Pseudocodice/65_CCdfs}
 \end{multicols}
 \paragraph{Dimostrazione di correttezza}
 Si costruisca il grafo delle componenti $C(G)=(V_C, E_C)$, dove $V_C=\{C_1, \dots, C_k\}$, dove $C_i$ \`e la i-esima SCC di $G$ e $E_C=\{(C_i, C_j)|\exists 

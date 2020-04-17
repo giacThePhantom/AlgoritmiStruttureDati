@@ -1,0 +1,73 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{Resto}{resto}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+
+\caption{\protect\Int[] \protect\Resto{\protect\Int[] t, \protect\Int n, \protect\Int R}}
+\Int[] DP = \New \Int$[0\dots R]$\;
+\Int[] S = \New \Int$[0\dots R]$\;
+DP[0] = 0\;
+\For{\Int i = 1 \To R}{
+	DP[i] = +$\infty$\;
+	\For{\Int j = 1 \To n}{
+		\If{i $>$ t[j] \And DP[i - t[j]] + 1 $<$ DP[i]}{
+			DP[i] = DP[i - t[j]] + 1\;
+			S[i] = j\;
+		}
+	}
+}
+\Int[] x = \New \Int$[1\dots n]$\;
+\For{\Int i = 1 \To n}{
+	x[i] = 0\;
+}
+\While{R $>$ 0}{
+	x[S[r]] = x[S[r]] + 1\;
+	R -= t[S[R]]\;
+}
+\Return x\;
+
+\end{algorithm}

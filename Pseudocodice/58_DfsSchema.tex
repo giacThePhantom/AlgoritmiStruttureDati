@@ -1,0 +1,57 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Nil}{nil}
+\SetKw{Return}{return}
+\SetKwData{Graph}{Graph}
+\SetKwData{Set}{Stack}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{SetCos}{Stack}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{dfs}
+\SetKwFunction{Insert}{push}
+\SetKwFunction{Remove}{pop}
+\SetKwFunction{Empty}{empty}
+\SetKwFunction{CC}{cc}
+\SetKwFunction{DfsSchema}{dfs-schema}
+\SetKwFunction{HasCycleRec}{hasCycleRec}
+\SetKwFunction{HasCycle}{hasCycle}
+
+\caption{\protect\DfsSchema{\protect\Graph G, \protect\Node u, \protect\Int$\&$ time, \protect\Int[] dt, \protect\Int[] ft}}
+$\{$Visita il nodo u in pre-order$\}$\;
+time += 1\;
+dt[u] = time\;
+\ForEach{v $\in$ G.\Adj{u}}{
+	$\{$Visita l'arco $(u, v)$ qualsiasi$\}$\;
+	\uIf{dt[v] = 0}{
+		$\{$Visita l'arco $(u, v)$ albero$\}$\;
+		\DfsSchema{G, v, time, dt, ft}\;
+	}
+	\uElseIf{dt[u] $>$ dt[v] \And ft[v] = 0}{
+		Visita l'arco $(u, v)$ indietro\;	
+	}
+	\uElseIf{dt[u] $<$ dt[v] \And ft[v] $\neq$ 0}{
+		Visita l'arco $(u, v)$ avanti\;	
+	}
+	\Else{
+		Visita l'arco $(u, v)$ attraversamento\;
+	}	
+}
+$\{$Visita il nodo u in post-order$\}$\;
+time +=1\;
+ft[u] = time\;
+\end{algorithm}

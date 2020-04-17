@@ -1,0 +1,79 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Float}{float}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Tree}{Tree}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{F}{f}
+\SetKwData{Left}{left}
+\SetKwData{Right}{right}
+\SetKwData{Mfset}{Mfset}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Min}{min}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{TreeCos}{Tree}
+\SetKwFunction{MinPriorityQueue}{MinPriorityQueue}
+\SetKwFunction{DeleteMin}{deleteMin}
+\SetKwFunction{MfsetCos}{Mfset}
+\SetKwFunction{Find}{find}
+\SetKwFunction{Merge}{merge}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{Kruskal}{kruskal}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKwData{Edge}{Edge}
+\caption{\protect\Set \protect\Kruskal{\protect\Edge[] A, \protect\Int n, \protect\Int m}}
+\Set T = \SetCos{}\;
+\Mfset M = \MfsetCos{n}\;
+$\{$ordina $A[1. dots, m]$ in modo che $A[1].weight\le\cdots\le A[m].weight\}$\;
+\Int count = 0;
+\Int i = 1;
+\comment{Termina quando l'albero ha $n-1$ archi o non ci sono pi\`u archi}
+\While{count $<$ n - 1 \And i $\le$ m}{
+	\If{M.\Find{A[i].u} $\neq$ M.\Find{A[i].v}}{
+		M.\Merge{A[i].u, A[i].v}\;
+		T.\Insert{A[i]}\;
+		count += 1\;
+	}
+	i += 1\;
+}
+\Return T\;
+\end{algorithm}

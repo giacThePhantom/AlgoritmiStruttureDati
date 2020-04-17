@@ -1,0 +1,64 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Bool}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{Node}{Node}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{ProCamMin}{shortestPath}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+
+\caption{(\protect\Int[], \protect\Int[])  \protect\ProCamMin{\protect\Graph G, \protect\Node s}}
+\Int[] d = \New \Int$[1\dots G.n]$\comment{$d[u]$ \`e la distanza da $s$ a $u$}
+\Int[] T = \New \Int$[1\dots G.n]$\comment{$T[u]$ \`e il padre di $u$ nell'albero $T$}
+\Bool[] b = \New \Bool$[1\dots G.n]$\comment{$b[u]$ \`e \textbf{true} se $u\in S$}
+\ForEach{$u\in\ G.V()\ -\ \{s\}$}{
+	T[u] = \Nil\;
+	d[u] = $+\infty$\;
+	b[u] = \False\;
+}
+T[s] = \Nil\;
+d[s] = 0\;
+b[s] = \True\;
+$[\dots]$\;
+\end{algorithm}

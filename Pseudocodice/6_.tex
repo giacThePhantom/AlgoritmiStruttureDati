@@ -1,0 +1,32 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwData{Item}{Item}
+\SetKwData{Set}{Set}
+\SetKwData{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKwComment{comment}{$\%$}{}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Contains}{contains}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Remove}{remove}
+\SetKwFunction{Union}{union}
+\SetKwFunction{Intersection}{intersection}
+\SetKwFunction{Difference}{Difference}
+
+\caption{\protect\Set}
+
+\comment{Restituisce la cardinalit\`a dell'insieme}
+\Int \Size{}\;
+\comment{Restituisce True se $x$ \`e contenuto nell'insieme}
+\Boolean \Contains{\Item $x$}\;
+\comment{Inserisce $x$ nell'insieme se non \`e gi\`a presente}
+\Insert{\Item $x$}\;
+\comment{Rimuove $x$ dall'insieme se \`e presente}
+\Remove{\Item $x$}\;
+\comment{Restituisce un nuovo insieme che \`e l'unione di $A$ e $B$}
+\Set \Union{\Set $A$, \Set $B$}\;
+\comment{Restituisce un nuovo insieme che \`e l'intersezione di $A$ e $B$}
+\Set \Intersection{\Set $A$, \Set $B$}\;
+\comment{Restituisce un nuovo insieme che \`e la differenza tra $A$ e $B$}
+\Set \Difference{\Set $A$, \Set $B$}\;
+\end{algorithm}

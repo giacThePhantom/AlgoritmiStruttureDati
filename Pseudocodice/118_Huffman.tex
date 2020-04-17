@@ -1,0 +1,74 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Float}{float}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Tree}{Tree}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{F}{f}
+\SetKwData{Left}{left}
+\SetKwData{Right}{right}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Min}{min}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{TreeCos}{Tree}
+\SetKwFunction{MinPriorityQueue}{MinPriorityQueue}
+\SetKwFunction{DeleteMin}{deleteMin}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{Huffman}{huffman}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\SetKw{Matrix}{matrix}
+
+\caption{\protect\Tree \protect\Huffman{\protect\Int[] c, \protect\Int[] f, \protect\Int n}}
+\PriorityQueue Q = \MinPriorityQueue{}\;
+\For{\Int i = 1 \To n}{
+	Q.\Insert{f[i], \TreeCos{F[i], c[i]}}\;
+}
+\For{\Int i = 1 \To n - 1}{
+	\Tree $z_1$ = Q.\DeleteMin{}\;
+	\Tree $z_2$ = Q.\DeleteMin{}\;
+	\Tree $z$ = \TreeCos{$z_1$.\F + $z_2$.\F, \Nil}\;
+	$z$.\Left = $z_1$\;
+	$z$.\Right = $z_2$\;
+	Q.\Insert{$z$.\F. $z$}\;
+}
+\Return Q.\DeleteMin{}\;
+\end{algorithm}

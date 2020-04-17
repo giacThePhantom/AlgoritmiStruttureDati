@@ -1,0 +1,37 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Nil}{nil}
+\SetKw{Return}{return}
+\SetKw{New}{new}
+\SetKw{Int}{int}
+\SetKw{Delete}{delete}
+\SetKwData{Tree}{Tree}
+\SetKwData{Item}{Item}
+\SetKwFunction{Value}{value}
+\SetKwFunction{Key}{key}
+\SetKwFunction{Left}{left}
+\SetKwFunction{Right}{right}
+\SetKwFunction{Color}{color}
+\SetKwFunction{RotateLeft}{rotateRight}
+
+\caption{\protect\Tree \protect\RotateLeft{\protect\Tree x}}
+\Tree y $\leftarrow$ x.\Left\;
+\Tree p $\leftarrow$ x.\Parent\;
+x.\Right $\leftarrow$ y.\Right\;
+\If{y.\Right $\neq$ \Nil}{
+	y.\Right.\Parent $\leftarrow$ x\;
+}
+y.\Right $\leftarrow$ x\;
+x.\Parent $\leftarrow$ y\;
+y.\Parent $\leftarrow$ p\;
+\If{p $\neq$ \Nil}{
+	\uIf{p.\Left == x}{
+		p.\Left $\leftarrow$ y\;
+	}
+	\Else{
+		p.\Right $\leftarrow$ y\;
+	}
+}
+\Return y\;
+\end{algorithm}

@@ -1,0 +1,39 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{Nil}{nil}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Deleted}{deleted}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{To}{to}
+\SetKw{And}{and}
+\SetKw{Not}{not}
+\SetKw{Or}{or}
+\SetKwData{Item}{Item}
+\SetKwData{Set}{Set}
+\SetKwProg{Fn}{}{}{}
+\SetKwFunction{Max}{max}
+\SetKwFunction{Min}{min}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{Contains}{contains}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Remove}{remove}
+\SetKwFunction{Union}{union}
+\SetKwFunction{Intersection}{intersection}
+\SetKwFunction{Difference}{difference}
+
+\caption{\protect\Set \protect\Difference{\protect\Set A, \protect\Set B}}
+
+\Set C = \Set{}\;
+\ForEach{s $\in$ A}{
+	\If{\Not B.\Contains{s}}{
+		C.\Insert{s}\;	
+	}
+	\Return C\;
+}
+\end{algorithm}

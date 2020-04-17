@@ -1,0 +1,51 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Nil}{nil}
+\SetKw{Return}{return}
+\SetKwData{Graph}{Graph}
+\SetKwData{Set}{Stack}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{SetCos}{Stack}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{dfs}
+\SetKwFunction{Insert}{push}
+\SetKwFunction{Remove}{pop}
+\SetKwFunction{Empty}{empty}
+\SetKwFunction{CC}{cc}
+\SetKwFunction{DfsSchema}{dfs-schema}
+\SetKwFunction{HasCycleRec}{hasCycleRec}
+\SetKwFunction{HasCycle}{hasCycle}
+
+\caption{\protect\HasCycle{\protect\Graph G, \protect\Node u, \protect\Int$\&$ time, \protect\Int[] dt, \protect\Int[] ft}}
+
+time += 1\;
+dt[u] = time\;
+\ForEach{v $\in$ G.\Adj{u}}{
+	\uIf{dt[v] == 0}{
+		\If{\HasCycle{G, v, time, dt, ft}}{
+			\Return \True\;		
+		}
+	}
+	\ElseIf{dt[u] $>$ dt[v] \And ft[v] == 0}{
+		\Return \True\;	
+	}
+}
+time +=1\;
+ft[u] = time\;
+\Return \False\;
+\end{algorithm}

@@ -1,0 +1,43 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{Return}{return}
+\SetKwData{Graph}{Graph}
+\SetKwData{Set}{Stack}
+\SetKwData{Node}{Node}
+\SetKwFunction{GraphCos}{Graph}
+\SetKwFunction{SetCos}{Stack}
+\SetKwFunction{V}{V}
+\SetKwFunction{Size}{size}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{InsertEdge}{insertEdge}
+\SetKwFunction{DeleteNode}{deleteNode}
+\SetKwFunction{DeleteEdge}{deleteEdge}
+\SetKwFunction{GraphTraversal}{dfs}
+\SetKwFunction{Insert}{push}
+\SetKwFunction{Remove}{pop}
+\SetKwFunction{Empty}{empty}
+\SetKwFunction{CC}{cc}
+\SetKwFunction{CCdfs}{ccdfs}
+\SetKwFunction{HasCycle}{hasCycleRec}
+
+\caption{\protect\Boolean[] \protect\HasCycle{\protect\Graph G, \protect\Node u, \protect\Node p, \protect\Boolean[] visited}}
+
+visited[u] = \True\;
+\ForEach{v $\in$ G.\Adj{u} - $\{$p$\}$}{
+	\uIf{visited[u]}{
+		\Return \True\;	
+	}
+	\ElseIf{\HasCycle{G, v, u, visited}}{
+		\Return \True\;	
+	}
+}
+\Return \False\;
+\end{algorithm}

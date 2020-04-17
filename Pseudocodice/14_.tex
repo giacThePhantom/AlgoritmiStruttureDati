@@ -1,0 +1,61 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKwData{Item}{Item}
+\SetKwData{Tree}{Tree}
+\SetKwData{Binary}{Binary tree}
+\SetKw{Boolean}{boolean}
+\SetKw{Int}{int}
+\SetKw{This}{this}
+\SetKw{Return}{return}
+\SetKw{Prec}{precondition}
+\SetKw{New}{new}
+\SetKw{Space}{ }
+\SetKw{Nil}{nil}
+\SetKwProg{Fn}{}{}{}
+\SetKwFunction{TreeCos}{Tree}
+\SetKwFunction{InsertLeft}{insertLeft}
+\SetKwFunction{InsertRight}{insertRight}
+\SetKwFunction{DeleteLeft}{deleteLeft}
+\SetKwFunction{DeleteRight}{deleteRight}
+
+\caption{\protect\Binary}
+
+\begin{multicols}{2}
+\Fn{\TreeCos{\Item v}}{
+	\Tree t = \New \Tree\;
+	t.parent = \Nil\;
+	t.left = t.right = \Nil\;
+	t.value = v\;
+	\Return t\;
+}
+\Fn{\InsertLeft{\Tree T}}{
+	\If{left == \Nil}{
+    	T.parent = \This\;
+    	left = T\;
+  }
+}
+\Fn{\InsertRight{\Tree T}}{
+	\If{right == \Nil}{
+    	T.parent = \This\;
+    	right = T\;
+  }
+}
+
+\Fn{\DeleteLeft{}}{
+	\If{left $\neq$ \Nil}{
+    	left.\DeleteLeft{}\;
+    	left.\DeleteRight{}\;
+    	left = \Nil\;
+  }
+}
+
+\Fn{\DeleteRight{}}{
+	\If{right $\neq$ \Nil}{
+    	right.\DeleteLeft{}\;
+    	right.\DeleteRight{}\;
+    	right = \Nil\;
+  }
+}
+\end{multicols}
+\end{algorithm}

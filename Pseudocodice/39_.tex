@@ -1,0 +1,85 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{Nil}{nil}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Deleted}{deleted}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{To}{to}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKwData{Item}{Item}
+\SetKwData{Space}{ }
+\SetKwData{Hash}{Hash}
+\SetKwProg{Fn}{}{}{}
+\SetKwFunction{HashCos}{Hash}
+\SetKwFunction{Scan}{scan}
+\SetKwFunction{Lookup}{lookup}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Remove}{remove}
+\caption{\protect\Hash}
+
+\Item[] K	\comment{Tabella delle chiavi}
+\Item[] V	\comment{Tabella dei valori}
+\Int m		\comment{Dimensione della tabella}
+
+\Hash\Space\Fn{\HashCos{\Int dim}}{
+	\Hash t = \New \Hash\;
+	t.m = dim\;
+	t.K = \New \Item$[0,\dots, dim-1]$
+	t.V = \New \Item$[0,\dots, dim-1]$
+	\For{$i=0$ \To dim-1}{
+		t.K[i] = \Nil\;	
+	}
+	\Return t\;
+}
+\Int\Space\Fn{\Scan{\Item k, \Boolean insert}}{
+	\Int c = m\;
+	\Int i = 0\;
+	\Int j = H(k)\;
+	\While{K[j] $\neq$ k \And K[j] $\neq$ \Nil \And i $<$ m}{
+		\If{K[j] == \Deleted \And c == m}{
+			c = j\;		
+		}
+		j = $(j+H'(k))\mod n$\;
+		i += 1\; 	
+	}
+	\If{insert \And K[j] $\neq$ k \And c $<$ m}{
+		j = c\;	
+	}
+	\Return j\;
+}
+
+\Item\Space\Fn{\Lookup{\Item k}}{
+	\Int i = \Scan{k, \False}\;
+	\uIf{K[i] == k}{
+		\Return V[i]\;		
+	}
+	\Else{
+		\Return \Nil\;	
+	}
+}
+
+\Fn{\Insert{\Item k, \Item v}}{
+	\Int i = \Scan{k, \True}\;
+	\uIf{K[i] == \Nil \Or K[i] == \Deleted \Or K[i] == k}{
+		K[i] = k\;
+		V[i] = v\;	
+	}
+	\Else{
+		\comment{Errore, tabella hash piena}	
+	}
+
+}
+
+\Fn{\Remove{\Item k}}{
+	\Int i = \Scan{k, \False}\;
+	\If{k[i] = k}{
+		K[i] = \Deleted\;	
+	}
+}
+\end{algorithm}

@@ -1,0 +1,22 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{To}{to}
+\SetKw{Return}{return}
+\SetKwData{Item}{item}
+\SetKwFunction{Min}{min}
+\SetKwFunction{SelectionSort}{selectionSort}
+
+\caption{\protect\Min{\protect\Item[] A, \protect\Int i, \protect\Int n}}
+\comment{Posizione del minimo parziale}
+\Int min = i\;
+\For{j = i + 1 \To n}{
+	\If{A[j] $\le$ A[min]}{
+		\comment{Nuovo minimo parziale}
+		min = j\;	
+	}
+	\Return min\;
+}
+
+\end{algorithm}

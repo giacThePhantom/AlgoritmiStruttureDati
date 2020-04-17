@@ -1,0 +1,25 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKwData{Tree}{Tree}
+\SetKwFunction{Dfs}{dfs}
+\SetKwFunction{Left}{leftMostChild}
+\SetKwFunction{Right}{rightSibling}
+\SetKwFunction{Dfs}{dfs}
+
+\caption{\protect\Dfs{\protect\Tree t}}
+
+\If{t $\neq$ \Nil}{
+	\comment{visita in pre-ordine}
+	\Print t\;
+	\Tree u = t.\Left{}\;
+	\While{u $\neq$ \Nil}{
+		\Dfs{u}\;
+		u = u.\Right{}\;
+	}
+	\comment{visita in post-ordine}
+	\Print t\;
+}
+\end{algorithm}

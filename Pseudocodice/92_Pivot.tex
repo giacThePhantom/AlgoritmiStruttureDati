@@ -1,0 +1,45 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+
+\SetKw{Int}{int}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Print}{print}
+
+\SetKwData{Item}{Item}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+
+\SetKwFunction{Hanoi}{hanoi}
+\SetKwFunction{Pivot}{pivot}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Int \protect\Pivot{\protect\Item[] A, \protect\Int start, \protect\Int end}}
+\Item p = A[start]\;
+\Int j = start\:
+\For{\Int i = start +1 \To end}{
+	\If{A[i] $<$ p}{
+		j += 1\;
+		A[i] $\leftrightarrow$ A[j]\;	
+	}
+}
+A[start] = A[j]\;
+A[j] = p\;
+\Return j\;
+\end{algorithm}

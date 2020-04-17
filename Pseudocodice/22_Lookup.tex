@@ -1,0 +1,20 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKw{Nil}{nil}
+\SetKw{Return}{return}
+\SetKwData{Tree}{Tree}
+\SetKwData{Item}{Item}
+\SetKwFunction{LookupNode}{lookupNode}
+\SetKwFunction{Value}{value}
+\SetKwFunction{Lookup}{lookup}
+
+\caption{\protect\Item \protect\Lookup{\protect\Item k}}
+
+\Tree t = \LookupNode{tree, k}\;
+\If{t $\neq$ \Nil}{
+	\Return t.\Value\;
+}
+\Else{
+	\Return \Nil\;
+}
+\end{algorithm}

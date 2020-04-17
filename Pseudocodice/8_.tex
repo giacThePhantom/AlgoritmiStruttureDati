@@ -1,0 +1,82 @@
+\begin{algorithm}
+
+\DontPrintSemicolon
+\SetKwData{List}{List}
+\SetKwData{Item}{Item}
+\SetKwData{Pos}{Pos}
+\SetKw{Boolean}{boolean}
+\SetKwComment{comment}{$\%$}{}
+\SetKwFunction{ListConst}{List}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Tail}{tail}
+\SetKwFunction{Next}{next}
+\SetKwFunction{Prev}{prev}
+\SetKwFunction{Finished}{finished}
+\SetKwFunction{Read}{read}
+\SetKwFunction{Write}{write}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{Remove}{remove}
+
+\SetKwProg{Fn}{}{}{}
+
+\SetKw{Delete}{delete}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{This}{this}
+\SetKw{Space}{ }
+
+\caption{\protect\List}
+
+\begin{multicols}{2}
+\List pred  \comment{Predecessore} 
+\List succ  \comment{Successore} 
+\Item value \comment{Valore}
+\List\Space \Fn{\ListConst{}}{
+	\List t=\New \List\;
+	t.pred = t\;
+	t.succ = t\;
+	\Return t\;
+}
+\Boolean\Space\Fn{\IsEmpty{}}{
+	\Return pred = succ = \This\;
+}
+\Pos\Space\Fn{\Head{}}{
+	\Return succ\;
+}
+\Pos\Space\Fn{\Tail{}}{
+	\Return pred\;
+}
+\Pos\Space\Fn{\Next{\Pos p}}{
+	\Return p.succ\;
+}
+\Pos\Space\Fn{\Prev{\Pos p}}{
+	\Return p.pred\;
+}
+\Boolean\Space\Fn{\Finished{\Pos p}}{
+	\Return (p = \This)\;
+}
+\Item\Space\Fn{\Read{\Pos p}}{
+	\Return p.value\;
+}
+\Item\Space\Fn{\Write{\Pos p, \Item v}}{
+	p.value = v\;
+}
+\Pos\Space\Fn{\Insert{\Pos p, \Item v}}{
+	\List t = \ListConst{}\;
+	t.value = v\;
+	t.pred = p.pred\;
+	p.pred.succ = t\;
+	t.succ = p\;
+	p.pred = t\;
+	\Return t\;
+}
+\Pos\Space\Fn{\Remove{\Pos p}}{
+	p.pred.succ = p.succ\;
+	p.succ.pred = p.pred\;
+	\List t = p.succ\;
+	\Delete p\;
+	\Return t\; 
+}
+\end{multicols}
+\end{algorithm}

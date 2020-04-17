@@ -1,0 +1,89 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Nil}{nil}
+\SetKw{Return}{return}
+\SetKw{New}{new}
+\SetKw{Int}{int}
+\SetKw{And}{and}
+\SetKw{Delete}{delete}
+\SetKwData{Tree}{Tree}
+\SetKwData{Red}{RED}
+\SetKwData{Black}{BLACK}
+\SetKwData{Item}{Item}
+\SetKwFunction{Value}{value}
+\SetKwFunction{Key}{key}
+\SetKwFunction{Left}{left}
+\SetKwFunction{Right}{right}
+\SetKwFunction{Color}{color}
+\SetKwFunction{BalancedDelete}{balancedDelete}
+\SetKwFunction{RotateLeft}{rotateLeft}
+\SetKwFunction{RotateRight}{rotateRight}
+\caption{\protect\BalancedDelete{\protect\Tree T, \protect\Tree t}}
+
+\While{T $\neq$ t \And t.\Color == \Black}{
+	\begin{multicols}{2}
+	\Tree p = t.\Parent	\comment{Padre}
+	\uIf{t == p.\Left}{
+		\Tree f = p.\Right	\comment{Fratello}
+		\Tree ns = f.\Left	\comment{Nipote sinistro}
+		\Tree nd = f.\Right	\comment{Nipote destro}
+		\uIf{f.\Color == \Red}{	\comment{Caso 1a}
+			p.\Color = \Red\;
+			f.\Color = \Black\;
+			\RotateLeft{p}\;
+			\comment{t viene lasciato inalterato, pertanto si ricade nei casi 2, 3 o 4}
+		}
+		\Else{
+			\uIf{ns.\Color == nd.\Color == \Black}{	\comment{Caso 2a}
+				f.\Color = \Red\;
+				t = p\;
+			}
+			\uElseIf{ns.\Color == \Red \And nd.\Color == \Black}{	\comment{Caso 3a}
+				ns.\Color = \Black\;
+				f.\Color = \Red\;
+				\RotateRight{f}\;
+				\comment{t viene lasciato inalterato, pertanto si ricade nel caso 4}
+			}
+			\ElseIf{nd.\Color == \Red}{	\comment{Caso 4a}
+				f.\Color = p.\Color{}\;
+				p.\Color = \Black\;
+				nd.\Color = \Black\;
+				\RotateLeft{p}\;
+				t = T\;
+			}
+		}
+	}
+	\Else{
+		\Tree f = p.\Left	\comment{Fratello}
+		\Tree ns = f.\Left	\comment{Nipote sinistro}
+		\Tree nd = f.\Right	\comment{Nipote destro}
+		\uIf{f.\Color == \Red}{	\comment{Caso 1b}
+			p.\Color = \Red\;
+			f.\Color = \Black\;
+			\RotateRight{p}\;
+			\comment{t viene lasciato inalterato, pertanto si ricade nei casi 2, 3 o 4}
+		}
+		\Else{
+			\uIf{ns.\Color == nd.\Color == \Black}{	\comment{Caso 2b}
+				f.\Color = \Red\;
+				t = p\;
+			}
+			\uElseIf{nd.\Color == \Red \And ns.\Color == \Black}{	\comment{Caso 3b}
+				nd.\Color = \Black\;
+				f.\Color = \Red\;
+				\RotateLeft{f}\;
+				\comment{t viene lasciato inalterato, pertanto si ricade nel caso 4}
+			}
+			\ElseIf{ns.\Color == \Red}{	\comment{Caso 4a}
+				f.\Color = p.\Color{}\;
+				p.\Color = \Black\;
+				ns.\Color = \Black\;
+				\RotateRight{p}\;
+				t = T\;
+			}
+		}
+	}
+\end{multicols}
+}
+\end{algorithm}

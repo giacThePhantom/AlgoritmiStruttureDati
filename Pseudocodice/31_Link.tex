@@ -1,0 +1,31 @@
+\input{Pseudocodice/30_InsertNode}
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKw{Nil}{nil}
+\SetKw{Return}{return}
+\SetKw{New}{new}
+\SetKw{And}{and}
+\SetKwData{Tree}{Tree}
+\SetKwData{Item}{Item}
+\SetKwFunction{Value}{value}
+\SetKwFunction{Key}{key}
+\SetKwFunction{Left}{left}
+\SetKwFunction{Right}{right}
+\SetKwFunction{Max}{min}
+\SetKwFunction{InsertNode}{insertNode}
+\SetKwFunction{Parent}{parent}
+\SetKwFunction{TreeCos}{Tree}
+\SetKwFunction{Link}{link}
+\caption{\protect\Link{\protect\Tree p, \protect\Tree u, \protect\Item k}}
+\If{u $\neq$ \Nil}{
+	u.\Parent = p\;
+}
+\If{p $\neq$ \Nil}{
+	\uIf{k $<$ p.\Key}{
+		p.\Left = u\; 	
+	}
+	\Else{
+		p.\Right = u\;	
+	}
+}
+\end{algorithm}
