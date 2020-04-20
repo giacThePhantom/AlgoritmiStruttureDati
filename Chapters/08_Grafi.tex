@@ -93,6 +93,7 @@ nell'albero corrisponde al cammino pi\`u breve nel grafo.
 \input{Pseudocodice/49_GraphTraversal}
 \subsubsection{Calcolo dei cammini pi\`u brevi o del numero di Erd\"os}
 L'algoritmo di erdos oltre a determinare la lunghezza del cammino pi\`u breve genera l'arco di copertura bfs che contiene tali cammini.\\
+\input{Pseudocodice/50_GraphTraversal}
 \input{Pseudocodice/51_GraphTraversal}
 \subsubsection{Complessit\`a}
 La complessit\`a di una bfs \`e $O(m+n)$ in quanto ognuno degli $n$ nodi viene salvato nella coda al pi\`u una volta. Ogni volta che un nodo viene estratto
@@ -157,6 +158,7 @@ un cammino da $v$ a $u$ e un arco da $u$ a $v$, ovvero un ciclo.
 L'algoritmo per un ordinamento topologico consiste in una dfs in cui l'operazione di visita consiste nell'aggiungere il nodo in testa ad una lista a tempo
 di fine (ovvero post-ordine). L'output sar\`a pertanto una sequenza di nodi ordinata per tempo decrescente di fine. In questo modo quando un nodo \`e finito
 tutti i suoi discendenti sono stati aggiunti alla lista e aggiungendolo in testa \`e nell'ordine corretto. 
+\input{Pseudocodice/60_TopSort}
 \input{Pseudocodice/61_TsDfs}
 \subsubsection{Algoritmo di Kosaraju}
 Utilizzato per trovare le componenti fortemente connesse di un grafo orientato. Per farlo effettua una visita dfs al grafo, calcola il grafo trasposto $G_t$

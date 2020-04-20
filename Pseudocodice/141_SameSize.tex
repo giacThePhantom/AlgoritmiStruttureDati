@@ -17,7 +17,6 @@
 \SetKw{Return}{return}
 \SetKw{Nil}{nil}
 \SetKw{Print}{print}
-\SetKw{Println}{println}
 \SetKw{Void}{void}
 
 \SetKwData{Item}{Item}
@@ -37,6 +36,7 @@
 \SetKwData{Mfset}{Mfset}
 \SetKwData{PriorityItem}{PriorityItem}
 \SetKwData{Node}{Node}
+\SetKwData{Point}{Point}
 
 \SetKwFunction{Max}{max}
 \SetKwFunction{Min}{min}
@@ -58,19 +58,20 @@
 
 \SetKwProg{Fn}{}{}
 
-\SetKwFunction{Subset}{subsets}
-\SetKwFunction{Choices}{choices}
-\SetKwFunction{IsAdmissible}{isAdmissible}
-\SetKwFunction{ProcessSolution}{processSolution}
-\SetKwFunction{Accept}{accept}
-\SetKwFunction{SubsetRec}{subsetsRec}
+\SetKwFunction{SameSide}{sameSide}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
 
-\caption{\protect\ProcessSolution{\protect\Int[] S, \protect\Int n}}
-\Print ``$\{$"\;
-\For{\Int i = 1 \To n}{
-	\If{S[i]}{
-		\Print i, `` "\;
-	}
-}
-\Println ``$\}$"\;
+\caption{\protect\Boolean \protect\SameSide{\protect\Point $p_1$, \protect\Point $p_2$, \protect\Point $p$, \protect\Point $q$}}
+
+\Float $dx$ = $p_2$.x - $p_1$.x\;
+\Float $dy$ = $p_2$.y - $p_1$.y\;
+\Float $dx_1$ = $p$.x - $p_1$.x\;
+\Float $dy_1$ = $p$.y - $p_1$.y\;
+\Float $dx_2$ = $q$.x - $p_2$.x\;
+\Float $dy_2$ = $q$.y - $p_2$.y\;
+\Return ($(dx\cdot dy_1 - dy\cdot dx_1)\cdot(dx\cdot dy_2 - dy\cdot dx_2)$ $\ge$ $0$)
 \end{algorithm}

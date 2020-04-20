@@ -17,7 +17,6 @@
 \SetKw{Return}{return}
 \SetKw{Nil}{nil}
 \SetKw{Print}{print}
-\SetKw{Println}{println}
 \SetKw{Void}{void}
 
 \SetKwData{Item}{Item}
@@ -37,6 +36,8 @@
 \SetKwData{Mfset}{Mfset}
 \SetKwData{PriorityItem}{PriorityItem}
 \SetKwData{Node}{Node}
+\SetKwData{Point}{Point}
+\SetKwData{Stack}{Stack}
 
 \SetKwFunction{Max}{max}
 \SetKwFunction{Min}{min}
@@ -53,24 +54,40 @@
 \SetKwFunction{Merge}{merge}
 \SetKwFunction{IsEmpty}{isEmpty}
 \SetKwFunction{Adj}{adj}
+\SetKwFunction{Push}{push}
+\SetKwFunction{Pop}{pop}
+\SetKwFunction{Top}{top}
 \SetKwFunction{Decrease}{decrease}
+\SetKwFunction{StackCos}{StackCos}
 
 
 \SetKwProg{Fn}{}{}
 
-\SetKwFunction{Subset}{subsets}
-\SetKwFunction{Choices}{choices}
-\SetKwFunction{IsAdmissible}{isAdmissible}
-\SetKwFunction{ProcessSolution}{processSolution}
-\SetKwFunction{Accept}{accept}
-\SetKwFunction{SubsetRec}{subsetsRec}
+\SetKwFunction{Graham}{graham}
+\SetKwFunction{SameSide}{sameSide}
+\SetKwFunction{Tops}{top2}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
 
-\caption{\protect\ProcessSolution{\protect\Int[] S, \protect\Int n}}
-\Print ``$\{$"\;
-\For{\Int i = 1 \To n}{
-	\If{S[i]}{
-		\Print i, `` "\;
+\caption{\protect\Stack \protect\Graham{\protect\Point[] p, \protect\Int n}}
+\Int min = 1\;
+\For{\Int i = 2 \To n}{
+	\If{p[i].y $<$ p[min].y}{
+		min = i\;
 	}
 }
-\Println ``$\}$"\;
+p[1] $\leftrightarrow$ p[min]\;
+$\{$riordina p$[2,\dots n]$ in base all'angolo formato rispetto all'asse orizzontale quando sono connessi con p[1]$\}$\;
+$\{$elimina eventuali punti ``allineati" tranne i pi\`u lontani da $p_1$ aggioirnando $n\}$
+\Stack S = \StackCos{}\;
+S.\Push{$p_1$}\;
+S.\Push{$p_2$}\;
+\For{\Int i = 3 \To n}{
+	\While{\Not \SameSide{S.\Top{}, S.\Tops{}, $p_1$, $p_i$}}{
+		S.\Pop{}\;
+	}
+	S.\Push{$p_i$}\;
+}
+\Return S\;
 \end{algorithm}

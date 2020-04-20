@@ -199,3 +199,8 @@
 \BOOKMARK [2][-]{subsection.16.4.1}{Problema delle otto regine}{section.16.4}% 199
 \BOOKMARK [2][-]{subsection.16.4.2}{Giro di cavallo}{section.16.4}% 200
 \BOOKMARK [2][-]{subsection.16.4.3}{Sudoku}{section.16.4}% 201
+\BOOKMARK [1][-]{section.16.5}{Backtracking iterativo}{chapter.16}% 202
+\BOOKMARK [2][-]{subsection.16.5.1}{Inviluppo convesso \(convex hull\)}{section.16.5}% 203
+\BOOKMARK [2][-]{subsection.16.5.2}{Algoritmo inefficiente O\(n3\)}{section.16.5}% 204
+\BOOKMARK [2][-]{subsection.16.5.3}{Algoritmo di Jarvis}{section.16.5}% 205
+\BOOKMARK [2][-]{subsection.16.5.4}{Algoritmo di Graham}{section.16.5}% 206

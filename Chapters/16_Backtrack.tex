@@ -31,6 +31,7 @@ Il problema consiste nell'elencare tutti i sottoinsiemi dell'insieme $\{1, \dots
 \begin{multicols}{2}
 \input{Pseudocodice/126_SubsetRec}
 \columnbreak
+\input{Pseudocodice/127_Subset}
 \input{Pseudocodice/128_ProcessSolution}
 \end{multicols}
 Come richiesto dal problema tutto lo spazio possibile viene esplorato con complessit\`a $\Theta(n\cdot 2^n)$.
@@ -165,4 +166,35 @@ il problema o essere usate come pre-processamento.
 \input{Pseudocodice/139_Choices}
 \end{multicols}
 \input{Pseudocodice/140_Check}
-
+\section{Backtracking iterativo}
+\subsection{Inviluppo convesso (convex hull)}
+Un poligono nel piano \`e convesso se ogni segmento di retta che congiunge due punti del poligono sta interamente nel poligono stesso.
+\paragraph{Inviluppo convesso}
+Dati $n$ punti $p_1, \dots p_n$ nel piano con $n\ge 3$ l'inviluppo convesso o convex hull \`e il poligono convesso di superficie minima.
+\subsection{Algoritmo inefficiente $\mathbf{O(n^3)}$}
+Un poligono pu\`o essere rappresentato per mezzo dei suoi spigoli. Si consideri la retta che passa per una coppia di punti $p_i$ e $p_j$ che divide il piano in due semipiani chiusi
+($O(n^2)$ coppie). Se tutti i rimanenti $n-2$ punti stanno dalla stessa parte allora lo spigoli $S_{ij}$ fa parte dell'inviluppo convesso.
+\subsubsection{Stessa parte}
+Data una retta definita dai due punti $p_1$ e $p_2$ determinare se due punti $p$ e $q$ stanno nello stesso semipiano definito dalla retta.
+\input{Pseudocodice/141_SameSize}
+\subsection{Algoritmo di Jarvis}
+\paragraph{Punti 0, 1}
+In questo algoritmo si assenga a $p_0$ il punto pi\`u a sinistra che appartiene all'inviluppo convesso ($O(n)$), si calcola l'angolo della retta passante per $p_0$ e ogni altro punto
+$p_j$ rispetto alla retta verticale ($O(n)$) e si seleziona come punto $p_1$ il punto con angolo minore ($O(n)$).
+\paragraph{Punto i}
+Si considera la retta $r$ passante per i punti $p_{i-1}, p_{i-2}$, si calcola l'angolo passante per $p_{i-1}$ e ogni altro punto non considerato e la retta $r$. Si  seleziona come punto
+$p_i$ il punto con angolo minore. Il costo per ogni spigolo \`e $O(n)$.
+\paragraph{Terminazione}
+Si termina quando si torna al punto $p_0$. L'algoritmo ha costo $O(nh)$, dove $h$ \`e il numero degli spigoli.
+\subsection{Algoritmo di Graham}
+\paragraph{Fase 1}
+Il punto con ordinata minima fa parte dell'inviluppo convesso. Si ordinano i punti in base all'angolo formato dalla retta passante per il punto con ordinata minima e la retta 
+orizzontale.
+\paragraph{Fase 2}
+Si inserisce $p_1, p_2$ nell'inviluppo corrente. Per tutti i punti $p_i = 3, \dots, n$: siano $p_{j-1}$ e $p_j$ il penultimo e ultimo vertice nell'inviluppo corrente. Se 
+\emph{sameside($p_{j-1}$, $p_j$, $p_1$, $p_i$) = \textbf{false}} allora si elimina $p_j$ dall'inviluppo corrente. Si termina la scansione se $p_j$ non deve essere eliminato e si
+aggiunge $p_i$ all'inviluppo corrente.
+\input{Pseudocodice/142_Graham}
+\subsubsection{Complessiot\`a}
+Il calcolo degli angoli richiede $O(n)$, l'ordinamento $O(n\log n)$, la rimozione di punti con angolo uguale richiede $O(n)$, ogni punto viene aggiunto e rimosso al massimo una 
+volta $O(n)$.
