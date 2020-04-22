@@ -1,0 +1,169 @@
+\chapter{Problemi intrattabili, teoria dell'NP-completezza}
+Con l'eccezione di backtrack sono stati considerati solo problemi con soluzione polinomiale. Eseistono problemi che per essere risolti hanno bisogno di un tempo almeno esponenziale e 
+problemi per cui non esiste soluzione. Esiste una classe di problemi per cui non \`e chiaro se esiste un algoritmo polinomiale oppure no, per tutti i problemi della classe.
+\section{Problemi}
+Si dice problema astratto una relazione binaria $R\subseteq I\times S$ tra un insieme $I$ di istanze del problema e un insieme $S$ di soluzioni.
+\subsection{Tipologie di problemi}
+\subsubsection{Problemi di ottimizzazione}
+Data un'istanza si deve trovare la soluzione migliore secondo criteri specifici.
+\subsubsection{Problemi di ricerca}
+Data un'istanza si deve trovare una possibile soluzione fra quelle esistenti.
+\subsubsection{Problemi di decisione}
+Data un istanza si deve verificare se soddisfa o meno una data propriet\`a. La relazione $R$ \`e una funzione $R:I\rightarrow\{0, 1\}$.	
+\subsection{Equivalenza di probelmi di ottimizzazione e decisione}
+Si ragionerer\`a sempre in termini di problemi di decisione in quanto tale versione \`e pi\`u facile da trattare matematicamente. Se si pu\`o risolvere efficientemente la versione
+di ottimizzazione si pu\`o risolvere efficientemente quella di decisione. Vale anche la negazione. 
+\section{Riduzione polinomiale}
+Dati due problemi decisionali $R_1\subseteq I_1\times\{0, 1\}$ e $R_2\subseteq I_2\times\{0, 1\}$, $R_1$ \`e riducibile polinomialmente a $R_2$ ($R_1\le_p R_2$) se esiste una funzione
+$f:I_i\rightarrow I_2$ tale che:
+\begin{itemize}
+	\item $f$ \`e calcolabile in tempo polinomiale.
+	\item Per ogni istanza $x$ del problema $R_1$ e ogni soluzione $s\in \{0, 1\}, (x, s)\in R_1\Leftrightarrow (f(x), s)\in R_2$.
+\end{itemize}
+\subsection{Colorazione di grafi}
+Dati un grafo orientato $G=(V, E)$ e un insieme di colori $C$, una colorazione di vertici \`e un assegnamento $f:V\rightarrow C$ che colora ogni nodo con uno dei valori in $C$ tale per
+cui nessuna coppia di nodi adiacenti ha lo stesso colore.
+\subsubsection{Ottimizzazione}
+Dato un grafo non orientato $G=(V, E)$ si restituisca la colorazione che necessita del numero minimo di colori.
+\subsubsection{Decisionale}
+Dato un grafo non orientato $G=(V, E)$ e un valore $k$ determinare se esiste una colorazione di $G$ con $k$ colori.
+\subsection{Sudoku}
+Il problema del sudoku richiede di inserire i numeri tra $1$ e $n^2$ in una matrice $n^2\times n^2$ suddivisa in $n\times n$ matrici di dimensione $n\times n$ in modo tale che nessun 
+numero compaia pi\`u di una volta in ogni riga, colonna e sottomatrice.
+\subsubsection{Decisionale}
+Data una matrice $n^2\times n^2$ elementi determinare se esiste un modo per assegnare i numeri in modo da rispettare le regole del sudoku.
+\subsection{Riduzione da problema particolare a problema generale}
+\subsubsection{Riduzione in tempo polinomiale}
+$V = \{(x, y):1 \le x\le n^2, 1\le y\le n^2\}, [(x, y), (x', y')]\in E\Leftrightarrow$:
+\begin{itemize}
+	\item $x = x'$ oppure;
+	\item $y = y'$ oppure;
+	\item $(\lceil\frac{x}{n}\rceil = \lceil\frac{x'}{n}\rceil)\land(\lceil\frac{y}{n}\rceil = \lceil\frac{y'}{n}\rceil)$.
+\end{itemize}
+Con $C = \{1, \dots, n\}$.
+\subsubsection{La riduzione}
+$$SUDOKU \le_p GRAPH-COLORING$$
+Se si ha la soluzione per la colorazione, allora si ha una osluzione algoritmica per il Sudoku.
+\subsection{Insieme indipendente}
+Sia dato un grafo non orientato $G=(V, E)$ un insieme $S\subseteq V$ \`e un insieme indipendente se e solo se neesun arco unisce due nodi in $S$:
+$$\forall(x, y)\in E: x\not\in S\lor y\not\in S$$
+\subsubsection{Ottimizzazione}
+Dato un grafo non orientato $G=(V, E)$ restituire il pi\`u grande insieme indipendente presente nel grafo.
+\subsubsection{Decisionale}
+Dato un grafo $G=(V, E)$ e un valore $k$ determinare se esiste un insieme indipendente di dimensione almeno $k$.
+\subsubsection{Packing problem}
+Questo \`e un esempio di packing problem, un problema in cui si cerca di selezionare il maggior numero di oggetti la cui scelta \`e soggetta a vincoli di esclusione.
+\subsection{Copertura di vertici}
+Dato un grafo non orientato $G=(V, E)$ un insieme $S\subseteq V$ \`e una copertura di vertici se e solo se ogni arco ha almento un estremo in $S$.
+$$\forall(x, y)\in E: x\in S\lor y\in S$$
+\subsubsection{Ottimizzazione}
+Dato un grafo non orientato $G=(V, E)$ restituisce la copertura dei vertici di dimensione minima.
+\subsubsection{Decisionale}
+Dato un grafo non orientato $G=(V, E)$ e un valore $k$ determinare se esiste una copertura di vertici di dimensione al massimo $k$.
+\subsubsection{Covering problem}
+Questo \`e un esempio di covering problem, un problema in cui si cerca di ottenere il pi\`u piccolo insieme in grado di coprire un insieme arbitrario di oggetti con il pi\`u piccolo 
+sottoinsieme di questi oggetti.
+\subsection{Riduzione per problemi duali}
+$S\subseteq V$ \`e un indipendet set se $V-S$ \`e un vertex cover: se $S$ \`e un insieme indipendente, ogni arco $(x, y)$ non pu\`o avere entrambi gli estremi in $S$, quindi almeno uno
+dei due deve essere in $V-S$.\\
+$V-S$ \`e un vertex cover se $S\subseteq V$ \`e un independent set. Si supponga per assurdo che $S$ non sia un independet set, allora esiste un arco $(x, y)$ che unisce due nodi in $S$, 
+nessuno dei due estremi sta in $V-S$, che implica che $V-S$ non sia un vertex cover, che \`e un assurdo.
+\subsubsection{Conclusione}
+\begin{align*}
+	VERTEX-COVER &\le_p INDEPENDENT-SET\\
+	INDEPENDENT-SET &\le_p VERTEX-COVER\\
+\end{align*}
+Abbiamo quindi dimostrato che i due problemi sono equivalenti.
+\subsection{SAT}
+Dato un insieme $V$ contenente $n$ variabili, un letterale \`e una variabile $v$ oppure la sua negazione $\bar{v}$, una clausola \`e una disgiunzione di letteralim una formula in forma
+normale congiuntiva \`e una congiunzione di clausole. Data un'espressione in forma normale congiuntiva il problema della soddisfacibilit\`a consiste nel decidere se esiste 
+un'assegnazione di valori di verit\`a alle variabili che rende l'espressione vera.
+\subsubsection{3-SAT}
+Data un'espressione in forma normale congiuntiva in cui le clausole hanno esattamente $3$ letterali il problema della soddisfacibilit\`a consiste nel desidere se esiste un'assegnazione
+di valori di verit\`a alle variabili che rende l'espressione vera.
+\subsection{Riduzione tramite gadget}
+Si vuole dimostrare che $3-SAT\le_p INDEPENDENT-SET$. Data una formula $3-SAT$ si costruisca un grafo in modo che per ogni clausola si aggiunge un terzetto di nodi collegati fra loro
+da archi e per ogni letterale che compare in modo normale e in modo negato aggiungere un arco fra di essi (arco di conflitto). La formula $3-SAT$ \`e soddisfacibile se e solo se \`e
+possibile trovare un independet set di dimensione esatttamente $k=3$.
+\subsection{Riduzione da problema generale a problema generale}
+Ovviamente $3-SAT\le_o SAT$ ed \`e possibile dimostrare che $SAT\le_p 3-SAT$, \`e possibile trasformare una formula $SAT$ in una formula $3-SAT$ facendo in modo che:
+\begin{itemize}
+	\item Se la clausola \`e pi\`u lunga di tre elementi si introduce una nuova variabile e si divide la clausola in due:
+		$$(a\lor b\lor c\lor d)\equiv (a\lor b\lor z)\land(\bar{z}\lor c\lor d)$$
+	\item Se la clausola \`e pi\`u corta di tre elementi si fa padding:
+		$$(a\lor b)\equiv (a\lor a\lor b)$$
+\end{itemize}
+\subsection{Transitivit\`a delle riduzioni}
+\`E facile intuire che la nozione di riducibilit\`a polinomiale gode della propriet\`a transitiva:
+$$SAT \le_p 3-SAT \le_p INDEPENDENT-SET \le_p VERTEX-COVER$$
+\section{Classi $\mathbf{\mathbb{P}}$, $\mathbf{\mathbb{PSPACE}}$}
+Dato un problema di decisione $R$ e un algoritmo $A$ (scritto in un modello di calcolo Turing-equivalente) che lavora in tempo $f_f(n)$ e spazio $f_s(n)$ si dice che $A$ risolve $R$ se
+$A$ restituisce $s$ su un'istanza $x$ se e solo se $(x, s)\in R$. 
+\subsection{Classi di complessit\`a}
+Data una qualunque funzione $f(n)$ si chiama:
+\begin{itemize}
+	\item $\mathbb{TIME}(f(n))$ l'insieme dei problemi decisionali risolvibili da un algoritmo che lavora in tempo $O(f(n))$.
+	\item $\mathbb{SPACE}(f(n))$ gli insiemi dei problemi decisionali risolvibili da un algoritmo che lavora in spazio $O(f(n))$.
+\end{itemize}
+\subsubsection{Classi $\mathbf{\mathbb{P}}, \mathbf{\mathbb{PSPACE}}$}
+La classe $\mathbb{P}$ \`e la classe dei problemi decisionali risolvibili in tempo polinomiale nella dimensione $n$ dell'istanza di ingresso:
+$$\mathbb{P} = \bigcup\limits_{c=0}^\infty\mathbb{TIME}(n^c)$$
+La classe $\mathbb{PSPACE}$ \`e la classe dei problemi decisionali risolvibili in spazio polinomiale nella dimensione $n$ dell'istanza di ingresso:
+$$\mathbb{PSPACE}=\bigcup\limits_{c=0}^\infty\mathbb{SPACE}(n^c)$$
+Si noti come $\mathbb{P}\subseteq\mathbb{PSPACE}$.
+\subsubsection{Classe $\mathbf{\mathbb{NP}}$}
+L'insieme di tutti i problemi che ammettono un certificato verificabile in tempo polinomiale.
+\paragraph{Certificato}
+Dato un problema decisionale $R$ e un'istanza di input $x$ tale che $(c, \mathbf{true})\in R$, un certificato \`e un insieme di informazioni che permette di provare che $(x, 
+\mathbf{true})\in R$.
+\subparagraph{SAT}
+Si calcola il valroe di verit\`a della formula a partire dall'assegnamento di verit\`a delle variabili in tempo $O(n)$.
+\subparagraph{GRAPH-COLORING}
+Si verifica che nodi adiacenti non abbiano lo stesso colore in tempo $O(m+n)$.
+\subparagraph{INDEPENDET-SET}	
+Si verifica che nodi in $V$ non abbiano nodi adiacenti in $V$ in tempo $O(m+n)$.
+\paragraph{Certificati non polinomiali}
+Il problema della quantified boolean formula (QBF) \`e una generalizzazione del problema SAT nel quale ad ogni variabile possono essere applicati quantificatori universali ed 
+esistenziali.
+\section{Relaizoni fra problemi}
+\subsubsection{Lemma}
+\paragraph{Enunciato}
+Se $R_1\le_p R_2$ e $R_2\in\mathbb{P}$ allora anche $R_1$ \`e contenuto in $\mathbb{P}$.
+\paragraph{Dimostrazione}
+Sia $T_f(n)=O(n^{k_f})$ il tempo necessario per trasformare un input di $R_1$ in input di $R_2$ tramite una funzione $f$, sia $T_2(n)=O(n^{k_2})$ il tempo necessario per risolvere $R_2$.
+La funzione $f$ pu\`o prendere un input di dimensione $n$ e trasformarlo in un input di dimensione $O(n^{k_f})$ per $R_2$. Il tempo per risolvere $R_1$ sar\`a quindi $T_1=O(n^{k_fk_2})$,
+$T_1(n)$ \`e polinomiale.
+\subsection{Definizioni}
+\subsubsection{Problema $\mathbf{\mathbb{NP}}$-arduo ($\mathbf{\mathbb{NP}}$-hard)}
+Un problema decisionale $R$ si dice $\mathbb{NP}$-arduo se ogni problema $Q\in\mathbb{NP}$ \`e riducibile polinomialmente a $R$ ($Q\le_p R$).
+\subsubsection{Problema $\mathbf{\mathbb{NP}}$-completo ($\mathbf{\mathbb{NP}}$-complete)}
+Un problema decisionale $R$ si dice $\mathbb{NP}$-completo se appartiene alla classe $\mathbb{NP}$ ed \`e $\mathbb{NP}$-hard.
+\subsubsection{$\mathbf{\mathbb{P}=\mathbb{NP}}$}
+Se un qualunque problema decisionale in $\mathbb{NP}$-completo appartenesse a $\mathbb{P}$ allora risulterebbe $\mathbb{P}=\mathbb{NP}$.
+\subsection{Esistenza di problemi $\mathbf{\mathbb{NP}}$-completi}
+Dimostrare che un problema \`e contenuto in $\mathbb{NP}$ \`e semplice, dimostrare che un problema \`e $\mathbb{NP}$-completo richiede una dimostrazione difficile: tutti i problemi in
+$\mathbb{NP}$ sono riducibili polinomialmente a tale problema. Si \`e dimostrato come il problema di soddisfabilit\`a sia $\mathbb{NP}$-completo e pertanto lo sono anche $3-SAT, 
+INDEPENDET-SET, VERTEX-COVER$.
+\section{Problemi $\mathbf{\mathbb{NP}}$-completi classici}
+\subsection{Cricca (Clique)}
+Dati un grafo non orientato ed un intero $k$ verificare se esiste un insieme di almeno $k$ nodi tutti mutualmente adiacenti.
+\subsection{Commesso viaggiatore}
+Date $n$ citt\`a le distanze tra esse e un intero $k$ \`e possibile partire da una citt\`a, attraversare ogni citt\`a esattamente una volta tornando alla citt\`a di partenza percorrendo
+una distanza non superiore a $k$.
+\subsection{Programmazione lineare (0, 1)}
+Data una matrice $A$ di elementi interi e di dimensione $m\times n$ ed un vettore $b$ di $m$ elementi interi esiste un vettore $x$ di $n$ elementi $0, 1$ tale che $Ax\le b$.
+\subsection{Copertura esatta di insiemi (Exact cover)}
+Dato un insieme $X$ e una collezione $\mathcal{Y}=\{Y_1, \dots, Y_n\}$ di sottoinsiemi di $X$, verificare se esiste una sottocollezione $\mathcal{Z}\subseteq\mathcal{Y}$ che partizioni 
+$X$.
+\subsection{Partizione (partition)}
+Dato un insieme $A=\{a_1, \dots, a_n\}$ di interi positivi esiste un sottoinsieme $S$ di $\{1, \dots,n\}$ tale che $\sum\limits_{i\in S}a_i = \sum\limits_{i\not\in S}a_i$.
+\subsection{Somma di sottoinsiemi (subset-sum)}
+Dati un insieme $A=\{a_1,\dots a_n\}$ di interi positivi ed un intero positivo $k$ verificare se esiste un sottoinsieme $S$ di indici $\{1, \dots n\}$ tale che 
+$\sum\limits_{i\in S}a_i = k$.
+\subsection{Zaino (knapsack)}
+Dati un intero positivo $C$ (la capacit\`a dello zaino) e un insieme di $n$ oggetti tali che l'oggetto $i$ \`e caratterizzato da u profitto $p_i\in \mathbb{Z}^+$ e da un peso 
+$w_i\in\mathbb{>}^+$ esiste un sottoinsieme $S\subseteq\{1, \dots, n\}$ tale che il peso totale $w(S)=\sum\limits_{i\in S} w_i\le C$ e il protiffo totale $p(S) = \sum\limits_{i\in S}p_i$
+\`e maggiore o uguale a $k$.
+\subsection{Circuito hamiltoniano}
+Dato un grafo non orientato $G$, verificare se esiste un circuito che attraversi ogni nodo una e una sola volta.
+

@@ -204,3 +204,33 @@
 \BOOKMARK [2][-]{subsection.16.5.2}{Algoritmo inefficiente O\(n3\)}{section.16.5}% 204
 \BOOKMARK [2][-]{subsection.16.5.3}{Algoritmo di Jarvis}{section.16.5}% 205
 \BOOKMARK [2][-]{subsection.16.5.4}{Algoritmo di Graham}{section.16.5}% 206
+\BOOKMARK [0][-]{chapter.17}{Algoritmi Probabilistici}{}% 207
+\BOOKMARK [0][-]{chapter.18}{Problemi intrattabili, teoria dell'NP-completezza}{}% 208
+\BOOKMARK [1][-]{section.18.1}{Problemi}{chapter.18}% 209
+\BOOKMARK [2][-]{subsection.18.1.1}{Tipologie di problemi}{section.18.1}% 210
+\BOOKMARK [2][-]{subsection.18.1.2}{Equivalenza di probelmi di ottimizzazione e decisione}{section.18.1}% 211
+\BOOKMARK [1][-]{section.18.2}{Riduzione polinomiale}{chapter.18}% 212
+\BOOKMARK [2][-]{subsection.18.2.1}{Colorazione di grafi}{section.18.2}% 213
+\BOOKMARK [2][-]{subsection.18.2.2}{Sudoku}{section.18.2}% 214
+\BOOKMARK [2][-]{subsection.18.2.3}{Riduzione da problema particolare a problema generale}{section.18.2}% 215
+\BOOKMARK [2][-]{subsection.18.2.4}{Insieme indipendente}{section.18.2}% 216
+\BOOKMARK [2][-]{subsection.18.2.5}{Copertura di vertici}{section.18.2}% 217
+\BOOKMARK [2][-]{subsection.18.2.6}{Riduzione per problemi duali}{section.18.2}% 218
+\BOOKMARK [2][-]{subsection.18.2.7}{SAT}{section.18.2}% 219
+\BOOKMARK [2][-]{subsection.18.2.8}{Riduzione tramite gadget}{section.18.2}% 220
+\BOOKMARK [2][-]{subsection.18.2.9}{Riduzione da problema generale a problema generale}{section.18.2}% 221
+\BOOKMARK [2][-]{subsection.18.2.10}{Transitivit\340 delle riduzioni}{section.18.2}% 222
+\BOOKMARK [1][-]{section.18.3}{Classi P, PSPACE}{chapter.18}% 223
+\BOOKMARK [2][-]{subsection.18.3.1}{Classi di complessit\340}{section.18.3}% 224
+\BOOKMARK [1][-]{section.18.4}{Relaizoni fra problemi}{chapter.18}% 225
+\BOOKMARK [2][-]{subsection.18.4.1}{Definizioni}{section.18.4}% 226
+\BOOKMARK [2][-]{subsection.18.4.2}{Esistenza di problemi NP-completi}{section.18.4}% 227
+\BOOKMARK [1][-]{section.18.5}{Problemi NP-completi classici}{chapter.18}% 228
+\BOOKMARK [2][-]{subsection.18.5.1}{Cricca \(Clique\)}{section.18.5}% 229
+\BOOKMARK [2][-]{subsection.18.5.2}{Commesso viaggiatore}{section.18.5}% 230
+\BOOKMARK [2][-]{subsection.18.5.3}{Programmazione lineare \(0, 1\)}{section.18.5}% 231
+\BOOKMARK [2][-]{subsection.18.5.4}{Copertura esatta di insiemi \(Exact cover\)}{section.18.5}% 232
+\BOOKMARK [2][-]{subsection.18.5.5}{Partizione \(partition\)}{section.18.5}% 233
+\BOOKMARK [2][-]{subsection.18.5.6}{Somma di sottoinsiemi \(subset-sum\)}{section.18.5}% 234
+\BOOKMARK [2][-]{subsection.18.5.7}{Zaino \(knapsack\)}{section.18.5}% 235
+\BOOKMARK [2][-]{subsection.18.5.8}{Circuito hamiltoniano}{section.18.5}% 236
