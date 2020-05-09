@@ -22,4 +22,4 @@ Verranno indicate i problemi conosciuti ma non ancora risolti:
 * QuickSort?
 * Manca la dimostrazione della complessita' di heapbuild()
 * Manca la dimostrazione della correttezza di heapSort()
-* Manca il pacco di slides 10_Scelta
+* Manca il pacco slide 17-Prob
