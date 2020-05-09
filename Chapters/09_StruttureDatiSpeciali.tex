@@ -7,6 +7,7 @@ inserito.
 \subsection{Specifica}
 \input{Pseudocodice/66_}
 \subsection{Implementazioni}
+\begin{center}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 Metodo & \makecell{Lista o vettore \\non ordinato} & \makecell{Lista\\ordinata} & \makecell{Vettore\\ordinato} & \makecell{Albero\\RB}\\
@@ -19,7 +20,8 @@ Metodo & \makecell{Lista o vettore \\non ordinato} & \makecell{Lista\\ordinata} 
 \hline
 \emph{decrease()} & $O(n)$ & $O(n)$ & $O(\log n)$ & $O(\log n)$\\
 \hline
-\end{tabular}\\
+\end{tabular}
+\end{center}
 L'implementazione pi\`u comune \`e attraverso gli heap, strutture speciali che associano i vantaggi di un albero (esecuzioni in tempo $O(\log n)$) e 
 vantaggi di un vettore (memorizzazione efficiente).
 \subsection{Heap}
@@ -41,7 +43,10 @@ Gli alberi binari heap sono memorizzati tramite un vettore heap $A=[0, \dots, n-
 \item Il figlio sinistro del nodo salvato all'indice $i$ si trova in \emph{l(i) = $2i+1$}.
 \item Il figlio destro del nodo salvato all'indice $i$ si trova in \emph{r(i) = $2i+2$}.
 \end{itemize}
-Propriet\`a max-heap sul vettore: $A[i]\ge A[l(i)], [i]\ge A[r(i)]$. Propriet\`a min-heap sul vettore: $A[i]\le A[l(i)], [i]\le A[r(i)]$.
+Propriet\`a max-heap sul vettore: 
+$$A[i]\ge A[l(i)], [i]\ge A[r(i)]$$ 
+Propriet\`a min-heap sul vettore: 
+$$A[i]\le A[l(i)], A[i]\le A[r(i)]$$
 \subsubsection{\emph{heapsort()}}
 L'\emph{heapsort()} ordina un max-heap "in-place" prima costruendo un max-heap nel vettore e poi spostando l'elemento max in ultima posizione, ripristinando
 la propriet\`a max-heap. Utilizza pertanto le funzioni \emph{heapBuild()} che costruisce un max-heap a partire dal vettore non ordinato e \emph{ 
@@ -69,7 +74,7 @@ chiamata ricorsiva su di esso che ha altezza minore di $h$, pertanto \`e corrett
 \paragraph{\emph{heapBuild()}}
 Sia $A[1,\dots, n]$ un vettore da ordinare, tutti i nodi $A[\lfloor \frac{n}{2}\rfloor+1,\dots, n]$ sono foglie dell'albero e pertanto heap contenenti un 
 elemento. La procedura \emph{heapBuild()} attraversa i restanti nodi dell'albero a partire da $\lfloor \frac{n}{2}\rfloor$ fino ad $1$ ed esegue 
-\emph{maxHeapRestore()} su ognuno di essi. L'algoritmo ha complessit\`a $\Theta(\log n)$. Aggiungere dimostrazione, non la capisco.
+\emph{maxHeapRestore()} su ognuno di essi. L'algoritmo ha complessit\`a $\Theta(\log n)$. 
 \input{Pseudocodice/68_HeapBuild}
 \subparagraph{Correttezza}
 Si dimostra attraverso l'invariante di ciclo: all'inizio di ogni iterazione del ciclo \textbf{for} i nodi $[i+1,\dots, n]$ sono radice di uno heap.

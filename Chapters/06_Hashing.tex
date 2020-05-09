@@ -32,10 +32,10 @@ dal suffisso della chiave pu\`o generare collisioni con alta probabilit\`a (o an
 \subsubsection{XOR}
 Si consideri $m=2^p$ e $H(k)=int(b)$ dove $b$ \`e dato dalla somma modulo 2 effettuata bit a bit di sottoinsiemi di $p$ bit di \emph{bin(k)}. Presenta dei 
 problemi in quanto le permutazioni possono generare lo stesso valore di hash.
-\subsubsection{Metodo della divizione}
+\subsubsection{Metodo della divisione}
 Si consideri $m$ numero dispari, meglio se primo. $H(k)=int(k)\mod m$. Non vanno bene $m=2^p$ in quanto considera unicamente i $p$ bit meno significativi
 e $m= 2^p-1$ in quanto permutazioni con set di elementi con dimensione $2^p$ hanno lo stesso valore di hash. Si devono pertanto scegliere numeri primi 
-distanti da potenza di $2$ e $10$. 
+distanti da potenze di $2$ e $10$. 
 \subsubsection{Metodo della moltiplicazione}
 Si consideri un $m$ qualsiasi, meglio se potenza di $2$, $C\in]0;1[$ una costante reale e $i=int(k)$. $H(k)=\lfloor m(C\cdot i-\lfloor C\cdot i\rfloor)
 \rfloor$.
@@ -121,15 +121,19 @@ ricerca non dipende pi\`u da $\alpha$ ma il concatenamento diventa pi\`u comune.
 \subsubsection{Implementazione dell'hashing doppio}
 \input{Pseudocodice/39_}
 \section{Complessit\`a}
-\begin{tabular}{c c c c}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
 \hline
 \textbf{Metodo} & $\alpha$ & $I(\alpha)$ & $S(\alpha)$\\
 \hline
 Lineare & $0\le\alpha< 1$ & $\dfrac{(1-\alpha)^2+1}{2(1-\alpha)^2}$ & $\dfrac{1-\frac{\alpha}{2}}{1-\alpha}$\\
+\hline
 Hashing doppio & $0\le\alpha< 1$ & $\dfrac{1}{1-\alpha}$ & $-\dfrac{1}{\alpha}\ln(1-\alpha)$\\
+\hline
 Liste di trabocco & $\alpha\ge 0$ & $1+\alpha$ & $1+\dfrac{\alpha}{2}$\\
 \hline
-\end{tabular}\\
+\end{tabular}
+\end{center}
 Si noti come la complessit\`a aumenti con l'aumentare di $\alpha$. Pertanto sopra una soglia prefissata $t_\alpha$, solitamente tra $0.5$ e $0.75$ si alloca
 una nuova dimensione $2m$ e si reinseriscono tutte le chiavi presenti nella tabella. Si dimezza pertanto il fattore di carico e si eliminano tutti gli 
 elementi \textbf{deleted}. Nel caso pessimo c'\`e un costo di $O(m)$ per la ristrutturazione nel caso pessimo con costo ammortizzato costante. 

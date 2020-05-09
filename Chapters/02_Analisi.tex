@@ -82,7 +82,7 @@ f(n)&=a_kn^k+a_{k-1}n^{k-1}+\cdots+a_1n+a_0\\
 &= (a_k+|a_{k-1}|+\cdots+|a_1|+|a_0|)n^k\\
 &\overset{?}{\ge} dn^k
 \end{align*}
-Vera per $d\le a_k-\frac{|a_{k-1}|}{n}-\frac{|a_{k-2}|}{n}-\cdots-\frac{|a_{1}|}{n}-\frac{|a_{0}|}{n}>0\Leftrightarrow n>\frac{|a_{k-1}+\cdots+|a_0|}{a_k}$.
+Vera per $d\le a_k-\frac{|a_{k-1}|}{n}-\frac{|a_{k-2}|}{n}-\cdots-\frac{|a_{1}|}{n}-\frac{|a_{0}|}{n}>0\Leftrightarrow n>\frac{|a_{k-1}|+\cdots+|a_0|}{a_k}$.
 \subsubsection{Dualit\`a}
 \paragraph{Enunciato}
 \begin{equation*}
@@ -92,7 +92,7 @@ f(n)=O(g(n))\Leftrightarrow g(n)=\Omega(f(n))
 \begin{align*}
 f(n)=O(g(n))&\Leftrightarrow f(n)\le cg(n),\forall n\ge m\\
 &\Leftrightarrow g(n)\ge \frac{1}{c}f(n), \forall n\ge m\\
-&\Leftrightarrow g(n)\ge c'=f(n),\forall n\ge m, c'=\frac{1}{c}\\
+&\Leftrightarrow g(n)\ge c'f(n),\forall n\ge m, c'=\frac{1}{c}\\
 &\Leftrightarrow g(n)=\Omega(f(n))
 \end{align*}
 \subsubsection{Eliminazione delle costanti}
@@ -173,7 +173,7 @@ Si vuole provare che $\log n=O(n)$. Si dimostri pertanto per induzione che:
 \end{equation*}
 \paragraph{Dimostrazione}
 \begin{itemize}
-\item Caso base, $n=1$: $\log 1=0\le cn=c\dot 1\Leftrightarrow c\ge 0$.
+\item Caso base, $n=1$: $\log 1=0\le cn=c\cdot 1\Leftrightarrow c\ge 0$.
 \item Ipotesi induttiva: sia $\log k\le ck, \forall k\le n$.
 \item Passo induttivo: si dimostri la propriet\`a per $n+1$.
 \begin{align*}

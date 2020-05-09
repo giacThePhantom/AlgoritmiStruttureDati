@@ -1,4 +1,4 @@
-\begin{algorithm}
+\begin{algorithm}[H]
 \DontPrintSemicolon
 \SetKwComment{comment}{$\%$}{}
 \SetKw{Int}{int}
@@ -40,5 +40,5 @@
 
 \Stack S = \TopSort{G}		\comment{First visit}
 \Graph $G^T$ = \Transpose{G}			\comment{Graph transposal}
-\Return cc{$G^T$, S}		\comment{Second visit}
+\Return \CC{$G^T$, S}		\comment{Second visit}
 \end{algorithm}

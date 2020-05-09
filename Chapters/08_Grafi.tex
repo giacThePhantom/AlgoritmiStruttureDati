@@ -17,7 +17,7 @@ dette anche archi.
 \item La complessit\`a di algoritmi sui grafi deve essere espressa sia un termini di $n$ che di $m$. 
 \item Un grafo con un arco tra tutte le coppie di nodi \`e detto completo.
 \item Un grafo si dice sparso se ha "pochi archi", ovvero con $m=O(n)$ o $m=O(n\log n)$.
-\item Un grafo si dice dento se ha "molti archi", ovvero con $m=\Omega(n^2)$.
+\item Un grafo si dice denso se ha "molti archi", ovvero con $m=\Omega(n^2)$.
 \item Un albero libero \`e un grafo connesso con $m=n-1$.
 \item Un albero radicato \`e un albero libero sul quale \`e stata scelta una radice. 
 \item Un insieme di alberi \`e un grafo detto foresta.
@@ -28,7 +28,7 @@ dette anche archi.
 \item Si dice peso di un arco un valore associato all'arco dato da una funzione di peso $w: V\times V\rightarrow\mathbb{R}$.
 \item Un nodo $v$ si dice raggiungibile da un nodo $u$ se esiste almeno un cammino da $u$ a $v$. 
 \item Un grafo non orientato $G=(V, E)$ \`e connesso se e solo se ogni suo nodo \`e raggiungibile da ogni altro nodo. 
-\item $G'$ \`e detto sottografo di $G$ $G'\subseteq G$ se e solo se $V'\subseteq V$ e $E'\subseteq E$.
+\item $G'$ \`e detto sottografo di $G$, $G'\subseteq G$ se e solo se $V'\subseteq V$ e $E'\subseteq E$.
 \item $G'$ \`e sottografo massimale di $G$ se e solo se non esiste un altro sottografo $G''$ tale che $G''$ \`e connesso e pi\`u grande di $G'$.
 \item Un grafo $G'=(V', E')$ \`e una componente connessa di $G$ se e solo se \`e un sottografo connesso e massimale di $G$.
 \item In un grafo non orientato $G=(V, E)$ un ciclo $C$ di lunghezza $k>2$ \`e una sequenza di nodi $u_0, \dots, u_k$ tale che $(u_i, i_{i+1})\in E$ per 
@@ -76,6 +76,7 @@ Gli elementi della lista puntata sono coppie nodo di arrivo-peso.
 \item Verificare se $u$ \`e adiacente a $v$ richiede $O(n)$.
 \item Iterare su tutti gli archi richiede $O(n+m)$
 \end{itemize}
+\newpage
 \subsection{Iterazioni su nodi e archi}
 \begin{multicols}{2}
 \input{Pseudocodice/46_Iterazione_su_tutti_i_nodi_del_grafo}
@@ -101,7 +102,7 @@ tutti i suoi archi vengono analizzati una sola volta. Il numero di archi analizz
 l'out-degree del nodo $u$. 
 \subsection{Visita in profondit\`a o depth-first search}
 La visita in profondit\`a \`e una visita ricorsiva: per ogni nodo adiacente si visita ricorsivamente tale nodo, visitando ricorsivamente i suoi adiacenti
-e cos\`i via. Questo tipo di ricerca \`e spesso una subroutine in altri problemi, visita tutto il grafo, nono solo i nodi raggiungibili dalla radice e
+e cos\`i via. Questo tipo di ricerca \`e spesso una subroutine in altri problemi, visita tutto il grafo, non solo i nodi raggiungibili dalla radice e
 genera pertanto una foresta formata da una collezione di alberi depth-first. Si realizza attraverso uno stack che viene reso implicito attraverso la 
 ricorsione.
 \subsubsection{Implementazione ricorsiva}
@@ -137,7 +138,7 @@ inclusi nell'albero possono essere divisi in tre categorie:
 \item Se $u$ \`e un discendente di $v$ in $T$ $(u, v)$ \`e detto arco all'indietro.
 \item Se i primi due non sussistono viene detto arco di attraversamento. 
 \end{itemize}
-Indicato con time un contatore, il vettore \emph{dt} il discovery time, o tempo di scoperta di un nodo e \emph{ft} il finish time o tempo di fine di un 
+Indicato con \emph{time} un contatore, il vettore \emph{dt} il discovery time, o tempo di scoperta di un nodo e \emph{ft} il finish time o tempo di fine di un 
 nodo.\\
 \input{Pseudocodice/58_DfsSchema}
 Classificare gli archi permette di dimostrare propriet\`a rispetto a questa classificazione e pertanto costruire degli algoritmi migliori. In particolare 
@@ -157,13 +158,13 @@ un cammino da $v$ a $u$ e un arco da $u$ a $v$, ovvero un ciclo.
 \subsubsection{Ordinamento topologico}
 L'algoritmo per un ordinamento topologico consiste in una dfs in cui l'operazione di visita consiste nell'aggiungere il nodo in testa ad una lista a tempo
 di fine (ovvero post-ordine). L'output sar\`a pertanto una sequenza di nodi ordinata per tempo decrescente di fine. In questo modo quando un nodo \`e finito
-tutti i suoi discendenti sono stati aggiunti alla lista e aggiungendolo in testa \`e nell'ordine corretto. 
+tutti i suoi discendenti sono stati aggiunti alla lista e aggiungendolo in testa \`e nell'ordine corretto. \\
 \input{Pseudocodice/60_TopSort}
 \input{Pseudocodice/61_TsDfs}
 \subsubsection{Algoritmo di Kosaraju}
 Utilizzato per trovare le componenti fortemente connesse di un grafo orientato. Per farlo effettua una visita dfs al grafo, calcola il grafo trasposto $G_t$
 ed esegue una visita dfs sul grafo $G_t$ utilizzando \emph{cc} esaminando i nodi in ordine inverso di tempo di fine della prima visita. Le componenti 
-connesse e i relativi alberi DF rappresentano le componenti fortemente connesse di $G$. (Sostituito dall'algoritmo di Tarjan che richiede una sola visita).
+connesse e i relativi alberi DF rappresentano le componenti fortemente connesse di $G$. (Sostituito dall'algoritmo di Tarjan che richiede una sola visita).\\
 \input{Pseudocodice/62_Scc}
 Applicando l'algoritmo topologico si \`e sicuri che se un arco $(u, v)$ non appartiene ad un ciclo, $u$ viene listato prima di $v$ nella sequenza ordinata e
 gli archi di un ciclo vengono listati in un qualche ordine che \`e ininfluente. Si utilizza \emph{topSort()} per ottenere i nodi in ordine decrescente di 

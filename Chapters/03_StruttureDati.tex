@@ -3,7 +3,7 @@ Si intende per dato in un linguaggio di programmazione un valore che una variabi
 insieme di operazioni ammesse su quei valori. Si dicono primitivi i tipi di dati forniti direttamente dal linguaggio di programmazione. La definizione di un
 tipo di dato astratto si divide nella specifica, una descrizione di alto livello di come pu\`o essere utilizzata e nell'implementazione, la realizzazione 
 vera e propria di basso livello. Le strutture dati sono collezioni di dati, caratterizzate dall'organizzazione della collezione stessa pi\`u che dal tipo di
-dati contenuti. Le strutture dati sono caratterizzate da un insieme di operatori che permettono di manipolarne la struttura e un modo sistematico per 
+dati contenuti. Le strutture dati sono caratterizzate da un insieme di operazioni che permettono di manipolarne la struttura e un modo sistematico per 
 organizzare l'insieme di dati. Le strutture dati si dividono in:
 \begin{itemize}
 \item Lineari o non lineari rispetto alla presenza o meno di una sequenza.
@@ -26,6 +26,7 @@ $pos_{n+1}$.
 Per insieme si intende una struttura dati dinamica, non lineare che memorizza una collezione non ordinata di elementi senza valori ripetuti. L'ordinamento
 tra i valori sar\`a dato dall'eventuale relazione d'ordine definita sul tipo di elementi stessi. 
 \subsubsection{Operazioni ammesse}
+\begin{multicols}{2}
 \begin{itemize}
 \item Operazioni base:
 \begin{itemize}
@@ -49,6 +50,7 @@ tra i valori sar\`a dato dall'eventuale relazione d'ordine definita sul tipo di 
 \item \textbf{foreach} $x\in S$ \textbf{do}.
 \end{itemize}
 \end{itemize}
+\end{multicols}
 \subsubsection{Specifica}
 \input{Pseudocodice/6_}
 \section{Dizionari}
@@ -64,7 +66,7 @@ $D$ \`e il dominio ed \`e costituito dalle chiavi, l'insieme $C$ \`e il codomini
 \input{Pseudocodice/7_}
 \section{Alberi e grafi}
 \subsection{Alberi ordinati}
-Un albero ordinato \`e dato da un insieme finito di elementi detti nodi, uno dei quali \`e designato come radice e i rimanenti, se esistono sono 
+Un albero ordinato \`e dato da un insieme finito di elementi detti nodi, uno dei quali \`e designato come radice e i rimanenti, se esistono, sono 
 partizionati in insiemi ordinati e disgiunti, anch'essi alberi ordinati.
 \subsection{Grafi}
 La struttura di un grafo \`e composta da un insieme di elementi detti nodi o vertici e un insieme di coppie (ordinate o no) di nodi detti archi.
