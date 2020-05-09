@@ -1,0 +1,90 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKwRepeat{Do}{do}{while}
+\SetKw{Int}{int}
+\SetKw{Float}{float}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Tree}{Tree}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{F}{f}
+\SetKwData{Left}{left}
+\SetKwData{Right}{right}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{Node}{Node}
+\SetKwData{Point}{Point}
+\SetKwData{Stack}{Stack}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Min}{min}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{TreeCos}{Tree}
+\SetKwFunction{MinPriorityQueue}{MinPriorityQueue}
+\SetKwFunction{DeleteMin}{deleteMin}
+\SetKwFunction{MfsetCos}{Mfset}
+\SetKwFunction{Find}{find}
+\SetKwFunction{Merge}{merge}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{Push}{push}
+\SetKwFunction{Pop}{pop}
+\SetKwFunction{Top}{top}
+\SetKwFunction{Decrease}{decrease}
+\SetKwFunction{StackCos}{StackCos}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{SubsetSum}{subsetSum}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Boolean \protect\SubsetSum{\protect\Int[] A, \protect\Int n, \protect\Int k}}
+\Boolean[][] DP = \New \Boolean$[0\dots n][0\dots k] = \{$\False$\}$\;
+\For{\Int i = 0 \To n}{
+	DP[i][0] = \True\comment{r = 0}
+}
+\For{\Int r = 1 \To k}{
+	DP[0][k] =\False\comment{r $>$ 0 $\land$ i = 0}
+}
+\For{\Int i = 1 \To n}{
+	\For{\Int r = 1 \To A[i] - 1}{
+		DP[i][r] =DP[i - 1][r]\comment{A[i] $>$ r}
+	}
+	\For{\Int r = A[i] \To k}{
+		DP[i][r] = DP[i][r] = DP[i - 1][r] \Or DP[i - 1][r - A[i]]\comment{A[i] $\le$ r}
+	}
+}
+\Return DP[n][k]\;
+\end{algorithm}

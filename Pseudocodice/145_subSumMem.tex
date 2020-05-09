@@ -1,0 +1,93 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKwRepeat{Do}{do}{while}
+\SetKw{Int}{int}
+\SetKw{Float}{float}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Tree}{Tree}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{F}{f}
+\SetKwData{Left}{left}
+\SetKwData{Right}{right}
+\SetKwData{Dictionary}{Dictionary}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{Node}{Node}
+\SetKwData{Point}{Point}
+\SetKwData{Stack}{Stack}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Min}{min}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{TreeCos}{Tree}
+\SetKwFunction{MinPriorityQueue}{MinPriorityQueue}
+\SetKwFunction{DeleteMin}{deleteMin}
+\SetKwFunction{MfsetCos}{Mfset}
+\SetKwFunction{Find}{find}
+\SetKwFunction{Lookup}{lookup}
+\SetKwFunction{Merge}{merge}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{Push}{push}
+\SetKwFunction{Pop}{pop}
+\SetKwFunction{Top}{top}
+\SetKwFunction{Decrease}{decrease}
+\SetKwFunction{StackCos}{StackCos}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{SsRec}{ssRec}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Boolean \protect\SsRec{\protect[] A, \protect\Int i, \protect\Int r, \protect\Dictionary}}
+\uIf{r == 0}{
+	\Return \True\;
+}
+\uElseIf{r $<$ 0 \Or i == 0}{
+	\Return \False\;
+}
+\Else{
+	\Boolean res = DP.\Lookup{(i, r)}\;
+	\If{res == \Nil}{
+		res = \SsRec{A, i - 1, r, DP}\;
+		\If{A[i] $<$ r}{
+			res = res \Or \SsRec{A, i - 1, r - A[i], DP}\;
+		}
+		DP.\Insert{(i, r), res}\;
+	}
+	\Return res\;
+}
+\end{algorithm}

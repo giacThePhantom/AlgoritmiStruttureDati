@@ -1,0 +1,112 @@
+\chapter{Tecniche risolutive per problemi intrattabili}
+Per la risoluzione di alcuni problemi si rende necessario rinunciare a delle caratteristiche:
+\begin{itemize}
+	\item Generalit\`a: algoritmi pseudo-polinomiali che funzionano solo per alcuni casi particolari dell'input.
+	\item Ottimalit\`a: algoritmi di approssimazione che garantiscono di ottenere soluzioni vicine alla soluzione ottimale.
+	\item Efficienza: algoritmi esponenziali branch-\&-bound che limitano lo spazio di ricerca con un'accurata potatura.
+	\item Formalit\`a: algoritmi euristici di solito basati su tecniche greedy o di ricerca locale che forniscano sperimentalmente risultati buoni.
+\end{itemize}
+\section{Subset-Sum}
+\paragraph{Problema}
+Dati un vettore $A$ contenente $n$ interi positivi e un intero positivo $k$, verificare se esiste un sottoinsieme $S\subseteq\{1, \dots, n\}$ tale che $\sum\limits_{i\in S}a[i] = k$.
+\paragraph{Soluzioni}
+Utilizzando backtracking si \`e risolta la versione di ricerca di questo problema mentre questa \`e la versione decisionale, su cui ci si concentrer\`a. 
+\subsection{Programmazione dinamica}
+Si definisce una tabella booleana $DP[0\dots n][0\dots k]$ tale per cui $DP[i][r]$ \`e uguale a \emph{\textbf{true}} se esiste un sottoinsieme dei primi $i$ valori memorizzati in $A$
+la cui somma \`e pari a $r$, \emph{\textbf{false}} altrimenti.
+$$DP[i][r] = 
+\begin{cases}
+	true \quad\quad\quad & r = 0\\
+	false & r > o \land i = 0\\
+	DP[i - 1][r] & r > 0 \land i > 0 \land A[i] > r\\
+	DP[i - 1][r] \lor DP[i - 1][r - A[i] & r > 0 \land i > - \land A[i]\le r\\
+\end{cases}$$
+\input{Pseudocodice/143_subSumDim}
+\subsection{Backtracking}
+\input{Pseudocodice/144_subSumBack}
+\subsection{Memoization}
+\input{Pseudocodice/145_subSumMem}
+\subsection{Complessit\`a}
+\begin{itemize}
+	\item Programmazione dinamica: $\Theta(nk)$.
+	\item Backtracking: $O(2^n)$.
+	\item Memoization con dizionario $O(nk), O(2^n)$.
+\end{itemize}
+$O(nk)$ non \`e una complessit\`a polinomiale in quanto $k$ \`e parte dell'input, non una sua dimensione. Questo viene rappresentato con $t = \lceil\log k\rceil$ cifre binarie, pertanto
+$O(nk) = O(n\cdot 2^t)$, che \`e esponenziale.
+\section{Problemi fortemente, debolmente $\mathbf{\mathbb{NP}}$-completi}
+\subsubsection{Dimensioni del problema}
+Dato un problema decisionale $R$ e una sua istanza $I$, si definisce la dimensione $d$ di $I$ \`e la lunghezza della stringa che codifica $I$, il valore $\#$ \`e il pi\`u grande numero 
+intero che appare in $I$.
+\subsection{Problemi}
+\subsubsection{Cricca (CLIQUE)}
+Dati un grafo non orientato e un intero $k$ si verifiche se esiste un sottoinsieme di almeno $k$ nodi tutti mutualmente adiacenti.
+\subsubsection{Commesso viaggiatore (TSP)}
+Date $n$ citt\`a e una matrice simmetrica $d$ di distanze positive, dove $d[i][j]$ \`e la distanza tra $i$ e $j$, trovare un provare un percorso che, partendo da una qualsiasi citt\`a
+attraverso ogni citt\`a esattamente una volta e ritorni alla citt\`a di partenza in modo che la distanza totale percorsa sia minima.
+\subsubsection{Esempi}
+\begin{tabular}{|c|c|c|c|}
+	\hline
+	\textbf{Nome} & $\mathbf{I}$ & $\mathbf{\#}$ & $\mathbf{d}$ \\
+	\hline
+	SUBSET-SUM & $\{n, k, A\}$ & $\max\{n, k, \max(A)\}$ & $O(n\log\#)$\\
+	\hline
+	CLIQUE & $\{n, m, k, G\}$ & $\max\{n, m, k\}$ & $O(n + m + \log\#)$\\
+	\hline
+	TSP & $\{n, k, d\}$ & $\max\{n, k, \max(d)\}$ & $O(n^2\log\#)$ \\
+	\hline
+\end{tabular}
+\subsection{Problema fortemente $\mathbf{\mathbb{NP}}$-completo}
+Sia $R_{pol}$ il problema $R$ ristretto a quei dati d'ingresso per i quali $\#$ \`e limitato superiormente da $p(d)$ con $p$ una funzione polinomiale in $d$. $R$ \`e fortemente 
+$\mathbb{NP}$-completo se $R_{pol}$ \`e $\mathbb{NP}$-completo.
+\subsubsection{Cricca (CLIQUE)}
+Si mostri come questo problema \`e fortemente $\mathbb{NP}$-completo: si prenda $k\le n$ (altrimenti la risposta \`e \textbf{false}), $\# = \max\{n, m, k\} = \max\{n, m\}$, 
+$d = O(n+m+\log\#)=O(n+m)$, pertanto $\# = \max\{n, m\}$ \`e limitato superiormente da $O(n+m)$ quindi il problema ristretto \`e identico a CLIQUE che \`e $\mathbb{NP}$-completo.
+\subsubsection{Commesso viaggiatore (TSP)}
+Si dimostri che TSP \`e fortemente $\mathbb{NP}$-completo. Per assurdo si supponga che TSP sia debolmente $\mathbb{NP}$-completo, allora esiste una soluzione pseudo-polinomiale  e la 
+si usa per risolvere un problema $\mathbb{NP}$-completo in tempo polinomiale, assurdo a meno che $\mathbb{P}=\mathbb{NP}$. 
+\subsubsection{Circuito hamiltoniano (HAMILTONIAN-CIRCUIT)}
+Si deve verificare se dato un grafo non orientato $G$ esista un circuito che attraversi ogni nodo una e una sola volta. 
+\paragraph{Complessit\`a}
+HAMILTONIAN-CIRCUIT \`e $\mathbb{NP}$-completo e uno dei $21$ problemi elencati nell'articolo di Karp.
+\subsubsection{Dimostrazione che TSP \`e fortemente $\mathbf{\mathbb{NP}}$-completo}
+Sia $G=(V, E)$ un grafo non orientato e si definisca una matrice di distanze a partire da $G$:
+$$d[i][j] = 
+\begin{cases}
+	1 & (i, j)\in E\\
+	2 & (i, j)\not\in E\\
+\end{cases}$$
+Il grafo $G$ ha un circuito hamiltoniano se e solo se \`e possibile trovare un percorso da commesso viaggiatore di costo $n$, se esistesse un algoritmo pseudopolinomiale $A$ per TSP, 
+HAMILTONIAN-CIRCUIT potrebbe essere risolto da $A$ in tempo polinomiale, che \`e un assurdo.
+\subsection{Problema debolmente $\mathbf{\mathbb{NP}}$-completo}
+Se un problema $\mathbb{NP}$-completo non \`e fortemente $\mathbb{NP}$-completo allora \`e debolmente $\mathbb{NP}$-completo.
+\subsubsection{Somma di sottoinsieme (SUBSET-SUM)}
+Dati un vettore $A$ contenente $n$ interi positivi e un intero positivo $k$, verificare se esiste un sottoinsieme $S\subseteq\{1\dots n\}$ tale che $\sum\limits_{i\in S}a[i] = k$.
+\paragraph{Si verifiche che SUBSET-SUM \`e debolmente $\mathbf{\mathbb{NP}}$-completo}
+Si consideri $\forall A[i]\le k$ con i valori maggiori di $k$ esclusi, se $k=O(n^c)$, allora $\# = \max\{n, k, a_1,\dots, a_n\}=O(n^c)$. La soluzione basata su programmazione dinamica
+ha complessit\`a $O(nk)=O(n^{c+1})$, quindi in $\mathbb{P}$, pertanto SUBSET-SUM non \`e fortemente $\mathbb{NP}$-completo. 
+\subsection{Algoritmi pseudo-polinomiali}
+Un algoritmo che risolve un problema $R$ per qualsiasi dato $I$ d'ingresso in tempo $P(\#, d)$, con $p$ funzione polinomiale in $\#$ e $d$ ha complessit\`a pseudo-polinomiale. Si noti
+come gli algoritmi per SUBSET-SUM basati su programmazione dinamica e memoization sono pseudo-polinomiali. 
+\subsubsection{Teorema}
+Nessun problema fortemente $\mathbb{NP}$-completo pu\`o essere risolto da un algoritmo pseudo-polinomiale a meno che non sia $\mathbb{P}=\mathbb{NP}$.
+\subsection{ESEMPI}
+\subsubsection{Partizione (PARTITION)}
+Dato un vettore $A$ contenente $n$ interi positivi verificare se esiste un sottoinsieme $S\subseteq\{1\dots n\}$ tale che $\sum\limits_{i\in S}A[i] = \sum\limits_{i\not\in S}A[i]$. Si
+noti come questo problema \`e debolmente $\mathbb{NP}$-completo in quanto \`e possibile ridurlo a SUBSET-SUM scegliendo come valore $k$ la met\`a di tutti i valori presenti.
+\subsubsection{3-Partizione (3-PARTITION)}
+Dati $3n$ interi $\{a_1, \dots, a_{3n}\}$ verificare se esiste una partizione in $n$ triple $T_1, \dots, T_n$ tale che la somma dei tre elementi di ogni $T_j$ \`e la stessa per $1\le j
+\le n$. Si noti come questo problema non \`e debolmente $\mathbb{NP}$-completo in quanto non esiste un algoritmo pseudo-polinomiale per risolverlo.
+\section{Algoritmi di approssimazione}
+Si noti come i problemi pi\`u interessanti sono in forma di ottimizzazione e se il problema di decisione \`e $\mathbb{NP}$-completo nono sono noti algoritmi polinomiali che trovano
+soluzioni ammissibili pi\`u o meno vicine a quella ottima. Se \`e possibile dimostrare un limite superiore o inferiore al rapporto fra la soluzione trovata e la soluzione ottima allora
+tali algoritmi vengono detti algoritmi di approssimazione. 
+\paragraph{Definizione}
+Dato un problema di ottimizzazione con funzione di costo non negativa $c$, un algoritmo si dice di $\alpha(n)$-approssimazione se fornisce una soluzione ammissibile $x$ il cui costo
+$c(x)$ non si discosta dal costo $c(x*)$ della soluzione ottima $x*$ per pi\`u di un fattore $\alpha(n)$ per un qualunque input di dimensione $n$: 
+\begin{align*}
+	c(x*)\le c(x)\le\alpha(n)c(x*) & \alpha(n)>1 & \text{Minimizzazione}\\
+	\alpha(n)c(x*)\le c(x)\le c(x*) & \alpha(n)<1 & \text{Massimizzazione}
+\end{align*}
+$\alpha(n)$ pu\`o essere una costante valida per tutti gli $n$. Identificare un valore $\alpha(n)$ e dimostrare che l'algoritmo lo rispetta \`e ci\`o che rende un buon algoritmo un
+algoritmo di approssimazione. 
