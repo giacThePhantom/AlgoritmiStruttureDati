@@ -1,0 +1,98 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKwRepeat{Do}{do}{while}
+\SetKw{Int}{int}
+\SetKw{Float}{float}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Tree}{Tree}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{F}{f}
+\SetKwData{Left}{left}
+\SetKwData{Right}{right}
+\SetKwData{Dictionary}{Dictionary}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{Node}{Node}
+\SetKwData{Point}{Point}
+\SetKwData{Stack}{Stack}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Min}{min}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{TreeCos}{Tree}
+\SetKwFunction{MinPriorityQueue}{MinPriorityQueue}
+\SetKwFunction{DeleteMin}{deleteMin}
+\SetKwFunction{MfsetCos}{Mfset}
+\SetKwFunction{Find}{find}
+\SetKwFunction{Lookup}{lookup}
+\SetKwFunction{Merge}{merge}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{Push}{push}
+\SetKwFunction{Pop}{pop}
+\SetKwFunction{Top}{top}
+\SetKwFunction{Decrease}{decrease}
+\SetKwFunction{StackCos}{StackCos}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{GreedyTsp}{greedyTsp}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Set \protect\GreedyTsp{\protect\Graph G}}
+\Set result = \SetCos{}\;
+\Mfset M = \MfsetCos{G.n}\;
+\Int[] edges = \New \Int$[1\dots n]$ = $\{0\}$ \comment{Numero di archi nella catena}
+A = $\{$Ordina gli archi per peso non decrescente$\}$\;
+\ForEach{$(u, v)\in A$}{
+	\If{edges[u] $<$ 2 \And edges[v] $<$ 2 \And M.\Find{u} $\neq$ M.\Find{v}}{
+		result.\Insert{$(u, v)$}\;
+		edges[u] +=  1\;
+		edges[v] += 1\;
+		M.\Merge{u, v}\;
+	}
+}
+\Int u = 1\;
+\While{edges[u] $\neq$ 1}{
+	u += 1\;
+}
+\Int v = u + 1\;
+\While{edges[v] $\neq $ 1}{
+	v += 1\;
+}
+result.\Insert{$(u, v)$}\;
+\Return result\;
+\end{algorithm}

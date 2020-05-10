@@ -109,4 +109,118 @@ $c(x)$ non si discosta dal costo $c(x*)$ della soluzione ottima $x*$ per pi\`u d
 	\alpha(n)c(x*)\le c(x)\le c(x*) & \alpha(n)<1 & \text{Massimizzazione}
 \end{align*}
 $\alpha(n)$ pu\`o essere una costante valida per tutti gli $n$. Identificare un valore $\alpha(n)$ e dimostrare che l'algoritmo lo rispetta \`e ci\`o che rende un buon algoritmo un
-algoritmo di approssimazione. 
+algoritmo di approssimazione.
+\subsection{Bin packing}
+Sia un vettore $A$ contenente $n$ interi positivi (volumi degli oggetti), un intero positivo $k$ (la capacit\`a di una scatola tale che $\forall i:A[i]\le k$), si vuole trovare una
+partizione di $\{1, \dots, n\}$ nel minimo numero di sottoinsiemi disgiunti tali che $\sum\limits_{i\in S}A[i]\le k$ per ogni insieme $S$ della partizione. 	
+\subsubsection{Algoritmo FIRST-FIT}
+Gli oggetti sono considerati in un ordine qualsiasi e ciascun oggetto \`e assegnato alla prima scatola che lo pu\`o contenere tenuto conto di quanto spazio \`e stato occupato della 
+stessa. Si noti come \`e un algoritmo greedy. 
+\paragraph{$\mathbf{\alpha}(n)$}
+Sia $N>1$ il numero di scatole usate da FIRST-FIT in quanto se $N=1$ FIRST-FIT \`e ottimale. Il numero minimo di scatole $N^*$ \`e limitato da:
+$$N^*\le\dfrac{\sum\limits_{i = 1}^n A[i]}{k}$$
+Non possono esserci due scatole riempite meno della met\`a:
+$$N<\dfrac{\sum\limits_{i = 1}^n A[i]}{\frac{k}{2}}$$
+Si ha quindi::
+$$N<\dfrac{\sum\limits_{i = 1}^n A[i]}{\frac{k}{2}}=2\dfrac{\sum\limits_{i = 1}^n A[i]}{k}\le 2N^*=\alpha(n)N^*$$
+\paragraph{Variante First-fit decreasing}
+Gli oggetti sono considerati in ordine non decrescente. Si noti come queste sono dimostrazioni di limiti superiori per il fattore $\alpha(n)$ e per casi particolari l'approssimazione
+pu\`o essere migliore. 
+\subsection{Commesso viaggiatore con disuguaglianze particolari (triangolari o $\mathbf{\Delta}$-TSP)}
+Siano date $n$ citt\`a e le distanze positive $d[i][j]$ tra esse tali per cui vale la regola delle disuguaglianze triangolari:
+$$d[i][j]\le d[i][k]+d[k][j] \forall i, j, k: 1\le i, j, k\le n$$
+Si deve trovare un percorso che partendo da una qualsiasi citt\`a attraversi ogni citt\`a esattamente una volta e ritorni alla citt\`a di partenza in modo che la distanza complessiva 
+sia minima. 
+\subsubsection{$\mathbf{\Delta}$ \`e $\mathbf{\mathbb{NP}}$-completo}
+Si dimostri che HAMILTONIAN-CIRCUIT $\le_p\ \Delta$-TSP. Sia $G=(V, E)$ un grafo non orientato e si definisca la matrice di distanze a partire da $G$:
+$$d[i][j] = 
+\begin{cases}
+	1 & (i, j)\in E\\
+	2 & (i, j)\not\in E\\
+\end{cases}$$
+Il grafo $G$ ha un circuito hamiltoniano se e solo se \`e possibile trovare un percorso da commesso viaggiatore lungo $n$. Valgono le disuguaglianze triangolari:
+$$d[i][j] \le 2\le d[i][k] + d[k][j]$$
+\subsubsection{Algoritmo di approssimazione}
+Si interpreti $\Delta$-TSP come il problema di problema di trovare un circuito hamiltoniano di peso minimo su un grafo completo. Considerando un circuito hamiltoniano e cancellando un
+suo arco si ottiene un albero di copertura. 
+\paragraph{Teorema}
+\subparagraph{Enunciato}
+Qualunque circuito hamiltoniano $\pi$ ha costo $c(\pi)$ superiore al costo $mst$ di un albero di copertura di peso minimo, ovvero $mst < c(\pi)$.
+\subparagraph{Dimostrazione}
+Si supponga per assurdo che esista un circuito hamiltoniano $\pi$ di costo $c(\pi)\le mst$, togliendo un arco si ottiene un albero di copertura con peso inferiore $mst' < c(\pi)\le mst$,
+che \`e una contraddizione in quanto $mst$ \`e il costo minimo fra tutti gli alberi di copertura. 
+\paragraph{Algoritmo}
+Si individua un minimo albero di copertura di peso $mst$ e se ne percorrono gli archi due volte, prima in un senso e poi nell'altro in modo da visitare ogni citt\`a almeno una volta, 
+la distanza complessiva \`e $2\cdot mst$ ma non \`e un circuito hamiltoniano. Si evita di passare per le citt\`a gi\`a visitate saltandole e per la disuguaglanza triangolare il
+costo $c(\pi)$ \`e inferiore o uguale a $2\cdot mst$, pertanto $c(\pi)\le 2\cdot mst< 2\cdot c(\pi^*)\Rightarrow \alpha(n) = 2$, dove $c(\pi^*)$ \`e il costo del circuito hamiltoniano
+ottimo. 
+\paragraph{Note}
+La complessit\`a dell'algoritmo \`e $O(n^2\log n)$ con $O(n^2\log n)$ per l'algoritmo di Kruskal e $O(n)$ per la visita in profondit\`a del MST raddoppiato con $2n$ archi. Esistono
+grafi perversi per cui il fattore di approssimazione tende al valore $2$. L'algoritmo di Christofides ha un fattore di approssimazione di $\frac{3}{2}$. 
+\subsubsection{Non approssimabilit\`a di TSP}
+Non esiste alcun algoritmo di $\alpha(n)$-approssimazione per TSP tale che $c(x')\le sc(x^*)$ con $s\ge 2$ intero positivo a meno che non sia $\mathbb{P} = \mathbb{NP}$.
+\section{Algoritmi euristici}
+Gli algoritmi euristici forniscono una soluzione ammissibile non necessariamente ottima e non necessariamente approssimata, utilizzando tecniche greedy o di ricerca locale.
+\subsection{Approccio greedy}
+\subsubsection{TSP - shortest edges first}
+In questo algoritmo si ordinano gli archi per pesi non decrescenti, si aggiungono archi alle soluzioni seguendo questo ordine fino a che non sono stati aggiunti $n-1$ archi, dove $n$
+\`e il numero di nodi. Per aggiungere un arco occorre verificare che per ciascuno dei suoi nodi non sian gi\`a stati scelti due archi e che non si formino circuiti MFSET. A questo punto
+si \`e trovata una catena hamiltoniana e si chiude il circuito aggiungendo l'arco tra i due nodi estremi della catena. Ha un costo computazionale di  $O(n^2\log n)$ per l'ordinamento 
+degli archi.
+\input{Pseudocodice/146_greedyTsp}
+\subsubsection{TSP - Nearest neighbor}
+Si parte da una citt\`a, si seleziona come prossima citt\`a quella pi\`u vicina e si va avanti cos\`i evitando citt\`a gi\`a visitate e quando si sono visitate tutte le citt\`a si 
+torna nella citt\`a di partenza. Si pu\`o lavorare direttamente sulla matrice. Ha costo computazionale $O(n^2)$.
+\subsubsection{Conclusioni}
+Si noti come la soluzione cos\`i ottenuta si pu\`o utilizzare come base di partenza per un algoritmo branch-\&-bound e pu\`o essere migliorata ancora tramite ricerca locale. 
+\subsection{Approccio ricerca locale}
+\subsubsection{TSP}
+Sia $\pi$ un circuito hamiltoniano del grafo completo derivante dal problema TSP e si consideri il seguente intorno:
+$$I_2(\pi) = \{\pi': \pi' \text{ottenuto da } \pi\text{ cancellando due archi non consecutivi del circuito e sostituendoli con due archi esterni al circuito}\}$$
+Si noti come $|I_2(\pi)| = \frac{n(n-1)}{2-n}$ in quanto ci sono $\frac{n(n-1)}{2}$ coppie di archi nel circuito e $n$ di esse sono consecutive e una volta spezzato un circuito esiste
+un solo modo per riconnetterlo. Il costo per esaminare $I_2(\pi)$ \`e $O(n^2)$. 
+\section{Branch-\&-bound}
+Per risolvere un problema di ottimizzazione $\mathbb{NP}$-arduo si pu\`o modificare la procedura \emph{enumeration()} vista nella sezione su backtrack in modo da potare certe sequenze
+di scelte incapaci di generare la soluzione ottima. Si pu\`o assumere senza perdere troppa generalit\`a che il problema sia di minimizzazione, ogni sequenza di scelte abbia un costo non
+negativo e ogni scelta aggiunta alle scelte gi\`a effettuate non faccia diminuire il costo della soluzione parziale cos\`i costruita. 
+\subsection{Upper bound}
+Durante l'enumerazione si mantengono informazioni sulla miglior soluzione ammissibile $minSol$ e il suo costo $minCost$, che costituisce un limite superiore per il costo della soluzione
+minima. 
+\subsection{Lower bound}
+Si supponga di avere a disposizione una opportuna funzione lower bound \emph{lb($<$dati problema$>$, S, i, $<$dati parziali$>$)} che dipenda dalla sequenza di scelte fatte $S[1\dots i]$
+e garantisca che tutte le soluzioni ammissibili generabili facendo nuove scelte abbiano costo $\ge lb()$.
+\subsubsection{Potatura}
+Se \emph{lb()} \`e maggiore o uguale a $minCost$ allora si pu\`o evitare di generare ed esplorare il sottoalbero delle scelte radicato in tal nodo.
+\subsection{Note}
+Si noti come questo metodo non migliori la complessit\`a superpolinomiale della procedura \emph{enumeration()} ma ne abbassa drasticamente il tempo di esecuzione in pratica 
+dipendentemente dalla funzione \emph{lb()} che deve approssimare il pi\`u possibile il costo della soluzione ottima. 
+\subsection{Schema generale}
+\input{Pseudocodice/147_branchBoundGenerale}
+\subsection{Commesso viaggiatore}
+Sia $n$ il numero di citt\`a e $d[h][k]$ la distanza intera positiva fra le citt\`a $h$ e $k$. Al passo $i$-esimo sono state fatte le scelte $S[1\dots i]$ prese dall'insieme 
+$\{1,\dots n\}$, un percorso ammissibile che espande $S[1\dots i]$ deve attraversare le citt\`a $S[1\dots i]$, passare da $S[i]$ ad una qualsiasi delle rimanenti $n-i$ citt\`a, 
+attraversare queste ultime citt\`a in un ordine qualsiasi e da una di queste ritornare a $S[1]$. 
+\subsubsection{Lower bound}
+Si calcola la distanza percorsa fino ad ora:
+$$cost[i] = 
+\begin{cases}
+	0 & i = 1\\
+	cost[i - 1] + d[S[i - 1][S[i]] & i > 1\\
+\end{cases}$$
+Il lower bound della distanza per uscire da $S[i]$ ($O(n)$):
+$$out = \min\limits_{h\not\in S}\{d[S[i][h]\}$$
+Il lower bound della distanza per tornare a $S[1]$ ($O(n)$):
+$$back = \min\limits_{h\not\in S}\{d[h][S[1]\}$$
+Il lower bound della distanza percorsa per attraversare una qualsiasi citt\`a $h$ delle $n-i$ citt\`a ancora da attraversare provenendo da e dirigendosi verso un'altra di queste $n-i$
+citt\`a ($O(n^3)$):
+$$transfer[h] = \min\limits_{p, q\not\in S}\{d[p][h] + d[h][q] : h\neq p\neq q\}, \forall h\not\in S$$
+Se $i<n$ un possibile lower bound \emph{d, S, i} calcola la somma del costo per arrivare al nodo $S[i]$ gi\`a speso, del lower bound \emph{out} del costo per andare dal nodo $S[i]$ ad un
+qualunque altro nodo, del lower bound per attraversare i nodi non contenuti in $S$, del lower bound \emph{back} del costo per tornare dal nodo $S[1]$ da un qualunque altro nodo:
+$$lb(d, S, i) = cost[i] + out +\biggl\lceil\dfrac{\sum\limits_{h\not\in S}transfer[h]}{2}\biggr\rceil + back$$
+\subsubsection{Implementazione}
+\input{Pseudocodice/148_branchBoundTSP}
+Si noti come \emph{minCost} \`e una variabile globale e invece di inizializzarla a $+\infty$ si pu\`o scegliere una permutazione a caso. Per evitare che lo stesso circuito sia generato 
+pi\`u volte si parte da un nodo fissato. 
+\paragraph{Possibili miglioramenti}
+\`E possibile variare l'ordine di visita dell'albero delle scelte (DFS contro Best-first), \`e possibile variare il meccanismo di branching sui nodi, archi, eccetera ,\`e possibile 
+cercare dei lower bound pi\`u stretti. 

@@ -247,3 +247,14 @@
 \BOOKMARK [2][-]{subsection.19.2.4}{Algoritmi pseudo-polinomiali}{section.19.2}% 247
 \BOOKMARK [2][-]{subsection.19.2.5}{ESEMPI}{section.19.2}% 248
 \BOOKMARK [1][-]{section.19.3}{Algoritmi di approssimazione}{chapter.19}% 249
+\BOOKMARK [2][-]{subsection.19.3.1}{Bin packing}{section.19.3}% 250
+\BOOKMARK [2][-]{subsection.19.3.2}{Commesso viaggiatore con disuguaglianze particolari \(triangolari o -TSP\)}{section.19.3}% 251
+\BOOKMARK [1][-]{section.19.4}{Algoritmi euristici}{chapter.19}% 252
+\BOOKMARK [2][-]{subsection.19.4.1}{Approccio greedy}{section.19.4}% 253
+\BOOKMARK [2][-]{subsection.19.4.2}{Approccio ricerca locale}{section.19.4}% 254
+\BOOKMARK [1][-]{section.19.5}{Branch-\046-bound}{chapter.19}% 255
+\BOOKMARK [2][-]{subsection.19.5.1}{Upper bound}{section.19.5}% 256
+\BOOKMARK [2][-]{subsection.19.5.2}{Lower bound}{section.19.5}% 257
+\BOOKMARK [2][-]{subsection.19.5.3}{Note}{section.19.5}% 258
+\BOOKMARK [2][-]{subsection.19.5.4}{Schema generale}{section.19.5}% 259
+\BOOKMARK [2][-]{subsection.19.5.5}{Commesso viaggiatore}{section.19.5}% 260

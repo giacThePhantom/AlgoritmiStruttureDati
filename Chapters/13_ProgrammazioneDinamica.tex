@@ -23,7 +23,7 @@ sottoproblema non \`e ancora stato risolto. Ogni volta che si deve risolvere un 
 \item non risolto: si calcola il risultato e lo si memorizza
 \end{itemize}
 In questo modo ogni sottoproblema viene calcolato una sola volta e memorizzato come nella versione bottom-up. Questa tecnica presenta vantaggi quando invece di utilizzare una tabella si utilizza un dizionario 
-in quanto non \`e pi\`u necessario fare inizializzazione e il costo di esecuzione passa da $O(nC)$ a $O(\min(2^n, nC)$.
+in quanto non \`e pi\`u necessario fare inizializzazione e il costo di esecuzione passa da $O(nC)$ a $O(\min(2^n, nC))$.
 \lstinputlisting[caption={Memoization automatica in Python}, language={python}]{Codice/MemoizationAutomatica.py}
 \section{Problemi}
 \subsection{Domino lineare}
@@ -109,7 +109,7 @@ Considerando l'elemento $DP[i]$ il suo valore pu\`o essere derivato considerando
 \item Se $DP[i]=DP[i-2]+D[i]$ la casa $i$ \`e stata selezionata.
 \end{itemize}
 Si utilizza questa informazione per ricostruire la soluzione in modo ricorsivo: per costruire la soluzione fino a $i$ si ricostruisce la soluzione fino a $i-2$ e si aggiunge $i$ o si ricostruisce la soluzione fino a $i-1$ 
-senza aggiungere nulla. 
+senza aggiungere nulla.\\
 \input{Pseudocodice/98_Solution}
 \subsubsection{Complessit\`a computazionale}
 La complessit\`a computazionale di \emph{solution()} \`e $T(n)=\Theta(n)$, quella computazionale e spaziale di \emph{hateville()} \`e $T(n)=\Theta(n)$ e $S(n)=\Theta(n)$. Questa soluzione non si pu\`o 
@@ -154,7 +154,7 @@ rappresentare $C$ e pertanto la complessit\`a \`e $T(n) = O(n2^k)$.
 \subsubsection{Implementazione con memoization}
 Si nota come non tutti gli elementi della matrice sono necessari alla soluzione del problema. Risulta vantaggioso pertanto utilizzare la tecnica di 
 memoization, in cui la tabella viene inizializzata esternamente in una funzione wrapper e il valore $-1$ viene utilizzato per identificare il valore di
-una cella non calcolata. 
+una cella non calcolata. \\
 \input{Pseudocodice/100_Knapsack_con_memoization}
 \subsection{Knapsack senza limiti}
 Dato uno zaino di capacit\`a $C$ e $n$ oggetti caratterizzati da peso $w$ e profitto $p$ si definisce $DP[i][c]$ come il massimo profitto che pu\`o essere
@@ -241,7 +241,7 @@ Si consideri per assurdo $x_k \neq t_n = u_m$. Si consideri ora $Y= X\oplus t_n$
 $$t_n = u_m \Rightarrow X(k-1)\in\mathcal{LCS}(T(n-1), U(m-1))$$
 Si consideri per assurdo $X(k-1)\not\in\mathcal{LCS}(T(n-1), U(m-1))$, allora $\exists Y\in\mathcal{LCS}(T(n-1), U(m-1))$ tale che $|Y|>|X(k-1)|$, pertanto
 $Y\oplus t_n\in\mathcal{CS}(T, U)$ e $|Y\oplus t_n|>|X(k-1)\oplus t_n|=X$, che \`e una contraddizione. 
-\paragraph{Seconda parte (terza simmetrica)}
+\paragraph{Dimostrazione secondo caso (terzo simmetrico)}
 $$t_n\neq u_m\land x_k\neq t_n \Rightarrow X\in \mathcal{LCS}(T(n-1), U(m))$$
 Si consideri per assurdo $X\not\in \mathcal{LCS}(T(n-1), U(m))$, allora $\exists Y\in\mathcal{LCS}(T(n-1), U(m))$ tale che $|Y|>|X|$, pertanto \`e anche
 vero che $Y\in \mathcal{LCS}(T, U)$, pertanto $X$ non \`e $\mathcal{LCS}(T, U)$, che \`e un assurdo. 
@@ -252,13 +252,13 @@ $$
 DP[i][j] = 
 \begin{cases}
 0 & i = 0\lor j = 0\\
-DP[i-1][j-1]+1 & i > 0 \land j > 0 land t_i = u_j\\
-\max(DP[i - 1][j], DP[i][j - 1]) & i > 0 \land j > 0 land t_i \neq u_j
+DP[i-1][j-1]+1 & i > 0 \land j > 0 \land t_i = u_j\\
+\max(DP[i - 1][j], DP[i][j - 1]) & i > 0 \land j > 0 \land t_i \neq u_j
 \end{cases}
 $$ 
 $DP[n][m]$ contiene la lunghezza della $\mathcal{LCS}$ del probema originale. \\
 \input{Pseudocodice/104_LCS}
-\subsubsection{Ricostrurie la sottosequenza comune}
+\subsubsection{Ricostruire la sottosequenza comune}
 \input{Pseudocodice/105_}
 La complessit\`a computazionale di \emph{subsequence()} \`e $O(m+n)$, mentre quella di LCS \`e $O(mn)$. 
 \subsection{String matching approssimato}

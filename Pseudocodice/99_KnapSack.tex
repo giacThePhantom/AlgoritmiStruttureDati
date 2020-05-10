@@ -44,7 +44,7 @@
 }
 \For{\Int i = 1 \To n}{
 	\For{\Int c = 1 \To C}{
-		\uIf{w[i] < C}{
+		\uIf{w[i] $<$ C}{
 			DP[i][c] = \Max{DP[i - 1][c - w[i]] + p[i], DP[i - 1][c]}\;		
 		}	
 		\Else{
