@@ -1,0 +1,102 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKwRepeat{Do}{do}{while}
+\SetKw{Int}{int}
+\SetKw{Float}{float}
+\SetKw{Boolean}{boolean}
+\SetKw{New}{new}
+\SetKw{True}{true}
+\SetKw{False}{false}
+\SetKw{Not}{not}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Down}{down}
+\SetKw{To}{to}
+\SetKw{New}{new}
+\SetKw{Return}{return}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Void}{void}
+
+\SetKwData{Item}{Item}
+\SetKwData{Tree}{Tree}
+\SetKwData{PriorityQueue}{PriorityQueue}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{Graph}{Graph}
+\SetKwData{N}{n}
+\SetKwData{Space}{ }
+\SetKwData{Parent}{parent}
+\SetKwData{Rank}{rank}
+\SetKwData{Set}{Set}
+\SetKwData{List}{List}
+\SetKwData{F}{f}
+\SetKwData{Left}{left}
+\SetKwData{Right}{right}
+\SetKwData{Dictionary}{Dictionary}
+\SetKwData{Mfset}{Mfset}
+\SetKwData{PriorityItem}{PriorityItem}
+\SetKwData{Node}{Node}
+\SetKwData{Point}{Point}
+\SetKwData{Stack}{Stack}
+
+\SetKwFunction{Max}{max}
+\SetKwFunction{Min}{min}
+\SetKwFunction{Insert}{insert}
+\SetKwFunction{ListCos}{List}
+\SetKwFunction{Head}{head}
+\SetKwFunction{Len}{len}
+\SetKwFunction{SetCos}{Set}
+\SetKwFunction{TreeCos}{Tree}
+\SetKwFunction{MinPriorityQueue}{MinPriorityQueue}
+\SetKwFunction{DeleteMin}{deleteMin}
+\SetKwFunction{MfsetCos}{Mfset}
+\SetKwFunction{Find}{find}
+\SetKwFunction{Lookup}{lookup}
+\SetKwFunction{Merge}{merge}
+\SetKwFunction{IsEmpty}{isEmpty}
+\SetKwFunction{Adj}{adj}
+\SetKwFunction{Push}{push}
+\SetKwFunction{Pop}{pop}
+\SetKwFunction{Top}{top}
+\SetKwFunction{Decrease}{decrease}
+\SetKwFunction{StackCos}{StackCos}
+
+
+\SetKwProg{Fn}{}{}
+
+\SetKwFunction{Selection}{select}
+\SetKwFunction{Pivot}{pivot}
+\SetKwFunction{InsertionrSort}{insertionSort}
+\SetKwFunction{Median}{median5}
+\SetKwFunction{}{}
+\SetKwFunction{}{}
+
+\caption{\protect\Item \protect\Selection{\protect\Item[] A, \protect\Int start, \protect\Int end, \protect\Int k}}
+\comment{Se la dimensione \`e inferiore ad una soglia (10) ordina il vettore e}
+\comment{restituisci il $k$-esimo elemento di $A[start\dots end]$}
+\If{end - start + 1 $\le$ 10}{
+	\InsertionSort{A, start, end} \comment{Versione con indici inizio/fine}
+	\Return A[start + k - 1]\;
+}
+\comment{Divide $A$ in $\biggl\lceil\frac{n}{5}\biggr\rceil$ sottovettori di dimensione $5$ e ne calcola la mediana}
+M = \New \Int$\biggl[1\dots \biggl\lceil\frac{n}{5}\biggr\rceil\biggr]$\;
+\For{\Int i = 1 \To $\biggl\lceil\frac{n}{5}\biggr\rceil$}{
+	M[i] = \Median{A, start + $(i - 1)\cdot 5$, end}\;
+}
+\comment{Individua la mediana delle mediane e la si usa come perno}
+\Item m = \Selection{M, 1, $\biggl\lceil\frac{n}{5}\biggr\rceil$, $\biggl\lceil\frac{\lceil\frac{n}{5}\rceil}{2}\biggr\rceil$}\;
+\Int j = \Pivot{A, start, end,  m}\;
+\comment{Calcola l'indice $q$ di $m$ in $[start\dots end]$}
+\comment{Confronta $q$ con l'indice cercato e ritorna il valore conseguente}
+\Int q = j - start + 1\;
+\uIf{q == k}{
+	\Return m\;
+}
+\uElseIf{q $<$ k}{
+	\Return \Selection{A, start, q - 1, k}\;
+}
+\Else{
+	\Return \Selection{A, q + 1, end, k - q}\;
+}
+\end{algorithm}
