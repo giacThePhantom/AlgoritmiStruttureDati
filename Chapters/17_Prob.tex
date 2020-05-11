@@ -27,7 +27,7 @@ Si noti come esistono numeri composti (numeri di Carmichael) tali che $\forall b
 \end{itemize}
 \end{multicols}
 \subsubsection{Test di Miller-Rabin}
-Si esprima $n-1$ come $n-1 = m2^v$ con $m$ dispari, la rappresentazione binaria di $n-1$ \`e ubuale alla rappresentazione binaria del numero dispari $m$ seguito da $v$ zeri. Sia $b$
+Si esprima $n-1$ come $n-1 = m2^v$ con $m$ dispari, la rappresentazione binaria di $n-1$ \`e uguale alla rappresentazione binaria del numero dispari $m$ seguito da $v$ zeri. Sia $b$
 un numero in $[1, \dots, n - 1$, e se un numero $n$ \`e primo allora $mcd(n, b) = 1$ e $b^m\mod n = 1\lor \exists i, 0\le i \le v -1: b^{2^im}\mod n = -1$, mentre se \`e composto almeno 
 una delle due condizioni \`e falsa. Rabin ha dimostrato che se $n$ \`e composto allora ci sono almeno $\frac{3}{4}(n - 1)$ valori in $[1, \dots, n - 1]$ per i quali una delle condizioni
 \`e falsa e pertanto il test di compostezza ha una probailit\`a inferiore a $\frac{1}{4}$ di rispondere erroneamente. 

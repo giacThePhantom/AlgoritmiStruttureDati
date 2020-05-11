@@ -744,3 +744,27 @@
 \contentsline {subsubsection}{Lower bound}{160}{section*.505}% 
 \contentsline {subsubsection}{Implementazione}{161}{section*.506}% 
 \contentsline {paragraph}{Possibili miglioramenti}{161}{section*.507}% 
+\contentsline {chapter}{\numberline {20}Algoritmi di ordinamento}{162}{chapter.20}% 
+\contentsline {section}{\numberline {20.1}Limite inferiore}{162}{section.20.1}% 
+\contentsline {paragraph}{Propriet\`a dell'albero di decisione}{162}{section*.508}% 
+\contentsline {paragraph}{Lemma $\mathbf {1}$}{162}{section*.509}% 
+\contentsline {paragraph}{Lemma $\mathbf {2}$}{162}{section*.510}% 
+\contentsline {paragraph}{Teorema}{162}{section*.511}% 
+\contentsline {section}{\numberline {20.2}Ulteriori algoritmi di ordinamento}{163}{section.20.2}% 
+\contentsline {subsection}{\numberline {20.2.1}Spaghetti Sort}{163}{subsection.20.2.1}% 
+\contentsline {subsection}{\numberline {20.2.2}Counting Sort}{163}{subsection.20.2.2}% 
+\contentsline {subsubsection}{Complessit\`a}{163}{section*.512}% 
+\contentsline {subsection}{\numberline {20.2.3}Pigeonhole Sort}{163}{subsection.20.2.3}% 
+\contentsline {subsection}{\numberline {20.2.4}Bucket Sort}{163}{subsection.20.2.4}% 
+\contentsline {section}{\numberline {20.3}Conclusioni}{164}{section.20.3}% 
+\contentsline {subsection}{\numberline {20.3.1}Stabilit\`a}{164}{subsection.20.3.1}% 
+\contentsline {subsection}{\numberline {20.3.2}Riassunto}{164}{subsection.20.3.2}% 
+\contentsline {subsubsection}{Insertion Sort}{164}{section*.513}% 
+\contentsline {subsubsection}{Merge Sort}{164}{section*.514}% 
+\contentsline {subsubsection}{Heap Sort}{164}{section*.515}% 
+\contentsline {subsubsection}{Quick Sort}{164}{section*.516}% 
+\contentsline {subsubsection}{Counting Sort}{164}{section*.517}% 
+\contentsline {subsubsection}{Pigeonhole Sort}{164}{section*.518}% 
+\contentsline {subsubsection}{Bucket Sort}{164}{section*.519}% 
+\contentsline {subsubsection}{Shello Sort}{164}{section*.520}% 
+\contentsline {subsubsection}{Tim Sort}{165}{section*.521}% 
