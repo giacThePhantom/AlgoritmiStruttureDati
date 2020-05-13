@@ -55,7 +55,7 @@
 		DP[i][j] = \Min{DP[i-1][j-1] + iif(P[i] == T[j], 0, 1), DP[i-1][j]+1, DP[i][j-1]+1}\;
 	}
 }
-\Int pos = 0;
+\Int pos = 0\;
 \For{\Int j = 1 \To n}{
 	\If{DP[m][j] $<$ DP[m][pos]}{
 		pos = j\;

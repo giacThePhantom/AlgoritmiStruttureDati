@@ -5,11 +5,11 @@ precedente, continuando in questo modo fino a che non si \`e pi\`u in grado di c
 \section{Rete di flusso}
 Una rete di flusso $G=(V, E, s, t, c)$ \`e data da un grafo orientato $G=(V, E)$, un nodo $s\in V$ detto sorgente, un nodo $t\in V$ detto pozzo e una funzione di capacit\`a $c:V\times V
 \rightarrow\mathbb{R}^{\ge 0}$. Si assume che per ogni nodo $v\in V$ esiste un cammino $s \rightsquigarrow v \rightsquigarrow t$ da $s$ a $t$ che passa per $v$ e si possono ignorare i 
-nodi che non godono di questa priorit\`a.
+nodi che non godono di questa propriet\`a.
 \subsection{Flusso}
-Un flusso in $G$ \`e una funzione $f:V\times V\rightarrow\mathbb{R}$ che soddisfa le priorit\`a:
+Un flusso in $G$ \`e una funzione $f:V\times V\rightarrow\mathbb{R}$ che soddisfa le propriet\`a:
 \begin{itemize}
-	\item Vincolo sulla capacit\`a: $\forall u, v\in V, f(u, v)\le c(u, u)$, ovvero il flusso non deve eccedere la capacit\`a sull'arco.
+	\item Vincolo sulla capacit\`a: $\forall u, v\in V, f(u, v)\le c(u, v)$, ovvero il flusso non deve eccedere la capacit\`a sull'arco.
 	\item Antisimmetria: $\forall u, v\in V, f(u, v) = -f(v, u)$, in modo da semplificare la propriet\`a successiva e altre regole.
 	\item Conservazione del flusso: $\forall u\in V - \{s, t\}, \sum\limits_{v\in V} f(u, v) = 0$, ovvero per ogni nodo la somma dei flussi entranti deve essere uguale alla somma dei
 		flussi uscenti. 
@@ -17,8 +17,8 @@ Un flusso in $G$ \`e una funzione $f:V\times V\rightarrow\mathbb{R}$ che soddisf
 \subsection{Definizioni}
 \begin{itemize}
 	\item Valore di flusso $f$: $|f| = \sum\limits_{(s, v)\in E} f(s, v)$, la quantit\`a di flusso uscente da $s$.
-	\item Flusso massimo: data una rete $G=(V, E, s, t, c)$ trovare un flussoo che abbia valore massimo fra tutti i flussi associabili alla rete $f*=\max\{|f|\}$.
-	\item Flusso nuillo: la funzione $f_0: V\times V\rightarrow\mathbb{R}^{\ge 0}$ tale che $f(u, v) = 0 \forall u, v\in V$.
+	\item Flusso massimo: data una rete $G=(V, E, s, t, c)$ trovare un flusso che abbia valore massimo fra tutti i flussi associabili alla rete $f^*=\max\{|f|\}$.
+	\item Flusso nullo: la funzione $f_0: V\times V\rightarrow\mathbb{R}^{\ge 0}$ tale che $f(u, v) = 0\ \forall u, v\in V$.
 	\item Somma di flussi: per ogni coppia di flussi $f_1$ e $f_2$ in $G$ si definisce il flusso somma $g= f_1+f_2$ come un flusso tale per cui $g(u, v) = f_1(u, v)+f_2(u, v)$.
 	\item Capacit\`a residua di un flusso $f$ in una rete $G=(V, E, s, t, c)$ una funzione $c_f:V\times V\rightarrow\mathbb{R}^{\ge 0}$ tale che $c_f(u, v) = c(u, v)-f(u, v)$.
 	\item Reti residue: data una rete di flusso $G=(V, E, s, t, c)$ e un flusso $f$ su $G$ si pu\`o costruire una rete residua $G_f=(V, E_f, s, t, c_f)$ tale per cui $(u, v)\in E_f$
@@ -44,7 +44,7 @@ Se $f$ \`e un flusso in $G$ e $g$ \`e un flusso in $G_f$ allora $f+g$ \`e un flu
 \begin{align*}
 	f(u, v) + g(u, v) & = -f(v, u) - g(v, u) \quad\quad & \text{Antisimmetria di $f$ e $g$}\\
 	f(u, v) + g(u, v) & = -(f(v, u) + g(v, u)) & \text{Raccolta segno $-$}\\
-	(f+g)(u, v) = -(f+g)(v, u) & \text{Sostituzione}\\
+	(f+g)(u, v) & = -(f+g)(v, u) & \text{Sostituzione}\\
 \end{align*}
 \subparagraph{Conservazione}
 \begin{align*}
@@ -67,7 +67,8 @@ il valore totale del flusso raggiunge $|f^*|$ e ogni incremento del flusso lo au
 $O(V+E)$ o $O(V^2)$. La somma dei flussi e il calcolo della rete residua pu\`o essere effettuato in tempo $O(V+E)$ o $O(V^2)$. Se le capacit\`a della rete sono intere l'algoritmo di 
 Edmonds e Karp ha complessit\`a $O(VE^2)$ nel caso pessimo. 
 \subsubsection{Dimostrazione}
-La complesit\`a dell'algoritmo di Edmonds-Karp \`e $O(VE^2)$. Vegono esesguiti $O(VE)$ aumenti di flusso, ognuno dei quali richiede una visita in ampiezza $O(V+E)$: $O(VE(V+E))=O(VE^2)$.
+La complessit\`a dell'algoritmo di Edmonds-Karp \`e $O(VE^2)$. Vengono eseguiti $O(VE)$ aumenti di flusso, ognuno dei quali richiede una visita in ampiezza $O(V+E)$: 
+$O(VE(V+E))=O(VE^2)$.
 \paragraph{Lemma della monotonia}
 Sia $\delta_f(s, v)$ la distanza minima da $s$ a $v$ in una rete residua $G_f$ e $f' = f+g$ un flusso nella rete iniziale con $g$ flusso non nullo derivante da un cammino aumentante, 
 allora $\delta_{f'}(s, v)\ge \delta_f(s, v)$. 
@@ -79,7 +80,7 @@ Il numero totale di aumenti di flusso eseguiti dall'algoritmo di Edmonds-Karp \`
 Sia $G_f$ una rete residua e $C$ un cammino aumentante di $G_f$. $(u, v)$ \`e un arco critico in $C$ se $c_f(u, v) = \min\limits_{x, y\in C}\{c_f(x, y)\}$. In ogni cammino esiste almeno
 un arco critico e una volta aggiunto il flusso associato a $C$ l'arco critico scompare dalla rete residua. 
 \paragraph{Conclusione}
-Poich\`e i cammini aumentanti sono cammini minimi si ha che $\delta_f(s, v) = \delta_f(s, u)+1$. L'ascro $(u, v)$ pu\`o ricomparire se e solo se il flusso lungo l'arco diminuisce, ovvero
+Poich\`e i cammini aumentanti sono cammini minimi si ha che $\delta_f(s, v) = \delta_f(s, u)+1$. L'arco $(u, v)$ pu\`o ricomparire se e solo se il flusso lungo l'arco diminuisce, ovvero
 se $(v, u)$ appare in un cammino aumentante. Sia $g$ il flusso quando questo accade e come sopra si ha $\delta_g(s, u) = \delta_g(s, v)+1$. Per il lemma della monotonia si ha che
 $\delta_g(s, v)\ge \delta_f(s, v)$, perci\`o:
 \begin{align*}
@@ -139,9 +140,7 @@ $|f|\le C(S, T)$ il flusso che soddisfa $|f|=C(S, T)$ deve essere massimo.
 Un insieme $J$ contenente $n$ job, un insieme $W$ contenente $m$ worker. Una relazione $R\subseteq J\times W$ tale per cui $(j, w)\in R$ se e solo se il job pu\`o essere eseguito dal
 worker $s$.
 \paragraph{Output}
-Il pi\`u grande sottoinsieme $O\subseteq R$ tale per cui ogni job venga assengato al pi\`u ad un worker e ad ogni worker venga assegnato al pi\`u un job.
+Il pi\`u grande sottoinsieme $O\subseteq R$ tale per cui ogni job venga assegnato al pi\`u ad un worker e ad ogni worker venga assegnato al pi\`u un job.
 \subsection{Metodo di risoluzione}
 Si crea una rete di flusso in cui $c(w, j)$ vale $1$ se $(j, w)\in R$, altrimenti $0$. Si aggiungono una super fonte che si collega ai lavoratori con archi di peso $1$ e un
 superpozzo che si collega ai job con archi di peso $1$ e si usa l'algoritmo di ricerca locale visto sopra per trovare una soluzione.
-
-

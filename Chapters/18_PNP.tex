@@ -1,5 +1,5 @@
 \chapter{Problemi intrattabili, teoria dell'NP-completezza}
-Con l'eccezione di backtrack sono stati considerati solo problemi con soluzione polinomiale. Eseistono problemi che per essere risolti hanno bisogno di un tempo almeno esponenziale e 
+Con l'eccezione di backtrack sono stati considerati solo problemi con soluzione polinomiale. Esistono problemi che per essere risolti hanno bisogno di un tempo almeno esponenziale e 
 problemi per cui non esiste soluzione. Esiste una classe di problemi per cui non \`e chiaro se esiste un algoritmo polinomiale oppure no, per tutti i problemi della classe.
 \section{Problemi}
 Si dice problema astratto una relazione binaria $R\subseteq I\times S$ tra un insieme $I$ di istanze del problema e un insieme $S$ di soluzioni.
@@ -10,8 +10,8 @@ Data un'istanza si deve trovare la soluzione migliore secondo criteri specifici.
 Data un'istanza si deve trovare una possibile soluzione fra quelle esistenti.
 \subsubsection{Problemi di decisione}
 Data un istanza si deve verificare se soddisfa o meno una data propriet\`a. La relazione $R$ \`e una funzione $R:I\rightarrow\{0, 1\}$.	
-\subsection{Equivalenza di probelmi di ottimizzazione e decisione}
-Si ragionerer\`a sempre in termini di problemi di decisione in quanto tale versione \`e pi\`u facile da trattare matematicamente. Se si pu\`o risolvere efficientemente la versione
+\subsection{Equivalenza di problemi di ottimizzazione e decisione}
+Si ragioner\`a sempre in termini di problemi di decisione in quanto tale versione \`e pi\`u facile da trattare matematicamente. Se si pu\`o risolvere efficientemente la versione
 di ottimizzazione si pu\`o risolvere efficientemente quella di decisione. Vale anche la negazione. 
 \section{Riduzione polinomiale}
 Dati due problemi decisionali $R_1\subseteq I_1\times\{0, 1\}$ e $R_2\subseteq I_2\times\{0, 1\}$, $R_1$ \`e riducibile polinomialmente a $R_2$ ($R_1\le_p R_2$) se esiste una funzione
@@ -43,9 +43,9 @@ $V = \{(x, y):1 \le x\le n^2, 1\le y\le n^2\}, [(x, y), (x', y')]\in E\Leftright
 Con $C = \{1, \dots, n\}$.
 \subsubsection{La riduzione}
 $$SUDOKU \le_p GRAPH-COLORING$$
-Se si ha la soluzione per la colorazione, allora si ha una osluzione algoritmica per il Sudoku.
+Se si ha la soluzione per la colorazione, allora si ha una soluzione algoritmica per il Sudoku.
 \subsection{Insieme indipendente}
-Sia dato un grafo non orientato $G=(V, E)$ un insieme $S\subseteq V$ \`e un insieme indipendente se e solo se neesun arco unisce due nodi in $S$:
+Sia dato un grafo non orientato $G=(V, E)$ un insieme $S\subseteq V$ \`e un insieme indipendente se e solo se nessun arco unisce due nodi in $S$:
 $$\forall(x, y)\in E: x\not\in S\lor y\not\in S$$
 \subsubsection{Ottimizzazione}
 Dato un grafo non orientato $G=(V, E)$ restituire il pi\`u grande insieme indipendente presente nel grafo.
@@ -54,7 +54,7 @@ Dato un grafo $G=(V, E)$ e un valore $k$ determinare se esiste un insieme indipe
 \subsubsection{Packing problem}
 Questo \`e un esempio di packing problem, un problema in cui si cerca di selezionare il maggior numero di oggetti la cui scelta \`e soggetta a vincoli di esclusione.
 \subsection{Copertura di vertici}
-Dato un grafo non orientato $G=(V, E)$ un insieme $S\subseteq V$ \`e una copertura di vertici se e solo se ogni arco ha almento un estremo in $S$.
+Dato un grafo non orientato $G=(V, E)$ un insieme $S\subseteq V$ \`e una copertura di vertici se e solo se ogni arco ha almeno un estremo in $S$.
 $$\forall(x, y)\in E: x\in S\lor y\in S$$
 \subsubsection{Ottimizzazione}
 Dato un grafo non orientato $G=(V, E)$ restituisce la copertura dei vertici di dimensione minima.
@@ -64,9 +64,9 @@ Dato un grafo non orientato $G=(V, E)$ e un valore $k$ determinare se esiste una
 Questo \`e un esempio di covering problem, un problema in cui si cerca di ottenere il pi\`u piccolo insieme in grado di coprire un insieme arbitrario di oggetti con il pi\`u piccolo 
 sottoinsieme di questi oggetti.
 \subsection{Riduzione per problemi duali}
-$S\subseteq V$ \`e un indipendet set se $V-S$ \`e un vertex cover: se $S$ \`e un insieme indipendente, ogni arco $(x, y)$ non pu\`o avere entrambi gli estremi in $S$, quindi almeno uno
+$S\subseteq V$ \`e un independent set se $V-S$ \`e un vertex cover: se $S$ \`e un insieme indipendente, ogni arco $(x, y)$ non pu\`o avere entrambi gli estremi in $S$, quindi almeno uno
 dei due deve essere in $V-S$.\\
-$V-S$ \`e un vertex cover se $S\subseteq V$ \`e un independent set. Si supponga per assurdo che $S$ non sia un independet set, allora esiste un arco $(x, y)$ che unisce due nodi in $S$, 
+$V-S$ \`e un vertex cover se $S\subseteq V$ \`e un independent set. Si supponga per assurdo che $S$ non sia un independent set, allora esiste un arco $(x, y)$ che unisce due nodi in $S$,
 nessuno dei due estremi sta in $V-S$, che implica che $V-S$ non sia un vertex cover, che \`e un assurdo.
 \subsubsection{Conclusione}
 \begin{align*}
@@ -75,7 +75,7 @@ nessuno dei due estremi sta in $V-S$, che implica che $V-S$ non sia un vertex co
 \end{align*}
 Abbiamo quindi dimostrato che i due problemi sono equivalenti.
 \subsection{SAT}
-Dato un insieme $V$ contenente $n$ variabili, un letterale \`e una variabile $v$ oppure la sua negazione $\bar{v}$, una clausola \`e una disgiunzione di letteralim una formula in forma
+Dato un insieme $V$ contenente $n$ variabili, un letterale \`e una variabile $v$ oppure la sua negazione $\bar{v}$, una clausola \`e una disgiunzione di letterali una formula in forma
 normale congiuntiva \`e una congiunzione di clausole. Data un'espressione in forma normale congiuntiva il problema della soddisfacibilit\`a consiste nel decidere se esiste 
 un'assegnazione di valori di verit\`a alle variabili che rende l'espressione vera.
 \subsubsection{3-SAT}
@@ -84,9 +84,9 @@ di valori di verit\`a alle variabili che rende l'espressione vera.
 \subsection{Riduzione tramite gadget}
 Si vuole dimostrare che $3-SAT\le_p INDEPENDENT-SET$. Data una formula $3-SAT$ si costruisca un grafo in modo che per ogni clausola si aggiunge un terzetto di nodi collegati fra loro
 da archi e per ogni letterale che compare in modo normale e in modo negato aggiungere un arco fra di essi (arco di conflitto). La formula $3-SAT$ \`e soddisfacibile se e solo se \`e
-possibile trovare un independet set di dimensione esatttamente $k=3$.
+possibile trovare un independent set di dimensione esattamente $k=3$.
 \subsection{Riduzione da problema generale a problema generale}
-Ovviamente $3-SAT\le_o SAT$ ed \`e possibile dimostrare che $SAT\le_p 3-SAT$, \`e possibile trasformare una formula $SAT$ in una formula $3-SAT$ facendo in modo che:
+Ovviamente $3-SAT\le_p SAT$ ed \`e possibile dimostrare che $SAT\le_p 3-SAT$, \`e possibile trasformare una formula $SAT$ in una formula $3-SAT$ facendo in modo che:
 \begin{itemize}
 	\item Se la clausola \`e pi\`u lunga di tre elementi si introduce una nuova variabile e si divide la clausola in due:
 		$$(a\lor b\lor c\lor d)\equiv (a\lor b\lor z)\land(\bar{z}\lor c\lor d)$$
@@ -114,13 +114,13 @@ Si noti come $\mathbb{P}\subseteq\mathbb{PSPACE}$.
 \subsubsection{Classe $\mathbf{\mathbb{NP}}$}
 L'insieme di tutti i problemi che ammettono un certificato verificabile in tempo polinomiale.
 \paragraph{Certificato}
-Dato un problema decisionale $R$ e un'istanza di input $x$ tale che $(c, \mathbf{true})\in R$, un certificato \`e un insieme di informazioni che permette di provare che $(x, 
+Dato un problema decisionale $R$ e un'istanza di input $x$ tale che $(x, \mathbf{true})\in R$, un certificato \`e un insieme di informazioni che permette di provare che $(x, 
 \mathbf{true})\in R$.
 \subparagraph{SAT}
-Si calcola il valroe di verit\`a della formula a partire dall'assegnamento di verit\`a delle variabili in tempo $O(n)$.
+Si calcola il valore di verit\`a della formula a partire dall'assegnamento di verit\`a delle variabili in tempo $O(n)$.
 \subparagraph{GRAPH-COLORING}
 Si verifica che nodi adiacenti non abbiano lo stesso colore in tempo $O(m+n)$.
-\subparagraph{INDEPENDET-SET}	
+\subparagraph{INDEPENDENT-SET}	
 Si verifica che nodi in $V$ non abbiano nodi adiacenti in $V$ in tempo $O(m+n)$.
 \paragraph{Certificati non polinomiali}
 Il problema della quantified boolean formula (QBF) \`e una generalizzazione del problema SAT nel quale ad ogni variabile possono essere applicati quantificatori universali ed 
@@ -142,7 +142,7 @@ Un problema decisionale $R$ si dice $\mathbb{NP}$-completo se appartiene alla cl
 Se un qualunque problema decisionale in $\mathbb{NP}$-completo appartenesse a $\mathbb{P}$ allora risulterebbe $\mathbb{P}=\mathbb{NP}$.
 \subsection{Esistenza di problemi $\mathbf{\mathbb{NP}}$-completi}
 Dimostrare che un problema \`e contenuto in $\mathbb{NP}$ \`e semplice, dimostrare che un problema \`e $\mathbb{NP}$-completo richiede una dimostrazione difficile: tutti i problemi in
-$\mathbb{NP}$ sono riducibili polinomialmente a tale problema. Si \`e dimostrato come il problema di soddisfabilit\`a sia $\mathbb{NP}$-completo e pertanto lo sono anche $3-SAT, 
+$\mathbb{NP}$ sono riducibili polinomialmente a tale problema. Si \`e dimostrato come il problema di soddisfacibilit\`a sia $\mathbb{NP}$-completo e pertanto lo sono anche $3-SAT, 
 INDEPENDET-SET, VERTEX-COVER$.
 \section{Problemi $\mathbf{\mathbb{NP}}$-completi classici}
 \subsection{Cricca (Clique)}

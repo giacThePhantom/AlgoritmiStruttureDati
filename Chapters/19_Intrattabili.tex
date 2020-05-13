@@ -40,9 +40,9 @@ Dato un problema decisionale $R$ e una sua istanza $I$, si definisce la dimensio
 intero che appare in $I$.
 \subsection{Problemi}
 \subsubsection{Cricca (CLIQUE)}
-Dati un grafo non orientato e un intero $k$ si verifiche se esiste un sottoinsieme di almeno $k$ nodi tutti mutualmente adiacenti.
+Dati un grafo non orientato e un intero $k$ si verifichi se esiste un sottoinsieme di almeno $k$ nodi tutti mutualmente adiacenti.
 \subsubsection{Commesso viaggiatore (TSP)}
-Date $n$ citt\`a e una matrice simmetrica $d$ di distanze positive, dove $d[i][j]$ \`e la distanza tra $i$ e $j$, trovare un provare un percorso che, partendo da una qualsiasi citt\`a
+Date $n$ citt\`a e una matrice simmetrica $d$ di distanze positive, dove $d[i][j]$ \`e la distanza tra $i$ e $j$, trovare un percorso che, partendo da una qualsiasi citt\`a
 attraverso ogni citt\`a esattamente una volta e ritorni alla citt\`a di partenza in modo che la distanza totale percorsa sia minima.
 \subsubsection{Esempi}
 \begin{tabular}{|c|c|c|c|}
@@ -98,15 +98,15 @@ noti come questo problema \`e debolmente $\mathbb{NP}$-completo in quanto \`e po
 Dati $3n$ interi $\{a_1, \dots, a_{3n}\}$ verificare se esiste una partizione in $n$ triple $T_1, \dots, T_n$ tale che la somma dei tre elementi di ogni $T_j$ \`e la stessa per $1\le j
 \le n$. Si noti come questo problema non \`e debolmente $\mathbb{NP}$-completo in quanto non esiste un algoritmo pseudo-polinomiale per risolverlo.
 \section{Algoritmi di approssimazione}
-Si noti come i problemi pi\`u interessanti sono in forma di ottimizzazione e se il problema di decisione \`e $\mathbb{NP}$-completo nono sono noti algoritmi polinomiali che trovano
+Si noti come i problemi pi\`u interessanti sono in forma di ottimizzazione e se il problema di decisione \`e $\mathbb{NP}$-completo non sono noti algoritmi polinomiali che trovano
 soluzioni ammissibili pi\`u o meno vicine a quella ottima. Se \`e possibile dimostrare un limite superiore o inferiore al rapporto fra la soluzione trovata e la soluzione ottima allora
 tali algoritmi vengono detti algoritmi di approssimazione. 
 \paragraph{Definizione}
 Dato un problema di ottimizzazione con funzione di costo non negativa $c$, un algoritmo si dice di $\alpha(n)$-approssimazione se fornisce una soluzione ammissibile $x$ il cui costo
-$c(x)$ non si discosta dal costo $c(x*)$ della soluzione ottima $x*$ per pi\`u di un fattore $\alpha(n)$ per un qualunque input di dimensione $n$: 
+$c(x)$ non si discosta dal costo $c(x^*)$ della soluzione ottima $x^*$ per pi\`u di un fattore $\alpha(n)$ per un qualunque input di dimensione $n$: 
 \begin{align*}
-	c(x*)\le c(x)\le\alpha(n)c(x*) & \alpha(n)>1 & \text{Minimizzazione}\\
-	\alpha(n)c(x*)\le c(x)\le c(x*) & \alpha(n)<1 & \text{Massimizzazione}
+	c(x*)\le c(x)\le\alpha(n)c(x^*) & \alpha(n)>1 & \text{Minimizzazione}\\
+	\alpha(n)c(x^*)\le c(x)\le c(x^*) & \alpha(n)<1 & \text{Massimizzazione}
 \end{align*}
 $\alpha(n)$ pu\`o essere una costante valida per tutti gli $n$. Identificare un valore $\alpha(n)$ e dimostrare che l'algoritmo lo rispetta \`e ci\`o che rende un buon algoritmo un
 algoritmo di approssimazione.
@@ -131,7 +131,7 @@ Siano date $n$ citt\`a e le distanze positive $d[i][j]$ tra esse tali per cui va
 $$d[i][j]\le d[i][k]+d[k][j] \forall i, j, k: 1\le i, j, k\le n$$
 Si deve trovare un percorso che partendo da una qualsiasi citt\`a attraversi ogni citt\`a esattamente una volta e ritorni alla citt\`a di partenza in modo che la distanza complessiva 
 sia minima. 
-\subsubsection{$\mathbf{\Delta}$ \`e $\mathbf{\mathbb{NP}}$-completo}
+\subsubsection{$\mathbf{\Delta}$-TSP \`e $\mathbf{\mathbb{NP}}$-completo}
 Si dimostri che HAMILTONIAN-CIRCUIT $\le_p\ \Delta$-TSP. Sia $G=(V, E)$ un grafo non orientato e si definisca la matrice di distanze a partire da $G$:
 $$d[i][j] = 
 \begin{cases}
@@ -141,7 +141,7 @@ $$d[i][j] =
 Il grafo $G$ ha un circuito hamiltoniano se e solo se \`e possibile trovare un percorso da commesso viaggiatore lungo $n$. Valgono le disuguaglianze triangolari:
 $$d[i][j] \le 2\le d[i][k] + d[k][j]$$
 \subsubsection{Algoritmo di approssimazione}
-Si interpreti $\Delta$-TSP come il problema di problema di trovare un circuito hamiltoniano di peso minimo su un grafo completo. Considerando un circuito hamiltoniano e cancellando un
+Si interpreti $\Delta$-TSP come il problema di trovare un circuito hamiltoniano di peso minimo su un grafo completo. Considerando un circuito hamiltoniano e cancellando un
 suo arco si ottiene un albero di copertura. 
 \paragraph{Teorema}
 \subparagraph{Enunciato}
@@ -151,7 +151,7 @@ Si supponga per assurdo che esista un circuito hamiltoniano $\pi$ di costo $c(\p
 che \`e una contraddizione in quanto $mst$ \`e il costo minimo fra tutti gli alberi di copertura. 
 \paragraph{Algoritmo}
 Si individua un minimo albero di copertura di peso $mst$ e se ne percorrono gli archi due volte, prima in un senso e poi nell'altro in modo da visitare ogni citt\`a almeno una volta, 
-la distanza complessiva \`e $2\cdot mst$ ma non \`e un circuito hamiltoniano. Si evita di passare per le citt\`a gi\`a visitate saltandole e per la disuguaglanza triangolare il
+la distanza complessiva \`e $2\cdot mst$ ma non \`e un circuito hamiltoniano. Si evita di passare per le citt\`a gi\`a visitate saltandole e per la disuguaglianza triangolare il
 costo $c(\pi)$ \`e inferiore o uguale a $2\cdot mst$, pertanto $c(\pi)\le 2\cdot mst< 2\cdot c(\pi^*)\Rightarrow \alpha(n) = 2$, dove $c(\pi^*)$ \`e il costo del circuito hamiltoniano
 ottimo. 
 \paragraph{Note}
@@ -166,7 +166,7 @@ Gli algoritmi euristici forniscono una soluzione ammissibile non necessariamente
 In questo algoritmo si ordinano gli archi per pesi non decrescenti, si aggiungono archi alle soluzioni seguendo questo ordine fino a che non sono stati aggiunti $n-1$ archi, dove $n$
 \`e il numero di nodi. Per aggiungere un arco occorre verificare che per ciascuno dei suoi nodi non sian gi\`a stati scelti due archi e che non si formino circuiti MFSET. A questo punto
 si \`e trovata una catena hamiltoniana e si chiude il circuito aggiungendo l'arco tra i due nodi estremi della catena. Ha un costo computazionale di  $O(n^2\log n)$ per l'ordinamento 
-degli archi.
+degli archi.\\
 \input{Pseudocodice/146_greedyTsp}
 \subsubsection{TSP - Nearest neighbor}
 Si parte da una citt\`a, si seleziona come prossima citt\`a quella pi\`u vicina e si va avanti cos\`i evitando citt\`a gi\`a visitate e quando si sono visitate tutte le citt\`a si 
@@ -176,7 +176,10 @@ Si noti come la soluzione cos\`i ottenuta si pu\`o utilizzare come base di parte
 \subsection{Approccio ricerca locale}
 \subsubsection{TSP}
 Sia $\pi$ un circuito hamiltoniano del grafo completo derivante dal problema TSP e si consideri il seguente intorno:
-$$I_2(\pi) = \{\pi': \pi' \text{ottenuto da } \pi\text{ cancellando due archi non consecutivi del circuito e sostituendoli con due archi esterni al circuito}\}$$
+\begin{align*}
+	I_2(\pi) = &\{\pi': \pi' \text{ottenuto da } \pi\text{ cancellando due archi non consecutivi del} \\
+		   &\text{circuito e sostituendoli con due archi esterni al circuito}\}
+\end{align*}
 Si noti come $|I_2(\pi)| = \frac{n(n-1)}{2-n}$ in quanto ci sono $\frac{n(n-1)}{2}$ coppie di archi nel circuito e $n$ di esse sono consecutive e una volta spezzato un circuito esiste
 un solo modo per riconnetterlo. Il costo per esaminare $I_2(\pi)$ \`e $O(n^2)$. 
 \section{Branch-\&-bound}

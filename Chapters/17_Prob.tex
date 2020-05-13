@@ -28,9 +28,9 @@ Si noti come esistono numeri composti (numeri di Carmichael) tali che $\forall b
 \end{multicols}
 \subsubsection{Test di Miller-Rabin}
 Si esprima $n-1$ come $n-1 = m2^v$ con $m$ dispari, la rappresentazione binaria di $n-1$ \`e uguale alla rappresentazione binaria del numero dispari $m$ seguito da $v$ zeri. Sia $b$
-un numero in $[1, \dots, n - 1$, e se un numero $n$ \`e primo allora $mcd(n, b) = 1$ e $b^m\mod n = 1\lor \exists i, 0\le i \le v -1: b^{2^im}\mod n = -1$, mentre se \`e composto almeno 
+un numero in $[1, \dots, n - 1]$, e se un numero $n$ \`e primo allora $mcd(n, b) = 1$ e $b^m\mod n = 1\lor \exists i, 0\le i \le v -1: b^{2^im}\mod n = 1$, mentre se \`e composto almeno
 una delle due condizioni \`e falsa. Rabin ha dimostrato che se $n$ \`e composto allora ci sono almeno $\frac{3}{4}(n - 1)$ valori in $[1, \dots, n - 1]$ per i quali una delle condizioni
-\`e falsa e pertanto il test di compostezza ha una probailit\`a inferiore a $\frac{1}{4}$ di rispondere erroneamente. 
+\`e falsa e pertanto il test di compostezza ha una probabilit\`a inferiore a $\frac{1}{4}$ di rispondere erroneamente. 
 \input{Pseudocodice/151_isPrime3}
 Questo algoritmo ha complessit\`a $O(k\log^2 n\log\log n\log\log\log n)$ con probabilit\`a d'errore $\bigl(\frac{1}{4}\bigr)^k$
 \subsection{Espressione polinomiale nulla}
@@ -39,7 +39,7 @@ noti come gli algoritmi basati su semplificazioni sono molto complessi.
 \subsubsection{Algoritmo}
 Si genera una ennupla di valori $v_1, \dots, v_n$, si calcola $x = p(v_1, \dots, v_n)$, se $x\neq 0$ $p$ non \`e identicamente nulla, altrimenti potrebbe essere identicamente nulla. Se 
 ogni $v_i$ \`e un valore intero compreso causale fra $1$ e $2d$, dove $d$ \`e il grado del polinomio allora la probabilit\`a di errore non supera $\frac{1}{2}$. Il processo si ripete
-$k$ volte, riducendo la probabilit\`a d'errore a $\bigl(\frac{1}{2}\bigr)$.
+$k$ volte, riducendo la probabilit\`a d'errore a $\bigl(\frac{1}{2}\bigr)^k$.
 \section{Algoritmi Las Vegas}
 Gli algoritmi statistici sui vettori estraggono alcune caratteristiche statisticamente rilevanti da un vettore numerico come:
 \begin{itemize}
@@ -67,7 +67,7 @@ attenzione agli indici.
 $$T(n) = 
 \begin{cases}
 	1 & n\le 1\\
-	T(n - 1) + n n > 1\\
+	T(n - 1) + n > 1\\
 \end{cases}
 $$
 $T(n) = O(n^2)$.
@@ -75,7 +75,7 @@ $T(n) = O(n^2)$.
 $$T(n) = 
 \begin{cases}
 	1 & n\le 1\\
-	T\bigl(\frac{n}{2}\bigr) + n n > 1\\
+	T\bigl(\frac{n}{2}\bigr) + n > 1\\
 \end{cases}
 $$
 $T(n) = O(n)$.

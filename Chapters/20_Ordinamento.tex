@@ -11,7 +11,7 @@ Si considerino gli algoritmi di ordinamento:
 	\end{itemize}
 \end{multicols}
 Tutti questi algoritmi sono basati su confronti in quanto le decisioni sull'ordinamento vengono prese in base al confronto ($<$, $=$, $>$)tra due valori. Gli algoritmi migliori sono
-$O(n\log n)$ e \emph{InsertionSort} e \emph{ShelloSort} sono pi\`u veloci solo in casi speciali. 
+$O(n\log n)$ e \emph{InsertionSort} e \emph{ShellSort} sono pi\`u veloci solo in casi speciali. 
 \section{Limite inferiore}
 \`E possibile dimostrare che qualunque algoritmo di ordinamento basato su confronti ha una complessit\`a $\Omega(n\log n)$. Si consideri un qualunque algoritmo $A$ basato su confronti e
 si assuma che tutti i valori siano distinti senza perdere generalit\`a. L'algoritmo $A$ pu\`o essere rappresentato tramite un albero di decisione, un albero binario che rappresenta i 
@@ -33,11 +33,11 @@ Ha complessit\`a $O(n)$.
 	\item Si taglia lo spaghetto $i$-esimo in modo proporzionale all'$i$-esimo valore da ordinare.
 	\item Con la mano si afferrano gli $n$ spaghetti e li si appoggiano verticalmente sul tavolo. 
 	\item Si prende il pi\`u lungo lo si misura e si mette il valore corrispondente al valore da ordinare. 
-	\item Si ripete $(4)$ fino a quando non hai terminato gli spaghetti. 
+	\item Si ripete $(4)$ fino a quando non si sono terminati gli spaghetti. 
 \end{enumerate}
 \subsection{Counting Sort}
 Si assuma che i numeri da ordinare siano compresi in un intervallo $[1\dots k]$. Si costruisce un array $B[1\dots k]$ che conta il numero di volte che un valore compreso in $[1\dots k]$
-compare in $A$. Ricolloca i valori cos\`i ottenuti nel vettore da ordinare $A$. Qualunque intervallo di cui si conoscono gli estremi pu\`o essree utilizzato nel Counting Sort. 
+compare in $A$. Ricolloca i valori cos\`i ottenuti nel vettore da ordinare $A$. Qualunque intervallo di cui si conoscono gli estremi pu\`o essere utilizzato nel Counting Sort. \\
 \input{Pseudocodice/155_countingSort}
 \subsubsection{Complessit\`a}
 $O(n+k)$, se $k = O(n)$, allora la complessit\`a di Counting Sort \`e $O(n)$. Si noti come Counting Sort non \`e basato su confronti e che se $k = O(n^3)$ questo \`e il peggior algoritmo
@@ -45,12 +45,12 @@ visto fino ad ora.
 \subsection{Pigeonhole Sort}
 Una variante del Counting Sort in cui i valori non sono numeri interi ma record associati ad una chiave da ordinare, allora si devono usare liste concatenate invece di contare. 
 \subsection{Bucket Sort}
-Si ipotizza sull'input in cui i valori sono reali uniformemente distribuiti nell'intervallo $[0, 1)$. Qualunque insieme di valori distribuiti uniformemente pu\`o essere noermalizzato
-nell'intervallo $[0, 1)$ in tempo lineare. Si diveide l'intervallo in $n$  di dimensione $\frac{1}{n}$ detti bucket che si distribuiscono gli $n$ numeri nei bucket. Per l'ipotesi di 
-uniformit\`a il numero atteso di valori nei bucket \`e $1$. Possono essere ordinati con Insertion Sort. 
+Si ipotizza sull'input in cui i valori sono reali uniformemente distribuiti nell'intervallo $[0, 1]$. Qualunque insieme di valori distribuiti uniformemente pu\`o essere normalizzato
+nell'intervallo $[0, 1]$ in tempo lineare. Si divide l'intervallo in $n$ elementi di dimensione $\frac{1}{n}$ detti bucket che si distribuiscono gli $n$ numeri nei bucket. Per l'ipotesi 
+di uniformit\`a il numero atteso di valori nei bucket \`e $1$. Possono essere ordinati con Insertion Sort. 
 \section{Conclusioni}
 \subsection{Stabilit\`a}
-Un algoritmdo di ordinamento si dice stabile se preserva l'oridne iniziale tra due elementi con la stessa chiave. Si pu\`o rendere stabile qualunque algoritmo usando come chiave di 
+Un algoritmo di ordinamento si dice stabile se preserva l'ordine iniziale tra due elementi con la stessa chiave. Si pu\`o rendere stabile qualunque algoritmo usando come chiave di 
 ordinamento la coppia chiave, posizione iniziale. 
 \subsection{Riassunto}
 \subsubsection{Insertion Sort}
@@ -60,16 +60,16 @@ $\Theta(n\log n)$, stabile, richiede $O(n)$ spazio aggiuntivo, ricorsivo (richie
 \subsubsection{Heap Sort}
 $\Theta(n\log n)$, non stabile, sul posto, iterativo. Cattiva performance in cache, cattiva parallelizzazione. Preferito in sistemi embedded. 
 \subsubsection{Quick Sort}
-$O(n\log n)$ in media, $O(n^2)$ nel caso peggiore, non stabile, ricorsivo (richiede $O(\log n)$ spazio nello stack). Buona performance in cache, buona parallelizzaizone, buoni fattori
+$O(n\log n)$ in media, $O(n^2)$ nel caso peggiore, non stabile, ricorsivo (richiede $O(\log n)$ spazio nello stack). Buona performance in cache, buona parallelizzazione, buoni fattori
 moltiplicativi. 
 \subsubsection{Counting Sort}
-$\Theta(n+k)$, richiede $O(k)$ memoria aggiuntiva, iterativo, molto veloce quanro $k= O(n)$.
+$\Theta(n+k)$, richiede $O(k)$ memoria aggiuntiva, iterativo, molto veloce quando $k= O(n)$.
 \subsubsection{Pigeonhole Sort}
 $\Theta(n + k)$, stabile, richiede $O(n+k)$ memoria aggiuntiva, iterativo, molto veloce quando $k = O(n)$.
 \subsubsection{Bucket Sort}
 $O(n)$ nel caso i valori siano distribuiti uniformemente, stabile, richiede $O(n)$ spazio aggiuntivo. 
-\subsubsection{Shello Sort}
+\subsubsection{Shell Sort}
 $O(n\sqrt{n})$, stabile, adatto per piccoli valori, sequenze quasi ordinate. 
 \subsubsection{Tim Sort}
 Algoritmo ibrido basato su Merge Sort e Insertion Sort. Cerca sequenze consecutive gi\`a ordinate. Ha complessit\`a $\Omega(n)$ per le sequenze gi\`a ordinate o $O(n\log n)$ nel caso
-pessimo .
+pessimo.

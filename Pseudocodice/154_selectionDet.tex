@@ -79,13 +79,13 @@
 	\InsertionSort{A, start, end} \comment{Versione con indici inizio/fine}
 	\Return A[start + k - 1]\;
 }
-\comment{Divide $A$ in $\biggl\lceil\frac{n}{5}\biggr\rceil$ sottovettori di dimensione $5$ e ne calcola la mediana}
-M = \New \Int$\biggl[1\dots \biggl\lceil\frac{n}{5}\biggr\rceil\biggr]$\;
-\For{\Int i = 1 \To $\biggl\lceil\frac{n}{5}\biggr\rceil$}{
+\comment{Divide $A$ in $\bigl\lceil\frac{n}{5}\bigr\rceil$ sottovettori di dimensione $5$ e ne calcola la mediana}
+M = \New \Int$\bigl[1\dots \bigl\lceil\frac{n}{5}\bigr\rceil\bigr]$\;
+\For{\Int i = 1 \To $\bigl\lceil\frac{n}{5}\bigr\rceil$}{
 	M[i] = \Median{A, start + $(i - 1)\cdot 5$, end}\;
 }
 \comment{Individua la mediana delle mediane e la si usa come perno}
-\Item m = \Selection{M, 1, $\biggl\lceil\frac{n}{5}\biggr\rceil$, $\biggl\lceil\frac{\lceil\frac{n}{5}\rceil}{2}\biggr\rceil$}\;
+\Item m = \Selection{M, 1, $\bigl\lceil\frac{n}{5}\bigr\rceil$, $\bigl\lceil\frac{\lceil\frac{n}{5}\rceil}{2}\bigr\rceil$}\;
 \Int j = \Pivot{A, start, end,  m}\;
 \comment{Calcola l'indice $q$ di $m$ in $[start\dots end]$}
 \comment{Confronta $q$ con l'indice cercato e ritorna il valore conseguente}

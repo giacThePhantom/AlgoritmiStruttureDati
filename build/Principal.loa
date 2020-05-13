@@ -1,0 +1,176 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {algocf}{\numberline {}{\ignorespaces \SelectionSort {\Item [] A, \Int n}\relax }}{19}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Min {\Item [] A, \Int i, \Int n}\relax }}{19}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \InsertionSort {\Item [] A, \Int n}\relax }}{19}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Merge {\Item [] A, \Int first, \Int last, \Int mid}\relax }}{20}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \MergeSort {\Item [] A, \Int first, \Int last}\relax }}{20}{algocf.}% 
+\addvspace {10\p@ }
+\contentsline {algocf}{\numberline {}{\ignorespaces \Sequence \relax }}{23}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Set \relax }}{24}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Dictionary \relax }}{25}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \List \relax }}{26}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces Stack\relax }}{27}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Stack \relax }}{27}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Queue \relax }}{28}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Queue \relax }}{28}{algocf.}% 
+\addvspace {10\p@ }
+\contentsline {algocf}{\numberline {}{\ignorespaces \Tree \relax }}{31}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Binary \relax }}{31}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Dfs {\Tree t}\relax }}{32}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Tree \relax }}{32}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Dfs {\Tree t}\relax }}{33}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Bfs (\Tree t)\relax }}{33}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Tree \relax }}{34}{algocf.}% 
+\addvspace {10\p@ }
+\contentsline {algocf}{\numberline {}{\ignorespaces \SearchBinary \relax }}{35}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Dictionary \relax }}{36}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Item \Lookup {\Item k}\relax }}{36}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Tree \LookupNode (\Tree t, \Item k)\relax }}{36}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Tree \LookupNode (\Tree t, \Item k)\relax }}{36}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Tree \Min (\Tree t)\relax }}{36}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Tree \Max (\Tree t)\relax }}{36}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \SuccessorNode {\Tree t}\relax }}{37}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \SuccessorNode {\Tree t}\relax }}{37}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Insert {\Item k, \Item v}\relax }}{37}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Tree \InsertNode {\Tree t, \Item k, \Item v}\relax }}{38}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Link {\Tree p, \Tree u, \Item k}\relax }}{38}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Remove {\Item k}\relax }}{38}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Tree \RemoveNode {\Tree T, \Item k}\relax }}{39}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Tree \RotateLeft {\Tree x}\relax }}{40}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Tree \RotateLeft {\Tree x}\relax }}{40}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Tree \relax }}{41}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \BalancedInsert {\Tree t}\relax }}{43}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \BalancedDelete {\Tree T, \Tree t}\relax }}{45}{algocf.}% 
+\addvspace {10\p@ }
+\contentsline {algocf}{\numberline {}{\ignorespaces \Hash \relax }}{51}{algocf.}% 
+\addvspace {10\p@ }
+\contentsline {algocf}{\numberline {}{\ignorespaces \Set (vettore booleano)\relax }}{54}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Set \Difference {\Set A, \Set B}\relax }}{55}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Set \Intersection {\Set A, \Set B}\relax }}{55}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Insert {x}\relax }}{57}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Boolean \Insert {x}\relax }}{57}{algocf.}% 
+\addvspace {10\p@ }
+\contentsline {algocf}{\numberline {}{\ignorespaces Graph\relax }}{59}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces Iterazione su tutti i nodi del grafo\relax }}{61}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces Iterazione su tutti i nodi e archi del grafo\relax }}{61}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \GraphTraversal {\Graph G, \Node r}\relax }}{61}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \GraphTraversal {\Graph G, \Node r}\relax }}{62}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \GraphTraversal {\Graph G, \Node r, \Int [] erdos, \Node [] parents}\relax }}{63}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \GraphTraversal {\Node r, \Node s, \Node [] parents}\relax }}{63}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \GraphTraversal {\Graph G, \Node u, \Boolean [] visited}\relax }}{64}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \GraphTraversal {\Graph G, \Node r}\relax }}{64}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Int [] \CC {\Graph G}\relax }}{65}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Int [] \CCdfs {\Graph G, \Int counter, \Node u, \Int [] id}\relax }}{65}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Boolean [] \HasCycle {\Graph G, \Node u, \Node p, \Boolean [] visited}\relax }}{65}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Boolean [] \HasCycle {\Graph G}\relax }}{65}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \DfsSchema {\Graph G, \Node u, \Int $\&$ time, \Int [] dt, \Int [] ft}\relax }}{66}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \HasCycle {\Graph G, \Node u, \Int $\&$ time, \Int [] dt, \Int [] ft}\relax }}{67}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Stack \TsDfs {\Graph G, \Node u, \Boolean [] visited, \Stack S}\relax }}{67}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Stack \TopSort {\Graph G}\relax }}{67}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Int [] \Scc {\Graph G}\relax }}{68}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Int [] \Transpose {\Graph G}\relax }}{68}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Int [] \CC {\Graph G, \Stack S}\relax }}{69}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \CCdfs {\Graph G, \Int counter, \Node u, \Int [] id}\relax }}{69}{algocf.}% 
+\addvspace {10\p@ }
+\contentsline {algocf}{\numberline {}{\ignorespaces \MinPriorityQueue \relax }}{70}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \MaxHeapRestore {\Item [] A, \Int i, \Int i}\relax }}{72}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \HeapBuild {\Item [] A, \Int n}\relax }}{73}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Heapsort {\Item [] A, \Int n}\relax }}{73}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \PriorityItem \relax }}{74}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Swap {\PriorityItem [] H, \Int i, \Int j}\relax }}{74}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \PriorityQueue \relax }}{74}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \PriorityItem \Insert {\Item x, \Int p}\relax }}{74}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \MinHeapRestore {\PriorityItem [] A, \Int i, \Int dim}\relax }}{75}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Item \DeleteMin {}\relax }}{75}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Item \Min {}\relax }}{75}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Decrease {\PriorityItem x, \Int p}\relax }}{75}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Mfset \relax }}{76}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Mfset \Cc {\Graph G}\relax }}{76}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Mfset \relax }}{78}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Merge {\Int x, \Int y}\relax }}{78}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Int \Find {\Int x}\relax }}{78}{algocf.}% 
+\addvspace {10\p@ }
+\contentsline {algocf}{\numberline {}{\ignorespaces \Void \PrintPath {\Node s, \Node d, \Node [] T}\relax }}{80}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces (\Int [], \Int []) \ProCamMin {\Graph G, \Node s}\relax }}{81}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces (\Int [], \Int []) \ProCamMin {\Graph G, \Node s}\relax }}{82}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces (\Int [], \Int []) \ProCamMin {\Graph G, \Node s}\relax }}{82}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces (\Int [], \Int []) \ProCamMin {\Graph G, \Node s}\relax }}{83}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces (\Int [], \Int []) \ProCamMin {\Graph G, \Node s}\relax }}{85}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces (\Int [], \Int []) \ProCamMin {\Graph G, \Node s}\relax }}{86}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces (\Int [], \Int []) \ProCamMin {\Graph G}\relax }}{87}{algocf.}% 
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {algocf}{\numberline {}{\ignorespaces \Hanoi {\Int n, \Int src, \Int middle}\relax }}{91}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Int \Pivot {\Item [] A, \Int start, \Int end}\relax }}{92}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \QuickSort {\Item [] A, \Int start, \Int end}\relax }}{92}{algocf.}% 
+\addvspace {10\p@ }
+\contentsline {algocf}{\numberline {}{\ignorespaces \Int \Domino {\Int n}\relax }}{96}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Int \Domino {\Int n}\relax }}{96}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Int \Domino {\Int n}\relax }}{96}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Int \Hateville {\Int [] D, \Int n}\relax }}{98}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Set \Solution {\Int [] DP, \Int [] D, \Int i}\relax }}{98}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Int \KnapSack {\Int [] w, \Int [] p, \Int n, \Int C}\relax }}{100}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces Knapsack con memoization\relax }}{101}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces Knapsack senza limiti con memoization\relax }}{102}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces Knapsack senza limiti con memoization\relax }}{103}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Int \LCS {\Item [] T, \Item [] U}\relax }}{104}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Int \LCS {\Item [] T, \Item [] U, \Int n, \Int m}\relax }}{106}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \relax }}{106}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Int \StringMatching {\Item [] P, \Item [] T, \Int m, \Int n}\relax }}{107}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Int \RecPar {\Item [] c, \Int i, \Int j}\relax }}{110}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Int \ComputePar {\Item [] c, \Int n}\relax }}{110}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces Ricostruzione della soluzione - Stampa\relax }}{111}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces Ricostruzione della soluzione - Calcolo Effettivo\relax }}{111}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Int [] \ComputePredecessor {\Int [] a, \Int [] b, \Int n}\relax }}{112}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Set \MaxInterval {\Int [] a, \Int [] b, \Int [] w, \Int n}\relax }}{112}{algocf.}% 
+\addvspace {10\p@ }
+\contentsline {algocf}{\numberline {}{\ignorespaces \Set \IndipendentSet {\Int [] a, \Int [] b}\relax }}{115}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Int [] \Resto {\Int [] t, \Int n, \Int R}\relax }}{116}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Int [] \Resto {\Int [] t, \Int n, \Int R}\relax }}{117}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Float [] \Zaino {\Float [] p, \Float [] v, \Float C,\Float n}\relax }}{118}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces Algoritmo di decodifica\relax }}{119}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Tree \Huffman {\Int [] c, \Int [] f, \Int n}\relax }}{120}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Set \MSTGenerico {\Graph G, \Int [] w}\relax }}{121}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Set \Kruskal {\Edge [] A, \Int n, \Int m}\relax }}{122}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Prim {\Graph G, \Int [] p}\relax }}{123}{algocf.}% 
+\addvspace {10\p@ }
+\contentsline {algocf}{\numberline {}{\ignorespaces \RicercaLocale {}\relax }}{124}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Int [][] \MaxFlow {\Graph G, \Node s, \Node t, \Int [][] c}\relax }}{125}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Int [][] \MaxFlow {\Graph G, \Node s, \Node t, \Int [][] c}\relax }}{126}{algocf.}% 
+\addvspace {10\p@ }
+\contentsline {algocf}{\numberline {}{\ignorespaces \Enumeration {$<$dati problema$<$, \Item [] S, \Int i, $<$dati parziali$>$}\relax }}{131}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \SubsetRec {\Int n, \Item [] S, \Int i}\relax }}{132}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Subset {\Int n}\relax }}{132}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \ProcessSolution {\Int [] S, \Int n}\relax }}{132}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Subset {\Int n}\relax }}{132}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \PermRec {\Item [] S, \Int i}\relax }}{132}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Permutation {\Item [] S, \Int n}\relax }}{132}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Enumeration {$<$dati problema$<$, \Item [] S, \Int i,$<$dati parziali$>$}\relax }}{133}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \PermRec {\Int n, \Int missing, \Item [] S, \Int i}\relax }}{133}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces Suset sum\relax }}{134}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Queens {\Int n, \Int [] S, \Int i}\relax }}{135}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Boolean \Cavallo {\Int [][] S, \Int i, \Int x, \Int y}\relax }}{136}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Set \Choices {\Int [][] S, \Int x, \Int y}\relax }}{136}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Boolean \Sudoku {\Int [][] S, \Int i}\relax }}{137}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Set \Choices {\Int [][] S, \Int x, \Int y}\relax }}{137}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Boolean \Check {\Int [][] S, \Int x, \Int y, \Int c}\relax }}{137}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Boolean \SameSide {\Point $p_1$, \Point $p_2$, \Point $p$, \Point $q$}\relax }}{138}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Stack \Graham {\Point [] p, \Int n}\relax }}{139}{algocf.}% 
+\addvspace {10\p@ }
+\contentsline {algocf}{\numberline {}{\ignorespaces \Boolean \IsPrime {\Int n}\relax }}{140}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Boolean \IsPrime {\Int n}\relax }}{140}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Boolean \IsPrime {\Int n}\relax }}{141}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Int \HeapSelect {\Item [] A, \Int n, \Int k}\relax }}{142}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Item \Selection {\Item [] A, \Int start, \Int end, \Int k}\relax }}{142}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Item \Selection {\Item [] A, \Int start, \Int end, \Int k}\relax }}{144}{algocf.}% 
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {algocf}{\numberline {}{\ignorespaces \Boolean \SubsetSum {\Int [] A, \Int n, \Int k}\relax }}{153}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Boolean \SsRec {[] A, \Int i, \Int r}\relax }}{153}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Boolean \SsRec {[] A, \Int i, \Int r, \Dictionary }\relax }}{153}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \Set \GreedyTsp {\Graph G}\relax }}{159}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \BranchBound {$<$dati problema$>$, \Item [] S, \Int i, $<$dati parziali$>$}\relax }}{160}{algocf.}% 
+\contentsline {algocf}{\numberline {}{\ignorespaces \BranchBound {\Item [] S, \Int cost,\Set R, \Int n, \Int i}\relax }}{162}{algocf.}% 
+\addvspace {10\p@ }
+\contentsline {algocf}{\numberline {}{\ignorespaces \CountingSort {\Item [] A, \Int n, \Int k}\relax }}{164}{algocf.}% 

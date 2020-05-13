@@ -73,7 +73,7 @@
 \Set C = \Choices{S, x, y}\;
 \ForEach{c $\in$ C}{
 	S[x][y] = i\;
-	\If{Cavallo{S, i + 1, x + $m_x$[c], y + $m_y$[c]}}{
+	\If{\Cavallo{S, i + 1, x + $m_x$[c], y + $m_y$[c]}}{
 		\Return \True\;
 	}
 	S[x][y] = 0\;

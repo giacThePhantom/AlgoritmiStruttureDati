@@ -1,16 +1,16 @@
 \chapter{Algoritmi greedy}
-Gli algoritmi gridi vengono utilizzati per la risoluzione di problemi di ottimizzazione che eseguono una sequenza di decisioni. Se la programmazione dinamica valuta in maniera bottom-up
+Gli algoritmi greedy vengono utilizzati per la risoluzione di problemi di ottimizzazione che eseguono una sequenza di decisioni. Se la programmazione dinamica valuta in maniera bottom-up
 valutando tutte le decisioni possibili evitando di ripetere sotto-problemi o decisioni gi\`a percorse gli algoritmi greedy selezionano una sola delle possibili decisioni che sembra
-ottima, ovvero \`e localmente ottima. In questo caso si rende necessario dimostrare che si ottiene un ottimo globale. La tecnica greedy va applicata se \`e possibile dimostrare che 
+ottima, ovvero quella localmente ottima. In questo caso si rende necessario dimostrare che si ottiene un ottimo globale. La tecnica greedy va applicata se \`e possibile dimostrare che 
 esiste una scelta ingorda, ovvero fra le molte scelte possibili ne pu\`o essere facilmente individuata una che porta sicuramente alla soluzione ottima e se il problema ha sottostruttura
 ottima, ovvero se fatta tale scelta resta un sottoproblema con la stessa struttura del problema principale. Non tutti i problemi hanno una scelta greedy e in alcuni casi soluzioni ottime
 possono comunque essere interessanti.
 \section{Insieme indipendente massimale di intervalli}
 \paragraph{Input}
 Sia $S=\{1, \dots, n\}$ un insieme di intervalli della retta reale. Ogni intervallo $[a_i, b_i[$, con $i\in S$ \`e chiuso a sinistra e aperto a destra. Si indica con $a_i$ il tempo di
-inizio e con $b_i$ iltempo di fine. 
+inizio e con $b_i$ il tempo di fine. 
 \paragraph{Output}
-Si vuole trovare un insieem dipendente massimale, ovvero un sottoinsieme di massima cardinalit\`a formato da intervalli tutti disgiunti tra di loro (naturale confronto con l'insieme
+Si vuole trovare un insieme dipendente massimale, ovvero un sottoinsieme di massima cardinalit\`a formato da intervalli tutti disgiunti tra di loro (naturale confronto con l'insieme
 indipendente di intervalli pesati).
 \subsection{Affrontare il problema}
 \subsubsection{Programmazione dinamica}
@@ -28,7 +28,7 @@ Si supponga che $A[i\dots j]$ sia una soluzione ottimale di $S[i\dots j]$ e sia 
 	\item Il problema $S[i\dots j]$ viene diviso in due sottoproblemi:
 		\begin{itemize}
 			\item $S[i\dots k]$, gli intervalli che finiscono prima di $k$.
-			\item $S[k\dots j$, gli intervalli che iniziano dopo $k$.
+			\item $S[k\dots j]$, gli intervalli che iniziano dopo $k$.
 		\end{itemize}
 	\item $A[i\dots j]$ contiene le soluzioni ottimali di $S[i\dots k]$ e $S[k\dots j]$.
 		\begin{itemize}
@@ -61,7 +61,7 @@ per la propriet\`a transitiva. Se nessun intervallo in $S[i\dots j]$ termina pri
 e $m'$ l'intervallo con minor tempo di fine in $A'[i\dots j]$. Sia ora $A[i\dots j] = A-[j\dots j]-\{m'\}\cup \{m\}$ una nuova soluzione ottenuta togliendo $m'$ e aggiungendo $m$ a
 $A'[i\dots j]$. $A[i\dots j]$ \`e una soluzione ottima che contiene $m$ in quanto ha la stessa dimensione di $A'[i\dots j]$ e gli intervalli sono indipendenti. 
 \subsubsection{Conseguenze}
-Con questo teorema non \`e pi\`u necessario analizzare tutti i valori possibili di $k$: faccio una scelta ingormda ma sicura selezionando l'attivit\`a $m$ con il minor tempo di fine.
+Con questo teorema non \`e pi\`u necessario analizzare tutti i valori possibili di $k$: faccio una scelta ingorda ma sicura selezionando l'attivit\`a $m$ con il minor tempo di fine.
 In questo modo non \`e pi\`u necessario analizzare due sottoproblemi eliminando tutte le attivit\`a non compatibili con la scelta ingorda, rimane da risolvere solo $S[m\dots j]$. 
 \subsubsection{Implementazione}
 \input{Pseudocodice/113_IndipendentSet}
@@ -78,8 +78,8 @@ Si deve trovare il pi\`u piccolo numero intero di pezzi necessari per dare un re
 taglio, ovvero trovare un vettore $x$ di interi non negativi tale che $R=\sum\limits_{i = 1}^nx[i]\cdot t[i]$ e $m=\sum\limits_{i = 1}^nx[i]$ ha un valore minimo.
 \subsection{Soluzione basata su programmazione dinamica}
 \subsubsection{Sottostruttura ottima}
-Sia $S(i)$ il problema per dare un resto pari a $i$ e $A(i)$ la soluzione ottima del problema $S(i)$ rappresentata da un multi insieme e $j\in A(1)$, allora $S(i-t[j])$ \`e un 
-sottoproblema di $S(i)$ la cui solulzione ottima \`e data da $A(i)-\{j\}$. 
+Sia $S(i)$ il problema per dare un resto pari a $i$ e $A(i)$ la soluzione ottima del problema $S(i)$ rappresentata da un multi-insieme e $j\in A(1)$, allora $S(i-t[j])$ \`e un 
+sottoproblema di $S(i)$ la cui soluzione ottima \`e data da $A(i)-\{j\}$. 
 \paragraph{Definizione ricorsiva}
 Sia la tabella di programmazione dinamica $DP[0\dots R]$ e $DP[i]$ il minimo numero di monete per risolvere il problema $S(i)$.
 $$DP[i] = \begin{cases}
@@ -95,22 +95,22 @@ Questo algoritmo ha complessit\`a $O(nR)$.
 \input{Pseudocodice/115_Resto}
 Questo algoritmo cha complessit\`a $O(n\log n)$ se l'input non \`e ordinato e $O(n)$ se \`e ordinato.
 \section{Approccio greedy senza programmazione dinamica}
-Si evidenzino i passi di decisione trasformando il problema di ottimizzazione in un problema di scelte successive, scegliendo una possibile scelta ingorda dimostrando che ripetta il
-``principio della scelta ingorda". Si evidenzia la sottostruttura ottima dimostrando che la soluzione ottima del problema rimanente dopo la scelta ingorda pu\`o essere unita a tale
+Si evidenzino i passi di decisione trasformando il problema di ottimizzazione in un problema di scelte successive, scegliendo una possibile scelta ingorda dimostrando che rispetta il
+``principio della scelta ingorda". Si evidenzia la sottostruttura ottima dimostrando che la soluzione ottima del problema rimanente dopo la scelta ingorda pu\`o essere unito a tale
 scelta. La struttura del codice \`e top-down, anche iterativamente. Pu\`o essere necessario pre-processare l'input. 
 \section{Scheduling}
 \paragraph{Input}
 Si supponga di avere un processore e $n$ job da eseguire su di esso, ognuno caratterizzato da un tempo di esecuzione $t[i]$ eseguito a priori.
 \paragraph{Problema}
-Si dee trovare una sequenza di esecuzione che minimizzi il tempo di completamento medio. Dato un vettore $A[1\dots n]$ contenente una permutazione di $\{1\dots n\}$ il tempo di 
-completamento dell'$h$-esimo job nella permutazione \`e $T_A(h) = \sum\limits_{i = 1}^h t[A[i]$. 
+Si deve trovare una sequenza di esecuzione che minimizzi il tempo di completamento medio. Dato un vettore $A[1\dots n]$ contenente una permutazione di $\{1\dots n\}$ il tempo di 
+completamento dell'$h$-esimo job nella permutazione \`e $T_A(h) = \sum\limits_{i = 1}^h t[A[i]]$. 
 \subsection{Dimostrazione di correttezza}
 \subsubsection{Teorema di scelta greedy}
 \paragraph{Enunciato}
-Esiste una soluzioen ottima $A$ in cui il job con minore tempo di fine $m$ si trova in proma posizione: $A[1] = m$.
+Esiste una soluzione ottima $A$ in cui il job con minore tempo di fine $m$ si trova in prima posizione: $A[1] = m$.
 \paragraph{Dimostrazione}
 Si consideri la permutazione ottima $B = [B[1], \dots, B[m-1], B[m], B[m+1], \dots, B[n]]$ e sia $m$ la posizione in cui si trova in $B$ il job con il minor tempo di fine. Si consideri
-una permutazione in cui i job in posiizone $1$ vengono scambiatiL $A =[B[m], B[2] \dots, B[m-1], B[1], B[m+1], \dots, B[n]]$. Il tempo di completamento medio di $A$ \`e minore o uguale
+una permutazione in cui i job in posizione $1$ vengono scambiati: $A =[B[m], B[2] \dots, B[m-1], B[1], B[m+1], \dots, B[n]]$. Il tempo di completamento medio di $A$ \`e minore o uguale
 al tempo di completamento medio di $B$. In quanto i job in posizione $1, \dots, m-1$ in $A$ hanno tempo di completamento $\le$ dei job in posizione $1, \dots, m-1$ in $B$ e i job in
 posizione $m, \dots, n$ in $A$ hanno tempo di completamento uguale ai job in posizione $m, \dots, n$ in $B$. Essendo $B$ ottima, $A$ non pu\`o avere tempo di completamento medio minore
 e pertanto anche $A$ \`e ottima. 
@@ -139,10 +139,10 @@ La compressione si occupa di rappresentare i dati in modo efficiente, impiegando
 Una possibile tecnica di compressione \`e la codifica di caratteri tramite una funzione di codifica $f:f(c) = x$, dove $c$ \`e un carattere preso da un alfabeto $\Sigma$ e $x$ \`e una
 rappresentazione binaria. 
 \subsection{Codifica a prefissi}
-In un codice a prefisso o senza prefissi nessun codice \`e prefisso di un altro codice, la condizione necessaria per la codifica. 
+In un codice a prefisso o senza prefissi nessun codice \`e prefisso di un altro codice, condizione necessaria per la codifica. 
 \subsubsection{Rappresentazione ad albero per la decodifica}
 L'alfabeto viene rappresentato come un albero binario le cui foglie sono i caratteri dell'alfabeto e tutti gli altri nodi hanno due figli. In base al bit letto si sceglie dove spostarsi
-nell'albero fino a trovare il carattere necessario.
+nell'albero fino a trovare il carattere necessario.\\
 \input{Pseudocodice/117_Algoritmo_di_decodifica}
 \subsection{Definizione formale del problema}
 \paragraph{Input}
@@ -193,7 +193,7 @@ Dato un grafo non orientato e connesso un albero di copertura $G$ \`e un sottogr
 \subsubsection{Output}
 Trovare l'albero di copertura il cui peso totale sia minimo rispetto a ogni altro albero di copertura, dove $w(T)=\sum\limits_{[u, v]\in E_T} w(u, v)$. Non \`e detto che sia univoco.
 \subsection{Algoritmo generico}
-Ci approccia al problema tentando di accrescere un sottoinsieme $A$ di archi in modo tale che venga sempre rispettato il fatto \`e $A$ \`e un sottoinsieme di qualche albero di 
+Ci si approccia al problema tentando di accrescere un sottoinsieme $A$ di archi in modo tale che venga sempre rispettato il fatto \`e $A$ \`e un sottoinsieme di qualche albero di 
 connessione minimo.
 \subsubsection{Arco sicuro}
 Un arco $[u, v]$ si dice sicuro per $A$ se $A\cup\{[u, v]\}$ \`e ancora un sottoinsieme di qualche albero di connessione minimo.\\
@@ -215,7 +215,7 @@ dimostra che $T'$ \`e un albero di copertura minimo. Per definizione di albero $
 minimo.
 \paragraph{Corollario}
 Sia $G=(V, E)$ un grafo non orientato e connesso , $w:V\times V\rightarrow\mathbb{R}$, $A\subseteq E$ un sottoinsieme contenuto in un qualche albero di copertura minimo per $G$, $C$
-una componente connessa nella foresta $G_A=(V, A)$ e $[u, v]$ un arco leggero che connettte $C$ a qualche altra componente in $G_A$, allora l'arco $[u, v]$ \`e sicuro per $A$. 
+una componente connessa nella foresta $G_A=(V, A)$ e $[u, v]$ un arco leggero che connette $C$ a qualche altra componente in $G_A$, allora l'arco $[u, v]$ \`e sicuro per $A$. 
 \subsection{Algoritmo di Kruskal}
 Si ingrandiscono sottoinsiemi disgiunti di un albero di copertura minimo connettendoli fra di loro fino ad avere l'albero complessivo. Si individua un arco sicuro scegliendo un arco
 $[u, v]$ di peso minimo tra tutti gli archi che connettono due distinti alberi della foresta. L'algoritmo \`e greedy perch\`e ad ogni passo si aggiunge alla foresta un arco con il peso
@@ -223,39 +223,43 @@ minore. Per implementarlo si utilizza un struttura dati Merge-Find set.\\
 \input{Pseudocodice/120_Kruskal}
 \subsubsection{Analisi della complessit\`a}
 Il tempo di esecuzione per l'algoritmo di Kruskal dipende dalla realizzazione della struttura dati per Merge-Find Set, utilizzando la versione con euristica sul rango e compressione le
-cui operazioni hanno costo ammortizzato costante si ha:\\
+cui operazioni hanno costo ammortizzato costante si ha:
+\begin{center}
 \begin{tabular}{|c|c|c|}
 	\hline
 	\textbf{Fase} & \textbf{Volte} & \textbf{Costo} \\
 	\hline
-	Inizializzaizione & $1$ & $O(n)$ \\
+	Inizializzazione & $1$ & $O(n)$ \\
 	\hline
 	Ordinamento & $1$ & $O(m\log m)$ \\
 	\hline
 	Operazioni \emph{find()}, \emph{merge()} & $O(m)$ & $O(1)$\\
 	\hline
-\end{tabular}\\
+\end{tabular}
+\end{center}
 Il totale \`e $O(n+m\log m + m) = O(m\log m) = O(m\log n^2) = O(m\log n)$.
 \subsection{Algoritmo di Prim}
-Si mantiene in $A$ un singolo albero che parte da un vertice arbitrario $r$ e cresce fino a che non ricopre tutti i vertici. Ad oggni passo viene aggiunto un arco leggero che collega
-un vertice in $V_A$ conun vertice in $V-V_A$.
+Si mantiene in $A$ un singolo albero che parte da un vertice arbitrario $r$ e cresce fino a che non ricopre tutti i vertici. Ad ogni passo viene aggiunto un arco leggero che collega
+un vertice in $V_A$ con un vertice in $V-V_A$.
 \paragraph{Correttezza} Per definizione $(V_A, V - V_A)$ \`e un taglio che rispetta $A$ e per il corollario gli archi leggeri che attraversano il taglio sono sicuri. 
 \subsubsection{Implementazione}
 Durante l'esecuzione i vertici non ancora nell'albero si trovano in una coda con min-priorit\`a $Q$ ordinata secondo la priorit\`a: la priorit\`a del nodo $v$ \`e il peso minimo di un
-arco che collega $v$ ad un vertice nell'albero o $+\infty$ se tale arco non esite. L'albero viene mantenuto come vettore dei padri. $A$ \`e mantenuto implicitamente: $A=\{[v, p[v]]|v\in
+arco che collega $v$ ad un vertice nell'albero o $+\infty$ se tale arco non esiste. L'albero viene mantenuto come vettore dei padri. $A$ \`e mantenuto implicitamente: $A=\{[v, p[v]]|v\in
 V-Q-\{r\}\}$. \\
 \input{Pseudocodice/121_Prim}
 \subsubsection{Analisi complessit\`a}
-L'efficienza dell'algorimto di Prim dipende dall'implementazione della coda di priorit\`a. Se si utilizza uno heap binario si ha:\\
+L'efficienza dell'algoritmo di Prim dipende dall'implementazione della coda di priorit\`a. Se si utilizza uno heap binario si ha:
+\begin{center}
 \begin{tabular}{|c|c|c|}
 	\hline
 	\textbf{Fase} & \textbf{Volte} & \textbf{Costo} \\
 	\hline
-	Inizializzaizione & $1$ & $O(n\log n)$ \\
+	Inizializzazione & $1$ & $O(n\log n)$ \\
 	\hline
 	\emph{deleteMin()} & $O(n)$ & $O(\log m)$ \\
 	\hline
 	\emph{decreasePriority()} & $O(m)$ & $O(\log n)$\\
 	\hline
-\end{tabular}\\
+\end{tabular}
+\end{center}
 Per un tempo totale $O(n+n\log n+m\log n) = O(m\log n)$, asintoticamente uguale a quello di Kruskal. Le cose cambiano se si utilizza un vettore non ordinato.

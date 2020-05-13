@@ -58,7 +58,7 @@ Che utilizzando il master theorem per la ricorrenza lineare di ordine costante s
 \paragraph{Complessit\`a}
 Ha complessit\`a temporale $T(n)=\Theta(n)$ e spaziale $S(n)=\Theta(n)$.
 \paragraph{Miglioramento}
-Si pu\`o rendere con complessit\`a spaziale costante $S(n)=\Theta(n)$.
+Si pu\`o rendere con complessit\`a spaziale costante $S(n)=\Theta(1)$.
 \input{Pseudocodice/96_Domino}
 \subsection{Hateville}
 Hateville \`e un villaggio composto da $n$ case numerate da $1$ a $n$ lungo una singola strada. Ad Hateville ognuno odia i propri vicini da entrambi i lati. Si vuole organizzare una sagra e si rende necessario
@@ -129,7 +129,7 @@ Un insieme $S\subseteq\{1,\dots, n\}$ tale che il volume totale deve essere mino
 totale sia massimizzato: $p(S)=\sum\limits_{i\in S}p[i]$.
 \subsubsection{Definizione matematica del valore della soluzione}
 Dato uno zaino di capacit\`a $C$ e $n$ oggetti caratterizzati da peso $w$ e profitto $p$ si definisce $DP[i][c]$ il massimo profitto che pu\`o essere 
-ottenuta dai primi $i\le n$ oggetti contenuti in uno zaino di capacit\`a $c\le C$. Il massimo profitto ottenibile dal problema originale \`e rappresentato
+ottenuto dai primi $i\le n$ oggetti contenuti in uno zaino di capacit\`a $c\le C$. Il massimo profitto ottenibile dal problema originale \`e rappresentato
 da $DP[n][C]$.
 \paragraph{Parte ricorsiva}
 Considerando l'ultimo oggetto lo si pu\`o non prendere: $DP[i][c]=DP[i-1][c]$, ovvero la capacit\`a non cambia e non c'\`e profitto; se invece lo prendo
@@ -289,20 +289,20 @@ $$DP[i][j] =
 	\min\{\	& DP[i-1][j-1]+\delta, \quad\quad \delta = iif(P[i]=T[j], 0, 1)\\
 		& DP[i-1][j]+1, \\
 		& DP[i][j-1]+1\} \\
-	\end{split}& altrimenti
+\end{split}& altrimenti\\
 \end{cases}$$
 \subsubsection{Ricostruzione della soluzione finale}
-$DP[m][j] = k$ se e solo se esiste un'occorrenza k-approssimata di $P$ in $T(j)$ che termina nella posizione $j$. La soluzione del problema \`e data dal pi\`u piccolo falore $DP[m][j]$ 
+$DP[m][j] = k$ se e solo se esiste un'occorrenza k-approssimata di $P$ in $T(j)$ che termina nella posizione $j$. La soluzione del problema \`e data dal pi\`u piccolo valore  $DP[m][j]$ 
 per $0\le j\le n$. Si noti pertanto come la soluzione del problema non si trova nella casella ``in basso a destra" ma vada essa stessa ricercata nella tabella $DP$.
 \subsubsection{Algoritmo}
 \input{Pseudocodice/106_StringMatching}
 \subsection{Prodotto di catena di matrici}
 \subsubsection{Problema}
-Data una sequenza $n$ di matrici $A_1, \dots, A_n$ compatibili due a due al prodotto, si vuole calcolare il loro prodotto. SI noti come il prodotto di 
+Data una sequenza $n$ di matrici $A_1, \dots, A_n$ compatibili due a due al prodotto, si vuole calcolare il loro prodotto. Si noti come il prodotto di 
 matrici non sia commutativo ma associativo. Notando come il prodotto di matrici si basa sulla moltiplicazione scalare come operazione elementare si vuole
-calcolare il prodotto delle $n$ matrici impegando il minor numero possibile di moltiplicazioni scalari. 
+calcolare il prodotto delle $n$ matrici impiegando il minor numero possibile di moltiplicazioni scalari. 
 \subsubsection{Parentesizzazione}
-La parentesizzazione $P_{i, j}$ del prodotto $A_i\dot A_{i+1}\cdots A_j$ \`e la matrice $A_i$ se $i=j$, nel prodotto di due parentesizzazioni $(P_{i,k}
+La parentesizzazione $P_{i, j}$ del prodotto $A_i\cdot A_{i+1}\cdots A_j$ \`e la matrice $A_i$ se $i=j$, nel prodotto di due parentesizzazioni $(P_{i,k}
 \cdot P_{k+1, j})$ altrimenti. 
 \paragraph{Parentesizzazione ottima}
 La parentesizzazione che richiede il minor numero di moltiplicazioni scalari per essere completata fra tutte le parentesizzazioni possibili si dice 
@@ -332,7 +332,7 @@ Sia $A[i\dots j]$ una sottosequenza del prodotto di matrici e si consideri una p
 prodotto: un indice $k$ tale che $P[i\dots j] = P[i\dots k]\cdot P[k+1\dots j]$.
 \paragraph{Teorema della sottostruttura ottima}
 \subparagraph{Enunciato}
-Se $P[i\dots j]=P[i\dots k]\cdot P[k+1\dots j]$ \`e una parntesizzazione ottima del prodotto $A[i\dots j]$ allora $P[i\dots k]$ \`e una parentesizzazione
+Se $P[i\dots j]=P[i\dots k]\cdot P[k+1\dots j]$ \`e una parentesizzazione ottima del prodotto $A[i\dots j]$ allora $P[i\dots k]$ \`e una parentesizzazione
 ottima del prodotto $A[i\dots k]$ e $P[k+1\dots j]$ \`e una parentesizzazione ottima del prodotto $A[k+1\dots j]$. 
 \subparagraph{Dimostrazione}
 Si supponga che esista una parentesizzazione ottima $P'[i\dots k]$ di $A[i\dots k]$ con costo inferiore a $P[i\dots k]$. Allora $P'[i\dots k]\cdot 
@@ -356,42 +356,42 @@ L'algoritmo riceve in input un vettore $c[0\dots n]$ contenente le dimensioni de
 della matrice $A_i$ e $c[i]$ \`e il numero di colonne della matrice $A_i$ e due indici $i$ e $j$ che rappresentano l'intervallo di matrici da moltiplicare. 
 \paragraph{Output}
 Il numero di moltiplicazioni scalari per calcolare il prodotto delle matrici comprese tra gli indici $i$ e $j$.
-\paragraph{Approccio ricorsivo}
+\paragraph{Approccio ricorsivo}\mbox{}\\
 \input{Pseudocodice/107_RecPar}
 \subparagraph{Valutazione}
 La soluzione ricorsiva top-down \`e $\Omega(2^n)$. Il problema \`e che i sottoproblemi che sono $\frac{n(n+1)}{2}$ vengono risolti pi\`u volte.
 \paragraph{Versione bottom-up}
 Si creino due tabelle di programmazione dinamica, due matrici $DP$ e $last$ di dimensione $n\times n$ tali che $DP[i][j]$ contiene il numero di moltiplicazioni scalari necessarie per 
-moltiplicare le matrici $A[i\dots j]$ e $last[i][j]$ contiene il valore $k$ dell'ultimo prodotto che minimizza il costo del sottoproblema.
+moltiplicare le matrici $A[i\dots j]$ e $last[i][j]$ contiene il valore $k$ dell'ultimo prodotto che minimizza il costo del sottoproblema.\\
 \input{Pseudocodice/108_ComputePar}
 \subparagraph{Valutazioni}
 Il costo computazionale \`e $O(n^3)$, in quanto ogni cella richiede tempo $O(n)$ per essere riempita. Il costo della funzione si trova nella posizione $DP[1][n]$. \`E anche necessario
-motrare la soluzione trovata, motivo per cui si salvano le informazioni nella matrice last. 
+motrare la soluzione trovata, motivo per cui si salvano le informazioni nella matrice last.\\ 
 \input{Pseudocodice/109_Ricostruzione_della_soluzione_-_Stampa}
 
 \input{Pseudocodice/110_Ricostruzione_della_soluzione_-_Calcolo_Effettivo}
 \subsection{Insieme indipendente di intervalli pesati}
 \subsubsection{Problema}
-So deve trovare un insieme indipendente di peso massimo, un sottoinsieme di intervalli disgiunti tra loro ($b_j \le a_i$ o $b_i\le a_j$ $\forall i\neq j$) tale che la somma dei loro 
+Si deve trovare un insieme indipendente di peso massimo, un sottoinsieme di intervalli disgiunti tra loro ($b_j \le a_i$ o $b_i\le a_j$ $\forall i\neq j$) tale che la somma dei loro 
 profitti sia la pi\`u grande possibile.
 \paragraph{Input}
 Siano dati $n$ intervalli distinti $[a_1, b_i[, \dots, [a_n, b_n[$ della retta reale aperti a destra, dove all'intervallo $i$ \`e associato un profitto $w_i$ con $1\le i\le n$.
 \subsubsection{Pre-elaborazione}
-Per usare la programmazione dinamica \`e necessario ordinare gli intervalli per estremi finali crescenti. In una prima versione $DP[i]$ contiene il profitto massimo ottenivile con i
+Per usare la programmazione dinamica \`e necessario ordinare gli intervalli per estremi finali crescenti. In una prima versione $DP[i]$ contiene il profitto massimo ottenibile con i
 primi $i$ intervalli:
 $$DP[i] =\begin{cases}
 	0 & i = 0\\
 	\max(DP[i-1], max\{DP[j]+w_i: j < i \land b_j\le a_i\}) & i >0\\
 \end{cases}$$
 Il costo computazione dell'algoritmo associato \`e $O(n^2)$.\\
-Una possibile seconda pre-elaborazione consiste nel pre-calcolare il predecessore $pred_i = j$ di $i$, dove $j < i$ \`e il massimo indice tale che $b_j\le a_i$ e se non esite tale 
+Una possibile seconda pre-elaborazione consiste nel pre-calcolare il predecessore $pred_i = j$ di $i$, dove $j < i$ \`e il massimo indice tale che $b_j\le a_i$ e se non esiste tale 
 indice $pred_i = 0$. 
 $$DP[i] = \begin{cases}
 	0 & i = 0\\
 	\max(DP[i-1], DP[pred_i]+w_i) & i > 0\\
 \end{cases}$$
 \input{Pseudocodice/111_ComputePredecessor}
-Si noti come calcolare i predecessori costi $O(n^2$, ma pu\`o essere migliorato in $O(n\log n)$. 
+Si noti come calcolare i predecessori costi $O(n^2)$, ma pu\`o essere migliorato in $O(n\log n)$. 
 \subsubsection{Implementazione}
 \input{Pseudocodice/112_MaxInterval}
 \subsubsection{Costo computazionale}
@@ -402,4 +402,3 @@ Si noti come calcolare i predecessori costi $O(n^2$, ma pu\`o essere migliorato 
 	\item Ricostruzione soluzione: $O(n)$.
 	\item Algoritmo completo: $O(n\log n)$.
 \end{itemize}
-

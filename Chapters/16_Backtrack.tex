@@ -1,23 +1,23 @@
 \chapter{Backtracking}
-Dato un problema si dice soluzione ammissibile una soluzione che soddifa un insieme di criteri: nel caso dello zaino un sottoinsieme di oggetti di peso inferiore alla capacit\`a, mentre nella
-sottosequenza comune una stringa che \`e sottosequenza di entrambe le stringhe in input. Nei problemi di ottimizazione viene definita una funzione di costo o guadagno definita 
+Dato un problema si dice soluzione ammissibile una soluzione che soddisfa un insieme di criteri: nel caso dello zaino un sottoinsieme di oggetti di peso inferiore alla capacit\`a, mentre
+nella sottosequenza comune una stringa che \`e sottosequenza di entrambe le stringhe in input. Nei problemi di ottimizzazione viene definita una funzione di costo o guadagno definita 
 sull'insieme delle soluzioni ammissibili: nello zaino \`e la somma dei guadagni degli oggetti selezionati, mentre nella sottosequenza comune massimale \`e la lunghezza della stringa.
 \section{Brute force}
 In alcuni problemi \`e richiesto o necessario esplorare l'intero spazio delle soluzioni ammissibili. Nell'enumerazione si richiede di elencare tutte le soluzioni possibili, nella ricerca
 di trovare una soluzione ammissibile in uno spazio delle soluzioni molto grande, nel conteggio contare tutte le soluzioni ammissibili (quando non \`e possibile contarle in modo 
-analitico), mentre nell'ottimizzazione si trovare una delle soluzioni ammissibili migliori rispetto ad un criterio di valutazione. 
+analitico), mentre nell'ottimizzazione di trovare una delle soluzioni ammissibili migliori rispetto ad un criterio di valutazione. 
 \subsection{Costruire lo spazio delle soluzioni \`e costoso}
-Lo spazio delle possibili soluzioni pu\`o essere superpolinomiale e a volta \`e l'unica strada possibile. A volte \`e possibile analizzare solo una parte dello spazio.
+Lo spazio delle possibili soluzioni pu\`o essere superpolinomiale ma a volta \`e l'unica strada possibile. A volte \`e possibile analizzare solo una parte dello spazio.
 \section{Backtracking}
-Il backtracking \`e una tecnica di programmazione che prova a fare qualcosa e se non va bene lo disfa e prova qualcos altro fino a che non arriva a una soluzione. Pu\`o essere 
+Il backtracking \`e una tecnica di programmazione che prova a fare qualcosa e se non va bene lo disfa e prova qualcos'altro fino a che non arriva a una soluzione. Pu\`o essere 
 implementata in maniera ricorsiva (un metodo sistematico per esplorare uno spazio di ricerca utilizzando la ricorsione per memorizzare le scelte fatte fin'ora) o iterativa (utilizzando
 un approccio greedy, tornando eventualmente sui propri passi). Questa tecnica algoritmica deve essere naturalmente personalizzata per ogni applicazione individuale.
 \subsection{Organizzazione generale}
 Una soluzione viene rappresentata come un vettore $S[1\dots n]$ il contenuto degli elementi $S[i]$ \`e preso da un insieme di scelte $C$ dipendente dal problema.
 \subsection{Soluzioni parziali}
 Ad ogni passo si parte da una soluzione parziale $S[1\dots k]$ in cui $k\ge 0$ scelte sono state prese. Se $S[1\dots k]$ \`e una soluzione ammissibile viene processata, se non \`e 
-una soluzione completa se possibile la si estende con una delle possibili scelte in $S[1\dots k+1]$, altrimenti si cancella l'elemento $S[k]$ (backtrack) e si riparte dalla soluzione
-$S[1\dots k-1]$.
+una soluzione completa ed \`e possibile la si estende con una delle possibili scelte in $S[1\dots k+1]$, altrimenti si cancella l'elemento $S[k]$ (backtrack) e si riparte dalla 
+soluzione $S[1\dots k-1]$.
 \subsection{Albero delle decisioni}
 Durante l'algoritmo si genera un albero delle decisioni equivalente allo spazio di ricerca la cui radice \`e la soluzione parziale vuota, i nodi interni le soluzioni parziali e le
 foglie le soluzioni ammissibili.
@@ -54,7 +54,7 @@ Complessit\`a:
 \end{multicols}
 \subsection{Enumerazione schema completo}
 \input{Pseudocodice/132_}
-Ci si pu\`o interrompere alla prima soluzione introcendo un \emph{return} dopo \emph{processSolution($<$dati problema, S, i, $<$dati parziali$>$)}.
+Ci si pu\`o interrompere alla prima soluzione introducendo un \emph{return} dopo \emph{processSolution($<$dati problema, S, i, $<$dati parziali$>$)}.
 \subsection{K-sottoinsiemi}
 Il problema consiste nell'elencare tutti i sottoinsiemi di $k$ elementi di un insieme $\{1, \dots, n\}$. Si pu\`o in questo caso specializzare l'algoritmo generico introducendo del
 pruning migliorandone l'efficienza. Questo avviene introducendo la variabile \emph{missing} che permette di evitare di ricontare tutte le volte i bit a $1$ ed evitando di proseguire
@@ -67,8 +67,9 @@ l'esecuzione alla prima soluzione trovata.\\
 \input{Pseudocodice/134_Suset_sum}
 \section{Problemi}
 \subsection{Problema delle otto regine}
-Il problema consiste di posizionare $n$ nergine in una scacchiera $n\times n$ in modo tale che nessuna regini ne minacci un'altra.
+Il problema consiste di posizionare $n$ ergine in una scacchiera $n\times n$ in modo tale che nessuna regina ne minacci un'altra.
 \subsubsection{Ci sono $\mathbf{n^2}$ caselle dove piazzare una regina}
+\begin{center}
 \begin{tabular}{|c|c|}
 	\hline
 	$S[1\dots n^2]$ array binario & $S[i]=$\textbf{true} $\Rightarrow$ regina in $S[i]$ \\
@@ -81,9 +82,11 @@ Il problema consiste di posizionare $n$ nergine in una scacchiera $n\times n$ in
 	\hline
 	$\#$ soluzioni per $n=8$ & $2^{64}\approx 1.84\cdot 10^{19}$\\
 	\hline
-\end{tabular}\\
+\end{tabular}
+\end{center}
 La matrice binaria \`e molto sparsa.
 \subsubsection{Si devono piazzare $\mathbf{n}$ regine in $\mathbf{n^2}$ caselle}
+\begin{center}
 \begin{tabular}{|c|c|}
 	\hline
 	$S[1\dots n]$ coordinate in $\{1\dots n^2\}$ & $S[i]$ coordinata della regina $i$\\
@@ -96,9 +99,11 @@ La matrice binaria \`e molto sparsa.
 	\hline
 	$\#$ soluzioni per $n=8$ & $(n^2)^n = 64^{8}\approx 2.81\cdot 10^{14}$\\
 	\hline
-\end{tabular}\\
+\end{tabular}
+\end{center}
 Si nota un miglioramento ma lo spazio \`e ancora grande, inoltre \`e difficile distinguere le permutazioni di una soluzione.
 \subsubsection{Non mettere regine in caselle precedenti a quelle gi\`a scelte}
+\begin{center}
 \begin{tabular}{|c|c|}
 	\hline
 	$S[1\dots n]$ coordinate in $\{1\dots n^2\}$ & $S[i]$ coordinata della regina $i$\\
@@ -112,7 +117,9 @@ Si nota un miglioramento ma lo spazio \`e ancora grande, inoltre \`e difficile d
 	$\#$ soluzioni per $n=8$ & $\dfrac{(n^2)^n}{n!} = \dfrac{2^{48}}{40320}\approx 6.98\cdot 10^{9}$\\
 	\hline
 \end{tabular}
+\end{center}
 \subsubsection{Ogni riga della scacchiera deve contenere esattamente una regina}
+\begin{center}
 \begin{tabular}{|c|c|}
 	\hline
 	$S[1\dots n]$ coordinate in $\{1\dots n\}$ & $S[i]$ colonna della regina $i$, dove riga $= i$\\
@@ -126,7 +133,9 @@ Si nota un miglioramento ma lo spazio \`e ancora grande, inoltre \`e difficile d
 	$\#$ soluzioni per $n=8$ & $n^n = 8^8\approx 1.67\cdot 10^{7}$\\
 	\hline
 \end{tabular}
+\end{center}
 \subsubsection{Anche ogni colonna deve contenere esattamente una regina}
+\begin{center}
 \begin{tabular}{|c|c|}
 	\hline
 	$S[1\dots n]$ coordinate in $\{1\dots n\}$ & Permutazione di $\{1\dots n\}$\\
@@ -139,7 +148,8 @@ Si nota un miglioramento ma lo spazio \`e ancora grande, inoltre \`e difficile d
 	\hline
 	$\#$ soluzioni per $n=8$ & $n! = 8! = 4.320$\\
 	\hline
-\end{tabular}\\
+\end{tabular}
+\end{center}
 Le soluzioni effettivamente visitate sono $15720$.
 \subsubsection{Minimum-conflicts heuristic}
 Si parte da una soluzione iniziale ragionevolmente buona e si muove il pezzo con il pi\`u grande numero di conflitti nella casella della stessa colonna che genera il numero minimo di 
@@ -154,7 +164,7 @@ $64!\approx 10^{89}$ ma ad ogni passo si hanno al massimo $8$ caselle possibili 
 
 
 \input{Pseudocodice/137_Choices}
-$m_x = \{-1, +1, +2, +2, +1, -1, -2, -2\}$\\
+\mbox{}\\$m_x = \{-1, +1, +2, +2, +1, -1, -2, -2\}$\\
 $m_y = \{-2, -2, -1, +1, +2, +2, +1, -1\}$
 \newpage
 \subsection{Sudoku}
@@ -175,11 +185,11 @@ Dati $n$ punti $p_1, \dots p_n$ nel piano con $n\ge 3$ l'inviluppo convesso o co
 Un poligono pu\`o essere rappresentato per mezzo dei suoi spigoli. Si consideri la retta che passa per una coppia di punti $p_i$ e $p_j$ che divide il piano in due semipiani chiusi
 ($O(n^2)$ coppie). Se tutti i rimanenti $n-2$ punti stanno dalla stessa parte allora lo spigoli $S_{ij}$ fa parte dell'inviluppo convesso.
 \subsubsection{Stessa parte}
-Data una retta definita dai due punti $p_1$ e $p_2$ determinare se due punti $p$ e $q$ stanno nello stesso semipiano definito dalla retta.
+Data una retta definita dai due punti $p_1$ e $p_2$ determinare se due punti $p$ e $q$ stanno nello stesso semipiano definito dalla retta.\\
 \input{Pseudocodice/141_SameSize}
 \subsection{Algoritmo di Jarvis}
 \paragraph{Punti 0, 1}
-In questo algoritmo si assenga a $p_0$ il punto pi\`u a sinistra che appartiene all'inviluppo convesso ($O(n)$), si calcola l'angolo della retta passante per $p_0$ e ogni altro punto
+In questo algoritmo si assegna a $p_0$ il punto pi\`u a sinistra che appartiene all'inviluppo convesso ($O(n)$), si calcola l'angolo della retta passante per $p_0$ e ogni altro punto
 $p_j$ rispetto alla retta verticale ($O(n)$) e si seleziona come punto $p_1$ il punto con angolo minore ($O(n)$).
 \paragraph{Punto i}
 Si considera la retta $r$ passante per i punti $p_{i-1}, p_{i-2}$, si calcola l'angolo passante per $p_{i-1}$ e ogni altro punto non considerato e la retta $r$. Si  seleziona come punto
@@ -193,7 +203,7 @@ orizzontale.
 \paragraph{Fase 2}
 Si inserisce $p_1, p_2$ nell'inviluppo corrente. Per tutti i punti $p_i = 3, \dots, n$: siano $p_{j-1}$ e $p_j$ il penultimo e ultimo vertice nell'inviluppo corrente. Se 
 \emph{sameside($p_{j-1}$, $p_j$, $p_1$, $p_i$) = \textbf{false}} allora si elimina $p_j$ dall'inviluppo corrente. Si termina la scansione se $p_j$ non deve essere eliminato e si
-aggiunge $p_i$ all'inviluppo corrente.
+aggiunge $p_i$ all'inviluppo corrente.\\
 \input{Pseudocodice/142_Graham}
 \subsubsection{Complessit\`a}
 Il calcolo degli angoli richiede $O(n)$, l'ordinamento $O(n\log n)$, la rimozione di punti con angolo uguale richiede $O(n)$, ogni punto viene aggiunto e rimosso al massimo una 

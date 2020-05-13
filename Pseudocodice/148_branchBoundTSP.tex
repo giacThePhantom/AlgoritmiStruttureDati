@@ -80,8 +80,8 @@
 	\uIf{i $<$ n}{
 		$\{$calcola $out$, $back$ e $transfer[h]$ per ogni $h\in R\}$\;
 		\Int lb = cost + out + back + $\biggl\lceil\frac{\sum\limits_{h\not\in S}transfer[h]}{2}\biggr\rceil$\;
-		\If{lb $<$ monCost}{
-			\BranchBound{S, cost + d[S[i - 1]][S[i]], R, n, I + 1}\;
+		\If{lb $<$ minCost}{
+			\BranchBound{S, cost + d[S[i - 1]][S[i]], R, n, i + 1}\;
 		}
 	}
 	\Else{

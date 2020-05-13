@@ -3,44 +3,20 @@
 \usepackage[italian]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
-\usepackage{graphicx}
 \usepackage{listings}
-\usepackage{xcolor}
-\usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage{hyperref}
-\usepackage{algpseudocode}
 \usepackage[nottoc]{tocbibind} 
-\usepackage[toc,page]{appendix}
-\usepackage{array}
-\usepackage{pgfplots}
-\usepackage{siunitx}
-\usepackage{tikz}
-\usepackage{titling}
-\usepackage{transparent}
 \usepackage{hyperref} 
-\usepackage{eso-pic}
-\usepackage{adjustbox}
-\usepackage{array,multirow}
+\usepackage{csquotes}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\usepackage{textcomp}
 \usepackage{makecell}
 \usepackage[font=small,labelfont=bf]{caption} 
 \usepackage{pdfpages}
 \usepackage{emptypage}
 \usepackage{multicol}
 \usepackage[ruled,vlined]{algorithm2e}
-\pgfplotsset{compat=1.14}
-\rhead{}
-\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
-\makeatletter
-\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
-\hbox{}
-\thispagestyle{plain}
-\newpage
-\if@twocolumn\hbox{}\newpage\fi\fi\fi}
-\makeatother
+
 \lstset{
     frame=tb, % draw a frame at the top and bottom of the code block
     tabsize=4, % tab space width
@@ -52,52 +28,12 @@
     breaklines=true,
     postbreak=\mbox{\textcolor{green}{$\hookrightarrow$}\space}
 }
-\addto\captionsitalian{%
-  \renewcommand\appendixname{Appendice}
-  \renewcommand\appendixpagename{Appendice}
-}
-\makeatletter
-\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
-\makeatother
-\makeatletter
-\newenvironment{breakablealgorithm}
-  {% \begin{breakablealgorithm}
-   \begin{center}
-     \refstepcounter{algorithm}% New algorithm
-     \hrule height.8pt depth0pt \kern2pt% \@fs@pre for \@fs@ruled
-     \renewcommand{\caption}[2][\relax]{% Make a new \caption
-       {\raggedright\textbf{\ALG@name~\thealgorithm} ##2\par}%
-       \ifx\relax##1\relax % #1 is \relax
-         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##2}%
-       \else % #1 is not \relax
-         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##1}%
-       \fi
-       \kern2pt\hrule\kern2pt
-     }
-  }{% \end{breakablealgorithm}
-     \kern2pt\hrule\relax% \@fs@post for \@fs@ruled
-   \end{center}
-  }  
-\makeatother
-\renewcommand\appendixtocname{Appendice}
-\makeatletter
-\makeatother
-\renewcommand{\lstlistingname}{Implementazione}% Listing -> Algorithm
-\renewcommand{\lstlistlistingname}{Implementazioni}% List of Listings -> List of Algorithms
-\makeatletter
-\renewcommand{\frontmatter}{\cleardoublepage\@mainmatterfalse}
-\renewcommand{\mainmatter}{\cleardoublepage\@mainmattertrue}
-\makeatother
-\DeclareRobustCommand*{\bbl@ap}[1]{%
-  \textormath{\textsuperscript{#1}}{^{\mathrm{#1}}}}%
-  \date{\textbf{\today}}
+  
+\date{\textbf{\today}}
 \author{
   Giacomo Fantoni \\
   \small Telegram: \href{https://t.me/GiacomoFantoni}{@GiacomoFantoni} \\[3pt]
   Github: \href{https://github.com/whocares/repository}{Github Repository}}
-
-\newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{gray}{#1}}
-\SetCommentSty{mycommfont}
 
 \newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\}
 \renewcommand*{\listalgorithmcfname}{}
