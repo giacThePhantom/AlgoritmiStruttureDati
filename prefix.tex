@@ -9,13 +9,19 @@
 \usepackage{hyperref} 
 \usepackage{csquotes}
 \usepackage{fancyhdr}
-\pagestyle{fancy}
 \usepackage{makecell}
 \usepackage[font=small,labelfont=bf]{caption} 
 \usepackage{pdfpages}
 \usepackage{emptypage}
 \usepackage{multicol}
 \usepackage[ruled,vlined]{algorithm2e}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\rightmark}
+\cfoot{\leftmark}
+\rfoot{\thepage}
+
 
 \lstset{
     frame=tb, % draw a frame at the top and bottom of the code block
