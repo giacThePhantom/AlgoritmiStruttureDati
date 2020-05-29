@@ -9,7 +9,7 @@ La dimensione dell'input pu\`o essere definita secondo due criteri:
 In molti casi si pu\`o assumere che gli elementi siano costituiti da un numero costante di bit, e in tal caso le due misure coincidono a meno di una costante
 moltiplicativa.
 \subsubsection{Definizione di tempo}
-Si definisce il tempo come il numero di istruzioni elementari necessarie al completamento dell'algoritmo. Si definisce elementare una funzione che pu\`o 
+Si definisce il tempo come il numero di istruzioni elementari necessarie al completamento dell'algoritmo. Si definisce elementare un'istruzione che pu\`o 
 essere svolta in tempo costante dal processore. 
 \section{Modelli di calcolo}
 Un modello di calcolo \`e una rappresentazione astratta del calcolatore. L'astrazione permette di nascondere dei dettagli, il suo realismo permette di 
@@ -97,12 +97,12 @@ f(n)=O(g(n))&\Leftrightarrow f(n)\le cg(n),\forall n\ge m\\
 \end{align*}
 \subsubsection{Eliminazione delle costanti}
 \paragraph{Enunciato}
-\begin{equation}
+\begin{equation*}
 f(n)=O(g(n))\Leftrightarrow af(n)=O(g(n)),\forall a>0
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
 f(n)=\Omega(g(n))\Leftrightarrow af(n)=\Omega(g(n)),\forall a>0
-\end{equation}
+\end{equation*}
 \paragraph{Dimostrazione}
 \begin{align*}
 f(n)=O(g(n))&\Leftrightarrow f(n)\le cg(n),\forall n\ge m\\
@@ -312,7 +312,7 @@ algoritmo per la situazione.
 \end{itemize}
 \subsection{Algoritmi di ordinamento}
 Il problema di ordinamento \`e rappresentato da una sequenza $A=a_1, \dots, a_n$ di valori in input e d\`a in output una sequenza $B=b_1, \dots, b_n$ 
-permutazione di $B$ tale per cui $\forall 0<i<n-1, b_i\le b_{i+1}$.
+permutazione di $A$ tale per cui $\forall 0<i<n-1, b_i\le b_{i+1}$.
 \subsubsection{Selection sort}
 Cerco il minimo e lo metto nella posizione corretta, riducendo il problema ai restanti $n-1$ valori.
 \input{Pseudocodice/0_SelectionSort}
@@ -345,7 +345,7 @@ c\quad\quad & n=1\\
 2T(\frac{n}{2})+dn & n>1\\
 \end{cases}
 \end{equation*}
-Si noti come ad ogni chiamata ricorsiva si svolga un'operazione di merge di costo $O(1)$ e $k$ vari tra $0$ e $\log n$. Si ottiene pertanto 
+Si noti come ad ogni chiamata ricorsiva si svolga un'operazione di merge di costo $O(n)$ e $k$ vari tra $0$ e $\log n$. Si ottiene pertanto 
 $O(\sum\limits_{i=0}^ks^i\frac{n}{2^i})=O(\sum\limits_{i=0}^kn)=O(kn)\Leftrightarrow O(n\log n)$. 
 \section{Analisi ammortizzata}
 Si intende per analisi ammortizzata una tecnica di analisi di complessit\`a che valuta il tempo per eseguire nel caso pessimo una sequenza di operazioni 
