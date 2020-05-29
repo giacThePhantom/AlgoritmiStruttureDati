@@ -39,7 +39,7 @@ figli. Un albero heap non impone una relazione di ordinamento totale tra i figli
 Gli alberi binari heap sono memorizzati tramite un vettore heap $A=[0, \dots, n-1]$ tale per cui: 
 \begin{itemize}
 \item La radice si trova all'indice $i=0$, ovvero \emph{root()=0}.
-\item Il padre del nodo salvato all'indice $i$ si trova in \emph{p(i) = $\lfloor\dfrac{(i-1)}{2} \rfloor$}.
+\item Il padre del nodo salvato all'indice $i$ si trova in \emph{p(i) = $\biggl\lfloor\dfrac{(i-1)}{2} \biggr\rfloor$}.
 \item Il figlio sinistro del nodo salvato all'indice $i$ si trova in \emph{l(i) = $2i+1$}.
 \item Il figlio destro del nodo salvato all'indice $i$ si trova in \emph{r(i) = $2i+2$}.
 \end{itemize}
