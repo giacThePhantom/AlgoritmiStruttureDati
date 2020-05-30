@@ -65,7 +65,7 @@ Si aggiorna la priorit\`a nbella posizione $v$-esima con costo computazionale $O
 \subsection{Correttezza per pesi positivi}
 Ogni nodo viene estratto una e una sola volta e al momento dell'estrazione la sua distanza \`e minima. La dimostrazione si fa per induzione sul numero $k$ di nodi estratti.
 \subparagraph{Caso base}
-\`E vero in quanto $d[s]=0$ e non ci sono lunghezze negativa.
+\`E vero in quanto $d[s]=0$ e non ci sono lunghezze negative.
 \subparagraph{Passo induttivo}
 Si consideri per ipotesi induttiva che sia vero per i primi $k-1$ nodi. Quando viene estratto il $k$-esimo nodo $u$ la sua distanza $d[u]$ dipende dai $k-1$ nodi gi\`a estratti e non 
 pu\`o dipendere dai nodi ancora da estrarre in quanto hanno distanza $\ge d[u]$, pertanto $d[u]$ \`e minimo e $u$ non verr\`a pi\`u re-inserito in quanto non ci sono distanze negative.

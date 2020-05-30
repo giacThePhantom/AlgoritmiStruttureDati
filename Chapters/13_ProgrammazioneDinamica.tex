@@ -1,5 +1,5 @@
 \chapter{Programmazione dinamica}
-Si dice programmazione dinamica un metodo per dividere un problema ricorsivamente in sottoproblemi in modo che ogni sottoproblema venga rivolto una volta sola e la sua soluzione venga memorizzata in
+Si dice programmazione dinamica un metodo per dividere un problema ricorsivamente in sottoproblemi in modo che ogni sottoproblema venga risolto una volta sola e la sua soluzione venga memorizzata in
 una tabella. Se un sottoproblema deve essere risolto nuovamente si ottiene la sua soluzione dalla tabella (lookup in $O(1)$).
 \section{Approccio generale}
 Se si parte da un problema di ottimizzazione si definisce la soluzione in maniera ricorsiva, successivamente si definisce il valore della soluzione in maniera ricorsiva (primo passo per problemi di conteggio). Se da
@@ -67,7 +67,7 @@ restituisca la quantit\`a massima di fondi che pu\`o essere raccolta e un algori
 \`e massimale.
 \subsubsection{Definizione ricorsiva}
 Sia $HV(i)$ uno di possibili insiemi di indici da selezionare per ottenere una donazione ottimale delle prime $i$ case di Hateville numerate $1\dots n$. $HV(n)$ \`e la soluzione del problema originale. 
-Considerando vicino $i$-esimo si deve considerare se non accettare la sua donazione ($HV(i)=HV(i-1)$) o accettarla: $HV(i) = \{i\}\cup HV(i-2)$ e prendere il risultato massimo. 
+Considerando vicino $i$-esimo si deve considerare se non accettare la sua donazione ($HV(i)=HV(i-1)$) o accettarla ($HV(i) = \{i\}\cup HV(i-2)$) e prendere il risultato massimo. 
 \subsubsection{Sottostruttura ottima}
 Sia $HV_p(i)$ il problema dato dalle prime $i$ case e $HV_s(i)$ una soluzione ottima per il problema $HV_p(i)$ e $|HV_s(i)|$ il totale di donazioni di $HV_s(i)$ ne consegue:
 \begin{itemize}
@@ -77,7 +77,7 @@ Sia $HV_p(i)$ il problema dato dalle prime $i$ case e $HV_s(i)$ una soluzione ot
 \paragraph{Dimostrazione}
 \subparagraph{$\mathbf{i\not\in HV_s(i)}$}
 $HV_s(i)$ \`e una soluzione ottima anche per $HV_p(i-1)$, se cos\`i non fosse esisterebbe una soluzione $HV'_s(i-1)$ per il problema $HV_p(i)$ tale che $|HV'_s(i-1)|>|HV_s(i)|$, ma allora $HV'_S(i-1)$ sarebbe 
-una soluzione per $HV_p(i)$ tale che $HV'_s(i-1)|>|HV_s(i)|$, assurdo.
+una soluzione per $HV_p(i)$ tale che $|HV'_s(i-1)|>|HV_s(i)|$, assurdo.
 \subparagraph{$\mathbf{i\in HV_s(i)}$}
 $i-1\not\in HV_s(i)$, altrimenti non sarebbe una soluzione ammissibile, pertanto $HV_s(i)-\{i\}$ \`e una soluzione ottima per $HV_p(i-2)$ per il problema $HV_p(i-2)$ tale che $|HV'_s(i-2)|>|HV_s(i)-\{i\}|$, allora
 $HV'_s(i-2)\cap\{i\}$ sarebbe una soluzione per $HV_p(i)$ tale che $|HV'_s(i-2)\cup\{i\}|>|HV_s(i)|$, assurdo.
