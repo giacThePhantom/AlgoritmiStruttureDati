@@ -167,7 +167,7 @@ Ogni insieme viene rappresentato da un albero, ogni nodo dell'albero contiene un
 \subsubsection{Operazione \emph{find(x)}}
 Risale la lista dei padri di $x$ fino a trovare la radice e restituisce la radice come rappresentante. Ha costo $O(n)$ nel caso pessimo
 \subsubsection{Operazione \emph{merge(x, y)}}
-Si aggancia l'albero radicato in $y$ a $y$ modificando il puntatore al padre di $y$, con costo $O(1)$.
+Si aggancia l'albero radicato in $y$ a $x$ modificando il puntatore al padre di $y$, con costo $O(1)$.
 \subsection{Tecniche euristiche}
 Si dice algoritmo euristico un particolare tipo di algoritmo progettato per risolvere un problema pi\`u velocemente se i metodi classici siano troppo lenti, trovare una soluzione approssimata qualora i metodi 
 classici falliscano nel trovare una soluzione esatta. 
@@ -176,8 +176,8 @@ Si utilizza per diminuire il costo dell'operazione \emph{merge()} si memorizza n
 essere mantenuta in tempo $O(1)$. Tramite analisi ammortizzata si nota come il costo di $n-1$ operazioni merge \`e $O(n\log n)$, pertanto il costo ammortizzato delle singole operazioni \`e $O(\log n)$.
 \subsubsection{Alberi: euristica sul rango}
 Si utilizza per diminuire il costo dell'operazione \emph{find(x)}: ogni nodo mantiene informazioni sul proprio rango, \emph{rank[x]} di un nodo $x$ \`e il numero di archi del cammino pi\`u lungo fra $x$ e una 
-foglia sia discendente, ovvero l'altezza del sottoalbero associato al nodo. L'obiettivo \`e mantenere bassa l'altezza degli alberi. Un albero \emph{Mfset} con radice $r$ ottenuto tramite euristica sul
-rango ha almeno $2^{ranl[r]}$ nodi. Inoltre lo stesso albero con radice $r$ e $n$ nodi ha altezza inferiore a $\log n$. 
+foglia sua discendente, ovvero l'altezza del sottoalbero associato al nodo. L'obiettivo \`e mantenere bassa l'altezza degli alberi. Un albero \emph{Mfset} con radice $r$ ottenuto tramite euristica sul
+rango ha almeno $2^{rank[r]}$ nodi. Inoltre lo stesso albero con radice $r$ e $n$ nodi ha altezza inferiore a $\log n$. 
 \begin{multicols}{2}
 \input{Pseudocodice/80_}
 \columnbreak
