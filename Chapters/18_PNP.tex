@@ -21,8 +21,8 @@ $f:I_i\rightarrow I_2$ tale che:
 	\item Per ogni istanza $x$ del problema $R_1$ e ogni soluzione $s\in \{0, 1\}, (x, s)\in R_1\Leftrightarrow (f(x), s)\in R_2$.
 \end{itemize}
 \subsection{Colorazione di grafi}
-Dati un grafo orientato $G=(V, E)$ e un insieme di colori $C$, una colorazione di vertici \`e un assegnamento $f:V\rightarrow C$ che colora ogni nodo con uno dei valori in $C$ tale per
-cui nessuna coppia di nodi adiacenti ha lo stesso colore.
+Dati un grafo non orientato $G=(V, E)$ e un insieme di colori $C$, una colorazione di vertici \`e un assegnamento $f:V\rightarrow C$ che colora ogni nodo con uno dei valori in $C$ tale 
+per cui nessuna coppia di nodi adiacenti ha lo stesso colore.
 \subsubsection{Ottimizzazione}
 Dato un grafo non orientato $G=(V, E)$ si restituisca la colorazione che necessita del numero minimo di colori.
 \subsubsection{Decisionale}
@@ -148,7 +148,7 @@ INDEPENDET-SET, VERTEX-COVER$.
 \subsection{Cricca (Clique)}
 Dati un grafo non orientato ed un intero $k$ verificare se esiste un insieme di almeno $k$ nodi tutti mutualmente adiacenti.
 \subsection{Commesso viaggiatore}
-Date $n$ citt\`a le distanze tra esse e un intero $k$ \`e possibile partire da una citt\`a, attraversare ogni citt\`a esattamente una volta tornando alla citt\`a di partenza percorrendo
+Date $n$ citt\`a, le distanze tra esse e un intero $k$ \`e possibile partire da una citt\`a, attraversare ogni citt\`a esattamente una volta tornando alla citt\`a di partenza percorrendo
 una distanza non superiore a $k$.
 \subsection{Programmazione lineare (0, 1)}
 Data una matrice $A$ di elementi interi e di dimensione $m\times n$ ed un vettore $b$ di $m$ elementi interi esiste un vettore $x$ di $n$ elementi $0, 1$ tale che $Ax\le b$.
@@ -162,7 +162,7 @@ Dati un insieme $A=\{a_1,\dots a_n\}$ di interi positivi ed un intero positivo $
 $\sum\limits_{i\in S}a_i = k$.
 \subsection{Zaino (knapsack)}
 Dati un intero positivo $C$ (la capacit\`a dello zaino) e un insieme di $n$ oggetti tali che l'oggetto $i$ \`e caratterizzato da u profitto $p_i\in \mathbb{Z}^+$ e da un peso 
-$w_i\in\mathbb{>}^+$ esiste un sottoinsieme $S\subseteq\{1, \dots, n\}$ tale che il peso totale $w(S)=\sum\limits_{i\in S} w_i\le C$ e il profitto totale $p(S) = \sum\limits_{i\in S}p_i$
+$w_i\in\mathbb{Z}^+$ esiste un sottoinsieme $S\subseteq\{1, \dots, n\}$ tale che il peso totale $w(S)=\sum\limits_{i\in S} w_i\le C$ e il profitto totale $p(S) = \sum\limits_{i\in S}p_i$
 \`e maggiore o uguale a $k$.
 \subsection{Circuito hamiltoniano}
 Dato un grafo non orientato $G$, verificare se esiste un circuito che attraversi ogni nodo una e una sola volta.

@@ -706,7 +706,7 @@
 \contentsline {subsubsection}{Dimostrazione che TSP \`e fortemente $\mathbf {\mathbb {NP}}$-completo}{155}{section*.482}% 
 \contentsline {subsection}{\numberline {19.2.3}Problema debolmente $\mathbf {\mathbb {NP}}$-completo}{155}{subsection.19.2.3}% 
 \contentsline {subsubsection}{Somma di sottoinsieme (SUBSET-SUM)}{155}{section*.483}% 
-\contentsline {paragraph}{Si verifiche che SUBSET-SUM \`e debolmente $\mathbf {\mathbb {NP}}$-completo}{155}{section*.484}% 
+\contentsline {paragraph}{Si verifichi che SUBSET-SUM \`e debolmente $\mathbf {\mathbb {NP}}$-completo}{155}{section*.484}% 
 \contentsline {subsection}{\numberline {19.2.4}Algoritmi pseudo-polinomiali}{155}{subsection.19.2.4}% 
 \contentsline {subsubsection}{Teorema}{155}{section*.485}% 
 \contentsline {subsection}{\numberline {19.2.5}ESEMPI}{156}{subsection.19.2.5}% 
