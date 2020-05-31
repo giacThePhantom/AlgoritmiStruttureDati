@@ -3,14 +3,14 @@ Gli algoritmi greedy vengono utilizzati per la risoluzione di problemi di ottimi
 valutando tutte le decisioni possibili evitando di ripetere sotto-problemi o decisioni gi\`a percorse gli algoritmi greedy selezionano una sola delle possibili decisioni che sembra
 ottima, ovvero quella localmente ottima. In questo caso si rende necessario dimostrare che si ottiene un ottimo globale. La tecnica greedy va applicata se \`e possibile dimostrare che 
 esiste una scelta ingorda, ovvero fra le molte scelte possibili ne pu\`o essere facilmente individuata una che porta sicuramente alla soluzione ottima e se il problema ha sottostruttura
-ottima, ovvero se fatta tale scelta resta un sottoproblema con la stessa struttura del problema principale. Non tutti i problemi hanno una scelta greedy e in alcuni casi soluzioni ottime
-possono comunque essere interessanti.
+ottima, ovvero se fatta tale scelta resta un sottoproblema con la stessa struttura del problema principale. Non tutti i problemi hanno una scelta greedy e in alcuni casi soluzioni 
+ammissibili possono comunque essere interessanti.
 \section{Insieme indipendente massimale di intervalli}
 \paragraph{Input}
 Sia $S=\{1, \dots, n\}$ un insieme di intervalli della retta reale. Ogni intervallo $[a_i, b_i[$, con $i\in S$ \`e chiuso a sinistra e aperto a destra. Si indica con $a_i$ il tempo di
 inizio e con $b_i$ il tempo di fine. 
 \paragraph{Output}
-Si vuole trovare un insieme dipendente massimale, ovvero un sottoinsieme di massima cardinalit\`a formato da intervalli tutti disgiunti tra di loro (naturale confronto con l'insieme
+Si vuole trovare un insieme indipendente massimale, ovvero un sottoinsieme di massima cardinalit\`a formato da intervalli tutti disgiunti tra di loro (naturale confronto con l'insieme
 indipendente di intervalli pesati).
 \subsection{Affrontare il problema}
 \subsubsection{Programmazione dinamica}
@@ -129,10 +129,10 @@ Gli oggetti si possono ordinare per profitto decrescente, per peso crescente o p
 variante dello zaino reale.
 \subsubsection{Implementazione}
 \input{Pseudocodice/116_Zaino}
-L'algoritmo ha complessit\`a $O(n\log n)$ se l'input non \`e ordinato, $O(n)$ se \`e ordinato. $x[i]\in[0, 1]$ rappresenta la proporzione dell'oggetto $i$-esimo che deve essere 
+L'algoritmo ha complessit\`a $O(n\log n)$ se l'input non \`e ordinato, $O(n)$ se \`e ordinato. $x[i]\in[0, 1]$ rappresenta la porzione dell'oggetto $i$-esimo che deve essere 
 prelevata.
 \subsection{Correttezza}
-Si assuma che gli oggetti siano ordinati per profitto specifico decrescente e $x$ una soluzione ottima. Si supponga che $x[1] < \min(\frac{C}{w[i]}, 1)$ e la proporzione di uno o pi\`u
+Si assuma che gli oggetti siano ordinati per profitto specifico decrescente e $x$ una soluzione ottima. Si supponga che $x[1] < \min(\frac{C}{w[i]}, 1)$ e la porzione di uno o pi\`u
 oggetti \`e ridotta di conseguenza. Si ottiene cos\`i una soluzione di profitto uguale o superiore visto che il profitto specifico dell'oggetto $1$ \`e massimo. 
 \section{Problema della compressione}
 La compressione si occupa di rappresentare i dati in modo efficiente, impiegando il minore numero di bit per la rappresentazione risparmiando spazio su disco e tempo di trasferimento.
@@ -189,7 +189,7 @@ o minimum spanning tree.
 Sia $G=(V, E)$ un grafo non orientato e connesso e $w:V\times V\rightarrow\mathbb{R}$ una funzione di peso costo di connessione tale che se $[u, v]\in E$ allora $w(u, v)$ \`e il peso 
 dell'arco $[u, v]$, se $[u, v]\not\in E$, allora $w(u, v)= + \infty$. Essendo $G$ non orientato $w(u, v) = w(v, u)$.
 \subsubsection{Albero di copertura}
-Dato un grafo non orientato e connesso un albero di copertura $G$ \`e un sottografo $T=(V, E_T)$ tale che $T$ \`e un albero, $E_T\subseteq E$ e $T$ contiene tutti i vertici di $G$. 
+Dato un grafo non orientato e connesso $G$, un albero di copertura $T$ \`e un sottografo $T=(V, E_T)$ tale che $T$ \`e un albero, $E_T\subseteq E$ e $T$ contiene tutti i vertici di $G$. 
 \subsubsection{Output}
 Trovare l'albero di copertura il cui peso totale sia minimo rispetto a ogni altro albero di copertura, dove $w(T)=\sum\limits_{[u, v]\in E_T} w(u, v)$. Non \`e detto che sia univoco.
 \subsection{Algoritmo generico}

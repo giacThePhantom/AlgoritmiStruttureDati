@@ -20,7 +20,7 @@ Un flusso in $G$ \`e una funzione $f:V\times V\rightarrow\mathbb{R}$ che soddisf
 	\item Flusso massimo: data una rete $G=(V, E, s, t, c)$ trovare un flusso che abbia valore massimo fra tutti i flussi associabili alla rete $f^*=\max\{|f|\}$.
 	\item Flusso nullo: la funzione $f_0: V\times V\rightarrow\mathbb{R}^{\ge 0}$ tale che $f(u, v) = 0\ \forall u, v\in V$.
 	\item Somma di flussi: per ogni coppia di flussi $f_1$ e $f_2$ in $G$ si definisce il flusso somma $g= f_1+f_2$ come un flusso tale per cui $g(u, v) = f_1(u, v)+f_2(u, v)$.
-	\item Capacit\`a residua di un flusso $f$ in una rete $G=(V, E, s, t, c)$ una funzione $c_f:V\times V\rightarrow\mathbb{R}^{\ge 0}$ tale che $c_f(u, v) = c(u, v)-f(u, v)$.
+	\item Capacit\`a residua di un flusso $f$ in una rete $G=(V, E, s, t, c)$: una funzione $c_f:V\times V\rightarrow\mathbb{R}^{\ge 0}$ tale che $c_f(u, v) = c(u, v)-f(u, v)$.
 	\item Reti residue: data una rete di flusso $G=(V, E, s, t, c)$ e un flusso $f$ su $G$ si pu\`o costruire una rete residua $G_f=(V, E_f, s, t, c_f)$ tale per cui $(u, v)\in E_f$
 		se e solo se $c_f(u, v)>0$.
 \end{itemize}
