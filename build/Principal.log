@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.4.24)  1 SEP 2020 19:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.4.24)  1 SEP 2020 19:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -677,7 +677,7 @@ eX warning (ext4): destination with the same identifier (name{page.1}) has been
  already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.103 ...rline {3.4.2}Grafi}{26}{subsection.3.4.2}
+l.104 ...rline {3.4.2}Grafi}{26}{subsection.3.4.2}
                                                   % [1
 
 ] [2] [3] [4] [5]
@@ -759,19 +759,13 @@ This may cause the page layout to be inconsistent, however.
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.372 \paragraph
-                {\emph{merge()}}] (./Pseudocodice/3_Merge.texpdfTeX warning (ex
-t4): destination with the same identifier (name{algocf.}) has been already used
-, duplicate ignored
+l.369 \paragraph
+                {Correttezza e complessit\`a}] (./Pseudocodice/3_Merge.texpdfTe
+X warning (ext4): destination with the same identifier (name{algocf.}) has been
+ already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.12 ...rst, \protect\Int last, \protect\Int mid}}
-                                                  )
-(./Pseudocodice/4_MergeSort.texpdfTeX warning (ext4): destination with the same
- identifier (name{algocf.}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.12 ...A, \protect\Int first, \protect\Int last}}
                                                   ) [20pdfTeX warning (ext4): d
 estination with the same identifier (name{algocf.}) has been already used, dupl
 icate ignored
@@ -779,8 +773,14 @@ icate ignored
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.377 \subparagraph
-                   {Costo computazionale} Si assuma per semplificare che $n ...
-] [21]) (./Chapters/03_StruttureDati.tex [22]
+                   {Costo computazionale} $O(n)$]
+(./Pseudocodice/4_MergeSort.texpdfTeX warning (ext4): destination with the same
+ identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.12 ...A, \protect\Int first, \protect\Int last}}
+                                                  ) [21])
+(./Chapters/03_StruttureDati.tex [22]
 Capitolo 3.
 (./Pseudocodice/5_.texpdfTeX warning (ext4): destination with the same identifi
 er (name{algocf.}) has been already used, duplicate ignored
@@ -1985,8 +1985,8 @@ Package rerunfilecheck Info: File `Principal.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
  ) 
 Here is how much of TeX's memory you used:
- 15693 strings out of 492615
- 227479 string characters out of 6131390
+ 15694 strings out of 492615
+ 227491 string characters out of 6131390
  538475 words of memory out of 5000000
  17733 multiletter control sequences out of 15000+600000
  16987 words of font info for 64 fonts, out of 8000000 for 9000
@@ -2016,10 +2016,10 @@ onts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols
 /msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/
 msbm10.pfb>
-Output written on ./build/Principal.pdf (169 pages, 752824 bytes).
+Output written on ./build/Principal.pdf (169 pages, 753417 bytes).
 PDF statistics:
- 3155 PDF objects out of 3580 (max. 8388607)
- 2929 compressed objects within 30 object streams
- 1145 named destinations out of 1200 (max. 500000)
+ 3156 PDF objects out of 3580 (max. 8388607)
+ 2930 compressed objects within 30 object streams
+ 1146 named destinations out of 1200 (max. 500000)
  2201 words of extra memory for PDF output out of 10000 (max. 10000000)
 

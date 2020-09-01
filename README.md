@@ -18,8 +18,7 @@ pregati per lo meno di rendere noti, fareste un grande favore)
 ## Known issues
 Verranno indicate i problemi conosciuti ma non ancora risolti:
 
+* Manca dimostrazione di master theorem per ricorrenze lineari di ordine costante e le partizioni bilaciate esteso 
 * Manca l'analisi di correttezza e complessita' dell'insertionSort.
-* QuickSort?
 * Manca la dimostrazione della complessita' di heapbuild()
 * Manca la dimostrazione della correttezza di heapSort()
-* Manca il pacco slide 17-Prob

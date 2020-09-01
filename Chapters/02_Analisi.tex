@@ -286,6 +286,9 @@ Pertanto $T(n) = O(n^\alpha\log n)$.
 	     &=n^\alpha d + \frac{cn^\beta}{1-q}
 \end{align*}
 Pertanto $T(n) = O(n^\beta)$.
+\subparagraph{Conclusione:} Nel caso in cui $n$ non sia una potenza di $b$ si pu\`o considerare un problema di dimensione pi\`u grande con $n'$ tale che sia la potenza pi\`u piccola di 
+$b$ maggiore di $n$. Essendo $n'\le bn$ e $b$ \`e costante, la dimensione aumenta di un valore costante e rimane valida. Analizzando il caso pessimo la soluzione vale anche nel caso
+in cui valga il $\le$ anzich\`e il $=$. Rimane valida anche se $T(n)$ \`e uguale ad una costante per $n\le h$ con $h$ costante intera maggiore di $1$ o con ceil e floor di $\frac{n}{b}$.
 \subsubsection{Estensione delle ricorrenze lineari con partizione bilanciata}
 Sia $a\ge 1$, $b>1$ e $f(n)$ asintoticamente positiva e sia 
 \begin{equation*}
