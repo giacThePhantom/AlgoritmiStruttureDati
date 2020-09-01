@@ -84,7 +84,7 @@ sottoproblema di $S(i)$ la cui soluzione ottima \`e data da $A(i)-\{j\}$.
 Sia la tabella di programmazione dinamica $DP[0\dots R]$ e $DP[i]$ il minimo numero di monete per risolvere il problema $S(i)$.
 $$DP[i] = \begin{cases}
 	0 & i = 0 \\
-	\min\limits_{1\le j\le n}\{DP[i-t[j] | t[j]\le i\} + 1 & i>0\\
+	\min\limits_{1\le j\le n}\{DP[i-t[j]] | t[j]\le i\} + 1 & i>0\\
 \end{cases}$$
 \subsection{Implementazione}
 \input{Pseudocodice/114_Resto}

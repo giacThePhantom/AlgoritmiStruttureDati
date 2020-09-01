@@ -79,7 +79,6 @@ Vera per $c\ge (a_k+|a_{k-1}|+\cdots+|a_1|+|a_0|)$ e per $m=1$.
 f(n)&=a_kn^k+a_{k-1}n^{k-1}+\cdots+a_1n+a_0\\
 &\ge a_kn^k-|a_{k-1}|n^{k-1}-\cdots-|a_1|n-|a_0|\\
 &\ge a_kn^k-|a_{k-1}|n^{k-1}-\cdots-|a_1|n^{k-1}-|a_0|n^{k-1}\quad\quad\forall n\ge 1\\
-&= (a_k+|a_{k-1}|+\cdots+|a_1|+|a_0|)n^k\\
 &\overset{?}{\ge} dn^k
 \end{align*}
 Vera per $d\le a_k-\frac{|a_{k-1}|}{n}-\frac{|a_{k-2}|}{n}-\cdots-\frac{|a_{1}|}{n}-\frac{|a_{0}|}{n}>0\Leftrightarrow n>\frac{|a_{k-1}|+\cdots+|a_0|}{a_k}$.
@@ -249,6 +248,44 @@ T(n)=
 \Theta(n^\beta) & \alpha<\beta
 \end{cases}
 \end{equation*}
+\paragraph{Dimostrazione}\mbox{}
+Si supponga dapprima per semplicit\`a che $n$ sia una potenza di $b$: $n = b^k$ per un qualche $k$ intero. Sostituendolo successivamente si ottiene: 
+\begin{align*}
+	T(n) &= aT(b^{k-1}) + cb^{k\beta} \\
+	     &= a(aT(b^{k-2}) + cb^{(k-1)\beta}) + cb^{k\beta}\\
+	     &= a(a(aT(b^{k-3}) + cb^{(k-12\beta}) + cb^{(k-1)\beta}) + cb^{k\beta}\\
+	     &\ \vdots \\
+	     &= a(a(\cdots a(aT(1) + cb^{(\beta}) + cb^{2\beta})+\cdots+cb^{(k-1)\beta})+cb^{k\beta}\\
+	     &= a^kd + ca^{k-1}b^\beta + ca^{k-2}b^\beta + \cdots + cab^{(k-1)\beta} + cb^{k\beta}\\
+	     &= a^kd + cb^{k\beta}\biggl[\biggl(\frac{a}{b^\beta}\biggr)^{k-1} + \biggl(\frac{a}{b^\beta}\biggr)^{k-2} + \cdots \biggl(\frac{a}{b^\beta}\biggr)^{2} + \frac{a}{b^\beta} + 1
+	     	\biggr]
+\end{align*}
+Si noti che: $a^k = a^{\frac{\log n}{\log b}}= 2^{\frac{\log a \log n}{\log b}} = n^{\frac{\log a}{\log b}} = n^\alpha$. Inoltre $a = b^\alpha$ in quanto $\alpha = \frac{\log a}{\log b}$.
+Ponendo $q = \frac{a}{b^\beta} = \frac{b^\alpha}{b^\beta} = b^{\alpha - \beta}$, la relazione pu\`o essere scritta come: 
+$$ T(n) = n^\alpha d + cb^{k\beta}[q^{k-1} + q^{k-2} + \cdots + q^2 + q + 1]$$
+Si individuano ora tre casi a seconda che $\alpha$ sia maggiore, uguale o minore di $\beta$ e che pertanto $q$ sia maggiore, uguale o minore di $1$. 
+\subparagraph{$\mathbf{\alpha > \beta}$}
+\begin{align*}
+	T(n) &= n^\alpha d + cb^{k\beta}\biggl(\frac{q^k - 1}{q -1}\biggr)\\
+	     &\le n^\alpha d + \frac{cb^{k\beta}q^k}{q-1}\\
+	     &= n^\alpha d + \frac{ca^k}{q-1}\\
+	     &=  n^\alpha\biggl(d + \frac{c}{q-1}\biggr)
+\end{align*}
+Pertanto $T(n) = O(n^\alpha)$.
+\subparagraph{$\mathbf{\alpha = \beta}$}
+\begin{align*}
+	T(n) &= n^\alpha d + cb^{k\beta}(1+1+\cdots+1)\\
+	     &= n^\alpha d +cb^\beta k\\
+	     &= n^\alpha\biggl(d+c\frac{\log n}{\log b}\biggr)
+\end{align*}
+Pertanto $T(n) = O(n^\alpha\log n)$.
+\subparagraph{$\mathbf{\alpha<\beta}$}
+\begin{align*}
+	T(n) &= n^\alpha d + cb^{k\beta}\biggl(\frac{1-q^k}{1-q}\biggr)\\
+	     &= n^\alpha d + cb^{k\beta}\biggl(\frac{1}{1-q}\biggr)\\
+	     &=n^\alpha d + \frac{cn^\beta}{1-q}
+\end{align*}
+Pertanto $T(n) = O(n^\beta)$.
 \subsubsection{Estensione delle ricorrenze lineari con partizione bilanciata}
 Sia $a\ge 1$, $b>1$ e $f(n)$ asintoticamente positiva e sia 
 \begin{equation*}
