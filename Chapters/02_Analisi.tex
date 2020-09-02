@@ -320,10 +320,39 @@ Posto $a=\sum\limits_{1\le i\le h}a_i$ allora:
 \item $T(n)=\Theta(n^{\beta+1})$ se $a=1$.
 \item $T(n)=\Theta(a^nn^{\beta})$ se $a\ge 2$.
 \end{itemize}
-
-
-
-
+\paragraph{Dimostrazione}
+Si supponga che ci sia un solo coefficiente non nullo, ovvero esista $j, 1\le j\le h$ tale che $a_j = a$, mentre $a_i = 0$ per $1\le i \le h \land i\neq j$. Si assuma per semplicit\`a
+$n = m + kj$ per un $k$ intero. Sostituendo successivamente si ottiene: 
+\begin{align*}
+	T(n) &= aT(n-j) + cn^\beta \\
+	     &= a(aT(n-2j)+c(n-j)^\beta)+cn^\beta\\
+	     &\ \vdots\\
+	     &= a(a\cdots a(a(T(m)+c(m+j)^\beta)+c(m+j)^\beta)+\cdots+c(n-j)^\beta)+cn^\beta\\
+	     &= a^kT(m) + \sum\limits_{0\le v\le k-1} a^vc(n-vj)^\beta\\
+	     &= a^kT(m)+cn^\beta\sum\limits_{0\le v \le k-1} a^v
+\end{align*}
+\subparagraph{$\mathbf{a = 1}$}
+\begin{align*}
+	T(n) &\le T(m) + cn^\beta(1+1+\cdots+1)\\
+	     &= T(m) + cn^\beta k\\
+	     &= T(m) + cn^\beta\frac{n-m}{j}
+\end{align*}
+Pertanto $T(n)=O(n^{\beta+1}$.
+\subparagraph{$\mathbf{a\ge 2}$}
+\begin{align*}
+	T(n) &= a^kT(m)+cn^\beta\biggl(\frac{a^k-1}{a-1}\biggr)\\
+	     &\le a^k[T(m)+cn^\beta]\\
+	     &= a^{\frac{n-m}{j}}[T(m)+cn^\beta]
+\end{align*}
+Pertanto $T(n) = O(a^nn^\beta)$.
+\subparagraph{Conclusione:} Si consideri ora il caso pi\`u generale in cui $\prod\limits_{i =1}^h a_i \neq0$, ovvero tutti gli $h$ coefficienti sono non nulli con $h>1$. In tal caso
+necessariamente si ha $\sum\limits_{i =1}^h a_i \ge 2$, pertanto:
+\begin{align*}
+	T(n) &= \sum\limits_{1\le i\le h} a_iT(n-i)+cn^\beta\\
+	     &\le \sum\limits_{1\le i \le h} a_iT(n-1) + cn^\beta\\
+	     &= aT(n-1) + cn^\beta
+\end{align*}
+In questo modo ci si riconduce al caso precedente in cui $j = h = 1$ e $a_j = a\ge 2$. La dimostrazione \`e analoga anche per $n\neq m+kj$.
 \section{Relazione tra complessit\`a di un problema e di un algoritmo}
 Un problema ha complessit\`a $O(f(n))$ se esiste un algoritmo che lo risolve con complessit\`a $O(f(n))$. Un problema ha complessit\`a $\Omega(f(n))$ se
 tutti gli algoritmi che lo risolvono hanno complessit\`a $\Omega(f(n))$.
