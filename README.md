@@ -19,4 +19,3 @@ pregati per lo meno di rendere noti, fareste un grande favore)
 Verranno indicate i problemi conosciuti ma non ancora risolti:
 
 * Manca la dimostrazione della complessita' di heapbuild()
-* Manca la dimostrazione della correttezza di heapSort()

@@ -284,504 +284,505 @@
 \contentsline {subparagraph}{Correttezza}{77}{section*.208}% 
 \contentsline {paragraph}{Implementazione \emph {heapsort}}{77}{section*.209}% 
 \contentsline {subparagraph}{Correttezza}{77}{section*.211}% 
-\contentsline {subsection}{\numberline {9.1.4}Implementazione di code con priorit\`a}{77}{subsection.9.1.4}% 
-\contentsline {subsubsection}{Memorizzazione}{78}{section*.212}% 
-\contentsline {subsubsection}{Inizializzazione}{78}{section*.215}% 
-\contentsline {subsubsection}{Inserimento}{78}{section*.216}% 
-\contentsline {subsubsection}{\emph {minHeapRestore()}}{79}{section*.217}% 
-\contentsline {subsubsection}{Cancellazione e lettura minimo}{79}{section*.218}% 
-\contentsline {subsubsection}{Decremento priorit\`a}{79}{section*.219}% 
-\contentsline {subsubsection}{Complessit\`a}{79}{section*.220}% 
+\contentsline {subparagraph}{Complessit\`a}{78}{section*.212}% 
+\contentsline {subsection}{\numberline {9.1.4}Implementazione di code con priorit\`a}{78}{subsection.9.1.4}% 
+\contentsline {subsubsection}{Memorizzazione}{78}{section*.213}% 
+\contentsline {subsubsection}{Inizializzazione}{78}{section*.216}% 
+\contentsline {subsubsection}{Inserimento}{79}{section*.217}% 
+\contentsline {subsubsection}{\emph {minHeapRestore()}}{79}{section*.218}% 
+\contentsline {subsubsection}{Cancellazione e lettura minimo}{79}{section*.219}% 
+\contentsline {subsubsection}{Decremento priorit\`a}{80}{section*.220}% 
+\contentsline {subsubsection}{Complessit\`a}{80}{section*.221}% 
 \contentsline {section}{\numberline {9.2}Insiemi disgiunti - Merge-find set}{80}{section.9.2}% 
-\contentsline {subsubsection}{Rappresentante}{80}{section*.221}% 
-\contentsline {subsection}{\numberline {9.2.1}Specifica}{80}{subsection.9.2.1}% 
-\contentsline {subsection}{\numberline {9.2.2}Componenti connesse dinamiche}{80}{subsection.9.2.2}% 
+\contentsline {subsubsection}{Rappresentante}{80}{section*.222}% 
+\contentsline {subsection}{\numberline {9.2.1}Specifica}{81}{subsection.9.2.1}% 
+\contentsline {subsection}{\numberline {9.2.2}Componenti connesse dinamiche}{81}{subsection.9.2.2}% 
 \contentsline {subsection}{\numberline {9.2.3}Implementazione con insieme di liste}{81}{subsection.9.2.3}% 
-\contentsline {subsubsection}{Operazione \emph {find(x)}}{81}{section*.222}% 
-\contentsline {subsubsection}{Operazione \emph {merge(x, y)}}{81}{section*.223}% 
+\contentsline {subsubsection}{Operazione \emph {find(x)}}{81}{section*.223}% 
+\contentsline {subsubsection}{Operazione \emph {merge(x, y)}}{81}{section*.224}% 
 \contentsline {subsection}{\numberline {9.2.4}Implementazione con insieme di alberi}{81}{subsection.9.2.4}% 
-\contentsline {subsubsection}{Operazione \emph {find(x)}}{81}{section*.224}% 
-\contentsline {subsubsection}{Operazione \emph {merge(x, y)}}{81}{section*.225}% 
-\contentsline {subsection}{\numberline {9.2.5}Tecniche euristiche}{81}{subsection.9.2.5}% 
-\contentsline {subsubsection}{Liste: euristica sul peso}{81}{section*.226}% 
-\contentsline {subsubsection}{Alberi: euristica sul rango}{81}{section*.227}% 
-\contentsline {subsubsection}{Alberi: euristica di compressione dei cammini}{82}{section*.228}% 
-\contentsline {subsubsection}{Alberi: euristica sul rango e compressione dei cammini}{82}{section*.229}% 
-\contentsline {chapter}{\numberline {10}Scelta}{83}{chapter.10}% 
-\contentsline {section}{\numberline {10.1}Il problema dei cammini minimi}{83}{section.10.1}% 
-\contentsline {paragraph}{Definizione}{83}{section*.230}% 
-\contentsline {paragraph}{Input}{83}{section*.231}% 
-\contentsline {paragraph}{Output}{83}{section*.232}% 
-\contentsline {subsection}{\numberline {10.1.1}Varianti del problema}{83}{subsection.10.1.1}% 
-\contentsline {subsubsection}{Cammini minimi da sorgente unica}{83}{section*.233}% 
-\contentsline {subparagraph}{Input:}{83}{section*.234}% 
-\contentsline {subparagraph}{Output:}{83}{section*.235}% 
-\contentsline {subsubsection}{Cammino minimo tra una coppia di vertici}{83}{section*.236}% 
-\contentsline {subparagraph}{Input:}{83}{section*.237}% 
-\contentsline {subparagraph}{Output:}{83}{section*.238}% 
-\contentsline {subsubsection}{Cammini minimi tra tutte le coppie di vertici}{83}{section*.239}% 
-\contentsline {subparagraph}{Input:}{83}{section*.240}% 
-\contentsline {subparagraph}{Output:}{83}{section*.241}% 
-\contentsline {subsubsection}{Pesi}{84}{section*.242}% 
-\contentsline {subsection}{\numberline {10.1.2}Sottostruttura ottima}{84}{subsection.10.1.2}% 
-\contentsline {subsubsection}{Albero dei cammini minimi}{84}{section*.243}% 
-\contentsline {paragraph}{Rappresentazione albero}{84}{section*.244}% 
-\contentsline {subsubsection}{Soluzione ammissibile}{84}{section*.245}% 
-\contentsline {section}{\numberline {10.2}Teorema di Bellman}{84}{section.10.2}% 
-\contentsline {paragraph}{Enunciato}{84}{section*.246}% 
-\contentsline {paragraph}{Dimostrazione}{84}{section*.247}% 
-\contentsline {subparagraph}{Se $T$ \`e una soluzione ottima, allora valgono le condizioni di Bellman}{84}{section*.248}% 
-\contentsline {subparagraph}{Se valgono le condizioni di Bellman allora $T$ \`e una soluzione ottima}{85}{section*.249}% 
-\contentsline {subsection}{\numberline {10.2.1}Implementazioni}{85}{subsection.10.2.1}% 
-\contentsline {subsubsection}{Algoritmo prototipo}{85}{section*.250}% 
-\contentsline {subsubsection}{Algoritmo generico}{86}{section*.251}% 
-\contentsline {section}{\numberline {10.3}Algoritmo di Dijkstra}{86}{section.10.3}% 
-\contentsline {subsection}{\numberline {10.3.1}Funzionamento}{86}{subsection.10.3.1}% 
-\contentsline {subsubsection}{Inizializzazione}{86}{section*.252}% 
-\contentsline {subsubsection}{Estrazione minimo}{87}{section*.253}% 
-\contentsline {subsubsection}{Inserimento in coda}{87}{section*.254}% 
-\contentsline {subsubsection}{Aggiornamento priorit\`a}{87}{section*.255}% 
-\contentsline {subsection}{\numberline {10.3.2}Correttezza per pesi positivi}{87}{subsection.10.3.2}% 
-\contentsline {subparagraph}{Caso base}{87}{section*.256}% 
-\contentsline {subparagraph}{Passo induttivo}{87}{section*.257}% 
-\contentsline {subsubsection}{Implementazione}{87}{section*.258}% 
-\contentsline {paragraph}{Costo computazionale con coda con priorit\`a basata su vettore}{88}{section*.259}% 
-\contentsline {paragraph}{Costo computazionale con coda con priorit\`a basata su heap binario}{88}{section*.260}% 
-\contentsline {paragraph}{Costo computazionale con coda con priorit\`a basata su heap binario}{88}{section*.261}% 
-\contentsline {section}{\numberline {10.4}Coda Bellman-Ford, Moore}{88}{section.10.4}% 
-\contentsline {subsubsection}{Inizializzazione}{88}{section*.262}% 
-\contentsline {subsubsection}{Estrazione}{88}{section*.263}% 
-\contentsline {subsubsection}{Inserimento in coda}{88}{section*.264}% 
-\contentsline {subsection}{\numberline {10.4.1}Correttezza}{89}{subsection.10.4.1}% 
-\contentsline {subsubsection}{Implementazione}{89}{section*.265}% 
-\contentsline {subsubsection}{Complessit\`a}{89}{section*.266}% 
-\contentsline {section}{\numberline {10.5}Cammini minimi su DAG}{89}{section.10.5}% 
-\contentsline {section}{\numberline {10.6}Conclusioni}{90}{section.10.6}% 
-\contentsline {section}{\numberline {10.7}Cammini minimi, sorgente multipla}{90}{section.10.7}% 
-\contentsline {section}{\numberline {10.8}Floyd-Warshall}{91}{section.10.8}% 
-\contentsline {subsection}{\numberline {10.8.1}Cammini minimi $k$-vincolati}{91}{subsection.10.8.1}% 
-\contentsline {subsection}{\numberline {10.8.2}Distanza $k$-vincolata}{91}{subsection.10.8.2}% 
-\contentsline {subsubsection}{Matrice dei padri}{91}{section*.267}% 
-\contentsline {section}{\numberline {10.9}Chiusura transitiva (algoritmo di Warshall)}{92}{section.10.9}% 
-\contentsline {subsubsection}{Formulazione ricorsiva}{92}{section*.268}% 
-\contentsline {chapter}{\numberline {11}Risoluzione problemi}{93}{chapter.11}% 
-\contentsline {section}{\numberline {11.1}Classificazione dei problemi}{93}{section.11.1}% 
-\contentsline {subsubsection}{Problemi decisionali}{93}{section*.269}% 
-\contentsline {subsubsection}{Problemi di ricerca}{93}{section*.270}% 
-\contentsline {subsubsection}{Problemi di ottimizzazione}{93}{section*.271}% 
-\contentsline {subsubsection}{Problemi di approssimazione}{93}{section*.272}% 
-\contentsline {section}{\numberline {11.2}Definizione matematica del problema}{93}{section.11.2}% 
-\contentsline {section}{\numberline {11.3}Tecniche di soluzione problemi}{94}{section.11.3}% 
-\contentsline {subsubsection}{Divide-et-impera}{94}{section*.273}% 
-\contentsline {subsubsection}{Programmazione dinamica}{94}{section*.274}% 
-\contentsline {subsubsection}{Memoization}{94}{section*.275}% 
-\contentsline {subsubsection}{Tecnica greedy}{94}{section*.276}% 
-\contentsline {subsubsection}{Backtrack}{94}{section*.277}% 
-\contentsline {subsubsection}{Ricerca locale}{94}{section*.278}% 
-\contentsline {subsubsection}{Algoritmi probabilistici}{94}{section*.279}% 
-\contentsline {chapter}{\numberline {12}Divide-et-impera}{95}{chapter.12}% 
-\contentsline {section}{\numberline {12.1}Le torri di Hanoi}{95}{section.12.1}% 
-\contentsline {section}{\numberline {12.2}Quicksort}{95}{section.12.2}% 
-\contentsline {subsection}{\numberline {12.2.1}Caratterizzazione}{96}{subsection.12.2.1}% 
-\contentsline {subsubsection}{Input}{96}{section*.280}% 
-\contentsline {subsubsection}{Divide}{96}{section*.281}% 
-\contentsline {subsubsection}{Impera}{96}{section*.282}% 
-\contentsline {subsubsection}{Combina}{96}{section*.283}% 
-\contentsline {subsection}{\numberline {12.2.2}Complessit\`a computazionale}{96}{subsection.12.2.2}% 
-\contentsline {section}{\numberline {12.3}Conclusioni}{97}{section.12.3}% 
-\contentsline {chapter}{\numberline {13}Programmazione dinamica}{98}{chapter.13}% 
-\contentsline {section}{\numberline {13.1}Approccio generale}{98}{section.13.1}% 
-\contentsline {subsection}{\numberline {13.1.1}Evitare di risolvere i problemi pi\`u di una volta}{98}{subsection.13.1.1}% 
-\contentsline {subsection}{\numberline {13.1.2}Ricostruire la soluzione}{98}{subsection.13.1.2}% 
-\contentsline {section}{\numberline {13.2}Memoization}{99}{section.13.2}% 
-\contentsline {section}{\numberline {13.3}Problemi}{99}{section.13.3}% 
-\contentsline {subsection}{\numberline {13.3.1}Domino lineare}{99}{subsection.13.3.1}% 
-\contentsline {subsubsection}{Definizione ricorrenza}{99}{section*.284}% 
-\contentsline {subsubsection}{Algoritmo ricorsivo}{100}{section*.285}% 
-\contentsline {paragraph}{Complessit\`a}{100}{section*.286}% 
-\contentsline {subsubsection}{Algoritmo iterativo}{100}{section*.287}% 
-\contentsline {paragraph}{Complessit\`a}{100}{section*.288}% 
-\contentsline {paragraph}{Miglioramento}{100}{section*.289}% 
-\contentsline {subsection}{\numberline {13.3.2}Hateville}{100}{subsection.13.3.2}% 
-\contentsline {subsubsection}{Definizione ricorsiva}{101}{section*.291}% 
-\contentsline {subsubsection}{Sottostruttura ottima}{101}{section*.292}% 
-\contentsline {paragraph}{Dimostrazione}{101}{section*.293}% 
-\contentsline {subparagraph}{$\mathbf {i\not \in HV_s(i)}$}{101}{section*.294}% 
-\contentsline {subparagraph}{$\mathbf {i\in HV_s(i)}$}{101}{section*.295}% 
-\contentsline {paragraph}{Determinare la ricorsione}{101}{section*.296}% 
-\contentsline {paragraph}{Tabella DP}{101}{section*.297}% 
-\contentsline {subsubsection}{Algoritmo iterativo}{102}{section*.298}% 
-\contentsline {subsubsection}{Ricostruire la soluzione originale}{102}{section*.299}% 
-\contentsline {subsubsection}{Complessit\`a computazionale}{102}{section*.300}% 
-\contentsline {subsection}{\numberline {13.3.3}Knapsack}{102}{subsection.13.3.3}% 
-\contentsline {subsubsection}{Caratterizzazione}{103}{section*.301}% 
-\contentsline {paragraph}{Input}{103}{section*.302}% 
-\contentsline {paragraph}{Output}{103}{section*.303}% 
-\contentsline {subsubsection}{Definizione matematica del valore della soluzione}{103}{section*.304}% 
-\contentsline {paragraph}{Parte ricorsiva}{103}{section*.305}% 
-\contentsline {paragraph}{Casi base}{103}{section*.306}% 
-\contentsline {paragraph}{Formula completa}{103}{section*.307}% 
-\contentsline {subsubsection}{Pseudocodice}{104}{section*.308}% 
-\contentsline {subsubsection}{Complessit\`a computazionale}{104}{section*.309}% 
-\contentsline {subsubsection}{Implementazione con memoization}{104}{section*.310}% 
-\contentsline {subsection}{\numberline {13.3.4}Knapsack senza limiti}{105}{subsection.13.3.4}% 
-\contentsline {subsubsection}{Implementazione tramite memoization}{106}{section*.311}% 
-\contentsline {subsubsection}{Ricostruire la soluzione}{106}{section*.312}% 
-\contentsline {paragraph}{Implementazione tramite memoization}{107}{section*.313}% 
-\contentsline {subsection}{\numberline {13.3.5}Sottosequenza comune massimale}{107}{subsection.13.3.5}% 
-\contentsline {paragraph}{Sottosequenza}{107}{section*.314}% 
-\contentsline {paragraph}{Sottosequenza comune}{107}{section*.315}% 
-\contentsline {paragraph}{Sottosequenza comune massimale}{108}{section*.316}% 
-\contentsline {subsubsection}{Definizione del problema}{108}{section*.317}% 
-\contentsline {subsubsection}{Soluzione di forza bruta}{108}{section*.318}% 
-\contentsline {subsubsection}{Descrizione matematica della soluzione ottima}{108}{section*.319}% 
-\contentsline {paragraph}{Casi ricorsivi}{108}{section*.320}% 
-\contentsline {subparagraph}{Primo caso}{108}{section*.321}% 
-\contentsline {subparagraph}{Secondo caso}{108}{section*.322}% 
-\contentsline {paragraph}{Casi base}{108}{section*.323}% 
-\contentsline {paragraph}{Soluzione completa}{108}{section*.324}% 
-\contentsline {subsubsection}{Sottostruttura ottima}{109}{section*.325}% 
-\contentsline {paragraph}{Dimostrazione primo caso}{109}{section*.326}% 
-\contentsline {subparagraph}{Prima parte}{109}{section*.327}% 
-\contentsline {subparagraph}{Seconda parte}{109}{section*.328}% 
-\contentsline {paragraph}{Dimostrazione secondo caso (terzo simmetrico)}{109}{section*.329}% 
-\contentsline {subsubsection}{Ricorrenza per il valore della soluzione ottimale}{109}{section*.330}% 
-\contentsline {subsubsection}{Ricostruire la sottosequenza comune}{110}{section*.331}% 
-\contentsline {subsection}{\numberline {13.3.6}String matching approssimato}{110}{subsection.13.3.6}% 
-\contentsline {subsubsection}{Definizione}{110}{section*.332}% 
-\contentsline {subsubsection}{Problema}{111}{section*.333}% 
-\contentsline {subsubsection}{Sottostruttura ottima}{111}{section*.334}% 
-\contentsline {subsubsection}{Ricostruzione della soluzione finale}{111}{section*.335}% 
-\contentsline {subsubsection}{Algoritmo}{111}{section*.336}% 
-\contentsline {subsection}{\numberline {13.3.7}Prodotto di catena di matrici}{112}{subsection.13.3.7}% 
-\contentsline {subsubsection}{Problema}{112}{section*.337}% 
-\contentsline {subsubsection}{Parentesizzazione}{112}{section*.338}% 
-\contentsline {paragraph}{Parentesizzazione ottima}{112}{section*.339}% 
-\contentsline {subparagraph}{Numero di Catalan}{112}{section*.340}% 
-\contentsline {subsubsection}{Lista di definizioni matematiche}{112}{section*.341}% 
-\contentsline {subsubsection}{Struttura di una parentesizzazione ottima}{112}{section*.342}% 
-\contentsline {paragraph}{Teorema della sottostruttura ottima}{112}{section*.343}% 
-\contentsline {subparagraph}{Enunciato}{113}{section*.344}% 
-\contentsline {subparagraph}{Dimostrazione}{113}{section*.345}% 
-\contentsline {subsubsection}{Valore della soluzione ottima}{113}{section*.346}% 
-\contentsline {subsubsection}{Implementazione}{113}{section*.347}% 
-\contentsline {paragraph}{Input}{113}{section*.348}% 
-\contentsline {paragraph}{Output}{113}{section*.349}% 
-\contentsline {paragraph}{Approccio ricorsivo}{114}{section*.350}% 
-\contentsline {subparagraph}{Valutazione}{114}{section*.351}% 
-\contentsline {paragraph}{Versione bottom-up}{114}{section*.352}% 
-\contentsline {subparagraph}{Valutazioni}{114}{section*.353}% 
-\contentsline {subsection}{\numberline {13.3.8}Insieme indipendente di intervalli pesati}{115}{subsection.13.3.8}% 
-\contentsline {subsubsection}{Problema}{115}{section*.354}% 
-\contentsline {paragraph}{Input}{115}{section*.355}% 
-\contentsline {subsubsection}{Pre-elaborazione}{115}{section*.356}% 
-\contentsline {subsubsection}{Implementazione}{116}{section*.357}% 
-\contentsline {subsubsection}{Costo computazionale}{116}{section*.358}% 
-\contentsline {chapter}{\numberline {14}Algoritmi greedy}{117}{chapter.14}% 
-\contentsline {section}{\numberline {14.1}Insieme indipendente massimale di intervalli}{117}{section.14.1}% 
-\contentsline {paragraph}{Input}{117}{section*.359}% 
-\contentsline {paragraph}{Output}{117}{section*.360}% 
-\contentsline {subsection}{\numberline {14.1.1}Affrontare il problema}{117}{subsection.14.1.1}% 
-\contentsline {subsubsection}{Programmazione dinamica}{117}{section*.361}% 
-\contentsline {subsubsection}{Tecnica greedy}{117}{section*.362}% 
-\contentsline {subsection}{\numberline {14.1.2}Sottostruttura ottima}{118}{subsection.14.1.2}% 
-\contentsline {subsubsection}{Teorema}{118}{section*.363}% 
-\contentsline {paragraph}{Enunciato}{118}{section*.364}% 
-\contentsline {paragraph}{Dimostrazione}{118}{section*.365}% 
-\contentsline {subsection}{\numberline {14.1.3}Definizione ricorsiva del costo della soluzione}{118}{subsection.14.1.3}% 
-\contentsline {subsubsection}{Definizione ricorsiva della soluzione}{118}{section*.366}% 
-\contentsline {subsubsection}{Definizione ricorsiva del costo}{118}{section*.367}% 
-\contentsline {subsection}{\numberline {14.1.4}Scelta ingorda}{118}{subsection.14.1.4}% 
-\contentsline {subsubsection}{Teorema}{118}{section*.368}% 
-\contentsline {paragraph}{Enunciato}{118}{section*.369}% 
-\contentsline {paragraph}{Dimostrazione}{119}{section*.370}% 
-\contentsline {subsubsection}{Conseguenze}{119}{section*.371}% 
-\contentsline {subsubsection}{Implementazione}{119}{section*.372}% 
-\contentsline {section}{\numberline {14.2}Approccio a partire da programmazione dinamica}{119}{section.14.2}% 
-\contentsline {section}{\numberline {14.3}Problema del resto}{119}{section.14.3}% 
-\contentsline {paragraph}{Input}{119}{section*.373}% 
-\contentsline {paragraph}{Definizione del problema}{119}{section*.374}% 
-\contentsline {subsection}{\numberline {14.3.1}Soluzione basata su programmazione dinamica}{120}{subsection.14.3.1}% 
-\contentsline {subsubsection}{Sottostruttura ottima}{120}{section*.375}% 
-\contentsline {paragraph}{Definizione ricorsiva}{120}{section*.376}% 
-\contentsline {subsection}{\numberline {14.3.2}Implementazione}{120}{subsection.14.3.2}% 
-\contentsline {subsection}{\numberline {14.3.3}Scelta greedy}{120}{subsection.14.3.3}% 
-\contentsline {subsubsection}{Implementazione}{121}{section*.377}% 
-\contentsline {section}{\numberline {14.4}Approccio greedy senza programmazione dinamica}{121}{section.14.4}% 
-\contentsline {section}{\numberline {14.5}Scheduling}{121}{section.14.5}% 
-\contentsline {paragraph}{Input}{121}{section*.378}% 
-\contentsline {paragraph}{Problema}{121}{section*.379}% 
-\contentsline {subsection}{\numberline {14.5.1}Dimostrazione di correttezza}{121}{subsection.14.5.1}% 
-\contentsline {subsubsection}{Teorema di scelta greedy}{121}{section*.380}% 
-\contentsline {paragraph}{Enunciato}{121}{section*.381}% 
-\contentsline {paragraph}{Dimostrazione}{121}{section*.382}% 
-\contentsline {subsubsection}{Teorema della sottostruttura ottima}{122}{section*.383}% 
-\contentsline {paragraph}{Enunciato}{122}{section*.384}% 
-\contentsline {section}{\numberline {14.6}Problema dello zaino reale}{122}{section.14.6}% 
-\contentsline {paragraph}{Input}{122}{section*.385}% 
-\contentsline {paragraph}{Problema}{122}{section*.386}% 
-\contentsline {subsection}{\numberline {14.6.1}Approcci greedy possibili}{122}{subsection.14.6.1}% 
-\contentsline {subsubsection}{Implementazione}{122}{section*.387}% 
-\contentsline {subsection}{\numberline {14.6.2}Correttezza}{122}{subsection.14.6.2}% 
-\contentsline {section}{\numberline {14.7}Problema della compressione}{122}{section.14.7}% 
-\contentsline {subsection}{\numberline {14.7.1}Codifica a prefissi}{123}{subsection.14.7.1}% 
-\contentsline {subsubsection}{Rappresentazione ad albero per la decodifica}{123}{section*.388}% 
-\contentsline {subsection}{\numberline {14.7.2}Definizione formale del problema}{123}{subsection.14.7.2}% 
-\contentsline {paragraph}{Input}{123}{section*.389}% 
-\contentsline {subsection}{\numberline {14.7.3}Algoritmo di Huffman}{123}{subsection.14.7.3}% 
-\contentsline {subsubsection}{Funzionamento algoritmo}{123}{section*.390}% 
-\contentsline {subsubsection}{Correttezza}{124}{section*.391}% 
-\contentsline {subsubsection}{Scelta greedy}{124}{section*.392}% 
-\contentsline {paragraph}{Enunciato}{124}{section*.393}% 
-\contentsline {paragraph}{Dimostrazione}{124}{section*.394}% 
-\contentsline {section}{\numberline {14.8}Albero di copertura di peso minimo}{125}{section.14.8}% 
-\contentsline {subsection}{\numberline {14.8.1}Definizione del problema}{125}{subsection.14.8.1}% 
-\contentsline {subsubsection}{Albero di copertura}{125}{section*.395}% 
-\contentsline {subsubsection}{Output}{125}{section*.396}% 
-\contentsline {subsection}{\numberline {14.8.2}Algoritmo generico}{125}{subsection.14.8.2}% 
-\contentsline {subsubsection}{Arco sicuro}{125}{section*.397}% 
-\contentsline {paragraph}{Definizioni}{125}{section*.398}% 
-\contentsline {paragraph}{Enunciato}{126}{section*.399}% 
-\contentsline {paragraph}{Dimostrazione}{126}{section*.400}% 
-\contentsline {paragraph}{Corollario}{126}{section*.401}% 
-\contentsline {subsection}{\numberline {14.8.3}Algoritmo di Kruskal}{126}{subsection.14.8.3}% 
-\contentsline {subsubsection}{Analisi della complessit\`a}{126}{section*.402}% 
-\contentsline {subsection}{\numberline {14.8.4}Algoritmo di Prim}{127}{subsection.14.8.4}% 
-\contentsline {paragraph}{Correttezza}{127}{section*.403}% 
-\contentsline {subsubsection}{Implementazione}{127}{section*.404}% 
-\contentsline {subsubsection}{Analisi complessit\`a}{127}{section*.405}% 
-\contentsline {chapter}{\numberline {15}Ricerca locale}{128}{chapter.15}% 
-\contentsline {section}{\numberline {15.1}Rete di flusso}{128}{section.15.1}% 
-\contentsline {subsection}{\numberline {15.1.1}Flusso}{128}{subsection.15.1.1}% 
-\contentsline {subsection}{\numberline {15.1.2}Definizioni}{128}{subsection.15.1.2}% 
-\contentsline {subsection}{\numberline {15.1.3}metodo delle reti residue}{129}{subsection.15.1.3}% 
-\contentsline {subsubsection}{Correttezza}{129}{section*.406}% 
-\contentsline {paragraph}{Lemma}{129}{section*.407}% 
-\contentsline {paragraph}{Dimostrazione}{129}{section*.408}% 
-\contentsline {subparagraph}{Vincolo sulla capacit\`a}{129}{section*.409}% 
-\contentsline {subparagraph}{Antisimmetria}{130}{section*.410}% 
-\contentsline {subparagraph}{Conservazione}{130}{section*.411}% 
-\contentsline {subsection}{\numberline {15.1.4}Metodo dei cammini aumentanti}{130}{subsection.15.1.4}% 
-\contentsline {subsubsection}{Ford-Fulkerson}{130}{section*.412}% 
-\contentsline {subsection}{\numberline {15.1.5}Ricerca del cammino}{130}{subsection.15.1.5}% 
-\contentsline {subsection}{\numberline {15.1.6}Complessit\`a}{131}{subsection.15.1.6}% 
-\contentsline {subsubsection}{Dimostrazione}{131}{section*.413}% 
-\contentsline {paragraph}{Lemma della monotonia}{131}{section*.414}% 
-\contentsline {subparagraph}{Dimostrazione}{131}{section*.415}% 
-\contentsline {paragraph}{Lemma degli aumenti di flusso}{131}{section*.416}% 
-\contentsline {subparagraph}{Dimostrazione}{131}{section*.417}% 
-\contentsline {paragraph}{Conclusione}{131}{section*.418}% 
-\contentsline {subsection}{\numberline {15.1.7}Dimostrazione Correttezza}{131}{subsection.15.1.7}% 
-\contentsline {subsubsection}{Definizioni}{131}{section*.419}% 
-\contentsline {subsubsection}{Lemma del valore del flusso di un taglio}{132}{section*.420}% 
-\contentsline {paragraph}{Dimostrazione}{132}{section*.421}% 
-\contentsline {subsubsection}{Lemma della capacit\`a di taglio}{132}{section*.422}% 
-\contentsline {paragraph}{Dimostrazione}{132}{section*.423}% 
-\contentsline {subsubsection}{Teorema del taglio minimo o del flusso massimo}{132}{section*.424}% 
-\contentsline {paragraph}{$\mathbf {(1)\Rightarrow (2)}$}{133}{section*.425}% 
-\contentsline {paragraph}{$\mathbf {(2)\Rightarrow (3)}$}{133}{section*.426}% 
-\contentsline {paragraph}{$\mathbf {(3)\Rightarrow (1)}$}{133}{section*.427}% 
-\contentsline {section}{\numberline {15.2}Abbinamento massimo nei grafi bipartiti o problema del job assignment}{133}{section.15.2}% 
-\contentsline {paragraph}{Input}{133}{section*.428}% 
-\contentsline {paragraph}{Output}{133}{section*.429}% 
-\contentsline {subsection}{\numberline {15.2.1}Metodo di risoluzione}{133}{subsection.15.2.1}% 
-\contentsline {chapter}{\numberline {16}Backtracking}{134}{chapter.16}% 
-\contentsline {section}{\numberline {16.1}Brute force}{134}{section.16.1}% 
-\contentsline {subsection}{\numberline {16.1.1}Costruire lo spazio delle soluzioni \`e costoso}{134}{subsection.16.1.1}% 
-\contentsline {section}{\numberline {16.2}Backtracking}{134}{section.16.2}% 
-\contentsline {subsection}{\numberline {16.2.1}Organizzazione generale}{135}{subsection.16.2.1}% 
-\contentsline {subsection}{\numberline {16.2.2}Soluzioni parziali}{135}{subsection.16.2.2}% 
-\contentsline {subsection}{\numberline {16.2.3}Albero delle decisioni}{135}{subsection.16.2.3}% 
-\contentsline {subsection}{\numberline {16.2.4}Pruning}{135}{subsection.16.2.4}% 
-\contentsline {section}{\numberline {16.3}Enumerazione}{135}{section.16.3}% 
-\contentsline {subsection}{\numberline {16.3.1}Sottoinsiemi}{135}{subsection.16.3.1}% 
-\contentsline {subsubsection}{Versione iterativa}{136}{section*.430}% 
-\contentsline {subsection}{\numberline {16.3.2}Permutazioni}{136}{subsection.16.3.2}% 
-\contentsline {subsection}{\numberline {16.3.3}Enumerazione schema completo}{137}{subsection.16.3.3}% 
-\contentsline {subsection}{\numberline {16.3.4}K-sottoinsiemi}{137}{subsection.16.3.4}% 
-\contentsline {subsection}{\numberline {16.3.5}Somma di sottoinsiemi}{137}{subsection.16.3.5}% 
-\contentsline {section}{\numberline {16.4}Problemi}{138}{section.16.4}% 
-\contentsline {subsection}{\numberline {16.4.1}Problema delle otto regine}{138}{subsection.16.4.1}% 
-\contentsline {subsubsection}{Ci sono $\mathbf {n^2}$ caselle dove piazzare una regina}{138}{section*.431}% 
-\contentsline {subsubsection}{Si devono piazzare $\mathbf {n}$ regine in $\mathbf {n^2}$ caselle}{138}{section*.432}% 
-\contentsline {subsubsection}{Non mettere regine in caselle precedenti a quelle gi\`a scelte}{139}{section*.433}% 
-\contentsline {subsubsection}{Ogni riga della scacchiera deve contenere esattamente una regina}{139}{section*.434}% 
-\contentsline {subsubsection}{Anche ogni colonna deve contenere esattamente una regina}{139}{section*.435}% 
-\contentsline {subsubsection}{Minimum-conflicts heuristic}{139}{section*.436}% 
-\contentsline {subsection}{\numberline {16.4.2}Giro di cavallo}{140}{subsection.16.4.2}% 
-\contentsline {paragraph}{Soluzione}{140}{section*.437}% 
-\contentsline {subsection}{\numberline {16.4.3}Sudoku}{142}{subsection.16.4.3}% 
-\contentsline {section}{\numberline {16.5}Backtracking iterativo}{142}{section.16.5}% 
-\contentsline {subsection}{\numberline {16.5.1}Inviluppo convesso (convex hull)}{142}{subsection.16.5.1}% 
-\contentsline {paragraph}{Inviluppo convesso}{142}{section*.438}% 
-\contentsline {subsection}{\numberline {16.5.2}Algoritmo inefficiente $\mathbf {O(n^3)}$}{143}{subsection.16.5.2}% 
-\contentsline {subsubsection}{Stessa parte}{143}{section*.439}% 
-\contentsline {subsection}{\numberline {16.5.3}Algoritmo di Jarvis}{143}{subsection.16.5.3}% 
-\contentsline {paragraph}{Punti 0, 1}{143}{section*.440}% 
-\contentsline {paragraph}{Punto i}{143}{section*.441}% 
-\contentsline {paragraph}{Terminazione}{143}{section*.442}% 
-\contentsline {subsection}{\numberline {16.5.4}Algoritmo di Graham}{143}{subsection.16.5.4}% 
-\contentsline {paragraph}{Fase 1}{143}{section*.443}% 
-\contentsline {paragraph}{Fase 2}{143}{section*.444}% 
-\contentsline {subsubsection}{Complessit\`a}{144}{section*.445}% 
-\contentsline {chapter}{\numberline {17}Algoritmi Probabilistici}{145}{chapter.17}% 
-\contentsline {section}{\numberline {17.1}Algoritmi Montecarlo}{145}{section.17.1}% 
-\contentsline {subsection}{\numberline {17.1.1}Test di primalit\`a}{145}{subsection.17.1.1}% 
-\contentsline {subsubsection}{Piccolo teorema di Fermat}{145}{section*.446}% 
-\contentsline {paragraph}{Test di primalit\`a di Fermat}{145}{section*.447}% 
-\contentsline {subsubsection}{Test di Miller-Rabin}{146}{section*.448}% 
-\contentsline {subsection}{\numberline {17.1.2}Espressione polinomiale nulla}{146}{subsection.17.1.2}% 
-\contentsline {subsubsection}{Algoritmo}{146}{section*.449}% 
-\contentsline {section}{\numberline {17.2}Algoritmi Las Vegas}{146}{section.17.2}% 
-\contentsline {subsection}{\numberline {17.2.1}Statistiche d'ordine}{146}{subsection.17.2.1}% 
-\contentsline {subsubsection}{Selezione per piccoli valori di $\mathbf {k}$}{147}{section*.450}% 
-\contentsline {paragraph}{Complessit\`a}{147}{section*.451}% 
-\contentsline {subsubsection}{Algoritmo di selezione}{147}{section*.452}% 
-\contentsline {paragraph}{Complessit\`a}{147}{section*.453}% 
-\contentsline {subparagraph}{Caso pessimo}{147}{section*.454}% 
-\contentsline {subparagraph}{Caso ottimo}{147}{section*.455}% 
-\contentsline {subparagraph}{Caso medio}{148}{section*.456}% 
-\contentsline {subsubsection}{Selezione deterministica}{148}{section*.457}% 
-\contentsline {paragraph}{Algoritmo}{148}{section*.458}% 
-\contentsline {chapter}{\numberline {18}Problemi intrattabili, teoria dell'NP-completezza}{150}{chapter.18}% 
-\contentsline {section}{\numberline {18.1}Problemi}{150}{section.18.1}% 
-\contentsline {subsection}{\numberline {18.1.1}Tipologie di problemi}{150}{subsection.18.1.1}% 
-\contentsline {subsubsection}{Problemi di ottimizzazione}{150}{section*.459}% 
-\contentsline {subsubsection}{Problemi di ricerca}{150}{section*.460}% 
-\contentsline {subsubsection}{Problemi di decisione}{150}{section*.461}% 
-\contentsline {subsection}{\numberline {18.1.2}Equivalenza di problemi di ottimizzazione e decisione}{150}{subsection.18.1.2}% 
-\contentsline {section}{\numberline {18.2}Riduzione polinomiale}{151}{section.18.2}% 
-\contentsline {subsection}{\numberline {18.2.1}Colorazione di grafi}{151}{subsection.18.2.1}% 
-\contentsline {subsubsection}{Ottimizzazione}{151}{section*.462}% 
-\contentsline {subsubsection}{Decisionale}{151}{section*.463}% 
-\contentsline {subsection}{\numberline {18.2.2}Sudoku}{151}{subsection.18.2.2}% 
-\contentsline {subsubsection}{Decisionale}{151}{section*.464}% 
-\contentsline {subsection}{\numberline {18.2.3}Riduzione da problema particolare a problema generale}{151}{subsection.18.2.3}% 
-\contentsline {subsubsection}{Riduzione in tempo polinomiale}{151}{section*.465}% 
-\contentsline {subsubsection}{La riduzione}{152}{section*.466}% 
-\contentsline {subsection}{\numberline {18.2.4}Insieme indipendente}{152}{subsection.18.2.4}% 
-\contentsline {subsubsection}{Ottimizzazione}{152}{section*.467}% 
-\contentsline {subsubsection}{Decisionale}{152}{section*.468}% 
-\contentsline {subsubsection}{Packing problem}{152}{section*.469}% 
-\contentsline {subsection}{\numberline {18.2.5}Copertura di vertici}{152}{subsection.18.2.5}% 
-\contentsline {subsubsection}{Ottimizzazione}{152}{section*.470}% 
-\contentsline {subsubsection}{Decisionale}{152}{section*.471}% 
-\contentsline {subsubsection}{Covering problem}{152}{section*.472}% 
-\contentsline {subsection}{\numberline {18.2.6}Riduzione per problemi duali}{153}{subsection.18.2.6}% 
-\contentsline {subsubsection}{Conclusione}{153}{section*.473}% 
-\contentsline {subsection}{\numberline {18.2.7}SAT}{153}{subsection.18.2.7}% 
-\contentsline {subsubsection}{3-SAT}{153}{section*.474}% 
-\contentsline {subsection}{\numberline {18.2.8}Riduzione tramite gadget}{153}{subsection.18.2.8}% 
-\contentsline {subsection}{\numberline {18.2.9}Riduzione da problema generale a problema generale}{153}{subsection.18.2.9}% 
-\contentsline {subsection}{\numberline {18.2.10}Transitivit\`a delle riduzioni}{154}{subsection.18.2.10}% 
-\contentsline {section}{\numberline {18.3}Classi $\mathbf {\mathbb {P}}$, $\mathbf {\mathbb {PSPACE}}$}{154}{section.18.3}% 
-\contentsline {subsection}{\numberline {18.3.1}Classi di complessit\`a}{154}{subsection.18.3.1}% 
-\contentsline {subsubsection}{Classi $\mathbf {\mathbb {P}}, \mathbf {\mathbb {PSPACE}}$}{154}{section*.475}% 
-\contentsline {subsubsection}{Classe $\mathbf {\mathbb {NP}}$}{154}{section*.476}% 
-\contentsline {paragraph}{Certificato}{154}{section*.477}% 
-\contentsline {subparagraph}{SAT}{154}{section*.478}% 
-\contentsline {subparagraph}{GRAPH-COLORING}{154}{section*.479}% 
-\contentsline {subparagraph}{INDEPENDENT-SET}{155}{section*.480}% 
-\contentsline {paragraph}{Certificati non polinomiali}{155}{section*.481}% 
-\contentsline {section}{\numberline {18.4}Relazioni fra problemi}{155}{section.18.4}% 
-\contentsline {subsubsection}{Lemma}{155}{section*.482}% 
-\contentsline {paragraph}{Enunciato}{155}{section*.483}% 
-\contentsline {paragraph}{Dimostrazione}{155}{section*.484}% 
-\contentsline {subsection}{\numberline {18.4.1}Definizioni}{155}{subsection.18.4.1}% 
-\contentsline {subsubsection}{Problema $\mathbf {\mathbb {NP}}$-arduo ($\mathbf {\mathbb {NP}}$-hard)}{155}{section*.485}% 
-\contentsline {subsubsection}{Problema $\mathbf {\mathbb {NP}}$-completo ($\mathbf {\mathbb {NP}}$-complete)}{155}{section*.486}% 
-\contentsline {subsubsection}{$\mathbf {\mathbb {P}=\mathbb {NP}}$}{155}{section*.487}% 
-\contentsline {subsection}{\numberline {18.4.2}Esistenza di problemi $\mathbf {\mathbb {NP}}$-completi}{155}{subsection.18.4.2}% 
-\contentsline {section}{\numberline {18.5}Problemi $\mathbf {\mathbb {NP}}$-completi classici}{155}{section.18.5}% 
-\contentsline {subsection}{\numberline {18.5.1}Cricca (Clique)}{155}{subsection.18.5.1}% 
-\contentsline {subsection}{\numberline {18.5.2}Commesso viaggiatore}{156}{subsection.18.5.2}% 
-\contentsline {subsection}{\numberline {18.5.3}Programmazione lineare (0, 1)}{156}{subsection.18.5.3}% 
-\contentsline {subsection}{\numberline {18.5.4}Copertura esatta di insiemi (Exact cover)}{156}{subsection.18.5.4}% 
-\contentsline {subsection}{\numberline {18.5.5}Partizione (partition)}{156}{subsection.18.5.5}% 
-\contentsline {subsection}{\numberline {18.5.6}Somma di sottoinsiemi (subset-sum)}{156}{subsection.18.5.6}% 
-\contentsline {subsection}{\numberline {18.5.7}Zaino (knapsack)}{156}{subsection.18.5.7}% 
-\contentsline {subsection}{\numberline {18.5.8}Circuito hamiltoniano}{156}{subsection.18.5.8}% 
-\contentsline {chapter}{\numberline {19}Tecniche risolutive per problemi intrattabili}{157}{chapter.19}% 
-\contentsline {section}{\numberline {19.1}Subset-Sum}{157}{section.19.1}% 
-\contentsline {paragraph}{Problema}{157}{section*.488}% 
-\contentsline {paragraph}{Soluzioni}{157}{section*.489}% 
-\contentsline {subsection}{\numberline {19.1.1}Programmazione dinamica}{157}{subsection.19.1.1}% 
-\contentsline {subsection}{\numberline {19.1.2}Backtracking}{158}{subsection.19.1.2}% 
-\contentsline {subsection}{\numberline {19.1.3}Memoization}{158}{subsection.19.1.3}% 
-\contentsline {subsection}{\numberline {19.1.4}Complessit\`a}{159}{subsection.19.1.4}% 
-\contentsline {section}{\numberline {19.2}Problemi fortemente, debolmente $\mathbf {\mathbb {NP}}$-completi}{159}{section.19.2}% 
-\contentsline {subsubsection}{Dimensioni del problema}{159}{section*.490}% 
-\contentsline {subsection}{\numberline {19.2.1}Problemi}{159}{subsection.19.2.1}% 
-\contentsline {subsubsection}{Cricca (CLIQUE)}{159}{section*.491}% 
-\contentsline {subsubsection}{Commesso viaggiatore (TSP)}{159}{section*.492}% 
-\contentsline {subsubsection}{Esempi}{159}{section*.493}% 
-\contentsline {subsection}{\numberline {19.2.2}Problema fortemente $\mathbf {\mathbb {NP}}$-completo}{159}{subsection.19.2.2}% 
-\contentsline {subsubsection}{Cricca (CLIQUE)}{159}{section*.494}% 
-\contentsline {subsubsection}{Commesso viaggiatore (TSP)}{160}{section*.495}% 
-\contentsline {subsubsection}{Circuito hamiltoniano (HAMILTONIAN-CIRCUIT)}{160}{section*.496}% 
-\contentsline {paragraph}{Complessit\`a}{160}{section*.497}% 
-\contentsline {subsubsection}{Dimostrazione che TSP \`e fortemente $\mathbf {\mathbb {NP}}$-completo}{160}{section*.498}% 
-\contentsline {subsection}{\numberline {19.2.3}Problema debolmente $\mathbf {\mathbb {NP}}$-completo}{160}{subsection.19.2.3}% 
-\contentsline {subsubsection}{Somma di sottoinsieme (SUBSET-SUM)}{160}{section*.499}% 
-\contentsline {paragraph}{Si verifichi che SUBSET-SUM \`e debolmente $\mathbf {\mathbb {NP}}$-completo}{160}{section*.500}% 
-\contentsline {subsection}{\numberline {19.2.4}Algoritmi pseudo-polinomiali}{160}{subsection.19.2.4}% 
-\contentsline {subsubsection}{Teorema}{160}{section*.501}% 
-\contentsline {subsection}{\numberline {19.2.5}ESEMPI}{161}{subsection.19.2.5}% 
-\contentsline {subsubsection}{Partizione (PARTITION)}{161}{section*.502}% 
-\contentsline {subsubsection}{3-Partizione (3-PARTITION)}{161}{section*.503}% 
-\contentsline {section}{\numberline {19.3}Algoritmi di approssimazione}{161}{section.19.3}% 
-\contentsline {paragraph}{Definizione}{161}{section*.504}% 
-\contentsline {subsection}{\numberline {19.3.1}Bin packing}{161}{subsection.19.3.1}% 
-\contentsline {subsubsection}{Algoritmo FIRST-FIT}{161}{section*.505}% 
-\contentsline {paragraph}{$\mathbf {\alpha }(n)$}{162}{section*.506}% 
-\contentsline {paragraph}{Variante First-fit decreasing}{162}{section*.507}% 
-\contentsline {subsection}{\numberline {19.3.2}Commesso viaggiatore con disuguaglianze particolari (triangolari o $\mathbf {\Delta }$-TSP)}{162}{subsection.19.3.2}% 
-\contentsline {subsubsection}{$\mathbf {\Delta }$-TSP \`e $\mathbf {\mathbb {NP}}$-completo}{162}{section*.508}% 
-\contentsline {subsubsection}{Algoritmo di approssimazione}{162}{section*.509}% 
-\contentsline {paragraph}{Teorema}{163}{section*.510}% 
-\contentsline {subparagraph}{Enunciato}{163}{section*.511}% 
-\contentsline {subparagraph}{Dimostrazione}{163}{section*.512}% 
-\contentsline {paragraph}{Algoritmo}{163}{section*.513}% 
-\contentsline {paragraph}{Note}{163}{section*.514}% 
-\contentsline {subsubsection}{Non approssimabilit\`a di TSP}{163}{section*.515}% 
-\contentsline {section}{\numberline {19.4}Algoritmi euristici}{163}{section.19.4}% 
-\contentsline {subsection}{\numberline {19.4.1}Approccio greedy}{163}{subsection.19.4.1}% 
-\contentsline {subsubsection}{TSP - shortest edges first}{163}{section*.516}% 
-\contentsline {subsubsection}{TSP - Nearest neighbor}{164}{section*.517}% 
-\contentsline {subsubsection}{Conclusioni}{164}{section*.518}% 
-\contentsline {subsection}{\numberline {19.4.2}Approccio ricerca locale}{164}{subsection.19.4.2}% 
-\contentsline {subsubsection}{TSP}{164}{section*.519}% 
-\contentsline {section}{\numberline {19.5}Branch-\&-bound}{165}{section.19.5}% 
-\contentsline {subsection}{\numberline {19.5.1}Upper bound}{165}{subsection.19.5.1}% 
-\contentsline {subsection}{\numberline {19.5.2}Lower bound}{165}{subsection.19.5.2}% 
-\contentsline {subsubsection}{Potatura}{165}{section*.520}% 
-\contentsline {subsection}{\numberline {19.5.3}Note}{165}{subsection.19.5.3}% 
-\contentsline {subsection}{\numberline {19.5.4}Schema generale}{165}{subsection.19.5.4}% 
-\contentsline {subsection}{\numberline {19.5.5}Commesso viaggiatore}{166}{subsection.19.5.5}% 
-\contentsline {subsubsection}{Lower bound}{166}{section*.521}% 
-\contentsline {subsubsection}{Implementazione}{167}{section*.522}% 
-\contentsline {paragraph}{Possibili miglioramenti}{167}{section*.523}% 
-\contentsline {chapter}{\numberline {20}Algoritmi di ordinamento}{168}{chapter.20}% 
-\contentsline {section}{\numberline {20.1}Limite inferiore}{168}{section.20.1}% 
-\contentsline {paragraph}{Propriet\`a dell'albero di decisione}{168}{section*.524}% 
-\contentsline {paragraph}{Lemma $\mathbf {1}$}{168}{section*.525}% 
-\contentsline {paragraph}{Lemma $\mathbf {2}$}{168}{section*.526}% 
-\contentsline {paragraph}{Teorema}{168}{section*.527}% 
-\contentsline {section}{\numberline {20.2}Ulteriori algoritmi di ordinamento}{169}{section.20.2}% 
-\contentsline {subsection}{\numberline {20.2.1}Spaghetti Sort}{169}{subsection.20.2.1}% 
-\contentsline {subsection}{\numberline {20.2.2}Counting Sort}{169}{subsection.20.2.2}% 
-\contentsline {subsubsection}{Complessit\`a}{169}{section*.528}% 
-\contentsline {subsection}{\numberline {20.2.3}Pigeonhole Sort}{169}{subsection.20.2.3}% 
-\contentsline {subsection}{\numberline {20.2.4}Bucket Sort}{170}{subsection.20.2.4}% 
-\contentsline {section}{\numberline {20.3}Conclusioni}{170}{section.20.3}% 
-\contentsline {subsection}{\numberline {20.3.1}Stabilit\`a}{170}{subsection.20.3.1}% 
-\contentsline {subsection}{\numberline {20.3.2}Riassunto}{170}{subsection.20.3.2}% 
-\contentsline {subsubsection}{Insertion Sort}{170}{section*.529}% 
-\contentsline {subsubsection}{Merge Sort}{170}{section*.530}% 
-\contentsline {subsubsection}{Heap Sort}{170}{section*.531}% 
-\contentsline {subsubsection}{Quick Sort}{170}{section*.532}% 
-\contentsline {subsubsection}{Counting Sort}{170}{section*.533}% 
-\contentsline {subsubsection}{Pigeonhole Sort}{170}{section*.534}% 
-\contentsline {subsubsection}{Bucket Sort}{170}{section*.535}% 
-\contentsline {subsubsection}{Shell Sort}{171}{section*.536}% 
-\contentsline {subsubsection}{Tim Sort}{171}{section*.537}% 
+\contentsline {subsubsection}{Operazione \emph {find(x)}}{81}{section*.225}% 
+\contentsline {subsubsection}{Operazione \emph {merge(x, y)}}{82}{section*.226}% 
+\contentsline {subsection}{\numberline {9.2.5}Tecniche euristiche}{82}{subsection.9.2.5}% 
+\contentsline {subsubsection}{Liste: euristica sul peso}{82}{section*.227}% 
+\contentsline {subsubsection}{Alberi: euristica sul rango}{82}{section*.228}% 
+\contentsline {subsubsection}{Alberi: euristica di compressione dei cammini}{82}{section*.229}% 
+\contentsline {subsubsection}{Alberi: euristica sul rango e compressione dei cammini}{83}{section*.230}% 
+\contentsline {chapter}{\numberline {10}Scelta}{84}{chapter.10}% 
+\contentsline {section}{\numberline {10.1}Il problema dei cammini minimi}{84}{section.10.1}% 
+\contentsline {paragraph}{Definizione}{84}{section*.231}% 
+\contentsline {paragraph}{Input}{84}{section*.232}% 
+\contentsline {paragraph}{Output}{84}{section*.233}% 
+\contentsline {subsection}{\numberline {10.1.1}Varianti del problema}{84}{subsection.10.1.1}% 
+\contentsline {subsubsection}{Cammini minimi da sorgente unica}{84}{section*.234}% 
+\contentsline {subparagraph}{Input:}{84}{section*.235}% 
+\contentsline {subparagraph}{Output:}{84}{section*.236}% 
+\contentsline {subsubsection}{Cammino minimo tra una coppia di vertici}{84}{section*.237}% 
+\contentsline {subparagraph}{Input:}{84}{section*.238}% 
+\contentsline {subparagraph}{Output:}{84}{section*.239}% 
+\contentsline {subsubsection}{Cammini minimi tra tutte le coppie di vertici}{84}{section*.240}% 
+\contentsline {subparagraph}{Input:}{84}{section*.241}% 
+\contentsline {subparagraph}{Output:}{84}{section*.242}% 
+\contentsline {subsubsection}{Pesi}{85}{section*.243}% 
+\contentsline {subsection}{\numberline {10.1.2}Sottostruttura ottima}{85}{subsection.10.1.2}% 
+\contentsline {subsubsection}{Albero dei cammini minimi}{85}{section*.244}% 
+\contentsline {paragraph}{Rappresentazione albero}{85}{section*.245}% 
+\contentsline {subsubsection}{Soluzione ammissibile}{85}{section*.246}% 
+\contentsline {section}{\numberline {10.2}Teorema di Bellman}{85}{section.10.2}% 
+\contentsline {paragraph}{Enunciato}{85}{section*.247}% 
+\contentsline {paragraph}{Dimostrazione}{85}{section*.248}% 
+\contentsline {subparagraph}{Se $T$ \`e una soluzione ottima, allora valgono le condizioni di Bellman}{85}{section*.249}% 
+\contentsline {subparagraph}{Se valgono le condizioni di Bellman allora $T$ \`e una soluzione ottima}{86}{section*.250}% 
+\contentsline {subsection}{\numberline {10.2.1}Implementazioni}{86}{subsection.10.2.1}% 
+\contentsline {subsubsection}{Algoritmo prototipo}{86}{section*.251}% 
+\contentsline {subsubsection}{Algoritmo generico}{87}{section*.252}% 
+\contentsline {section}{\numberline {10.3}Algoritmo di Dijkstra}{87}{section.10.3}% 
+\contentsline {subsection}{\numberline {10.3.1}Funzionamento}{87}{subsection.10.3.1}% 
+\contentsline {subsubsection}{Inizializzazione}{87}{section*.253}% 
+\contentsline {subsubsection}{Estrazione minimo}{88}{section*.254}% 
+\contentsline {subsubsection}{Inserimento in coda}{88}{section*.255}% 
+\contentsline {subsubsection}{Aggiornamento priorit\`a}{88}{section*.256}% 
+\contentsline {subsection}{\numberline {10.3.2}Correttezza per pesi positivi}{88}{subsection.10.3.2}% 
+\contentsline {subparagraph}{Caso base}{88}{section*.257}% 
+\contentsline {subparagraph}{Passo induttivo}{88}{section*.258}% 
+\contentsline {subsubsection}{Implementazione}{88}{section*.259}% 
+\contentsline {paragraph}{Costo computazionale con coda con priorit\`a basata su vettore}{89}{section*.260}% 
+\contentsline {paragraph}{Costo computazionale con coda con priorit\`a basata su heap binario}{89}{section*.261}% 
+\contentsline {paragraph}{Costo computazionale con coda con priorit\`a basata su heap binario}{89}{section*.262}% 
+\contentsline {section}{\numberline {10.4}Coda Bellman-Ford, Moore}{89}{section.10.4}% 
+\contentsline {subsubsection}{Inizializzazione}{89}{section*.263}% 
+\contentsline {subsubsection}{Estrazione}{89}{section*.264}% 
+\contentsline {subsubsection}{Inserimento in coda}{89}{section*.265}% 
+\contentsline {subsection}{\numberline {10.4.1}Correttezza}{90}{subsection.10.4.1}% 
+\contentsline {subsubsection}{Implementazione}{90}{section*.266}% 
+\contentsline {subsubsection}{Complessit\`a}{90}{section*.267}% 
+\contentsline {section}{\numberline {10.5}Cammini minimi su DAG}{90}{section.10.5}% 
+\contentsline {section}{\numberline {10.6}Conclusioni}{91}{section.10.6}% 
+\contentsline {section}{\numberline {10.7}Cammini minimi, sorgente multipla}{91}{section.10.7}% 
+\contentsline {section}{\numberline {10.8}Floyd-Warshall}{92}{section.10.8}% 
+\contentsline {subsection}{\numberline {10.8.1}Cammini minimi $k$-vincolati}{92}{subsection.10.8.1}% 
+\contentsline {subsection}{\numberline {10.8.2}Distanza $k$-vincolata}{92}{subsection.10.8.2}% 
+\contentsline {subsubsection}{Matrice dei padri}{92}{section*.268}% 
+\contentsline {section}{\numberline {10.9}Chiusura transitiva (algoritmo di Warshall)}{93}{section.10.9}% 
+\contentsline {subsubsection}{Formulazione ricorsiva}{93}{section*.269}% 
+\contentsline {chapter}{\numberline {11}Risoluzione problemi}{94}{chapter.11}% 
+\contentsline {section}{\numberline {11.1}Classificazione dei problemi}{94}{section.11.1}% 
+\contentsline {subsubsection}{Problemi decisionali}{94}{section*.270}% 
+\contentsline {subsubsection}{Problemi di ricerca}{94}{section*.271}% 
+\contentsline {subsubsection}{Problemi di ottimizzazione}{94}{section*.272}% 
+\contentsline {subsubsection}{Problemi di approssimazione}{94}{section*.273}% 
+\contentsline {section}{\numberline {11.2}Definizione matematica del problema}{94}{section.11.2}% 
+\contentsline {section}{\numberline {11.3}Tecniche di soluzione problemi}{95}{section.11.3}% 
+\contentsline {subsubsection}{Divide-et-impera}{95}{section*.274}% 
+\contentsline {subsubsection}{Programmazione dinamica}{95}{section*.275}% 
+\contentsline {subsubsection}{Memoization}{95}{section*.276}% 
+\contentsline {subsubsection}{Tecnica greedy}{95}{section*.277}% 
+\contentsline {subsubsection}{Backtrack}{95}{section*.278}% 
+\contentsline {subsubsection}{Ricerca locale}{95}{section*.279}% 
+\contentsline {subsubsection}{Algoritmi probabilistici}{95}{section*.280}% 
+\contentsline {chapter}{\numberline {12}Divide-et-impera}{96}{chapter.12}% 
+\contentsline {section}{\numberline {12.1}Le torri di Hanoi}{96}{section.12.1}% 
+\contentsline {section}{\numberline {12.2}Quicksort}{96}{section.12.2}% 
+\contentsline {subsection}{\numberline {12.2.1}Caratterizzazione}{97}{subsection.12.2.1}% 
+\contentsline {subsubsection}{Input}{97}{section*.281}% 
+\contentsline {subsubsection}{Divide}{97}{section*.282}% 
+\contentsline {subsubsection}{Impera}{97}{section*.283}% 
+\contentsline {subsubsection}{Combina}{97}{section*.284}% 
+\contentsline {subsection}{\numberline {12.2.2}Complessit\`a computazionale}{97}{subsection.12.2.2}% 
+\contentsline {section}{\numberline {12.3}Conclusioni}{98}{section.12.3}% 
+\contentsline {chapter}{\numberline {13}Programmazione dinamica}{99}{chapter.13}% 
+\contentsline {section}{\numberline {13.1}Approccio generale}{99}{section.13.1}% 
+\contentsline {subsection}{\numberline {13.1.1}Evitare di risolvere i problemi pi\`u di una volta}{99}{subsection.13.1.1}% 
+\contentsline {subsection}{\numberline {13.1.2}Ricostruire la soluzione}{99}{subsection.13.1.2}% 
+\contentsline {section}{\numberline {13.2}Memoization}{100}{section.13.2}% 
+\contentsline {section}{\numberline {13.3}Problemi}{100}{section.13.3}% 
+\contentsline {subsection}{\numberline {13.3.1}Domino lineare}{100}{subsection.13.3.1}% 
+\contentsline {subsubsection}{Definizione ricorrenza}{100}{section*.285}% 
+\contentsline {subsubsection}{Algoritmo ricorsivo}{101}{section*.286}% 
+\contentsline {paragraph}{Complessit\`a}{101}{section*.287}% 
+\contentsline {subsubsection}{Algoritmo iterativo}{101}{section*.288}% 
+\contentsline {paragraph}{Complessit\`a}{101}{section*.289}% 
+\contentsline {paragraph}{Miglioramento}{101}{section*.290}% 
+\contentsline {subsection}{\numberline {13.3.2}Hateville}{101}{subsection.13.3.2}% 
+\contentsline {subsubsection}{Definizione ricorsiva}{102}{section*.292}% 
+\contentsline {subsubsection}{Sottostruttura ottima}{102}{section*.293}% 
+\contentsline {paragraph}{Dimostrazione}{102}{section*.294}% 
+\contentsline {subparagraph}{$\mathbf {i\not \in HV_s(i)}$}{102}{section*.295}% 
+\contentsline {subparagraph}{$\mathbf {i\in HV_s(i)}$}{102}{section*.296}% 
+\contentsline {paragraph}{Determinare la ricorsione}{102}{section*.297}% 
+\contentsline {paragraph}{Tabella DP}{102}{section*.298}% 
+\contentsline {subsubsection}{Algoritmo iterativo}{103}{section*.299}% 
+\contentsline {subsubsection}{Ricostruire la soluzione originale}{103}{section*.300}% 
+\contentsline {subsubsection}{Complessit\`a computazionale}{103}{section*.301}% 
+\contentsline {subsection}{\numberline {13.3.3}Knapsack}{103}{subsection.13.3.3}% 
+\contentsline {subsubsection}{Caratterizzazione}{104}{section*.302}% 
+\contentsline {paragraph}{Input}{104}{section*.303}% 
+\contentsline {paragraph}{Output}{104}{section*.304}% 
+\contentsline {subsubsection}{Definizione matematica del valore della soluzione}{104}{section*.305}% 
+\contentsline {paragraph}{Parte ricorsiva}{104}{section*.306}% 
+\contentsline {paragraph}{Casi base}{104}{section*.307}% 
+\contentsline {paragraph}{Formula completa}{104}{section*.308}% 
+\contentsline {subsubsection}{Pseudocodice}{105}{section*.309}% 
+\contentsline {subsubsection}{Complessit\`a computazionale}{105}{section*.310}% 
+\contentsline {subsubsection}{Implementazione con memoization}{105}{section*.311}% 
+\contentsline {subsection}{\numberline {13.3.4}Knapsack senza limiti}{106}{subsection.13.3.4}% 
+\contentsline {subsubsection}{Implementazione tramite memoization}{107}{section*.312}% 
+\contentsline {subsubsection}{Ricostruire la soluzione}{107}{section*.313}% 
+\contentsline {paragraph}{Implementazione tramite memoization}{108}{section*.314}% 
+\contentsline {subsection}{\numberline {13.3.5}Sottosequenza comune massimale}{108}{subsection.13.3.5}% 
+\contentsline {paragraph}{Sottosequenza}{108}{section*.315}% 
+\contentsline {paragraph}{Sottosequenza comune}{108}{section*.316}% 
+\contentsline {paragraph}{Sottosequenza comune massimale}{109}{section*.317}% 
+\contentsline {subsubsection}{Definizione del problema}{109}{section*.318}% 
+\contentsline {subsubsection}{Soluzione di forza bruta}{109}{section*.319}% 
+\contentsline {subsubsection}{Descrizione matematica della soluzione ottima}{109}{section*.320}% 
+\contentsline {paragraph}{Casi ricorsivi}{109}{section*.321}% 
+\contentsline {subparagraph}{Primo caso}{109}{section*.322}% 
+\contentsline {subparagraph}{Secondo caso}{109}{section*.323}% 
+\contentsline {paragraph}{Casi base}{109}{section*.324}% 
+\contentsline {paragraph}{Soluzione completa}{109}{section*.325}% 
+\contentsline {subsubsection}{Sottostruttura ottima}{110}{section*.326}% 
+\contentsline {paragraph}{Dimostrazione primo caso}{110}{section*.327}% 
+\contentsline {subparagraph}{Prima parte}{110}{section*.328}% 
+\contentsline {subparagraph}{Seconda parte}{110}{section*.329}% 
+\contentsline {paragraph}{Dimostrazione secondo caso (terzo simmetrico)}{110}{section*.330}% 
+\contentsline {subsubsection}{Ricorrenza per il valore della soluzione ottimale}{110}{section*.331}% 
+\contentsline {subsubsection}{Ricostruire la sottosequenza comune}{111}{section*.332}% 
+\contentsline {subsection}{\numberline {13.3.6}String matching approssimato}{111}{subsection.13.3.6}% 
+\contentsline {subsubsection}{Definizione}{111}{section*.333}% 
+\contentsline {subsubsection}{Problema}{112}{section*.334}% 
+\contentsline {subsubsection}{Sottostruttura ottima}{112}{section*.335}% 
+\contentsline {subsubsection}{Ricostruzione della soluzione finale}{112}{section*.336}% 
+\contentsline {subsubsection}{Algoritmo}{112}{section*.337}% 
+\contentsline {subsection}{\numberline {13.3.7}Prodotto di catena di matrici}{113}{subsection.13.3.7}% 
+\contentsline {subsubsection}{Problema}{113}{section*.338}% 
+\contentsline {subsubsection}{Parentesizzazione}{113}{section*.339}% 
+\contentsline {paragraph}{Parentesizzazione ottima}{113}{section*.340}% 
+\contentsline {subparagraph}{Numero di Catalan}{113}{section*.341}% 
+\contentsline {subsubsection}{Lista di definizioni matematiche}{113}{section*.342}% 
+\contentsline {subsubsection}{Struttura di una parentesizzazione ottima}{113}{section*.343}% 
+\contentsline {paragraph}{Teorema della sottostruttura ottima}{113}{section*.344}% 
+\contentsline {subparagraph}{Enunciato}{114}{section*.345}% 
+\contentsline {subparagraph}{Dimostrazione}{114}{section*.346}% 
+\contentsline {subsubsection}{Valore della soluzione ottima}{114}{section*.347}% 
+\contentsline {subsubsection}{Implementazione}{114}{section*.348}% 
+\contentsline {paragraph}{Input}{114}{section*.349}% 
+\contentsline {paragraph}{Output}{114}{section*.350}% 
+\contentsline {paragraph}{Approccio ricorsivo}{115}{section*.351}% 
+\contentsline {subparagraph}{Valutazione}{115}{section*.352}% 
+\contentsline {paragraph}{Versione bottom-up}{115}{section*.353}% 
+\contentsline {subparagraph}{Valutazioni}{115}{section*.354}% 
+\contentsline {subsection}{\numberline {13.3.8}Insieme indipendente di intervalli pesati}{116}{subsection.13.3.8}% 
+\contentsline {subsubsection}{Problema}{116}{section*.355}% 
+\contentsline {paragraph}{Input}{116}{section*.356}% 
+\contentsline {subsubsection}{Pre-elaborazione}{116}{section*.357}% 
+\contentsline {subsubsection}{Implementazione}{117}{section*.358}% 
+\contentsline {subsubsection}{Costo computazionale}{117}{section*.359}% 
+\contentsline {chapter}{\numberline {14}Algoritmi greedy}{118}{chapter.14}% 
+\contentsline {section}{\numberline {14.1}Insieme indipendente massimale di intervalli}{118}{section.14.1}% 
+\contentsline {paragraph}{Input}{118}{section*.360}% 
+\contentsline {paragraph}{Output}{118}{section*.361}% 
+\contentsline {subsection}{\numberline {14.1.1}Affrontare il problema}{118}{subsection.14.1.1}% 
+\contentsline {subsubsection}{Programmazione dinamica}{118}{section*.362}% 
+\contentsline {subsubsection}{Tecnica greedy}{118}{section*.363}% 
+\contentsline {subsection}{\numberline {14.1.2}Sottostruttura ottima}{119}{subsection.14.1.2}% 
+\contentsline {subsubsection}{Teorema}{119}{section*.364}% 
+\contentsline {paragraph}{Enunciato}{119}{section*.365}% 
+\contentsline {paragraph}{Dimostrazione}{119}{section*.366}% 
+\contentsline {subsection}{\numberline {14.1.3}Definizione ricorsiva del costo della soluzione}{119}{subsection.14.1.3}% 
+\contentsline {subsubsection}{Definizione ricorsiva della soluzione}{119}{section*.367}% 
+\contentsline {subsubsection}{Definizione ricorsiva del costo}{119}{section*.368}% 
+\contentsline {subsection}{\numberline {14.1.4}Scelta ingorda}{119}{subsection.14.1.4}% 
+\contentsline {subsubsection}{Teorema}{119}{section*.369}% 
+\contentsline {paragraph}{Enunciato}{119}{section*.370}% 
+\contentsline {paragraph}{Dimostrazione}{120}{section*.371}% 
+\contentsline {subsubsection}{Conseguenze}{120}{section*.372}% 
+\contentsline {subsubsection}{Implementazione}{120}{section*.373}% 
+\contentsline {section}{\numberline {14.2}Approccio a partire da programmazione dinamica}{120}{section.14.2}% 
+\contentsline {section}{\numberline {14.3}Problema del resto}{120}{section.14.3}% 
+\contentsline {paragraph}{Input}{120}{section*.374}% 
+\contentsline {paragraph}{Definizione del problema}{120}{section*.375}% 
+\contentsline {subsection}{\numberline {14.3.1}Soluzione basata su programmazione dinamica}{121}{subsection.14.3.1}% 
+\contentsline {subsubsection}{Sottostruttura ottima}{121}{section*.376}% 
+\contentsline {paragraph}{Definizione ricorsiva}{121}{section*.377}% 
+\contentsline {subsection}{\numberline {14.3.2}Implementazione}{121}{subsection.14.3.2}% 
+\contentsline {subsection}{\numberline {14.3.3}Scelta greedy}{121}{subsection.14.3.3}% 
+\contentsline {subsubsection}{Implementazione}{122}{section*.378}% 
+\contentsline {section}{\numberline {14.4}Approccio greedy senza programmazione dinamica}{122}{section.14.4}% 
+\contentsline {section}{\numberline {14.5}Scheduling}{122}{section.14.5}% 
+\contentsline {paragraph}{Input}{122}{section*.379}% 
+\contentsline {paragraph}{Problema}{122}{section*.380}% 
+\contentsline {subsection}{\numberline {14.5.1}Dimostrazione di correttezza}{122}{subsection.14.5.1}% 
+\contentsline {subsubsection}{Teorema di scelta greedy}{122}{section*.381}% 
+\contentsline {paragraph}{Enunciato}{122}{section*.382}% 
+\contentsline {paragraph}{Dimostrazione}{122}{section*.383}% 
+\contentsline {subsubsection}{Teorema della sottostruttura ottima}{123}{section*.384}% 
+\contentsline {paragraph}{Enunciato}{123}{section*.385}% 
+\contentsline {section}{\numberline {14.6}Problema dello zaino reale}{123}{section.14.6}% 
+\contentsline {paragraph}{Input}{123}{section*.386}% 
+\contentsline {paragraph}{Problema}{123}{section*.387}% 
+\contentsline {subsection}{\numberline {14.6.1}Approcci greedy possibili}{123}{subsection.14.6.1}% 
+\contentsline {subsubsection}{Implementazione}{123}{section*.388}% 
+\contentsline {subsection}{\numberline {14.6.2}Correttezza}{123}{subsection.14.6.2}% 
+\contentsline {section}{\numberline {14.7}Problema della compressione}{123}{section.14.7}% 
+\contentsline {subsection}{\numberline {14.7.1}Codifica a prefissi}{124}{subsection.14.7.1}% 
+\contentsline {subsubsection}{Rappresentazione ad albero per la decodifica}{124}{section*.389}% 
+\contentsline {subsection}{\numberline {14.7.2}Definizione formale del problema}{124}{subsection.14.7.2}% 
+\contentsline {paragraph}{Input}{124}{section*.390}% 
+\contentsline {subsection}{\numberline {14.7.3}Algoritmo di Huffman}{124}{subsection.14.7.3}% 
+\contentsline {subsubsection}{Funzionamento algoritmo}{124}{section*.391}% 
+\contentsline {subsubsection}{Correttezza}{125}{section*.392}% 
+\contentsline {subsubsection}{Scelta greedy}{125}{section*.393}% 
+\contentsline {paragraph}{Enunciato}{125}{section*.394}% 
+\contentsline {paragraph}{Dimostrazione}{125}{section*.395}% 
+\contentsline {section}{\numberline {14.8}Albero di copertura di peso minimo}{126}{section.14.8}% 
+\contentsline {subsection}{\numberline {14.8.1}Definizione del problema}{126}{subsection.14.8.1}% 
+\contentsline {subsubsection}{Albero di copertura}{126}{section*.396}% 
+\contentsline {subsubsection}{Output}{126}{section*.397}% 
+\contentsline {subsection}{\numberline {14.8.2}Algoritmo generico}{126}{subsection.14.8.2}% 
+\contentsline {subsubsection}{Arco sicuro}{126}{section*.398}% 
+\contentsline {paragraph}{Definizioni}{126}{section*.399}% 
+\contentsline {paragraph}{Enunciato}{127}{section*.400}% 
+\contentsline {paragraph}{Dimostrazione}{127}{section*.401}% 
+\contentsline {paragraph}{Corollario}{127}{section*.402}% 
+\contentsline {subsection}{\numberline {14.8.3}Algoritmo di Kruskal}{127}{subsection.14.8.3}% 
+\contentsline {subsubsection}{Analisi della complessit\`a}{127}{section*.403}% 
+\contentsline {subsection}{\numberline {14.8.4}Algoritmo di Prim}{128}{subsection.14.8.4}% 
+\contentsline {paragraph}{Correttezza}{128}{section*.404}% 
+\contentsline {subsubsection}{Implementazione}{128}{section*.405}% 
+\contentsline {subsubsection}{Analisi complessit\`a}{128}{section*.406}% 
+\contentsline {chapter}{\numberline {15}Ricerca locale}{129}{chapter.15}% 
+\contentsline {section}{\numberline {15.1}Rete di flusso}{129}{section.15.1}% 
+\contentsline {subsection}{\numberline {15.1.1}Flusso}{129}{subsection.15.1.1}% 
+\contentsline {subsection}{\numberline {15.1.2}Definizioni}{129}{subsection.15.1.2}% 
+\contentsline {subsection}{\numberline {15.1.3}metodo delle reti residue}{130}{subsection.15.1.3}% 
+\contentsline {subsubsection}{Correttezza}{130}{section*.407}% 
+\contentsline {paragraph}{Lemma}{130}{section*.408}% 
+\contentsline {paragraph}{Dimostrazione}{130}{section*.409}% 
+\contentsline {subparagraph}{Vincolo sulla capacit\`a}{130}{section*.410}% 
+\contentsline {subparagraph}{Antisimmetria}{131}{section*.411}% 
+\contentsline {subparagraph}{Conservazione}{131}{section*.412}% 
+\contentsline {subsection}{\numberline {15.1.4}Metodo dei cammini aumentanti}{131}{subsection.15.1.4}% 
+\contentsline {subsubsection}{Ford-Fulkerson}{131}{section*.413}% 
+\contentsline {subsection}{\numberline {15.1.5}Ricerca del cammino}{131}{subsection.15.1.5}% 
+\contentsline {subsection}{\numberline {15.1.6}Complessit\`a}{132}{subsection.15.1.6}% 
+\contentsline {subsubsection}{Dimostrazione}{132}{section*.414}% 
+\contentsline {paragraph}{Lemma della monotonia}{132}{section*.415}% 
+\contentsline {subparagraph}{Dimostrazione}{132}{section*.416}% 
+\contentsline {paragraph}{Lemma degli aumenti di flusso}{132}{section*.417}% 
+\contentsline {subparagraph}{Dimostrazione}{132}{section*.418}% 
+\contentsline {paragraph}{Conclusione}{132}{section*.419}% 
+\contentsline {subsection}{\numberline {15.1.7}Dimostrazione Correttezza}{132}{subsection.15.1.7}% 
+\contentsline {subsubsection}{Definizioni}{132}{section*.420}% 
+\contentsline {subsubsection}{Lemma del valore del flusso di un taglio}{133}{section*.421}% 
+\contentsline {paragraph}{Dimostrazione}{133}{section*.422}% 
+\contentsline {subsubsection}{Lemma della capacit\`a di taglio}{133}{section*.423}% 
+\contentsline {paragraph}{Dimostrazione}{133}{section*.424}% 
+\contentsline {subsubsection}{Teorema del taglio minimo o del flusso massimo}{133}{section*.425}% 
+\contentsline {paragraph}{$\mathbf {(1)\Rightarrow (2)}$}{134}{section*.426}% 
+\contentsline {paragraph}{$\mathbf {(2)\Rightarrow (3)}$}{134}{section*.427}% 
+\contentsline {paragraph}{$\mathbf {(3)\Rightarrow (1)}$}{134}{section*.428}% 
+\contentsline {section}{\numberline {15.2}Abbinamento massimo nei grafi bipartiti o problema del job assignment}{134}{section.15.2}% 
+\contentsline {paragraph}{Input}{134}{section*.429}% 
+\contentsline {paragraph}{Output}{134}{section*.430}% 
+\contentsline {subsection}{\numberline {15.2.1}Metodo di risoluzione}{134}{subsection.15.2.1}% 
+\contentsline {chapter}{\numberline {16}Backtracking}{135}{chapter.16}% 
+\contentsline {section}{\numberline {16.1}Brute force}{135}{section.16.1}% 
+\contentsline {subsection}{\numberline {16.1.1}Costruire lo spazio delle soluzioni \`e costoso}{135}{subsection.16.1.1}% 
+\contentsline {section}{\numberline {16.2}Backtracking}{135}{section.16.2}% 
+\contentsline {subsection}{\numberline {16.2.1}Organizzazione generale}{136}{subsection.16.2.1}% 
+\contentsline {subsection}{\numberline {16.2.2}Soluzioni parziali}{136}{subsection.16.2.2}% 
+\contentsline {subsection}{\numberline {16.2.3}Albero delle decisioni}{136}{subsection.16.2.3}% 
+\contentsline {subsection}{\numberline {16.2.4}Pruning}{136}{subsection.16.2.4}% 
+\contentsline {section}{\numberline {16.3}Enumerazione}{136}{section.16.3}% 
+\contentsline {subsection}{\numberline {16.3.1}Sottoinsiemi}{136}{subsection.16.3.1}% 
+\contentsline {subsubsection}{Versione iterativa}{137}{section*.431}% 
+\contentsline {subsection}{\numberline {16.3.2}Permutazioni}{137}{subsection.16.3.2}% 
+\contentsline {subsection}{\numberline {16.3.3}Enumerazione schema completo}{138}{subsection.16.3.3}% 
+\contentsline {subsection}{\numberline {16.3.4}K-sottoinsiemi}{138}{subsection.16.3.4}% 
+\contentsline {subsection}{\numberline {16.3.5}Somma di sottoinsiemi}{138}{subsection.16.3.5}% 
+\contentsline {section}{\numberline {16.4}Problemi}{139}{section.16.4}% 
+\contentsline {subsection}{\numberline {16.4.1}Problema delle otto regine}{139}{subsection.16.4.1}% 
+\contentsline {subsubsection}{Ci sono $\mathbf {n^2}$ caselle dove piazzare una regina}{139}{section*.432}% 
+\contentsline {subsubsection}{Si devono piazzare $\mathbf {n}$ regine in $\mathbf {n^2}$ caselle}{139}{section*.433}% 
+\contentsline {subsubsection}{Non mettere regine in caselle precedenti a quelle gi\`a scelte}{140}{section*.434}% 
+\contentsline {subsubsection}{Ogni riga della scacchiera deve contenere esattamente una regina}{140}{section*.435}% 
+\contentsline {subsubsection}{Anche ogni colonna deve contenere esattamente una regina}{140}{section*.436}% 
+\contentsline {subsubsection}{Minimum-conflicts heuristic}{140}{section*.437}% 
+\contentsline {subsection}{\numberline {16.4.2}Giro di cavallo}{141}{subsection.16.4.2}% 
+\contentsline {paragraph}{Soluzione}{141}{section*.438}% 
+\contentsline {subsection}{\numberline {16.4.3}Sudoku}{143}{subsection.16.4.3}% 
+\contentsline {section}{\numberline {16.5}Backtracking iterativo}{143}{section.16.5}% 
+\contentsline {subsection}{\numberline {16.5.1}Inviluppo convesso (convex hull)}{143}{subsection.16.5.1}% 
+\contentsline {paragraph}{Inviluppo convesso}{143}{section*.439}% 
+\contentsline {subsection}{\numberline {16.5.2}Algoritmo inefficiente $\mathbf {O(n^3)}$}{144}{subsection.16.5.2}% 
+\contentsline {subsubsection}{Stessa parte}{144}{section*.440}% 
+\contentsline {subsection}{\numberline {16.5.3}Algoritmo di Jarvis}{144}{subsection.16.5.3}% 
+\contentsline {paragraph}{Punti 0, 1}{144}{section*.441}% 
+\contentsline {paragraph}{Punto i}{144}{section*.442}% 
+\contentsline {paragraph}{Terminazione}{144}{section*.443}% 
+\contentsline {subsection}{\numberline {16.5.4}Algoritmo di Graham}{144}{subsection.16.5.4}% 
+\contentsline {paragraph}{Fase 1}{144}{section*.444}% 
+\contentsline {paragraph}{Fase 2}{144}{section*.445}% 
+\contentsline {subsubsection}{Complessit\`a}{145}{section*.446}% 
+\contentsline {chapter}{\numberline {17}Algoritmi Probabilistici}{146}{chapter.17}% 
+\contentsline {section}{\numberline {17.1}Algoritmi Montecarlo}{146}{section.17.1}% 
+\contentsline {subsection}{\numberline {17.1.1}Test di primalit\`a}{146}{subsection.17.1.1}% 
+\contentsline {subsubsection}{Piccolo teorema di Fermat}{146}{section*.447}% 
+\contentsline {paragraph}{Test di primalit\`a di Fermat}{146}{section*.448}% 
+\contentsline {subsubsection}{Test di Miller-Rabin}{147}{section*.449}% 
+\contentsline {subsection}{\numberline {17.1.2}Espressione polinomiale nulla}{147}{subsection.17.1.2}% 
+\contentsline {subsubsection}{Algoritmo}{147}{section*.450}% 
+\contentsline {section}{\numberline {17.2}Algoritmi Las Vegas}{147}{section.17.2}% 
+\contentsline {subsection}{\numberline {17.2.1}Statistiche d'ordine}{147}{subsection.17.2.1}% 
+\contentsline {subsubsection}{Selezione per piccoli valori di $\mathbf {k}$}{148}{section*.451}% 
+\contentsline {paragraph}{Complessit\`a}{148}{section*.452}% 
+\contentsline {subsubsection}{Algoritmo di selezione}{148}{section*.453}% 
+\contentsline {paragraph}{Complessit\`a}{148}{section*.454}% 
+\contentsline {subparagraph}{Caso pessimo}{148}{section*.455}% 
+\contentsline {subparagraph}{Caso ottimo}{148}{section*.456}% 
+\contentsline {subparagraph}{Caso medio}{149}{section*.457}% 
+\contentsline {subsubsection}{Selezione deterministica}{149}{section*.458}% 
+\contentsline {paragraph}{Algoritmo}{149}{section*.459}% 
+\contentsline {chapter}{\numberline {18}Problemi intrattabili, teoria dell'NP-completezza}{151}{chapter.18}% 
+\contentsline {section}{\numberline {18.1}Problemi}{151}{section.18.1}% 
+\contentsline {subsection}{\numberline {18.1.1}Tipologie di problemi}{151}{subsection.18.1.1}% 
+\contentsline {subsubsection}{Problemi di ottimizzazione}{151}{section*.460}% 
+\contentsline {subsubsection}{Problemi di ricerca}{151}{section*.461}% 
+\contentsline {subsubsection}{Problemi di decisione}{151}{section*.462}% 
+\contentsline {subsection}{\numberline {18.1.2}Equivalenza di problemi di ottimizzazione e decisione}{151}{subsection.18.1.2}% 
+\contentsline {section}{\numberline {18.2}Riduzione polinomiale}{152}{section.18.2}% 
+\contentsline {subsection}{\numberline {18.2.1}Colorazione di grafi}{152}{subsection.18.2.1}% 
+\contentsline {subsubsection}{Ottimizzazione}{152}{section*.463}% 
+\contentsline {subsubsection}{Decisionale}{152}{section*.464}% 
+\contentsline {subsection}{\numberline {18.2.2}Sudoku}{152}{subsection.18.2.2}% 
+\contentsline {subsubsection}{Decisionale}{152}{section*.465}% 
+\contentsline {subsection}{\numberline {18.2.3}Riduzione da problema particolare a problema generale}{152}{subsection.18.2.3}% 
+\contentsline {subsubsection}{Riduzione in tempo polinomiale}{152}{section*.466}% 
+\contentsline {subsubsection}{La riduzione}{153}{section*.467}% 
+\contentsline {subsection}{\numberline {18.2.4}Insieme indipendente}{153}{subsection.18.2.4}% 
+\contentsline {subsubsection}{Ottimizzazione}{153}{section*.468}% 
+\contentsline {subsubsection}{Decisionale}{153}{section*.469}% 
+\contentsline {subsubsection}{Packing problem}{153}{section*.470}% 
+\contentsline {subsection}{\numberline {18.2.5}Copertura di vertici}{153}{subsection.18.2.5}% 
+\contentsline {subsubsection}{Ottimizzazione}{153}{section*.471}% 
+\contentsline {subsubsection}{Decisionale}{153}{section*.472}% 
+\contentsline {subsubsection}{Covering problem}{153}{section*.473}% 
+\contentsline {subsection}{\numberline {18.2.6}Riduzione per problemi duali}{154}{subsection.18.2.6}% 
+\contentsline {subsubsection}{Conclusione}{154}{section*.474}% 
+\contentsline {subsection}{\numberline {18.2.7}SAT}{154}{subsection.18.2.7}% 
+\contentsline {subsubsection}{3-SAT}{154}{section*.475}% 
+\contentsline {subsection}{\numberline {18.2.8}Riduzione tramite gadget}{154}{subsection.18.2.8}% 
+\contentsline {subsection}{\numberline {18.2.9}Riduzione da problema generale a problema generale}{154}{subsection.18.2.9}% 
+\contentsline {subsection}{\numberline {18.2.10}Transitivit\`a delle riduzioni}{155}{subsection.18.2.10}% 
+\contentsline {section}{\numberline {18.3}Classi $\mathbf {\mathbb {P}}$, $\mathbf {\mathbb {PSPACE}}$}{155}{section.18.3}% 
+\contentsline {subsection}{\numberline {18.3.1}Classi di complessit\`a}{155}{subsection.18.3.1}% 
+\contentsline {subsubsection}{Classi $\mathbf {\mathbb {P}}, \mathbf {\mathbb {PSPACE}}$}{155}{section*.476}% 
+\contentsline {subsubsection}{Classe $\mathbf {\mathbb {NP}}$}{155}{section*.477}% 
+\contentsline {paragraph}{Certificato}{155}{section*.478}% 
+\contentsline {subparagraph}{SAT}{155}{section*.479}% 
+\contentsline {subparagraph}{GRAPH-COLORING}{155}{section*.480}% 
+\contentsline {subparagraph}{INDEPENDENT-SET}{156}{section*.481}% 
+\contentsline {paragraph}{Certificati non polinomiali}{156}{section*.482}% 
+\contentsline {section}{\numberline {18.4}Relazioni fra problemi}{156}{section.18.4}% 
+\contentsline {subsubsection}{Lemma}{156}{section*.483}% 
+\contentsline {paragraph}{Enunciato}{156}{section*.484}% 
+\contentsline {paragraph}{Dimostrazione}{156}{section*.485}% 
+\contentsline {subsection}{\numberline {18.4.1}Definizioni}{156}{subsection.18.4.1}% 
+\contentsline {subsubsection}{Problema $\mathbf {\mathbb {NP}}$-arduo ($\mathbf {\mathbb {NP}}$-hard)}{156}{section*.486}% 
+\contentsline {subsubsection}{Problema $\mathbf {\mathbb {NP}}$-completo ($\mathbf {\mathbb {NP}}$-complete)}{156}{section*.487}% 
+\contentsline {subsubsection}{$\mathbf {\mathbb {P}=\mathbb {NP}}$}{156}{section*.488}% 
+\contentsline {subsection}{\numberline {18.4.2}Esistenza di problemi $\mathbf {\mathbb {NP}}$-completi}{156}{subsection.18.4.2}% 
+\contentsline {section}{\numberline {18.5}Problemi $\mathbf {\mathbb {NP}}$-completi classici}{156}{section.18.5}% 
+\contentsline {subsection}{\numberline {18.5.1}Cricca (Clique)}{156}{subsection.18.5.1}% 
+\contentsline {subsection}{\numberline {18.5.2}Commesso viaggiatore}{157}{subsection.18.5.2}% 
+\contentsline {subsection}{\numberline {18.5.3}Programmazione lineare (0, 1)}{157}{subsection.18.5.3}% 
+\contentsline {subsection}{\numberline {18.5.4}Copertura esatta di insiemi (Exact cover)}{157}{subsection.18.5.4}% 
+\contentsline {subsection}{\numberline {18.5.5}Partizione (partition)}{157}{subsection.18.5.5}% 
+\contentsline {subsection}{\numberline {18.5.6}Somma di sottoinsiemi (subset-sum)}{157}{subsection.18.5.6}% 
+\contentsline {subsection}{\numberline {18.5.7}Zaino (knapsack)}{157}{subsection.18.5.7}% 
+\contentsline {subsection}{\numberline {18.5.8}Circuito hamiltoniano}{157}{subsection.18.5.8}% 
+\contentsline {chapter}{\numberline {19}Tecniche risolutive per problemi intrattabili}{158}{chapter.19}% 
+\contentsline {section}{\numberline {19.1}Subset-Sum}{158}{section.19.1}% 
+\contentsline {paragraph}{Problema}{158}{section*.489}% 
+\contentsline {paragraph}{Soluzioni}{158}{section*.490}% 
+\contentsline {subsection}{\numberline {19.1.1}Programmazione dinamica}{158}{subsection.19.1.1}% 
+\contentsline {subsection}{\numberline {19.1.2}Backtracking}{159}{subsection.19.1.2}% 
+\contentsline {subsection}{\numberline {19.1.3}Memoization}{159}{subsection.19.1.3}% 
+\contentsline {subsection}{\numberline {19.1.4}Complessit\`a}{160}{subsection.19.1.4}% 
+\contentsline {section}{\numberline {19.2}Problemi fortemente, debolmente $\mathbf {\mathbb {NP}}$-completi}{160}{section.19.2}% 
+\contentsline {subsubsection}{Dimensioni del problema}{160}{section*.491}% 
+\contentsline {subsection}{\numberline {19.2.1}Problemi}{160}{subsection.19.2.1}% 
+\contentsline {subsubsection}{Cricca (CLIQUE)}{160}{section*.492}% 
+\contentsline {subsubsection}{Commesso viaggiatore (TSP)}{160}{section*.493}% 
+\contentsline {subsubsection}{Esempi}{160}{section*.494}% 
+\contentsline {subsection}{\numberline {19.2.2}Problema fortemente $\mathbf {\mathbb {NP}}$-completo}{160}{subsection.19.2.2}% 
+\contentsline {subsubsection}{Cricca (CLIQUE)}{160}{section*.495}% 
+\contentsline {subsubsection}{Commesso viaggiatore (TSP)}{161}{section*.496}% 
+\contentsline {subsubsection}{Circuito hamiltoniano (HAMILTONIAN-CIRCUIT)}{161}{section*.497}% 
+\contentsline {paragraph}{Complessit\`a}{161}{section*.498}% 
+\contentsline {subsubsection}{Dimostrazione che TSP \`e fortemente $\mathbf {\mathbb {NP}}$-completo}{161}{section*.499}% 
+\contentsline {subsection}{\numberline {19.2.3}Problema debolmente $\mathbf {\mathbb {NP}}$-completo}{161}{subsection.19.2.3}% 
+\contentsline {subsubsection}{Somma di sottoinsieme (SUBSET-SUM)}{161}{section*.500}% 
+\contentsline {paragraph}{Si verifichi che SUBSET-SUM \`e debolmente $\mathbf {\mathbb {NP}}$-completo}{161}{section*.501}% 
+\contentsline {subsection}{\numberline {19.2.4}Algoritmi pseudo-polinomiali}{161}{subsection.19.2.4}% 
+\contentsline {subsubsection}{Teorema}{161}{section*.502}% 
+\contentsline {subsection}{\numberline {19.2.5}ESEMPI}{162}{subsection.19.2.5}% 
+\contentsline {subsubsection}{Partizione (PARTITION)}{162}{section*.503}% 
+\contentsline {subsubsection}{3-Partizione (3-PARTITION)}{162}{section*.504}% 
+\contentsline {section}{\numberline {19.3}Algoritmi di approssimazione}{162}{section.19.3}% 
+\contentsline {paragraph}{Definizione}{162}{section*.505}% 
+\contentsline {subsection}{\numberline {19.3.1}Bin packing}{162}{subsection.19.3.1}% 
+\contentsline {subsubsection}{Algoritmo FIRST-FIT}{162}{section*.506}% 
+\contentsline {paragraph}{$\mathbf {\alpha }(n)$}{163}{section*.507}% 
+\contentsline {paragraph}{Variante First-fit decreasing}{163}{section*.508}% 
+\contentsline {subsection}{\numberline {19.3.2}Commesso viaggiatore con disuguaglianze particolari (triangolari o $\mathbf {\Delta }$-TSP)}{163}{subsection.19.3.2}% 
+\contentsline {subsubsection}{$\mathbf {\Delta }$-TSP \`e $\mathbf {\mathbb {NP}}$-completo}{163}{section*.509}% 
+\contentsline {subsubsection}{Algoritmo di approssimazione}{163}{section*.510}% 
+\contentsline {paragraph}{Teorema}{164}{section*.511}% 
+\contentsline {subparagraph}{Enunciato}{164}{section*.512}% 
+\contentsline {subparagraph}{Dimostrazione}{164}{section*.513}% 
+\contentsline {paragraph}{Algoritmo}{164}{section*.514}% 
+\contentsline {paragraph}{Note}{164}{section*.515}% 
+\contentsline {subsubsection}{Non approssimabilit\`a di TSP}{164}{section*.516}% 
+\contentsline {section}{\numberline {19.4}Algoritmi euristici}{164}{section.19.4}% 
+\contentsline {subsection}{\numberline {19.4.1}Approccio greedy}{164}{subsection.19.4.1}% 
+\contentsline {subsubsection}{TSP - shortest edges first}{164}{section*.517}% 
+\contentsline {subsubsection}{TSP - Nearest neighbor}{165}{section*.518}% 
+\contentsline {subsubsection}{Conclusioni}{165}{section*.519}% 
+\contentsline {subsection}{\numberline {19.4.2}Approccio ricerca locale}{165}{subsection.19.4.2}% 
+\contentsline {subsubsection}{TSP}{165}{section*.520}% 
+\contentsline {section}{\numberline {19.5}Branch-\&-bound}{166}{section.19.5}% 
+\contentsline {subsection}{\numberline {19.5.1}Upper bound}{166}{subsection.19.5.1}% 
+\contentsline {subsection}{\numberline {19.5.2}Lower bound}{166}{subsection.19.5.2}% 
+\contentsline {subsubsection}{Potatura}{166}{section*.521}% 
+\contentsline {subsection}{\numberline {19.5.3}Note}{166}{subsection.19.5.3}% 
+\contentsline {subsection}{\numberline {19.5.4}Schema generale}{166}{subsection.19.5.4}% 
+\contentsline {subsection}{\numberline {19.5.5}Commesso viaggiatore}{167}{subsection.19.5.5}% 
+\contentsline {subsubsection}{Lower bound}{167}{section*.522}% 
+\contentsline {subsubsection}{Implementazione}{168}{section*.523}% 
+\contentsline {paragraph}{Possibili miglioramenti}{168}{section*.524}% 
+\contentsline {chapter}{\numberline {20}Algoritmi di ordinamento}{169}{chapter.20}% 
+\contentsline {section}{\numberline {20.1}Limite inferiore}{169}{section.20.1}% 
+\contentsline {paragraph}{Propriet\`a dell'albero di decisione}{169}{section*.525}% 
+\contentsline {paragraph}{Lemma $\mathbf {1}$}{169}{section*.526}% 
+\contentsline {paragraph}{Lemma $\mathbf {2}$}{169}{section*.527}% 
+\contentsline {paragraph}{Teorema}{169}{section*.528}% 
+\contentsline {section}{\numberline {20.2}Ulteriori algoritmi di ordinamento}{170}{section.20.2}% 
+\contentsline {subsection}{\numberline {20.2.1}Spaghetti Sort}{170}{subsection.20.2.1}% 
+\contentsline {subsection}{\numberline {20.2.2}Counting Sort}{170}{subsection.20.2.2}% 
+\contentsline {subsubsection}{Complessit\`a}{170}{section*.529}% 
+\contentsline {subsection}{\numberline {20.2.3}Pigeonhole Sort}{170}{subsection.20.2.3}% 
+\contentsline {subsection}{\numberline {20.2.4}Bucket Sort}{171}{subsection.20.2.4}% 
+\contentsline {section}{\numberline {20.3}Conclusioni}{171}{section.20.3}% 
+\contentsline {subsection}{\numberline {20.3.1}Stabilit\`a}{171}{subsection.20.3.1}% 
+\contentsline {subsection}{\numberline {20.3.2}Riassunto}{171}{subsection.20.3.2}% 
+\contentsline {subsubsection}{Insertion Sort}{171}{section*.530}% 
+\contentsline {subsubsection}{Merge Sort}{171}{section*.531}% 
+\contentsline {subsubsection}{Heap Sort}{171}{section*.532}% 
+\contentsline {subsubsection}{Quick Sort}{171}{section*.533}% 
+\contentsline {subsubsection}{Counting Sort}{171}{section*.534}% 
+\contentsline {subsubsection}{Pigeonhole Sort}{171}{section*.535}% 
+\contentsline {subsubsection}{Bucket Sort}{171}{section*.536}% 
+\contentsline {subsubsection}{Shell Sort}{172}{section*.537}% 
+\contentsline {subsubsection}{Tim Sort}{172}{section*.538}% 
