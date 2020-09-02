@@ -1,0 +1,31 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Nil}{nil}
+\SetKw{Print}{print}
+\SetKw{Return}{return}
+\SetKw{Int}{int}
+\SetKw{Bool}{boolean}
+\SetKwData{Tree}{Tree}
+\SetKwFunction{Dfs}{dfs}
+\SetKwFunction{Left}{left}
+\SetKwFunction{Right}{right}
+\SetKwFunction{Dfs}{dfs}
+\SetKwFunction{Pdi}{Karatsuba}
+
+
+\caption{\protect\Bool[] \protect\Pdi{\protect\Bool[] X, \protect\Bool[] Y, \protect\Int n}}
+
+\uIf{n == 1}{
+	\Return X[1]$\cdot$Y[1]\;
+}
+\Else{
+	\comment{Spezza $X$ in $a;b$ e $Y$ in $c;d$}
+	\Bool[] $A_1$ = \Pdi{a, c, $\frac{n}{2}$}\;
+	\Bool[] $A_3$ = \Pdi{b, d, $\frac{n}{2}$}\;
+	\Bool[] $m$ = \Pdi{a + b, c + d, $\frac{n}{2}$}\;
+	\Bool[] $A_2$ = $m-A_1-A_3$\;
+	\Return $A_1\cdot 2^n+A_2\cdot 2^{\frac{n}{2}}+A_3$\;
+}
+
+\end{algorithm}

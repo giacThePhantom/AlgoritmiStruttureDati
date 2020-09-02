@@ -210,6 +210,57 @@ Espandendo le relazioni dimostrate \`e possibile ottenere un ordinamento delle p
 O(1)&\subset O(\log^r n)\subset O(\log^s n)\subset O(n^h)\subset O(n^h\log^r n)\\
 &\subset O(n^h\log^s n)\subset O(n^k)\subset O(a^n)\subset O(b^n)
 \end{align*}
+\subsection{Moltiplicare numeri binari}
+\subsubsection{Algoritmo elementare del prodotto}
+L'algoritmo \emph{prod()} moltiplica ogni bit con ogni altro bir per un costo totale di $cn^2$, ovvero $T_{prod}(n)=O(n^2)$.
+\subsubsection{Algoritmo divide-et-impera}
+\begin{align*}
+	X &= a\cdot 2^{\frac{n}{2}}+ b\\
+	Y &= c\cdot 2^{\frac{n}{2}}+ d\\
+ X\cdot Y &= ac\cdot 2^n + (ad+bc)\cdot 2^{\frac{n}{2}} +bd
+\end{align*}
+\input{Pseudocodice/156_pdi}
+Si noti come moltiplicare per $2^t$ \`e uno shift di $t$ posizioni in tempo lineare. 
+$$T(n) = \begin{cases}
+	c_1 & n = 1\\
+	4T(\frac{n}{2} + c_2\cdot n &n>1\\
+\end{cases}$$
+Espandendo l'equazione di ricorrenza: 
+\begin{align*}
+	&c_2\cdot1\cdot n\\
+	&c_2\cdot 4\cdot \frac{n}{2}\\
+	&c_2\cdot 4^2\cdot\frac{n}{2^2}\\
+	&\vdots\\
+	&c_2\cdot 4^i\cdot\frac{n}{2^i}\\
+	&T(1)\cdot4^{\log n}\\
+	&=c_1\cdot n^{\log 4}\\
+	&=c_1\cdot n^2
+\end{align*}
+Si noti pertanto come $T(n) = O(n^2)$, pertanto non si \`e migliorato rispetto all'algoritmo elementare, anzi, sono state introdotte costanti moltiplicative pi\`u elevate. 
+\subsubsection{Moltiplicazione di Karatsuba}
+\begin{align*}
+	A_1 &= a\times c\\
+	A_3 &= b\times d\\
+	m   &= (a+b)\times(c+d) = ac + ad+bc+bd\\
+	A_2 &= m - A_1 - A_3 = ad+bc
+\end{align*}
+\input{Pseudocodice/157_Karatsuba}
+$$T(n) = \begin{cases}
+	c_1 & n = 1\\
+	3T(\frac{n}{2} + c_2\cdot n &n>1\\
+\end{cases}$$
+Espandendo l'equazione di ricorrenza: 
+\begin{align*}
+	&c_2\cdot1\cdot n\\
+	&c_2\cdot 3\cdot \frac{n}{2}\\
+	&c_2\cdot 3^2\cdot\frac{n}{2^2}\\
+	&\vdots\\
+	&c_2\cdot 3^i\cdot\frac{n}{2^i}\\
+	&T(1)\cdot3^{\log n}\\
+	&=c_1\cdot n^{\log 3}\\
+	&=c_1\cdot n^{1.58\dots}
+\end{align*}
+Si noti pertanto come in questo caso $T_{kara}(n) = O(n^{1.58\dots})$.
 \section{Ricorrenze}
 \subsubsection{Definizioni}
 \begin{itemize}
@@ -255,7 +306,7 @@ Si supponga dapprima per semplicit\`a che $n$ sia una potenza di $b$: $n = b^k$ 
 	     &= a(aT(b^{k-2}) + cb^{(k-1)\beta}) + cb^{k\beta}\\
 	     &= a(a(aT(b^{k-3}) + cb^{(k-12\beta}) + cb^{(k-1)\beta}) + cb^{k\beta}\\
 	     &\ \vdots \\
-	     &= a(a(\cdots a(aT(1) + cb^{(\beta}) + cb^{2\beta})+\cdots+cb^{(k-1)\beta})+cb^{k\beta}\\
+	     &= a(a(\cdots a(aT(1) + cb^{\beta}) + cb^{2\beta})+\cdots+cb^{(k-1)\beta})+cb^{k\beta}\\
 	     &= a^kd + ca^{k-1}b^\beta + ca^{k-2}b^\beta + \cdots + cab^{(k-1)\beta} + cb^{k\beta}\\
 	     &= a^kd + cb^{k\beta}\biggl[\biggl(\frac{a}{b^\beta}\biggr)^{k-1} + \biggl(\frac{a}{b^\beta}\biggr)^{k-2} + \cdots \biggl(\frac{a}{b^\beta}\biggr)^{2} + \frac{a}{b^\beta} + 1
 	     	\biggr]
@@ -395,15 +446,34 @@ Cerco il minimo e lo metto nella posizione corretta, riducendo il problema ai re
 Algoritmo efficiente per ordinare piccoli insiemi. In cui si prende l'i-esimo elemento e lo si mette nella posizione corretta rispetto agli elementi
 precedenti, proseguendo fino alla fine.
 \input{Pseudocodice/2_InsertionSort}
-\paragraph{Correttezza e complessit\`a}
-DA COMPLETARE
+\paragraph{Correttezza}\mbox{}\\
+L'invariante di ciclo in un ciclo \emph{for} viene verificata dopo la modifica della variabile e prima della verifica. L'invariante da considerare \`e: all'inizio del ciclo $i$-esimo
+il sottovettore $A[1\dots i -1]$ \`e ordinato.
+\begin{itemize}
+	\item \emph{Inizializzazione}: inizialmente $j=2$, il sottoarray dato da $A[1\dots 1]$ \`e ordinato.
+	\item \emph{Conservazione}: sapendo che il subarray $A[1\dots j-1]$ \`e oridnato, il ciclo while sposta tutti gli elementi maggiori di $A[j]$ fino a una posizione $k$ inclusa
+		di una posizione verso destra preservando l'ordine ma duplicando il valore in posizione $k$. Tutti i valori precedenti $k$ sono minori di $A[j]$ e ordinati, tutti i 
+		valori dopo $k$ sono maggiori di $A[j]$ e ordinati, pertanto inserendo $A[j]$ in posizione $k$ si dimostra l'invariante. 
+	\item \emph{Terminazione}: alla fine del ciclo, $j = n + 1$, l'invariante mostra come l'array intero $A[1\dots j - 1] = A[1\dots n]$ \`e ordinato.
+\end{itemize}
+\paragraph{Complessit\`a}
+La complessit\`a \`e determinata dal numero di confronti effettuati per ogni elemento $i\in [2, n]$. Detto il numero di confronti $t_i$, il numero totale dipendente dalla posizione 
+iniziale \`e $\sum\limits_{i=2}^n t_i$.
+\subparagraph{Caso ottimo}
+L'array \`e ordinato e pertanto $t_i = 1 \forall i$ in quanto $A[j-1] = A[i]\le A[j], \forall j$, pertanto il \emph{while} esce subito. La complessit\`a \`e $O(n)$. 
+\subparagraph{Caso pessimo}
+L'array \`e ordinato nell'ordine inverso, tutti gli elementi in $A[1\dots i - j]$ sono superiori ad $A[i]$, pertanto vengono spostati, il numero di confronti \`e pari a $i$: 
+$\sum\limits_{i=2}^n(i-1) = (\sum\limits_{i = 2}^{n-1}i)-1 = \frac{n(n+1)}{2}$, pertanto il risultato finale sar\`a $T(n) = an^2+bn+c = O(n^2)$. 
+\subparagraph{Caso medio}
+In media met\`a degli elementi in $A[1\dots i - 1]$ sono maggiori di $A[i]$, e met\`a minori, pertanto per i singoli elementi si ottiene $\sum\limits_{i = 2}^n\frac{i}{2}=\frac{n(n+1)}{4}
+-1$, il costo finale $T(n) = an^2+bn+c = O(n^2)$. 
 \subsubsection{MergeSort}
 Il mergeSort si basa sulla tecnica di divide-et-impera in quanto divide il vettore di $n$ elementi in due sottovettori di $\frac{n}{2}$ elementi, chiama il
 mergeSort ricorsivamente su quei due elementi e unisce (merge) le due sequenze ordinate. Si sfrutta il fatto che i due sottovettori sono gi\`a ordinati per
 ordinare pi\`u velocemente.
 \paragraph{\emph{merge()}}
 \input{Pseudocodice/3_Merge}
-\subparagraph{Costo computazionale} $O(n)$
+\subparagraph{Costo computazionale} $O(n)$ in quanto tutti gli elementi di entrambi gli array devono essere visitati almeno una volta. 
 \myparagraph{\emph{mergeSort()}}
 \input{Pseudocodice/4_MergeSort}
 \subparagraph{Costo computazionale} Si assuma per semplificare che $n = 2^k$ in modo che $k=\log n$ e tutti i sottovettori hanno dimensioni di potenze 

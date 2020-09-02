@@ -28,7 +28,7 @@
 		\Delete u\;
 	}
 	\uElseIf{u.\Left $\neq$ \Nil \And u.\Right $\neq$ \Nil}{
-		\Tree s = \SuccessorNode{}\;
+		\Tree s = \SuccessorNode{u}\;
 		\Link{s.\Parent, s.\Right, s.\Key}\;
 		u.\Key{} = s.\Key{}\;
 		u.\Value{} = s.\Value{}\;
