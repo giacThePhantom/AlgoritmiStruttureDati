@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.4.24)  2 SEP 2020 23:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.4.24)  3 SEP 2020 18:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -677,7 +677,7 @@ eX warning (ext4): destination with the same identifier (name{page.1}) has been
  already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.115 ....1}Alberi ordinati}{23}{subsection.3.4.1}
+l.115 ....1}Alberi ordinati}{29}{subsection.3.4.1}
                                                   % [1
 
 ] [2] [3] [4] [5]
@@ -813,8 +813,8 @@ l.10 \caption{\protect\Dictionary}
                                   
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 12.
-) [29] (./Pseudocodice/8_.texpdfTeX warning (ext4): destination with the same i
-dentifier (name{algocf.}) has been already used, duplicate ignored
+) (./Pseudocodice/8_.texpdfTeX warning (ext4): destination with the same identi
+fier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.29 \caption{\protect\List}
@@ -823,14 +823,14 @@ Overfull \hbox (15.0pt too wide) detected at line 82
 [][] 
  []
 
-) (./Pseudocodice/9_Stack.texpdfTeX warning (ext4): destination with the same i
-dentifier (name{algocf.}) has been already used, duplicate ignored
+[29]) (./Pseudocodice/9_Stack.texpdfTeX warning (ext4): destination with the sa
+me identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.2 \caption{Stack}
-                   ) [30] (./Pseudocodice/10_.texpdfTeX warning (ext4): destina
-tion with the same identifier (name{algocf.}) has been already used, duplicate 
-ignored
+                   ) (./Pseudocodice/10_.texpdfTeX warning (ext4): destination 
+with the same identifier (name{algocf.}) has been already used, duplicate ignor
+ed
 <to be read again> 
                    \relax 
 l.19 \caption{\protect\Stack}
@@ -839,14 +839,14 @@ Overfull \hbox (15.0pt too wide) detected at line 52
 [][] 
  []
 
-) (./Pseudocodice/11_.texpdfTeX warning (ext4): destination with the same ident
-ifier (name{algocf.}) has been already used, duplicate ignored
+) [30] (./Pseudocodice/11_.texpdfTeX warning (ext4): destination with the same 
+identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.13 \caption{\protect\Queue}
-                             ) [31] (./Pseudocodice/12_.texpdfTeX warning (ext4
-): destination with the same identifier (name{algocf.}) has been already used, 
-duplicate ignored
+                             ) (./Pseudocodice/12_.texpdfTeX warning (ext4): de
+stination with the same identifier (name{algocf.}) has been already used, dupli
+cate ignored
 <to be read again> 
                    \relax 
 l.19 \caption{\protect\Queue}
@@ -855,7 +855,7 @@ Overfull \hbox (15.0pt too wide) detected at line 55
 [][] 
  []
 
-)) (./Chapters/04_Alberi.tex [32]
+)) (./Chapters/04_Alberi.tex [31] [32]
 Capitolo 4.
 [33
 
@@ -1995,9 +1995,9 @@ Package rerunfilecheck Info: File `Principal.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
  ) 
 Here is how much of TeX's memory you used:
- 15722 strings out of 492615
- 227868 string characters out of 6131390
- 538522 words of memory out of 5000000
+ 15721 strings out of 492615
+ 227850 string characters out of 6131390
+ 539522 words of memory out of 5000000
  17736 multiletter control sequences out of 15000+600000
  16987 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2026,10 +2026,10 @@ onts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols
 /msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/
 msbm10.pfb>
-Output written on ./build/Principal.pdf (173 pages, 766007 bytes).
+Output written on ./build/Principal.pdf (173 pages, 766216 bytes).
 PDF statistics:
- 3196 PDF objects out of 3580 (max. 8388607)
- 2966 compressed objects within 30 object streams
- 1165 named destinations out of 1200 (max. 500000)
+ 3194 PDF objects out of 3580 (max. 8388607)
+ 2964 compressed objects within 30 object streams
+ 1164 named destinations out of 1200 (max. 500000)
  2209 words of extra memory for PDF output out of 10000 (max. 10000000)
 

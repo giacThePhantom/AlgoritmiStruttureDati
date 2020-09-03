@@ -106,6 +106,7 @@ puntatore \textbf{nil} si utilizza un puntatore ad un nodo speciale \textbf{Nil}
 L'altezza nera $b(v)$ di un nodo $v$ \`e il numero di nodi neri lungo ogni percorso da $v$ escluso ad ogni foglia inclusa del sottoalbero. L'altezza nera di
 un albero red-black \`e pari all'altezza nera della sua radice. Quando esistono pi\`u colorazioni che rispettano i limiti possono esistere diverse altezze
 nere per lo stesso albero. 
+\newpage
 \subsubsection{Inserimento}
 Quando si vuole inserire un nodo in un albero red-black si ricerca la posizione usando la stessa procedura per gli alberi di ricerca e si colora il nuovo 
 nodo di rosso. Si possono pertanto violare dei vincoli in questo modo e si rende necessario aggiungere nella funzione \emph{insertNode(Tree T, Item k, Item 

@@ -18,8 +18,9 @@
 \SetKwFunction{Hash}{$H_i$}
 \caption{\protect\Boolean \protect\Insert{x}}
 \For{i = 1 \To k}{
-	\If{A[\Hash{x}] == \False}
-	\Return \False\;
+	\If{A[\Hash{x}] == \False}{
+		\Return \False\;
+	}
 }
 \Return \True\;
 \end{algorithm}

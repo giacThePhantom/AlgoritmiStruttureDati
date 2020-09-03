@@ -223,7 +223,7 @@ L'algoritmo \emph{prod()} moltiplica ogni bit con ogni altro bir per un costo to
 Si noti come moltiplicare per $2^t$ \`e uno shift di $t$ posizioni in tempo lineare. 
 $$T(n) = \begin{cases}
 	c_1 & n = 1\\
-	4T(\frac{n}{2} + c_2\cdot n &n>1\\
+	4T(\frac{n}{2}) + c_2\cdot n &n>1\\
 \end{cases}$$
 Espandendo l'equazione di ricorrenza: 
 \begin{align*}
@@ -247,7 +247,7 @@ Si noti pertanto come $T(n) = O(n^2)$, pertanto non si \`e migliorato rispetto a
 \input{Pseudocodice/157_Karatsuba}
 $$T(n) = \begin{cases}
 	c_1 & n = 1\\
-	3T(\frac{n}{2} + c_2\cdot n &n>1\\
+	3T(\frac{n}{2}) + c_2\cdot n &n>1\\
 \end{cases}$$
 Espandendo l'equazione di ricorrenza: 
 \begin{align*}
@@ -304,7 +304,7 @@ Si supponga dapprima per semplicit\`a che $n$ sia una potenza di $b$: $n = b^k$ 
 \begin{align*}
 	T(n) &= aT(b^{k-1}) + cb^{k\beta} \\
 	     &= a(aT(b^{k-2}) + cb^{(k-1)\beta}) + cb^{k\beta}\\
-	     &= a(a(aT(b^{k-3}) + cb^{(k-12\beta}) + cb^{(k-1)\beta}) + cb^{k\beta}\\
+	     &= a(a(aT(b^{k-3}) + cb^{(k-2)\beta}) + cb^{(k-1)\beta}) + cb^{k\beta}\\
 	     &\ \vdots \\
 	     &= a(a(\cdots a(aT(1) + cb^{\beta}) + cb^{2\beta})+\cdots+cb^{(k-1)\beta})+cb^{k\beta}\\
 	     &= a^kd + ca^{k-1}b^\beta + ca^{k-2}b^\beta + \cdots + cab^{(k-1)\beta} + cb^{k\beta}\\
@@ -378,7 +378,7 @@ $n = m + kj$ per un $k$ intero. Sostituendo successivamente si ottiene:
 	T(n) &= aT(n-j) + cn^\beta \\
 	     &= a(aT(n-2j)+c(n-j)^\beta)+cn^\beta\\
 	     &\ \vdots\\
-	     &= a(a\cdots a(a(T(m)+c(m+j)^\beta)+c(m+j)^\beta)+\cdots+c(n-j)^\beta)+cn^\beta\\
+	     &= a(a\cdots a(a(T(m)+c(m+j)^\beta)+c(m+2j)^\beta)+\cdots+c(n-j)^\beta)+cn^\beta\\
 	     &= a^kT(m) + \sum\limits_{0\le v\le k-1} a^vc(n-vj)^\beta\\
 	     &= a^kT(m)+cn^\beta\sum\limits_{0\le v \le k-1} a^v
 \end{align*}

@@ -79,9 +79,9 @@ elemento. La procedura \emph{heapBuild()} attraversa i restanti nodi dell'albero
 \subparagraph{Correttezza}
 Si dimostra attraverso l'invariante di ciclo: all'inizio di ogni iterazione del ciclo \textbf{for} i nodi $[i+1,\dots, n]$ sono radice di uno heap.
 \begin{itemize}
-	\item Inizializzazione: all'inizio $i=\biggl\lfloor \frac{n}{2}\biggr\rfloor$. Si dimostri che tutti i nodi da $\biggl\lfloor\frac{n}{2}\biggr\rfloor + 1$ sono foglie: si 
-		supponga per assurdo che $\biggl\lfloor \frac{n}{2}\biggr\rfloor+1$ non sia una foglia, pertanto esiste almeno il figlio sinistro 
-		$2\biggl\lfloor \frac{n}{2}\biggr\rfloor+2$ che fa parte dello heap, con indice superiore ad $n$, pertanto assurdo. La dimostrazione vale per tutti gli indici successivi 
+	\item Inizializzazione: all'inizio $i=\bigl\lfloor \frac{n}{2}\bigr\rfloor$. Si dimostri che tutti i nodi da $\bigl\lfloor\frac{n}{2}\bigr\rfloor + 1$ sono foglie: si 
+		supponga per assurdo che $\bigl\lfloor \frac{n}{2}\bigr\rfloor+1$ non sia una foglia, pertanto esiste almeno il figlio sinistro 
+		$2\bigl\lfloor \frac{n}{2}\bigr\rfloor+2$ che fa parte dello heap, con indice superiore ad $n$, pertanto assurdo. La dimostrazione vale per tutti gli indici successivi 
 		e tutti i nodi $i+1\dots n$ sono heap banali.
 	\item Conservazione: per ipotesi induttiva si suppone che al passo $i$ tutti i nodi $i+1, i+2, \dots, n$ siano radici di heap. \`E quindi possibile applicare 
 		\emph{maxHeapRestore()} al nodo $i$ in quanto $2i< 2i+1< n$ sono entrambi radici di heap. Al termine dell'iterazione tutti i nodi $[1,\dots, n]$ sono radici di heap.
