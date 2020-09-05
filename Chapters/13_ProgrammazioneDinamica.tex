@@ -165,10 +165,10 @@ DP[i][c] =
 \begin{cases}
 0\quad & i = 0 \lor c = 0\\
 -\infty & c<0\\
-\max(DP[i][c], DP[i-1][c-w[i]]+p[i]) & altrimenti
+\max(DP[i-1][c], DP[i][c-w[i]]+p[i]) & altrimenti
 \end{cases}
 $$
-In questo possibile \`e possibile semplificare la soluzione riducendo lo spazio occupato: si definisce $DP[c]$ il massimo profitto che pu\`o essere ottenuto
+In questo modo \`e possibile semplificare la soluzione riducendo lo spazio occupato: si definisce $DP[c]$ il massimo profitto che pu\`o essere ottenuto
 da tali oggetti in uno zaino di capacit\`a $c\le C$. 
 $$
 DP[c] =
@@ -302,7 +302,7 @@ Data una sequenza $n$ di matrici $A_1, \dots, A_n$ compatibili due a due al prod
 matrici non sia commutativo ma associativo. Notando come il prodotto di matrici si basa sulla moltiplicazione scalare come operazione elementare si vuole
 calcolare il prodotto delle $n$ matrici impiegando il minor numero possibile di moltiplicazioni scalari. 
 \subsubsection{Parentesizzazione}
-La parentesizzazione $P_{i, j}$ del prodotto $A_i\cdot A_{i+1}\cdots A_j$ \`e la matrice $A_i$ se $i=j$, nel prodotto di due parentesizzazioni $(P_{i,k}
+La parentesizzazione $P_{i, j}$ del prodotto $A_i\cdot A_{i+1}\cdots A_j$ \`e la matrice $A_i$ se $i=j$, il prodotto di due parentesizzazioni $(P_{i,k}
 \cdot P_{k+1, j})$ altrimenti. 
 \paragraph{Parentesizzazione ottima}
 La parentesizzazione che richiede il minor numero di moltiplicazioni scalari per essere completata fra tutte le parentesizzazioni possibili si dice 
@@ -317,7 +317,7 @@ $$P(n) =
 \end{cases}$$
 \subparagraph{Numero di Catalan}
 $$P(n+1) = C(n) = \dfrac{1}{n+1}\binom{2n}{n} = \dfrac{(2n)!}{(n+1)!n!} = \Omega\biggl(\dfrac{4^n}{n^{\frac{3}{2}}}\biggr)$$
-In matematica $C(n)$ indica il numero di modi in cui un poligono convesso con $n+2$ lati pu\`o essre suddiviso in triangoli. Si pu\`o mostrare facilmente
+In matematica $C(n)$ indica il numero di modi in cui un poligono convesso con $n+2$ lati pu\`o essere suddiviso in triangoli. Si pu\`o mostrare facilmente
 come $P(n)=\Omega(2^n)$. 
 \subsubsection{Lista di definizioni matematiche}
 \begin{itemize}
@@ -366,7 +366,7 @@ moltiplicare le matrici $A[i\dots j]$ e $last[i][j]$ contiene il valore $k$ dell
 \input{Pseudocodice/108_ComputePar}
 \subparagraph{Valutazioni}
 Il costo computazionale \`e $O(n^3)$, in quanto ogni cella richiede tempo $O(n)$ per essere riempita. Il costo della funzione si trova nella posizione $DP[1][n]$. \`E anche necessario
-motrare la soluzione trovata, motivo per cui si salvano le informazioni nella matrice last.\\ 
+mostrare la soluzione trovata, motivo per cui si salvano le informazioni nella matrice last.\\ 
 \input{Pseudocodice/109_Ricostruzione_della_soluzione_-_Stampa}
 
 \input{Pseudocodice/110_Ricostruzione_della_soluzione_-_Calcolo_Effettivo}
@@ -375,7 +375,7 @@ motrare la soluzione trovata, motivo per cui si salvano le informazioni nella ma
 Si deve trovare un insieme indipendente di peso massimo, un sottoinsieme di intervalli disgiunti tra loro ($b_j \le a_i$ o $b_i\le a_j$ $\forall i\neq j$) tale che la somma dei loro 
 profitti sia la pi\`u grande possibile.
 \paragraph{Input}
-Siano dati $n$ intervalli distinti $[a_1, b_i[, \dots, [a_n, b_n[$ della retta reale aperti a destra, dove all'intervallo $i$ \`e associato un profitto $w_i$ con $1\le i\le n$.
+Siano dati $n$ intervalli distinti $[a_1, b_1[, \dots, [a_n, b_n[$ della retta reale aperti a destra, dove all'intervallo $i$ \`e associato un profitto $w_i$ con $1\le i\le n$.
 \subsubsection{Pre-elaborazione}
 Per usare la programmazione dinamica \`e necessario ordinare gli intervalli per estremi finali crescenti. In una prima versione $DP[i]$ contiene il profitto massimo ottenibile con i
 primi $i$ intervalli:
