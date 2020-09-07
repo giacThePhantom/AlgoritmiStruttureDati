@@ -38,7 +38,7 @@ Data un'espressione algebrica polinomiale $p(x_1, \dots, x_n)$ in $n$ variabili 
 noti come gli algoritmi basati su semplificazioni sono molto complessi. 
 \subsubsection{Algoritmo}
 Si genera una ennupla di valori $v_1, \dots, v_n$, si calcola $x = p(v_1, \dots, v_n)$, se $x\neq 0$ $p$ non \`e identicamente nulla, altrimenti potrebbe essere identicamente nulla. Se 
-ogni $v_i$ \`e un valore intero compreso causale fra $1$ e $2d$, dove $d$ \`e il grado del polinomio allora la probabilit\`a di errore non supera $\frac{1}{2}$. Il processo si ripete
+ogni $v_i$ \`e un valore intero compreso casuale fra $1$ e $2d$, dove $d$ \`e il grado del polinomio allora la probabilit\`a di errore non supera $\frac{1}{2}$. Il processo si ripete
 $k$ volte, riducendo la probabilit\`a d'errore a $\bigl(\frac{1}{2}\bigr)^k$.
 \section{Algoritmi Las Vegas}
 Gli algoritmi statistici sui vettori estraggono alcune caratteristiche statisticamente rilevanti da un vettore numerico come:
@@ -67,7 +67,7 @@ attenzione agli indici.
 $$T(n) = 
 \begin{cases}
 	1 & n\le 1\\
-	T(n - 1) + n > 1\\
+	T(n - 1) + n & n > 1\\
 \end{cases}
 $$
 $T(n) = O(n^2)$.
@@ -75,7 +75,7 @@ $T(n) = O(n^2)$.
 $$T(n) = 
 \begin{cases}
 	1 & n\le 1\\
-	T\bigl(\frac{n}{2}\bigr) + n > 1\\
+	T\bigl(\frac{n}{2}\bigr) + n & n > 1\\
 \end{cases}
 $$
 $T(n) = O(n)$.
@@ -95,7 +95,7 @@ Si assuma che \emph{pivot()} restituisca con la stessa probabilit\`a una qualsia
 	     &\le n + \frac{c}{n}\cdot\biggl(\frac{3}{4}n^2\biggr) = n + \frac{3}{4}cn \le cn &\text{Vera per }c\le 4\\
 \end{align*}
 Si \`e partiti dall'assunzione che $j$ assume equiprobabilisticamente tutti i valori compresi tra $1$ e $n$ e pertanto questo concetto va forzato : $A[random(start,\ end)]\leftrightarrow
-A[start]$, accorgimento che vale anche per \emph{QuickSort} con complessit\`a nel caso medio $O(n)$ per la soluzione e $O(n\log n)$ per l'ordinamento. 
+A[start]$, accorgimento che vale anche per \emph{QuickSort} con complessit\`a nel caso medio $O(n)$ per la selezione e $O(n\log n)$ per l'ordinamento. 
 \subsubsection{Selezione deterministica}
 Si supponga di avere un algoritmo black box che ritorni il mediano di $n$ valori in tempo $O(n)$, in questo modo il problema della selezione sarebbe risolto e lo si pu\`o considere
 rilassando le pretese: si supponga di avere un tale algoritmo che ritorni un valore che dista al pi\`u $\frac{3}{10}n$ dal mediano nell'ordinamento in modo da utilizzarlo per ottimizzare

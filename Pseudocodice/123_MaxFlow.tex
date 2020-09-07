@@ -67,7 +67,7 @@
 \caption{\protect\Int[][] \protect\MaxFlow{\protect\Graph G, \protect\Node s, \protect\Node t, \protect\Int[][] c}}
 f = $f_0$ \comment{Inizializza un flusso nullo}
 r = c \comment{Capacit\`a iniziale}
-\Do{g = $f_0$}{
+\Repeat{g = $f_0$}{
 	g = trova un flusso in r tale che $|g|>0$, altrimenti $f_0$\;
 	f = f + g\;
 	r = rete di flusso residua del flusso di f in G\;

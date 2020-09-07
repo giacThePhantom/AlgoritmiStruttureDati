@@ -1,4 +1,4 @@
-\chapter{Tecniche risolutive per problemi intrattabili}
+0chapter{Tecniche risolutive per problemi intrattabili}
 Per la risoluzione di alcuni problemi si rende necessario rinunciare a delle caratteristiche:
 \begin{itemize}
 	\item Generalit\`a: algoritmi pseudo-polinomiali che funzionano solo per alcuni casi particolari dell'input.
@@ -17,9 +17,9 @@ la cui somma \`e pari a $r$, \emph{\textbf{false}} altrimenti.
 $$DP[i][r] = 
 \begin{cases}
 	true \quad\quad\quad & r = 0\\
-	false & r > o \land i = 0\\
+	false & r > 0 \land i = 0\\
 	DP[i - 1][r] & r > 0 \land i > 0 \land A[i] > r\\
-	DP[i - 1][r] \lor DP[i - 1][r - A[i] & r > 0 \land i > - \land A[i]\le r\\
+	DP[i - 1][r] \lor DP[i - 1][r - A[i]] & r > 0 \land i > 0 \land A[i]\le r\\
 \end{cases}$$
 \input{Pseudocodice/143_subSumDim}
 \subsection{Backtracking}
@@ -213,7 +213,7 @@ $$cost[i] =
 Il lower bound della distanza per uscire da $S[i]$ ($O(n)$):
 $$out = \min\limits_{h\not\in S}\{d[S[i][h]\}$$
 Il lower bound della distanza per tornare a $S[1]$ ($O(n)$):
-$$back = \min\limits_{h\not\in S}\{d[h][S[1]\}$$
+$$back = \min\limits_{h\not\in S}\{d[h][S[1]]\}$$
 Il lower bound della distanza percorsa per attraversare una qualsiasi citt\`a $h$ delle $n-i$ citt\`a ancora da attraversare provenendo da e dirigendosi verso un'altra di queste $n-i$
 citt\`a ($O(n^3)$):
 $$transfer[h] = \min\limits_{p, q\not\in S}\{d[p][h] + d[h][q] : h\neq p\neq q\}, \forall h\not\in S$$

@@ -72,7 +72,7 @@
 	f[u][v] = 0 \comment{inizializza un flusso nullo}
 	r[u][v] = c[u][v] \comment{Copia $c$ in $r$}
 }
-\Do{g = $f_0$}{
+\Repeat{g = $f_0$}{
 	g = flusso associato ad un cammino aumentante in r o $f_0$\;
 	\ForEach{$u, v\in G.V()$}{
 		f[u][v] = f[u][v] + g[u][v] \comment{$f = f + g$}

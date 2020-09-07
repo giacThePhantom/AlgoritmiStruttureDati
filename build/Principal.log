@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.4.24)  5 SEP 2020 19:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.4.24)  7 SEP 2020 18:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1895,16 +1895,13 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 147.
 
-[156]) (./Chapters/19_Intrattabili.tex [157]
-Capitolo 19.
-(./Pseudocodice/143_subSumDim.texpdfTeX warning (ext4): destination with the sa
-me identifier (name{algocf.}) has been already used, duplicate ignored
+[156]) (./Chapters/19_Intrattabili.tex [157] (./Pseudocodice/143_subSumDim.texp
+dfTeX warning (ext4): destination with the same identifier (name{algocf.}) has 
+been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.73 ...\Int[] A, \protect\Int n, \protect\Int k}}
-                                                  ) [158
-
-]
+                                                  )
 (./Pseudocodice/144_subSumBack.texpdfTeX warning (ext4): destination with the s
 ame identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
@@ -1916,7 +1913,7 @@ me identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.75 ...t i, \protect\Int r, \protect\Dictionary}}
-                                                  ) [159]
+                                                  ) [158]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 37.
@@ -1925,6 +1922,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 37.
 
+[159]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 59.
@@ -1933,7 +1931,6 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 59.
 
-[160]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 81.
@@ -1942,7 +1939,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 81.
 
-[161] [162]
+[160] [161]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 129.
@@ -1955,37 +1952,37 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 129.
 
-[163] (./Pseudocodice/146_greedyTsp.texpdfTeX warning (ext4): destination with 
+[162] (./Pseudocodice/146_greedyTsp.texpdfTeX warning (ext4): destination with 
 the same identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.75 ...\Set \protect\GreedyTsp{\protect\Graph G}}
-                                                  ) [164] [165]
+                                                   [163]) [164]
 (./Pseudocodice/147_branchBoundGenerale.texpdfTeX warning (ext4): destination w
 ith the same identifier (name{algocf.}) has been already used, duplicate ignore
 d
 <to be read again> 
                    \relax 
 l.75 ...] S, \protect\Int i, $<$dati parziali$>$}}
-                                                  ) [166]
+                                                  ) [165]
 (./Pseudocodice/148_branchBoundTSP.texpdfTeX warning (ext4): destination with t
 he same identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.75 ...ct\Set R, \protect\Int n, \protect\Int i}}
-                                                  ) [167])
-(./Chapters/20_Ordinamento.tex [168]
-Capitolo 20.
-[169
+                                                  ) [166])
+(./Chapters/20_Ordinamento.tex [167]
+Capitolo 19.
+[168
 
 ] (./Pseudocodice/155_countingSort.texpdfTeX warning (ext4): destination with t
 he same identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.75 ...Item[] A, \protect\Int n, \protect\Int k}}
-                                                  ) [170] [171])
+                                                  ) [169] [170])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 30.
- [172]
+ [171]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 30.
 
 (./build/Principal.aux)
@@ -1995,10 +1992,10 @@ Package rerunfilecheck Info: File `Principal.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
  ) 
 Here is how much of TeX's memory you used:
- 15721 strings out of 492615
- 227850 string characters out of 6131390
- 539522 words of memory out of 5000000
- 17736 multiletter control sequences out of 15000+600000
+ 15718 strings out of 492615
+ 227832 string characters out of 6131390
+ 539520 words of memory out of 5000000
+ 17735 multiletter control sequences out of 15000+600000
  16987 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  39i,22n,43p,816b,1263s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2026,10 +2023,10 @@ onts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols
 /msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/
 msbm10.pfb>
-Output written on ./build/Principal.pdf (173 pages, 766221 bytes).
+Output written on ./build/Principal.pdf (172 pages, 765956 bytes).
 PDF statistics:
- 3194 PDF objects out of 3580 (max. 8388607)
- 2964 compressed objects within 30 object streams
- 1164 named destinations out of 1200 (max. 500000)
- 2209 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3185 PDF objects out of 3580 (max. 8388607)
+ 2956 compressed objects within 30 object streams
+ 1162 named destinations out of 1200 (max. 500000)
+ 2201 words of extra memory for PDF output out of 10000 (max. 10000000)
 
