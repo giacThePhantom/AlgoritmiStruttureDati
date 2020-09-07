@@ -212,7 +212,7 @@ O(1)&\subset O(\log^r n)\subset O(\log^s n)\subset O(n^h)\subset O(n^h\log^r n)\
 \end{align*}
 \subsection{Moltiplicare numeri binari}
 \subsubsection{Algoritmo elementare del prodotto}
-L'algoritmo \emph{prod()} moltiplica ogni bit con ogni altro bir per un costo totale di $cn^2$, ovvero $T_{prod}(n)=O(n^2)$.
+L'algoritmo \emph{prod()} moltiplica ogni bit con ogni altro bit per un costo totale di $cn^2$, ovvero $T_{prod}(n)=O(n^2)$.
 \subsubsection{Algoritmo divide-et-impera}
 \begin{align*}
 	X &= a\cdot 2^{\frac{n}{2}}+ b\\
@@ -451,7 +451,7 @@ L'invariante di ciclo in un ciclo \emph{for} viene verificata dopo la modifica d
 il sottovettore $A[1\dots i -1]$ \`e ordinato.
 \begin{itemize}
 	\item \emph{Inizializzazione}: inizialmente $j=2$, il sottoarray dato da $A[1\dots 1]$ \`e ordinato.
-	\item \emph{Conservazione}: sapendo che il subarray $A[1\dots j-1]$ \`e oridnato, il ciclo while sposta tutti gli elementi maggiori di $A[j]$ fino a una posizione $k$ inclusa
+	\item \emph{Conservazione}: sapendo che il subarray $A[1\dots j-1]$ \`e ordinato, il ciclo while sposta tutti gli elementi maggiori di $A[j]$ fino a una posizione $k$ inclusa
 		di una posizione verso destra preservando l'ordine ma duplicando il valore in posizione $k$. Tutti i valori precedenti $k$ sono minori di $A[j]$ e ordinati, tutti i 
 		valori dopo $k$ sono maggiori di $A[j]$ e ordinati, pertanto inserendo $A[j]$ in posizione $k$ si dimostra l'invariante. 
 	\item \emph{Terminazione}: alla fine del ciclo, $j = n + 1$, l'invariante mostra come l'array intero $A[1\dots j - 1] = A[1\dots n]$ \`e ordinato.
@@ -501,7 +501,7 @@ che le operazioni meno costose vengono caricate di un costo aggiuntivo detto cre
 credito accumulato viene speso dalle operazioni pi\`u costose: $costo\ ammortizzato=costo\ effettivo-credito\ consumato$. Si deve dimostrare che la somma
 dei costi ammortizzato $a_i$ \`e un limite superiore alla somma dei costi effettivi: $\sum\limits_{i=1}^nc_i\le\sum\limits_{i=1}^na_i$ e che il valore 
 cos\`i ottenuto \`e "poco costoso". Considerando il caso pessimo, la dimostrazione deve valere per tutte le sequenze e il credito dopo la t-esima operazione
-deve essere sempre positivo: $\sum\limits_{i=1}^ta_i\le\sum\limits_{i=1}^tc_i\ge 0$.
+deve essere sempre positivo: $\sum\limits_{i=1}^ta_i-\sum\limits_{i=1}^tc_i\ge 0$.
 \subsubsection{Metodo del potenziale}
 Lo stato del sistema viene descritto attraverso una funzione di potenziale $\Phi(D)$. Le operazioni meno costose devono incrementare $\Phi(D)$ e quelle
 pi\`u costose decrementarlo. Il costo ammortizzato \`e pari al costo effettivo sommato alla differenza di potenziale: $a_i=c_i+\Phi(D_i)-\Phi(D_{i-1})$.

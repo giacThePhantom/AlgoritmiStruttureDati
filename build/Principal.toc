@@ -673,8 +673,7 @@
 \contentsline {subsection}{\numberline {18.2.7}SAT}{154}{subsection.18.2.7}% 
 \contentsline {subsubsection}{3-SAT}{154}{section*.474}% 
 \contentsline {subsection}{\numberline {18.2.8}Riduzione tramite gadget}{154}{subsection.18.2.8}% 
-\contentsline {subsection}{\numberline {18.2.9}Riduzione da problema generale a problema generale}{154}{subsection.18.2.9}% 
-\contentsline {subsection}{\numberline {18.2.10}Transitivit\`a delle riduzioni}{155}{subsection.18.2.10}% 
+\contentsline {subsection}{\numberline {18.2.9}Transitivit\`a delle riduzioni}{155}{subsection.18.2.9}% 
 \contentsline {section}{\numberline {18.3}Classi $\mathbf {\mathbb {P}}$, $\mathbf {\mathbb {PSPACE}}$}{155}{section.18.3}% 
 \contentsline {subsection}{\numberline {18.3.1}Classi di complessit\`a}{155}{subsection.18.3.1}% 
 \contentsline {subsubsection}{Classi $\mathbf {\mathbb {P}}, \mathbf {\mathbb {PSPACE}}$}{155}{section*.475}% 
@@ -702,86 +701,87 @@
 \contentsline {subsection}{\numberline {18.5.6}Somma di sottoinsiemi (subset-sum)}{157}{subsection.18.5.6}% 
 \contentsline {subsection}{\numberline {18.5.7}Zaino (knapsack)}{157}{subsection.18.5.7}% 
 \contentsline {subsection}{\numberline {18.5.8}Circuito hamiltoniano}{157}{subsection.18.5.8}% 
-\contentsline {section}{\numberline {18.6}Subset-Sum}{158}{section.18.6}% 
+\contentsline {chapter}{\numberline {19}Tecniche risolutive per problemi intrattabili}{158}{chapter.19}% 
+\contentsline {section}{\numberline {19.1}Subset-Sum}{158}{section.19.1}% 
 \contentsline {paragraph}{Problema}{158}{section*.488}% 
 \contentsline {paragraph}{Soluzioni}{158}{section*.489}% 
-\contentsline {subsection}{\numberline {18.6.1}Programmazione dinamica}{158}{subsection.18.6.1}% 
-\contentsline {subsection}{\numberline {18.6.2}Backtracking}{158}{subsection.18.6.2}% 
-\contentsline {subsection}{\numberline {18.6.3}Memoization}{159}{subsection.18.6.3}% 
-\contentsline {subsection}{\numberline {18.6.4}Complessit\`a}{159}{subsection.18.6.4}% 
-\contentsline {section}{\numberline {18.7}Problemi fortemente, debolmente $\mathbf {\mathbb {NP}}$-completi}{159}{section.18.7}% 
-\contentsline {subsubsection}{Dimensioni del problema}{159}{section*.490}% 
-\contentsline {subsection}{\numberline {18.7.1}Problemi}{159}{subsection.18.7.1}% 
-\contentsline {subsubsection}{Cricca (CLIQUE)}{159}{section*.491}% 
-\contentsline {subsubsection}{Commesso viaggiatore (TSP)}{159}{section*.492}% 
+\contentsline {subsection}{\numberline {19.1.1}Programmazione dinamica}{158}{subsection.19.1.1}% 
+\contentsline {subsection}{\numberline {19.1.2}Backtracking}{159}{subsection.19.1.2}% 
+\contentsline {subsection}{\numberline {19.1.3}Memoization}{159}{subsection.19.1.3}% 
+\contentsline {subsection}{\numberline {19.1.4}Complessit\`a}{160}{subsection.19.1.4}% 
+\contentsline {section}{\numberline {19.2}Problemi fortemente, debolmente $\mathbf {\mathbb {NP}}$-completi}{160}{section.19.2}% 
+\contentsline {subsubsection}{Dimensioni del problema}{160}{section*.490}% 
+\contentsline {subsection}{\numberline {19.2.1}Problemi}{160}{subsection.19.2.1}% 
+\contentsline {subsubsection}{Cricca (CLIQUE)}{160}{section*.491}% 
+\contentsline {subsubsection}{Commesso viaggiatore (TSP)}{160}{section*.492}% 
 \contentsline {subsubsection}{Esempi}{160}{section*.493}% 
-\contentsline {subsection}{\numberline {18.7.2}Problema fortemente $\mathbf {\mathbb {NP}}$-completo}{160}{subsection.18.7.2}% 
+\contentsline {subsection}{\numberline {19.2.2}Problema fortemente $\mathbf {\mathbb {NP}}$-completo}{160}{subsection.19.2.2}% 
 \contentsline {subsubsection}{Cricca (CLIQUE)}{160}{section*.494}% 
-\contentsline {subsubsection}{Commesso viaggiatore (TSP)}{160}{section*.495}% 
-\contentsline {subsubsection}{Circuito hamiltoniano (HAMILTONIAN-CIRCUIT)}{160}{section*.496}% 
-\contentsline {paragraph}{Complessit\`a}{160}{section*.497}% 
-\contentsline {subsubsection}{Dimostrazione che TSP \`e fortemente $\mathbf {\mathbb {NP}}$-completo}{160}{section*.498}% 
-\contentsline {subsection}{\numberline {18.7.3}Problema debolmente $\mathbf {\mathbb {NP}}$-completo}{160}{subsection.18.7.3}% 
+\contentsline {subsubsection}{Commesso viaggiatore (TSP)}{161}{section*.495}% 
+\contentsline {subsubsection}{Circuito hamiltoniano (HAMILTONIAN-CIRCUIT)}{161}{section*.496}% 
+\contentsline {paragraph}{Complessit\`a}{161}{section*.497}% 
+\contentsline {subsubsection}{Dimostrazione che TSP \`e fortemente $\mathbf {\mathbb {NP}}$-completo}{161}{section*.498}% 
+\contentsline {subsection}{\numberline {19.2.3}Problema debolmente $\mathbf {\mathbb {NP}}$-completo}{161}{subsection.19.2.3}% 
 \contentsline {subsubsection}{Somma di sottoinsieme (SUBSET-SUM)}{161}{section*.499}% 
 \contentsline {paragraph}{Si verifichi che SUBSET-SUM \`e debolmente $\mathbf {\mathbb {NP}}$-completo}{161}{section*.500}% 
-\contentsline {subsection}{\numberline {18.7.4}Algoritmi pseudo-polinomiali}{161}{subsection.18.7.4}% 
+\contentsline {subsection}{\numberline {19.2.4}Algoritmi pseudo-polinomiali}{161}{subsection.19.2.4}% 
 \contentsline {subsubsection}{Teorema}{161}{section*.501}% 
-\contentsline {subsection}{\numberline {18.7.5}ESEMPI}{161}{subsection.18.7.5}% 
-\contentsline {subsubsection}{Partizione (PARTITION)}{161}{section*.502}% 
-\contentsline {subsubsection}{3-Partizione (3-PARTITION)}{161}{section*.503}% 
-\contentsline {section}{\numberline {18.8}Algoritmi di approssimazione}{161}{section.18.8}% 
-\contentsline {paragraph}{Definizione}{161}{section*.504}% 
-\contentsline {subsection}{\numberline {18.8.1}Bin packing}{162}{subsection.18.8.1}% 
+\contentsline {subsection}{\numberline {19.2.5}ESEMPI}{162}{subsection.19.2.5}% 
+\contentsline {subsubsection}{Partizione (PARTITION)}{162}{section*.502}% 
+\contentsline {subsubsection}{3-Partizione (3-PARTITION)}{162}{section*.503}% 
+\contentsline {section}{\numberline {19.3}Algoritmi di approssimazione}{162}{section.19.3}% 
+\contentsline {paragraph}{Definizione}{162}{section*.504}% 
+\contentsline {subsection}{\numberline {19.3.1}Bin packing}{162}{subsection.19.3.1}% 
 \contentsline {subsubsection}{Algoritmo FIRST-FIT}{162}{section*.505}% 
-\contentsline {paragraph}{$\mathbf {\alpha }(n)$}{162}{section*.506}% 
-\contentsline {paragraph}{Variante First-fit decreasing}{162}{section*.507}% 
-\contentsline {subsection}{\numberline {18.8.2}Commesso viaggiatore con disuguaglianze particolari (triangolari o $\mathbf {\Delta }$-TSP)}{162}{subsection.18.8.2}% 
+\contentsline {paragraph}{$\mathbf {\alpha }(n)$}{163}{section*.506}% 
+\contentsline {paragraph}{Variante First-fit decreasing}{163}{section*.507}% 
+\contentsline {subsection}{\numberline {19.3.2}Commesso viaggiatore con disuguaglianze particolari (triangolari o $\mathbf {\Delta }$-TSP)}{163}{subsection.19.3.2}% 
 \contentsline {subsubsection}{$\mathbf {\Delta }$-TSP \`e $\mathbf {\mathbb {NP}}$-completo}{163}{section*.508}% 
 \contentsline {subsubsection}{Algoritmo di approssimazione}{163}{section*.509}% 
-\contentsline {paragraph}{Teorema}{163}{section*.510}% 
-\contentsline {subparagraph}{Enunciato}{163}{section*.511}% 
-\contentsline {subparagraph}{Dimostrazione}{163}{section*.512}% 
-\contentsline {paragraph}{Algoritmo}{163}{section*.513}% 
-\contentsline {paragraph}{Note}{163}{section*.514}% 
-\contentsline {subsubsection}{Non approssimabilit\`a di TSP}{163}{section*.515}% 
-\contentsline {section}{\numberline {18.9}Algoritmi euristici}{163}{section.18.9}% 
-\contentsline {subsection}{\numberline {18.9.1}Approccio greedy}{164}{subsection.18.9.1}% 
+\contentsline {paragraph}{Teorema}{164}{section*.510}% 
+\contentsline {subparagraph}{Enunciato}{164}{section*.511}% 
+\contentsline {subparagraph}{Dimostrazione}{164}{section*.512}% 
+\contentsline {paragraph}{Algoritmo}{164}{section*.513}% 
+\contentsline {paragraph}{Note}{164}{section*.514}% 
+\contentsline {subsubsection}{Non approssimabilit\`a di TSP}{164}{section*.515}% 
+\contentsline {section}{\numberline {19.4}Algoritmi euristici}{164}{section.19.4}% 
+\contentsline {subsection}{\numberline {19.4.1}Approccio greedy}{164}{subsection.19.4.1}% 
 \contentsline {subsubsection}{TSP - shortest edges first}{164}{section*.516}% 
-\contentsline {subsubsection}{TSP - Nearest neighbor}{164}{section*.517}% 
-\contentsline {subsubsection}{Conclusioni}{164}{section*.518}% 
-\contentsline {subsection}{\numberline {18.9.2}Approccio ricerca locale}{165}{subsection.18.9.2}% 
+\contentsline {subsubsection}{TSP - Nearest neighbor}{165}{section*.517}% 
+\contentsline {subsubsection}{Conclusioni}{165}{section*.518}% 
+\contentsline {subsection}{\numberline {19.4.2}Approccio ricerca locale}{165}{subsection.19.4.2}% 
 \contentsline {subsubsection}{TSP}{165}{section*.519}% 
-\contentsline {section}{\numberline {18.10}Branch-\&-bound}{165}{section.18.10}% 
-\contentsline {subsection}{\numberline {18.10.1}Upper bound}{165}{subsection.18.10.1}% 
-\contentsline {subsection}{\numberline {18.10.2}Lower bound}{165}{subsection.18.10.2}% 
-\contentsline {subsubsection}{Potatura}{165}{section*.520}% 
-\contentsline {subsection}{\numberline {18.10.3}Note}{165}{subsection.18.10.3}% 
-\contentsline {subsection}{\numberline {18.10.4}Schema generale}{166}{subsection.18.10.4}% 
-\contentsline {subsection}{\numberline {18.10.5}Commesso viaggiatore}{166}{subsection.18.10.5}% 
-\contentsline {subsubsection}{Lower bound}{166}{section*.521}% 
-\contentsline {subsubsection}{Implementazione}{167}{section*.522}% 
-\contentsline {paragraph}{Possibili miglioramenti}{167}{section*.523}% 
-\contentsline {chapter}{\numberline {19}Algoritmi di ordinamento}{168}{chapter.19}% 
-\contentsline {section}{\numberline {19.1}Limite inferiore}{168}{section.19.1}% 
-\contentsline {paragraph}{Propriet\`a dell'albero di decisione}{168}{section*.524}% 
-\contentsline {paragraph}{Lemma $\mathbf {1}$}{168}{section*.525}% 
-\contentsline {paragraph}{Lemma $\mathbf {2}$}{168}{section*.526}% 
-\contentsline {paragraph}{Teorema}{168}{section*.527}% 
-\contentsline {section}{\numberline {19.2}Ulteriori algoritmi di ordinamento}{169}{section.19.2}% 
-\contentsline {subsection}{\numberline {19.2.1}Spaghetti Sort}{169}{subsection.19.2.1}% 
-\contentsline {subsection}{\numberline {19.2.2}Counting Sort}{169}{subsection.19.2.2}% 
-\contentsline {subsubsection}{Complessit\`a}{169}{section*.528}% 
-\contentsline {subsection}{\numberline {19.2.3}Pigeonhole Sort}{169}{subsection.19.2.3}% 
-\contentsline {subsection}{\numberline {19.2.4}Bucket Sort}{170}{subsection.19.2.4}% 
-\contentsline {section}{\numberline {19.3}Conclusioni}{170}{section.19.3}% 
-\contentsline {subsection}{\numberline {19.3.1}Stabilit\`a}{170}{subsection.19.3.1}% 
-\contentsline {subsection}{\numberline {19.3.2}Riassunto}{170}{subsection.19.3.2}% 
-\contentsline {subsubsection}{Insertion Sort}{170}{section*.529}% 
-\contentsline {subsubsection}{Merge Sort}{170}{section*.530}% 
-\contentsline {subsubsection}{Heap Sort}{170}{section*.531}% 
-\contentsline {subsubsection}{Quick Sort}{170}{section*.532}% 
-\contentsline {subsubsection}{Counting Sort}{170}{section*.533}% 
-\contentsline {subsubsection}{Pigeonhole Sort}{170}{section*.534}% 
-\contentsline {subsubsection}{Bucket Sort}{170}{section*.535}% 
-\contentsline {subsubsection}{Shell Sort}{171}{section*.536}% 
-\contentsline {subsubsection}{Tim Sort}{171}{section*.537}% 
+\contentsline {section}{\numberline {19.5}Branch-\&-bound}{166}{section.19.5}% 
+\contentsline {subsection}{\numberline {19.5.1}Upper bound}{166}{subsection.19.5.1}% 
+\contentsline {subsection}{\numberline {19.5.2}Lower bound}{166}{subsection.19.5.2}% 
+\contentsline {subsubsection}{Potatura}{166}{section*.520}% 
+\contentsline {subsection}{\numberline {19.5.3}Note}{166}{subsection.19.5.3}% 
+\contentsline {subsection}{\numberline {19.5.4}Schema generale}{166}{subsection.19.5.4}% 
+\contentsline {subsection}{\numberline {19.5.5}Commesso viaggiatore}{167}{subsection.19.5.5}% 
+\contentsline {subsubsection}{Lower bound}{167}{section*.521}% 
+\contentsline {subsubsection}{Implementazione}{168}{section*.522}% 
+\contentsline {paragraph}{Possibili miglioramenti}{168}{section*.523}% 
+\contentsline {chapter}{\numberline {20}Algoritmi di ordinamento}{169}{chapter.20}% 
+\contentsline {section}{\numberline {20.1}Limite inferiore}{169}{section.20.1}% 
+\contentsline {paragraph}{Propriet\`a dell'albero di decisione}{169}{section*.524}% 
+\contentsline {paragraph}{Lemma $\mathbf {1}$}{169}{section*.525}% 
+\contentsline {paragraph}{Lemma $\mathbf {2}$}{169}{section*.526}% 
+\contentsline {paragraph}{Teorema}{169}{section*.527}% 
+\contentsline {section}{\numberline {20.2}Ulteriori algoritmi di ordinamento}{170}{section.20.2}% 
+\contentsline {subsection}{\numberline {20.2.1}Spaghetti Sort}{170}{subsection.20.2.1}% 
+\contentsline {subsection}{\numberline {20.2.2}Counting Sort}{170}{subsection.20.2.2}% 
+\contentsline {subsubsection}{Complessit\`a}{170}{section*.528}% 
+\contentsline {subsection}{\numberline {20.2.3}Pigeonhole Sort}{170}{subsection.20.2.3}% 
+\contentsline {subsection}{\numberline {20.2.4}Bucket Sort}{171}{subsection.20.2.4}% 
+\contentsline {section}{\numberline {20.3}Conclusioni}{171}{section.20.3}% 
+\contentsline {subsection}{\numberline {20.3.1}Stabilit\`a}{171}{subsection.20.3.1}% 
+\contentsline {subsection}{\numberline {20.3.2}Riassunto}{171}{subsection.20.3.2}% 
+\contentsline {subsubsection}{Insertion Sort}{171}{section*.529}% 
+\contentsline {subsubsection}{Merge Sort}{171}{section*.530}% 
+\contentsline {subsubsection}{Heap Sort}{171}{section*.531}% 
+\contentsline {subsubsection}{Quick Sort}{171}{section*.532}% 
+\contentsline {subsubsection}{Counting Sort}{171}{section*.533}% 
+\contentsline {subsubsection}{Pigeonhole Sort}{171}{section*.534}% 
+\contentsline {subsubsection}{Bucket Sort}{171}{section*.535}% 
+\contentsline {subsubsection}{Shell Sort}{172}{section*.536}% 
+\contentsline {subsubsection}{Tim Sort}{172}{section*.537}% 
